@@ -46,13 +46,13 @@
 */
 
 $active_group = 'default';
-$active_record = TRUE;
+$query_builder = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'USERNAME';
-$db['default']['password'] = 'PASSWORD';
-$db['default']['database'] = 'DATABASE';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['username'] = 'admin_telveuser';
+$db['default']['password'] = 'Nyx6tITf4Q';
+$db['default']['database'] = 'admin_telve';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
