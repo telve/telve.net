@@ -41,7 +41,7 @@
 -->
 
 <p class="text-center" style="color:gray;">
-Copyright &copy; 2013&nbsp;&nbsp;91TouTiao.com&nbsp;&nbsp;All Rights Reserved. 
+Copyright &copy; 2016&nbsp;&nbsp;telve.net&nbsp;&nbsp;All Rights Reserved. 
 </p>
 </body>
 </html>
