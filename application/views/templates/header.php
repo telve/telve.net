@@ -37,7 +37,7 @@
               &nbsp;&nbsp;
               <a style="color:red;" href="<?php echo base_url('');?>">Front</a> -
               <a href="#">All</a> -
-              <a href="#">Random</a> | 
+              <a href="#">Random</a> |
               <a href="<?php echo base_url('imgur');?>">Pics</a> -
               <a href="#">Funny</a> -
               <a href="#">Game</a> -
@@ -65,3 +65,16 @@
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
     <script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
+
+    <ul class="nav nav-tabs" style="background:#CEE3F8;">
+    	<li><a class="text-center" style="float:left;width:120px;" href="<?php echo base_url("");?>">front</a></li>
+    	<li class="active"><a style='color:red;' href="<?php echo base_url("");?>">hot</a></li>
+
+    	<li><a href="<?php echo base_url("zuixin");?>">new</a></li>
+    	<li><a href="<?php echo base_url("rising");?>">rising</a></li>
+    	<li><a href="<?php echo base_url("controversial");?>">controversial</a></li>
+    	<li><a href="<?php echo base_url("top");?>">top</a></li>
+    	<li><a href="<?php echo base_url("wiki/index");?>">wiki</a></li>
+    	<!--想要加入？马上<a href="#myModal" data-toggle="modal">注册或登录</a>-->
+    	<li style="float:right;width:300px;"><?php echo $login_info;?></a></li>
+    </ul>
