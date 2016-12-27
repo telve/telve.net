@@ -12,13 +12,13 @@
 		public function index()
 		{
 
-			$data['title'] = "提交";
+			$data['title'] = "Submit";
 			//$data['credit'] = $this->get_model->get_credit();
 
-			$this->form_validation->set_rules('title','标题','trim|required|max_length[255]');
-            $this->form_validation->set_rules('url','网址','trim|required|max_length[255]');
-            $this->form_validation->set_rules('category','分类','trim|required|max_length[255]');
-            $this->form_validation->set_rules('captcha','验证码','trim|required|exact_length[4]|strtolower');
+			$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
+            $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
+            $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
+            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
 			if($this->form_validation->run()===FALSE){
 

@@ -11,13 +11,13 @@
         public function register()
 		{
 
-			$data['title'] = "注册用户";
+			$data['title'] = "Register a user";
 
-			$this->form_validation->set_rules('username','用户名','trim|required|min_length[5]|max_length[12]|is_unique[user.username]');
-			$this->form_validation->set_rules('email','邮箱','required|valid_email|is_unique[user.email]');
-			$this->form_validation->set_rules('password','密码','trim|required|min_length[6]|matches[passconf]');
-			$this->form_validation->set_rules('passconf','确认密码','required');
-      		$this->form_validation->set_rules('captcha','验证码','trim|required|exact_length[4]|strtolower');
+			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]');
+			$this->form_validation->set_rules('email','email','required|valid_email|is_unique[user.email]');
+			$this->form_validation->set_rules('password','password','trim|required|min_length[6]|matches[passconf]');
+			$this->form_validation->set_rules('passconf','confirm password','required');
+      		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
 			if($this->form_validation->run()=== FALSE)
 			{
@@ -42,8 +42,8 @@
         {
 
 			$data['title'] = "登录";
-			$this->form_validation->set_rules('username','用户名','required');
-			$this->form_validation->set_rules('password','密码','required');
+			$this->form_validation->set_rules('username','username','required');
+			$this->form_validation->set_rules('password','password','required');
 			if ($this->form_validation->run() == FALSE){
 				$data['data'] = "出错";
 				$this->load->view('templates/header',$data);

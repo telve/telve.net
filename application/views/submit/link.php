@@ -4,7 +4,7 @@
         <ul class="nav nav-tabs" id="myTab">
           <!--<li><a href="#link">        </a></li>-->
 		  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Submit a link</a></li>
-          <li><a href="#status">Release status</a></li>
+          <li><a href="#status">Submit a text</a></li>
         </ul>
 
         <div class="tab-content">

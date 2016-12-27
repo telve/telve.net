@@ -3,25 +3,25 @@
     <div class="span5">
         <ul class="nav nav-tabs" id="myTab">
           <!--<li><a href="#link">        </a></li>-->
-		  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">找回密码</a></li>
+		  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Reset your password</a></li>
         </ul>
-         
+
         <div class="tab-content">
             <div class="tab-pane active" id="link">
-                
+
                 <?php echo form_open('password');?>
                 <fieldset>
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
-                    
-                    <label for="title">用户名</label>
-                    <input class="span12" id="username" name="username"/><br />
+
+                    <label for="title">Username</label>
+                    <input class="span12" id="username" name="username" placeholder="enter your username"/><br />
                     <div style="color:red"><?php echo form_error('username');?></div>
                     </td></tr></table>
-                  
-                    <button class="btn btn-primary  pull-left" type="submit" name="submit" >给我发邮件</button>
+
+                    <button class="btn btn-primary  pull-left" type="submit" name="submit" >Email me</button>
                 </fieldset>
                 </form>
-            </div>           
+            </div>
         </div>
 
     </div>
@@ -45,7 +45,7 @@
 				  <label class="checkbox span4">
 					<input type="checkbox">记住我
 				  </label>
-				  
+
 				  <a class="checkbox" href="/password">忘记密码?</a>
 				  <button type="submit" class="btn pull-right">登录</button>
 				</form>

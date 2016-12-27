@@ -37,8 +37,7 @@
               &nbsp;&nbsp;
               <a style="color:red;" href="<?php echo base_url('');?>">Front</a> -
               <a href="#">All</a> -
-              <a href="#">Random</a> |
-              &nbsp;
+              <a href="#">Random</a> | 
               <a href="<?php echo base_url('imgur');?>">Pics</a> -
               <a href="#">Funny</a> -
               <a href="#">Game</a> -

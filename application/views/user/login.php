@@ -2,21 +2,20 @@
 			<?php echo form_open('user/login');?>
 
 			<fieldset>
-			<legend>登录</legend>
+			<legend>Log in</legend>
 
-			<label for="username">用户名</label>
-			<input type="text" name="username" placeholder="输入用户名"/><br />
+			<label for="username">Username</label>
+			<input type="text" name="username" placeholder="username"/><br />
 			<?php echo form_error('username');?>
 
-			<label for="password">密码</label>
-			<input type="password" name="password" placeholder="输入密码"/><br />
+			<label for="password">Password</label>
+			<input type="password" name="password" placeholder="password"/><br />
 			<?php echo form_error('password');?>
 
-            <!--
 			<label class="checkbox">
-                <input type="checkbox" /> 记住我
+                <input type="checkbox" name="remember"/> remember me
             </label>
-            -->
+
 
             <!--错误提示-->
 
