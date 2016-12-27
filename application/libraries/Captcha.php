@@ -20,7 +20,7 @@ class Captcha
         //创建图片
         $this->createImg();
         //设置干扰元素
-        $this->setDisturb();
+        //$this->setDisturb();
         //设置验证码
         $this->setCaptcha();
         //输出图片
@@ -39,10 +39,12 @@ class Captcha
         $area = ($this->width * $this->height) / 20;
         $disturbNum = ($area > 250) ? 250 : $area;
         //加入点干扰
+        /*
         for ($i = 0; $i < $disturbNum; $i++) {
             $color = imagecolorallocate($this->im, rand(0, 255), rand(0, 255), rand(0, 255));
             imagesetpixel($this->im, rand(1, $this->width - 2), rand(1, $this->height - 2), $color);
         }
+        */
         //加入弧线
         for ($i = 0; $i <= 5; $i++) {
             $color = imagecolorallocate($this->im, rand(128, 255), rand(125, 255), rand(100, 255));
@@ -52,12 +54,17 @@ class Captcha
 
     private function setCaptcha()
     {
+        $fontsDir = 'assets/fonts/';
+        $fonts = glob($fontsDir . '*.ttf', GLOB_BRACE);
+        $randomFont = $fonts[array_rand($fonts)];
+
         for ($i = 0; $i < $this->codeNum; $i++) {
             $color = imagecolorallocate($this->im, rand(50, 250), rand(100, 250), rand(128, 250));
-            $size = rand(floor($this->height / 5), floor($this->height / 3));
+            $size = rand(floor($this->height / 3), floor($this->height / 2));
+            $angle = rand(-30,30);
             $x = floor($this->width / $this->codeNum) * $i + 5;
-            $y = rand(0, $this->height - 20);
-            imagechar($this->im, $size, $x, $y, $this->code{$i}, $color);
+            $y = rand(40, $this->height-10);
+            imagettftext($this->im, $size, $angle, $x, $y, $color, $randomFont, $this->code{$i});
         }
     }
 

@@ -17,7 +17,7 @@
 			$this->form_validation->set_rules('email','邮箱','required|valid_email|is_unique[user.email]');
 			$this->form_validation->set_rules('password','密码','trim|required|min_length[6]|matches[passconf]');
 			$this->form_validation->set_rules('passconf','确认密码','required');
-      $this->form_validation->set_rules('captcha','验证码','trim|required|exact_length[4]|strtolower');
+      		$this->form_validation->set_rules('captcha','验证码','trim|required|exact_length[4]|strtolower');
 
 			if($this->form_validation->run()=== FALSE)
 			{
@@ -97,7 +97,7 @@
             $this->load->helper('string');
 
             $rand_str = random_string('alnum',4);
-            $captcha = new Captcha(220,56,$rand_str);
+            $captcha = new Captcha(220,80,$rand_str);
             $captcha->showImg();
             $this->session->set_userdata('captcha',strtolower($rand_str));
         }
