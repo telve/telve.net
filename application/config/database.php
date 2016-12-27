@@ -50,7 +50,7 @@ $query_builder = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'admin_telveuser';
-$db['default']['password'] = 'Nyx6tITf4Q';
+$db['default']['password'] = 'fqa6xpbTm3';
 $db['default']['database'] = 'admin_telve';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
