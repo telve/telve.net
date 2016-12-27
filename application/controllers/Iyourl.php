@@ -1,5 +1,5 @@
 <?php
-	class Iyourl extends CI_Controller{
+	class Iyourl extends MY_Controller{
 
 		public function __construct()
 		{
@@ -24,38 +24,11 @@
             $config['last_link'] = FALSE;
             $this->pagination->initialize($config);
 
-            $data['title'] = '首页';
-            $data['link'] = $this->get_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+            $this->data['title'] = '首页';
+            $this->data['link'] = $this->get_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
-			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
-				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='Link integration'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>Preference</a></strong> | <a href='".base_url('user/logout')."'>Log out</a> </div><br />";
-
-				$data['login_form'] = "";//不显示登录表单
-			}else{
-				$data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
-				$data['login_form'] = "
-					<table class='table table-bordered'>
-						<tr><td>
-							".form_open('user/login')."
-							<input type='text' class='span6' name='username' placeholder='username'>
-							<input type='password' class='span6 pull-right' name='password' placeholder='password'>
-							<br><br>
-							<label class='checkbox span4'>
-							<input type='checkbox'>remember me
-							</label>
-
-							<a class='checkbox' href='/password'>forgot password?</a>
-							<button type='submit' class='btn pull-right'>log in</button>
-							</form>
-						</tr></td>
-					</table>
-
-				";
-			}
-
-
-			$this->load->view('templates/header',$data);
-			$this->load->view('iyourl/index',$data);
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('iyourl/index',$this->data);
 			$this->load->view('templates/footer');
 		}
 
@@ -81,12 +54,12 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config);
-			$data['submit'] = $this->submit_model->get_latest($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
+			$this->data['submit'] = $this->submit_model->get_latest($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
 
-			$data['title'] = '最新';
+			$this->data['title'] = '最新';
 
-			$this->load->view('templates/header',$data);
-			$this->load->view('submit/latest',$data);
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('submit/latest',$this->data);
 			$this->load->view('templates/footer');
 		}
 
@@ -122,12 +95,12 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config);
-			$data['submit'] = $this->submit_model->get_top($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
+			$this->data['submit'] = $this->submit_model->get_top($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
 
-			$data['title'] = '得分';
+			$this->data['title'] = '得分';
 
-			$this->load->view('templates/header',$data);
-			$this->load->view('submit/top',$data);
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('submit/top',$this->data);
 			$this->load->view('templates/footer');
         }
 
@@ -143,21 +116,21 @@
             $this->load->helper(array('form','url')); //加载表单辅助函数和URL辅助函数
 			$this->load->library('form_validation');
 
-            $data['title'] = "首页";
+            $this->data['title'] = "首页";
 
 			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
             $this->form_validation->set_rules('sid','Sid','required'); //必须要设置规则才能提交该值
 
             if($this->form_validation->run()===FALSE)
 			{
-				$this->load->view('templates/header',$data);
+				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success'); //
 				$this->load->view('templates/footer');
 			}
 			else
 			{
 				$this->submit_model->set_reply();
-				$this->load->view('templates/header',$data);
+				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
 			}

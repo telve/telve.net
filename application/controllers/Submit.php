@@ -1,6 +1,6 @@
 <?php
 
-	class Submit extends CI_Controller{
+	class Submit extends MY_Controller{
 
 		public function __construct()
 		{
@@ -12,49 +12,23 @@
 		public function index()
 		{
 
-			$data['title'] = "Submit";
-			//$data['credit'] = $this->get_model->get_credit();
+			$this->data['title'] = "Submit";
+			//$this->data['credit'] = $this->get_model->get_credit();
 
 			$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
             $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
             $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
             $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
-			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
-				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='Link integration'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>Preference</a></strong> | <a href='".base_url('user/logout')."'>Log out</a> </div><br />";
-
-				$data['login_form'] = "";//不显示登录表单
-			}else{
-				$data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
-				$data['login_form'] = "
-					<table class='table table-bordered'>
-						<tr><td>
-							".form_open('user/login')."
-							<input type='text' class='span6' name='username' placeholder='username'>
-							<input type='password' class='span6 pull-right' name='password' placeholder='password'>
-							<br><br>
-							<label class='checkbox span4'>
-							<input type='checkbox'>remember me
-							</label>
-
-							<a class='checkbox' href='/password'>forgot password?</a>
-							<button type='submit' class='btn pull-right'>log in</button>
-							</form>
-						</tr></td>
-					</table>
-
-				";
-			}
-
 			if($this->form_validation->run()===FALSE){
 
-                $this->load->view('templates/header',$data);
+                $this->load->view('templates/header',$this->data);
 				$this->load->view('submit/link');
 				$this->load->view('templates/footer');
 			}else{
 
                 $this->submit_model->set_link();
-				$this->load->view('templates/header',$data);
+				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
 			}
@@ -76,46 +50,20 @@
 		public function status()
 		{
 
-			$data['title'] = "发布状态";
+			$this->data['title'] = "发布状态";
 
 			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
 
-			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
-				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='Link integration'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>Preference</a></strong> | <a href='".base_url('user/logout')."'>Log out</a> </div><br />";
-
-				$data['login_form'] = "";//不显示登录表单
-			}else{
-				$data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
-				$data['login_form'] = "
-					<table class='table table-bordered'>
-						<tr><td>
-							".form_open('user/login')."
-							<input type='text' class='span6' name='username' placeholder='username'>
-							<input type='password' class='span6 pull-right' name='password' placeholder='password'>
-							<br><br>
-							<label class='checkbox span4'>
-							<input type='checkbox'>remember me
-							</label>
-
-							<a class='checkbox' href='/password'>forgot password?</a>
-							<button type='submit' class='btn pull-right'>log in</button>
-							</form>
-						</tr></td>
-					</table>
-
-				";
-			}
-
 			if($this->form_validation->run()===FALSE)
 			{
-				$this->load->view('templates/header',$data);
+				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/status');
 				$this->load->view('templates/footer');
 			}
 			else
 			{
 				$this->submit_model->set_submit();
-				$this->load->view('templates/header',$data);
+				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
 			}
