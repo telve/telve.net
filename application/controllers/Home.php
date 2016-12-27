@@ -1,5 +1,5 @@
 <?php
-	class Iyourl extends MY_Controller{
+	class Home extends MY_Controller{
 
 		public function __construct()
 		{
@@ -11,7 +11,7 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('iyourl/index');
+            $config['base_url'] = base_url('home/index');
 
             $config['total_rows'] = count($this->get_model->get_link_count());
             $config['per_page'] = 10;
@@ -28,7 +28,7 @@
             $this->data['link'] = $this->get_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
 			$this->load->view('templates/header',$this->data);
-			$this->load->view('iyourl/index',$this->data);
+			$this->load->view('home/index',$this->data);
 			$this->load->view('templates/footer');
 		}
 
@@ -37,7 +37,7 @@
 			$this->load->helper('url');
 			$this->load->library('pagination');
 
-            $config['base_url'] = base_url('iyourl/latest');
+            $config['base_url'] = base_url('home/latest');
 
             $config['total_rows'] = count($this->get_model->get_latest());
             $config['per_page'] = 4;

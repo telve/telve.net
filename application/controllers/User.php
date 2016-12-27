@@ -30,10 +30,10 @@
 				$this->user_model->reg_user();
 
         //$this->load->view('templates/header',$this->data);
-				//$this->load->view('iyourl/index',$this->data);
+				//$this->load->view('home/index',$this->data);
 				//$this->load->view('templates/footer');
 
-        redirect('iyourl');
+        redirect('home');
 			}
 
 		}
@@ -74,7 +74,7 @@
         {
 
             $this->session->sess_destroy();
-			redirect(''); //default: iyourl/index
+			redirect(''); //default: home/index
         }
 
         public function chk_username()

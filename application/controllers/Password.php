@@ -1,40 +1,40 @@
 <?php
 
-class Password extends CI_Controller {
- 
+class Password extends MY_Controller {
+
     public function __construct()
     {
         parent::__construct();
     }
 
     public function index() //显示
-    { 
-        $data['title'] = '找回密码';
+    {
+        $this->data['title'] = '找回密码';
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header',$this->data);
 		$this->load->view('submit/password');
 		$this->load->view('templates/footer');
 
 		$this->form_validation->set_rules('username','用户名','trim|required|max_length[255]');
 
 		if($this->form_validation->run()===FALSE){
-			
-			//$this->load->view('templates/header');//,$data
+
+			//$this->load->view('templates/header');//,$this->data
 			//$this->load->view('submit/password');
-			//$this->load->view('templates/footer');			
+			//$this->load->view('templates/footer');
 		}else{
-			
+
 			$this->get_model->get_email();
 
 
-			$this->load->view('templates/header');//,$data
+			$this->load->view('templates/header',$this->data);
 			$this->load->view('submit/success');
 			$this->load->view('templates/footer');
 		}
 
 
     }
-     
+
     public function sendmail()
     {
         $config = Array(
@@ -70,14 +70,14 @@ class Password extends CI_Controller {
 
         $this->email->from('admin@91toutiao.com', $from_name);
         //$this->email->reply_to('you@example.com', 'Your Name'); //邮件回复地址
-        $this->email->to('lizhijun20@126.com'); 
+        $this->email->to('lizhijun20@126.com');
         //$this->email->cc('another@another-example.com'); //抄送
-        //$this->email->bcc('them@their-example.com'); //暗送 
+        //$this->email->bcc('them@their-example.com'); //暗送
 
         $this->email->subject($email_subject); //email主题
-        $this->email->message($email_msg); //email正文部分 
+        $this->email->message($email_msg); //email正文部分
         $this->email->attach('./uploads/create_thumb.png');//添加附件
-        
+
         if (!$this->email->send())
         {
             show_error($this->email->print_debugger());
@@ -88,6 +88,6 @@ class Password extends CI_Controller {
             echo"OK";
             //return true;
         }
-    } 
+    }
 }
 ?>

@@ -64,7 +64,7 @@
 			$this->load->helper('url');
 			$this->load->library('pagination');
 
-            $config['base_url'] = base_url('iyourl/latest');
+            $config['base_url'] = base_url('home/latest');
 
             $config['total_rows'] = count($this->get_model->get_latest());
             $config['per_page'] = 4;

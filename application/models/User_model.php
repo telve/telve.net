@@ -6,7 +6,7 @@
 			$this->load->database();
 		}
 		
-		private $salt = 'iyourl';
+		private $salt = 'home';
 
         private $expire = 864000; //10 days
         
@@ -57,7 +57,7 @@
                 return $this->db->insert('user',$data);
                 //$this->add_user_session($username,$password,$remember);
                 return '<p>注册成功</p>';
-                //redirect('iyourl');
+                //redirect('home');
             }
 		}
 		public function get_username()
