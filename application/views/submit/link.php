@@ -34,7 +34,7 @@
                     <label for="category">Choose a category</label>
                     <input type="text" class="span12" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
                     <div style="color:red"><?php echo form_error('category');?></div>
-                    <!--显示热门分类-->
+                    <!--Show popular categories-->
                     <a href="javascript:void(0)" onclick="set_category(this)">PICS</a>&nbsp;&nbsp;
           					<a href="javascript:void(0)" onclick="set_category(this)">FUNNY</a>&nbsp;&nbsp;
           					<a href="javascript:void(0)" onclick="set_category(this)">GAME</a>&nbsp;&nbsp;
@@ -79,9 +79,9 @@
 
                     <label for="category">Choose a category</label>
                     <input type="text" class="span12" name="category" placeholder="the category of the link"/><br />
-                    <!--显示热门分类-->
+                    <!--Show popular categories-->
 
-                    <!--此处需要一个验证码-->
+                    <!--A verification code is required here-->
 
                     <button class="btn btn-primary  pull-left" type="submit" name="submit" >Submit</button>
 
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-		<!--Tab切换-->
+		<!--Tab switching-->
         <script>
             $('#myTab a').click(function (e) {
                 e.preventDefault();

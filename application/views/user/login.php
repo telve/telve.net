@@ -1,9 +1,9 @@
 <div class="row-fluid">
 	<div class="span11 pull-right">
-			<?php echo form_open('user/login');?>
+		<?php echo form_open('user/login');?>
 
-			<br>
-			<fieldset>
+		<br>
+		<fieldset>
 			<legend>Log in</legend>
 
 			<label for="username">Username</label>
@@ -15,15 +15,11 @@
 			<?php echo form_error('password');?>
 
 			<label class="checkbox">
-                <input type="checkbox" name="remember"/> remember me
-            </label>
-
-
-            <!--错误提示-->
-
-			<button class="btn btn-primary" type="submit" name="submit" >登录</button>
-
-			</fieldset>
-			</form>
+				<input type="checkbox" name="remember"/> remember me
+			</label>
+			<!--Error message-->
+			<button class="btn btn-primary" type="submit" name="submit" >Log in</button>
+		</fieldset>
+	</form>
 	</div>
 </div>

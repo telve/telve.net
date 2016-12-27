@@ -1,9 +1,9 @@
 <div class="row-fluid">
-		<div class="span11 pull-right">
-			<?php echo form_open('user/register');?>
+	<div class="span11 pull-right">
+		<?php echo form_open('user/register');?>
 
-			<br>
-			<fieldset>
+		<br>
+		<fieldset>
 			<legend>Create a new account</legend>
 
             <label for="username">Username</label>
@@ -12,7 +12,7 @@
 
 			<label for="email">Email (used to retrieve password)</label>
 			<input type="text" name="email" value="<?php echo set_value('email');?>" placeholder="enter email address"/><br />
-            <!--<span class="help-block">我们不会主动给你发送邮件。</span>-->
+            <!--<span class="help-block">We will not take the initiative to send you mail.</span>-->
 			<div style="color:red;"><?php echo form_error('email');?></div>
 
 			<label for="password">Password</label>
@@ -29,17 +29,16 @@
             <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
 
             <label class="checkbox">
-                <input type="checkbox" name="remember"/> remember me
+				<input type="checkbox" name="remember"/> remember me
             </label>
 
 			<button class="btn btn-primary" type="submit" name="submit" >Submit</button>
 
-            <!--错误提示<span id="msg"></span>-->
+            <!--Error message<span id="msg"></span>-->
 
 			</fieldset>
-			</form>
-
-		</div>
+		</form>
+	</div>
 </div>
 
 

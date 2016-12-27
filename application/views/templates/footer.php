@@ -43,56 +43,54 @@
 <!--Login or register the pop-up dialog-->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="关闭">&times;</button>
-    <h4 id="myModalLabel">You need to be logged in to submit things.</h4>
-  </div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="关闭">&times;</button>
+        <h4 id="myModalLabel">You need to be logged in to submit things.</h4>
+    </div>
 
-  <div class="modal-body">
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span4">
+                <?php echo form_open('user/register');?>
 
-	<div class="row-fluid">
-		<div class="span4">
-			<?php echo form_open('user/register');?>
+                <fieldset>
+                    <br/>
+                    <strong><div style="font-size:18px">Create a new account</div></strong>
+                    <br/>
 
-			<fieldset>
-			<br/>
-            <strong><div style="font-size:18px">Create a new account</div></strong>
-            <br/>
+                    <label for="username">Username</label>
+        			<input id="reg_username" type="text" name="username" value="<?php echo set_value('username');?>" placeholder="choose a username"/><br />
+        			<div style="color:red;"><?php echo form_error('username');?></div>
 
-            <label for="username">Username</label>
-			<input id="reg_username" type="text" name="username" value="<?php echo set_value('username');?>" placeholder="choose a username"/><br />
-			<div style="color:red;"><?php echo form_error('username');?></div>
+        			<label for="email">Email (used to retrieve password)</label>
+        			<input type="text" name="email" value="<?php echo set_value('email');?>" placeholder="enter email address"/><br />
+                    <!--<span class="help-block">We will not take the initiative to send you mail.</span>-->
+        			<div style="color:red;"><?php echo form_error('email');?></div>
 
-			<label for="email">Email (used to retrieve password)</label>
-			<input type="text" name="email" value="<?php echo set_value('email');?>" placeholder="enter email address"/><br />
-            <!--<span class="help-block">我们不会主动给你发送邮件。</span>-->
-			<div style="color:red;"><?php echo form_error('email');?></div>
+        			<label for="password">Password</label>
+        			<input type="password" name="password" value="<?php echo set_value('password');?>" placeholder="enter password"/><br />
+        			<div style="color:red;"><?php echo form_error('password');?></div>
 
-			<label for="password">Password</label>
-			<input type="password" name="password" value="<?php echo set_value('password');?>" placeholder="enter password"/><br />
-			<div style="color:red;"><?php echo form_error('password');?></div>
+                    <label for="passconf">Confirm password</label>
+        			<input type="password" name="passconf" value="<?php echo set_value('passconf');?>" placeholder="re-enter the password"/><br />
+        			<div style="color:red;"><?php echo form_error('passconf');?></div>
 
-            <label for="passconf">Confirm password</label>
-			<input type="password" name="passconf" value="<?php echo set_value('passconf');?>" placeholder="re-enter the password"/><br />
-			<div style="color:red;"><?php echo form_error('passconf');?></div>
+                    <img src="<?php echo base_url('user/captcha');?>" />
+                    <label for="captcha">Verification code</label>
+                    <input type="text" name="captcha" placeholder="enter the four characters in the figure above"/>
+                    <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
 
-            <img src="<?php echo base_url('user/captcha');?>" />
-            <label for="captcha">Verification code</label>
-            <input type="text" name="captcha" placeholder="enter the four characters in the figure above"/>
-            <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember"/> remember me
+                    </label>
+        			<br/>
+        			<button class="btn btn-primary" type="submit" name="submit" >Submit</button>
 
-            <label class="checkbox">
-                <input type="checkbox" name="remember"/> remember me
-            </label>
-			<br/>
-			<button class="btn btn-primary" type="submit" name="submit" >Submit</button>
+                    <!--Error message<span id="msg"></span>-->
 
-            <!--错误提示<span id="msg"></span>-->
-
-			</fieldset>
-			</form>
-
-		</div>
+                </fieldset>
+            </form>
+        </div>
 
 
 
@@ -111,45 +109,44 @@
 					</ul>
 					<p>For more information, please visit <a href="#">Privacy Policy</a>.</p>
 				</div>
-				<div class="span1"><!--模拟垂直线-->
+				<div class="span1"><!--Draw a vertical dividing line-->
 					<table style=" border-right:2px solid #ddd;height:530px;" >
 						<tr><td >&nbsp;</td></tr>
 					</table>
 				</div>
 			</div>
 		</div>
+
 		<div class="span5">
 			<?php echo form_open('user/login');?>
             <br/>
 			<fieldset>
-			<strong><div style="font-size:18px">Log in</div></strong>
-            <small>Already have an account and want to sign in?</small>
-            <br/><br/>
-			<label for="username">Username</label>
-			<input type="text" name="username" placeholder="username"/><br />
-			<?php echo form_error('username');?>
+                <strong><div style="font-size:18px">Log in</div></strong>
+                <small>Already have an account and want to sign in?</small>
+                <br/><br/>
 
-			<label for="password">Password</label>
-			<input type="password" name="password" placeholder="password"/><br />
-			<?php echo form_error('password');?>
+    			<label for="username">Username</label>
+    			<input type="text" name="username" placeholder="username"/><br />
+    			<?php echo form_error('username');?>
 
-            <label class="checkbox">
-                <input type="checkbox" name="remember"/> remember me
-            </label>
+    			<label for="password">Password</label>
+    			<input type="password" name="password" placeholder="password"/><br />
+    			<?php echo form_error('password');?>
 
-            <a class="checkbox" href="recover_pwd">forgot password?</a>
-            <br/><br/>
-			<button class="btn btn-primary" type="submit" name="submit" >Log in</button>
+                <label class="checkbox">
+                    <input type="checkbox" name="remember"/> remember me
+                </label>
+
+                <a class="checkbox" href="recover_pwd">forgot password?</a>
+                <br/><br/>
+    			<button class="btn btn-primary" type="submit" name="submit" >Log in</button>
 
 			</fieldset>
-			</form>
-		</div>
-	</div>
-
-  </div>
-
+        </form>
+    </div>
 </div>
-
+</div>
+</div>
 
 <p class="text-center" style="color:gray;">
 Copyright &copy; 2016&nbsp;&nbsp;telve.net&nbsp;&nbsp;All Rights Reserved.

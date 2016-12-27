@@ -1,18 +1,18 @@
-<?php require "formatTime.php";?><!--格式化时间-->
+<?php require "formatTime.php";?><!--Format the time-->
 
 <div class="container-fluid">
     <div class="row-fluid"><!-- style="background-color:#9bb;"-->
         <div class="span9">
             <fieldset>
 
-			<!--显示该状态-->
+			<!--The status is displayed-->
             <div class="row-fluid" style="margin:8px 0;">
                 <div id="link">
 
-				<style type="text/css">/*还需要改进*/
+				<style type="text/css">/*Need to be improved*/
                     div.digg {/*background-color:#ffff99;*/height:40px;width:30px;float:left;text-align:center;}
                     div.picontainer {/*background-color:#369;*/height:80px;width:90px;float:left;text-align:center;}
-					div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*自适应图片大小*/
+					div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*Adaptive picture size*/
                 </style>
 
 					<div class="digg">
@@ -50,15 +50,15 @@
 				</div>
 			</div>
 
-				<!--该状态显示完毕-->
+				<!--The status is displayed-->
 	    		<div>Top 200 comments  <small><a href="javascript:void(0)">display all 336</a></small><div>
-                <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--画一条分隔虚线-->
+                <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
 
                 <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small><div>
                 <br>
                 <textarea rows="4" class="span6" name="content" id="content"/></textarea><br />
 				<input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
-				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >提交</button>-->
+				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                 <!--<div id="error_msg"></div>-->
                 <button type="submit" id="submit_reply">submit</button>
 
@@ -67,14 +67,14 @@
 
                 <br/>
 
-                <!--新提交的回复-->
+                <!--Newly submitted replies-->
                 <div id="update_reply"></div>
 
                 <?php echo $tree;?>
 
 				<?php foreach($reply as $reply_item):?>
 
-				<!--显示该状态的回复--/>
+				<!--The reply to this status is displayed-->
                 <div>
 				<div class="row-fluid">
 
@@ -92,25 +92,25 @@
 
 							<a id="minus" href="javascript:void(0)" onclick="switch_state(this)">[-]</a>&nbsp;<small>
 
-                            <a href="#"><?php echo $reply_item['username']?></a>&nbsp;&nbsp;<span id="show-<?php echo $reply_item['id'];?>"><?php echo $reply_item['score'];?></span>分&nbsp;&nbsp;发表于<?php formatTime($reply_item['created']);?>
+                            <a href="#"><?php echo $reply_item['username']?></a>&nbsp;&nbsp;<span id="show-<?php echo $reply_item['id'];?>"><?php echo $reply_item['score'];?> </span>points&nbsp;&nbsp;published on<?php formatTime($reply_item['created']);?>
                             &nbsp;
-								(<a class="hide_rply" href="<?php echo base_url("comments/view")."/".$reply_item['id']?>"> <?php echo $reply_item['comments']?> 回复</a>)</small>
+								(<a class="hide_rply" href="<?php echo base_url("comments/view")."/".$reply_item['id']?>"> <?php echo $reply_item['comments']?> replies</a> )</small>
 						</div>
 
 						<div class="hide_content">
                             <a href="javascript:void(0)" id="<?php echo $reply_item['id'];?>" onclick="rply_down(this)"><i class="icon-thumbs-down"></i></a>
 
                             <span ><?php echo $reply_item['content']?></span>
-                            <!--<input type="hidden" class="show" value="<?php echo $reply_item['id']?>"/>--/>
+                            <!--<input type="hidden" class="show" value="<?php echo $reply_item['id']?>"/>-->
 						</div>
 
 						<div class="hide_function">
 							<div>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href="#">收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">举报</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href="javascript:void(0)" onclick="set_reply(this)" id="<?php echo $reply_item['id']?>"><small>{回复}</small></a><!--&nbsp;&nbsp;
-								<small><a href="javascript:void(0)" id="<?php //echo $reply_item['id']?>" onclick="show_reply(this)">显示评论</a></small>--/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href="#">collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href="javascript:void(0)" onclick="set_reply(this)" id="<?php echo $reply_item['id']?>"><small>{reply}</small></a><!--&nbsp;&nbsp;
+								<small><a href="javascript:void(0)" id="<?php //echo $reply_item['id']?>" onclick="show_reply(this)">show comments</a></small>--/>
 							</div>
 
-                            <!--画一条分隔线--/>
+                            <!--Draw a dividing line-->
 				            <div style="border-top:dashed 8px #fff;width:100%;"> </div>
 						</div>
 					</div>
@@ -119,11 +119,11 @@
 
 				<?php endforeach?>
 				</div>
-				<!--该状态的回复显示完毕-->
+				<!--The reply to this status is displayed-->
 
 			  </div>
 			  </div>
-              <!--<a href="#load_more">加载更多(192条)</a><!--每次加载20条-->
+              <a href="#load_more">Load more (192)</a> Each load 20
 			</div>
 		</div>
 
@@ -138,7 +138,7 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 
-        //默认post方式提交
+        //Default post mode submission
 		//$(".show").load("<?php echo base_url('comments/show_load');?>",{'id':$(".show").val()},function(data){alert(data);});
 
 		$("#hide_link").click(function(){
@@ -159,7 +159,7 @@
                 },
                 success:function(data){
 
-                    //$("#error_msg").html("<span style='color:red'>在这里说些什么吧</span>");
+                    //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
                     if(data){
 
                         update_reply = "<div class='row-fluid'>"+
@@ -178,9 +178,9 @@
 
 							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>分&nbsp;&nbsp;发表于<?php //formatTime($reply_item['created']);?>"+
+                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on<?php //formatTime($reply_item['created']);?>"+
                             "&nbsp;"+
-								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> 回复</a>)</small>"+
+								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
 						"</div>"+
 
 						"<div class='hide_content'>"+
@@ -192,11 +192,11 @@
 
 						"<div class='hide_function'>"+
 							"<div>"+
-								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>举报</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{回复}</small></a><!--&nbsp;&nbsp;"+
-								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>显示评论</a></small>-->"+
+								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
+								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
 							"</div>"+
 
-                            "<!--画一条分隔线-->"+
+                            "<!--Draw a dividing line-->"+
 				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
 						"</div>"+
 					"</div>"+
@@ -280,11 +280,11 @@
 		{
 			$(obj).nextAll("div").children("#content").focus();
 		}
-		else                   //此处不能直接用reply_item['id']
+		else                   //This can not be used directly reply_item['id']
 		{
 			replyForm = "<div><div style='border-top:dashed 8px #fff;width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content'/></textarea><br />"+
 				"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
-                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_reply(this)'>提交</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>取消</button></div>";
+                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_reply(this)'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>cancel</button></div>";
 			$(obj).after(replyForm);
 			$(obj).nextAll("div").children("#content").focus();
 		}
@@ -303,9 +303,9 @@
 			success:function(json_data){
 
 
-				var json=eval(json_data); //将JSON的字符串解析成JSON数据格式
+				var json=eval(json_data); //JSON string will be resolved into JSON data format
 
-				$.each(json, function(k)   //对 jQuery 对象进行迭代，为每个匹配元素执行函数
+				$.each(json, function(k)   //Iterate over the jQuery object and execute the function for each matching element
 				{
 
 					//json[k]['id'];
@@ -319,7 +319,7 @@
 
     function cancel_reply(obj){
         //alert($(obj).parent());
-        $(obj).parent().remove(); //删除被选元素及其子元素
+        $(obj).parent().remove(); //Deletes the selected element and its child elements
         $(obj).parent().siblings(".").remove();
     }
 
@@ -335,10 +335,10 @@
                 },
                 success:function(data){
 
-                    //$("#error_msg").html("<span style='color:red'>在这里说些什么吧</span>");
+                    //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
                     if(data){
 
-                        update_reply = "<ul style='list-style-type:none'><li><!--画一条分隔线-->"+
+                        update_reply = "<ul style='list-style-type:none'><li><!--Draw a dividing line-->"+
 				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
 							"<div class='row-fluid'>"+
 
@@ -356,9 +356,9 @@
 
 							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>分&nbsp;&nbsp;发表于<?php //formatTime($reply_item['created']);?>"+
+                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on<?php //formatTime($reply_item['created']);?>"+
                             "&nbsp;"+
-								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> 回复</a>)</small>"+
+								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
 						"</div>"+
 
 						"<div class='hide_content'>"+
@@ -370,8 +370,8 @@
 
 						"<div class='hide_function'>"+
 							"<div>"+
-								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>举报</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{回复}</small></a><!--&nbsp;&nbsp;"+
-								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>显示评论</a></small>-->"+
+								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
+								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
 							"</div>"+
 						"</div>"+
 					"</div>"+

@@ -1,4 +1,4 @@
-<?php require "formatTime.php";?><!--格式化时间-->
+<?php require "formatTime.php";?><!--Format the time-->
 
 <style type="text/css">
 	#right-content {
@@ -6,11 +6,11 @@
 		color: black;
 		float: left;
 		padding-bottom: 10px;
-		width: 72%;/**/
+		width: 72%;
 	}
 
 	#sidebar {
-		display: none;/**/
+		display: none;
 		float: left;
 		width: 8%;
 	}
@@ -131,7 +131,7 @@
             div.left {/*background-color:#369;*/height:60px;width:50px;float:left;text-align:center;}
             div.rank {/*background-color:#ffff99;*/height:40px;width:20px;float:left;text-align:center;}
             div.digg {/*background-color:#ffff99;*/height:40px;width:20px;float:left;text-align:center;}
-            div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*自适应图片大小*/
+            div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*Adaptive picture size*/
         </style>
 
         <?php foreach($link as $link_item):?>
@@ -252,12 +252,12 @@
 	}
 	function set_share(obj){
 
-		if($(obj).text()=='分享')
+		if($(obj).text()=='share now?')
 		{
 			replyForm = "<div class='share' style='margin-top:18px;'><form class='form-horizontal' action='<?php echo base_url('share');?>' method='post' accept-charset='utf-8'>"+
 
 			  "<div class='control-group'>"+
-				"<label class='control-label' for='toEmail'>对方邮箱</label>"+
+				"<label class='control-label' for='toEmail'>email address to be sent</label>"+
 				"<div class='controls'>"+
 				  "<input class='span8' type='text' name='toEmail' value='<?php echo set_value('toEmail');?>'>"+
 				  "<span style='color:red;' class='help-inline'><?php echo form_error('toEmail');?></span>"+
@@ -265,7 +265,7 @@
 			  "</div>"+
 
 			  "<div class='control-group'>"+
-				"<label class='control-label' for='fromName'>你的称呼</label>"+
+				"<label class='control-label' for='fromName'>your name</label>"+
 				"<div class='controls'>"+
 				  "<input class='span8' type='text' name='fromName' value='<?php echo set_value('fromName');?>'>"+
 				  "<span style='color:red;' class='help-inline'><?php echo form_error('fromName');?></span>"+
@@ -273,7 +273,7 @@
 			  "</div>"+
 
 			  "<div class='control-group'>"+
-				"<label class='control-label' for='fromEmail'>你的邮箱</label>"+
+				"<label class='control-label' for='fromEmail'>your email</label>"+
 				"<div class='controls'>"+
 				  "<input class='span8' type='text' name='fromEmail' value='<?php echo set_value('fromEmail');?>'>"+
 				  "<span style='color:red;' class='help-inline'><?php echo form_error('fromEmail');?></span>"+
@@ -281,7 +281,7 @@
 			  "</div>"+
 
 			  "<div class='control-group'>"+
-				"<label class='control-label' for='message'>分享理由</label>"+
+				"<label class='control-label' for='message'>your message</label>"+
 				"<div class='controls'>"+
 				  "<textarea rows=3 class='span8' type='text' name='message'><?php echo set_value('message');?></textarea>"+
 				  "<span style='color:red;' class='help-inline'><?php echo form_error('message');?></span>"+
@@ -295,40 +295,40 @@
 			  "</div>"+
 
 			  "<div class='control-group'>"+
-				"<label class='control-label' for='captcha'>验证码</label>"+
+				"<label class='control-label' for='captcha'>verification code</label>"+
 				"<div class='controls'>"+
-				  "<input class='span8' type='text' name='captcha' placeholder='输入上图中的4个字符'>"+
+				  "<input class='span8' type='text' name='captcha' placeholder='enter the four characters in the figure above'>"+
 			      "<span style='color:red;' class='help-inline'><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></span>"+
 				"</div>"+
 			  "</div>"+
 
 			  "<div class='control-group'>"+
 				"<div class='controls'>"+
-				  "<button type='button' onclick='submit_share(this)'>提交</button>&nbsp;&nbsp;"+
-				  "<button type='button' onclick='cancel_share(this)'>取消</button>"+
+				  "<button type='button' onclick='submit_share(this)'>submit</button>&nbsp;&nbsp;"+
+				  "<button type='button' onclick='cancel_share(this)'>cancel</button>"+
 				"</div>"+
 			  "</div>"+
 
 			"</form></div>";
 
 			$(obj).parent().after(replyForm);
-			$(obj).text('取消');
+			$(obj).text('cancel');
 			//$(obj).nextAll("div").children("#content").focus();
 		}else{
 
 			$(obj).parent().siblings(".share").remove();
-			$(obj).text('分享');
+			$(obj).text('share now?');
 		}
     }
 	function cancel_share(obj){
 
-		$(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("分享");
+		$(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("share now?");
 		$(obj).parent().parent().parent().parent().remove().parent().remove();
     }
 	function submit_share(obj){
         //var content = $(obj).siblings("#content").val();
         //var pid = $(obj).siblings("#pid").val();
-        alert('功能还在开发');
+        alert('Features are still being developed');
 		$.ajax({
                 type:"POST",
                 url:"<?php echo base_url('comments/reply_ajax');?>",
@@ -340,7 +340,7 @@
 
                     if(data){
 
-                        update_reply = "链接已被分享";
+                        update_reply = "The link has been shared";
                         $(obj).parent().after(update_reply);
                         $(obj).parent().hide();
                     }
