@@ -49,9 +49,9 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'admin_telveuser';
-$db['default']['password'] = 'fqa6xpbTm3';
-$db['default']['database'] = 'admin_telve';
+$db['default']['username'] = 'USERNAME';
+$db['default']['password'] = 'PASSWORD';
+$db['default']['database'] = 'DATABASE';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

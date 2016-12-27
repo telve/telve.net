@@ -273,7 +273,7 @@
 
             <img src="<?php echo base_url('user/captcha');?>" />
             <label for="captcha">Verification code</label>
-            <input type="text" name="captcha" placeholder="Enter the four characters in the figure above"/>
+            <input type="text" name="captcha" placeholder="enter the four characters in the figure above"/>
             <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
 
             <label class="checkbox">
