@@ -19,7 +19,7 @@
 			$this->form_validation->set_rules('passconf','confirm password','required');
       		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
-			if($this->form_validation->run()=== FALSE)
+			if($this->form_validation->run() === FALSE)
 			{
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('user/register');
@@ -29,11 +29,11 @@
 			{
 				$this->user_model->reg_user();
 
-        //$this->load->view('templates/header',$this->data);
+        		//$this->load->view('templates/header',$this->data);
 				//$this->load->view('home/index',$this->data);
 				//$this->load->view('templates/footer');
 
-        redirect('home');
+        		redirect(''); //default: home/index
 			}
 
 		}
@@ -41,31 +41,32 @@
         public function login()
         {
 
-			$this->data['title'] = "登录";
+			$this->data['title'] = "Log in";
 			$this->form_validation->set_rules('username','username','required');
 			$this->form_validation->set_rules('password','password','required');
 
 			if ($this->form_validation->run() == FALSE){
-				$this->data['data'] = "出错";
+
+				$this->data['data'] = "An error occured";
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('user/login');
 				$this->load->view('templates/footer');
-			}else{
+
+			} else {
 
 				if($this->user_model->login_check()) {
 
-					$session['username'] = $this->input->post('username');;
-
+					$session['username'] = $this->input->post('username');
 					$this->session->set_userdata($session);
-
-					redirect('');//登录成功
+					redirect(''); //default: home/index
 
 				} else {
-					//$this->data['title'] = '登录';
-					$this->data['title'] = '登录失败了，请检查你的信息！';
+
+					$this->data['title'] = 'Login failed, please check your information!';
 					$this->load->view('templates/header',$this->data);
 					$this->load->view('user/login');
 					$this->load->view('templates/footer');
+
 				}
 			}
         }
@@ -80,14 +81,14 @@
         public function chk_username()
         {
 
-            if(strlen($this->input->post('username'))<6)
+            if(strlen($this->input->post('username')) < 6)
             {
-                echo "<span style='color:red'>无效的用户名</span>";
-            }else{
+                echo "<span style='color:red'>Invalid username</span>";
+            } else {
                 if($this->user_model->get_username()){
-                    echo "<span style='color:red'>该用户名已存在</span>";
-                }else{
-                    echo "<span style='color:green'>该用户名可用</span>";
+                    echo "<span style='color:red'>The username already exists</span>";
+                } else {
+                    echo "<span style='color:green'>The username is available</span>";
                 }
             }
         }
@@ -103,4 +104,4 @@
             $this->session->set_userdata('captcha',strtolower($rand_str));
         }
 	}
-    ?>
+?>

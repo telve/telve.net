@@ -7,25 +7,25 @@ class Password extends MY_Controller {
         parent::__construct();
     }
 
-    public function index() //显示
+    public function index()
     {
-        $this->data['title'] = '找回密码';
+        $this->data['title'] = 'Reset your password';
 
 		$this->load->view('templates/header',$this->data);
 		$this->load->view('submit/password');
 		$this->load->view('templates/footer');
 
-		$this->form_validation->set_rules('username','用户名','trim|required|max_length[255]');
+		$this->form_validation->set_rules('username','username','trim|required|max_length[255]');
 
-		if($this->form_validation->run()===FALSE){
+		if($this->form_validation->run() === FALSE){
 
 			//$this->load->view('templates/header');//,$this->data
 			//$this->load->view('submit/password');
 			//$this->load->view('templates/footer');
+
 		}else{
 
 			$this->get_model->get_email();
-
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('submit/success');
@@ -58,25 +58,25 @@ class Password extends MY_Controller {
         $this->load->library('email', $config);
 
         $this->email->set_newline("rn");
-        $from_name = "YES";//发件人名称
-        $email_subject ="注册";
+        $from_name = "YES"; //Sender name
+        $email_subject ="Registering";
         $email_msg="
-        hi,register!你好！请注意查收！";
-        //解决乱码问题
+        Hi, register! Hello! Please pay attention to check!";
+        //Solve the garbled problem
         //$from_name = iconv('UTF-8','GBK',$from_name);
         //$email_subject = iconv('UTF-8','GBK',$email_subject);
         //$email_msg = iconv('UTF-8','GBK',$email_msg);
-        //封装发送信息
+        //Package to send information
 
         $this->email->from('admin@91toutiao.com', $from_name);
-        //$this->email->reply_to('you@example.com', 'Your Name'); //邮件回复地址
+        //$this->email->reply_to('you@example.com', 'Your Name'); //Mail reply address
         $this->email->to('lizhijun20@126.com');
-        //$this->email->cc('another@another-example.com'); //抄送
-        //$this->email->bcc('them@their-example.com'); //暗送
+        //$this->email->cc('another@another-example.com'); //Cc
+        //$this->email->bcc('them@their-example.com'); //Bcc
 
-        $this->email->subject($email_subject); //email主题
-        $this->email->message($email_msg); //email正文部分
-        $this->email->attach('./uploads/create_thumb.png');//添加附件
+        $this->email->subject($email_subject); //the subject of the email
+        $this->email->message($email_msg); //the body part of the email
+        $this->email->attach('./uploads/create_thumb.png'); //Add attachments
 
         if (!$this->email->send())
         {

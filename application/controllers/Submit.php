@@ -20,31 +20,33 @@
             $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
             $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
-			if($this->form_validation->run()===FALSE){
+			if($this->form_validation->run() === FALSE){
 
                 $this->load->view('templates/header',$this->data);
 				$this->load->view('submit/link');
 				$this->load->view('templates/footer');
-			}else{
+
+			} else {
 
                 $this->submit_model->set_link();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
+
 			}
 
 		}
 
         public function get_title(){
 
-            //此处还需要判断post过来的字符串是否为网址或为空
+            //Here also need to determine whether the string over the post URL or empty
 
             $html = file_get_contents($this->input->post("url"));
             $preg = "/<title>(.*?)<\/title>/si";
             preg_match($preg, $html, $arr);
-            //echo trim(mb_convert_encoding($arr[1], "UTF-8", "GBK")); //GBK To UTF-8 编码转换
+            //echo trim(mb_convert_encoding($arr[1], "UTF-8", "GBK")); //GBK To UTF-8 Encoding conversion
             //echo $arr[1]; //UTF-8
-            echo $this->safeEncoding($arr[1]); //自动识别字符集并完成转码
+            echo $this->safeEncoding($arr[1]); //The character set is automatically recognized and transcoded
         }
 
 		public function status()
@@ -80,11 +82,11 @@
 
                 if((ord($string{$i})&224)==224)
                 {
-                    //第一个字节判断通过
+                    //The first byte is passed
                     $char = $string{++$i};
                     if((ord($char)&128)==128)
                     {
-                        //第二个字节判断通过
+                        //The second byte is passed
                         $char = $string{++$i};
                         if((ord($char)&128)==128)
                         {
@@ -96,11 +98,11 @@
 
                 if((ord($string{$i})&192)==192)
                 {
-                    //第一个字节判断通过
+                    //The first byte is passed
                     $char = $string{++$i};
                     if((ord($char)&128)==128)
                     {
-                        // 第二个字节判断通过
+                        //The second byte is passed
                         $encoding = "GB2312";
                         break;
                     }

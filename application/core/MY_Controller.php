@@ -9,8 +9,8 @@
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='Link integration'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>Preference</a></strong> | <a href='".base_url('user/logout')."'>Log out</a> </div><br />";
 
-				$this->data['login_form'] = "";//不显示登录表单
-			}else{
+				$this->data['login_form'] = ""; //The login form is not displayed
+			} else {
 				$this->data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
 				$this->data['login_form'] = "
 					<table class='table table-bordered'>

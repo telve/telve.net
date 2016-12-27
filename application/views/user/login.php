@@ -1,6 +1,8 @@
-<div class="span5">
+<div class="row-fluid">
+	<div class="span11 pull-right">
 			<?php echo form_open('user/login');?>
 
+			<br>
 			<fieldset>
 			<legend>Log in</legend>
 
@@ -23,4 +25,5 @@
 
 			</fieldset>
 			</form>
+	</div>
 </div>
