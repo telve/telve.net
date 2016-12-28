@@ -6,7 +6,7 @@
 			$this->load->database();
 		}
 
-		public function insert_link($id = FALSE,$rows = NULL,$offset=NULL) //默认返回所有的状态
+		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL) //默认返回所有的状态
 		{
 
 			if($id === FALSE)

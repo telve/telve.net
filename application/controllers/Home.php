@@ -25,7 +25,7 @@
             $this->pagination->initialize($config);
 
             $this->data['title'] = 'Home';
-            $this->data['link'] = $this->link_model->insert_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">

@@ -1,6 +1,6 @@
-<?php	
+<?php
 	class Top extends CI_Controller{
-		
+
 		public function __construct()
 		{
 			parent::__construct();
@@ -17,19 +17,19 @@
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '上一页';
-            $config['next_link'] = '下一页';          
+            $config['next_link'] = '下一页';
             $config['full_tag_close'] = '</p>';
             $config['display_pages'] = FALSE; // 不显示“数字”链接
             $config['first_link'] = FALSE;// 不显示起始链接
             $config['last_link'] = FALSE;
-            $this->pagination->initialize($config); 
-			
+            $this->pagination->initialize($config);
+
             $data['title'] = '首页';
-            $data['link'] = $this->link_model->insert_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
-            
+            $data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='链接积分'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>偏好</a></strong> | <a href='".base_url('user/logout')."'>退出</a> </div><br />";
-				
+
 				$data['login_form'] = "";//不显示登录表单
 			}else{
 				$data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>想要加入？马上</span> 注册或登录 <span style='color:gray;'>只需几秒</span></a>";
@@ -43,7 +43,7 @@
 							<label class='checkbox span4'>
 							<input type='checkbox'>记住我
 							</label>
-				  
+
 							<a class='checkbox' href='/password'>忘记密码?</a>
 							<button type='submit' class='btn pull-right'>登录</button>
 							</form>
@@ -52,13 +52,13 @@
 
 				";
 			}
-			 
+
 
 			$this->load->view('templates/header',$data);
 			$this->load->view('top/index',$data);
 			$this->load->view('templates/footer');
 		}
-	    
+
         public function latest()
 		{
 			$this->load->helper('url');
@@ -68,19 +68,19 @@
 
             $config['total_rows'] = count($this->link_model->retrieve_latest_links());
             $config['per_page'] = 4;
-            
+
             //$config['use_page_numbers'] = TRUE; //启用use_page_numbers后显示的是当前页码
-            
+
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '上一页';
-            $config['next_link'] = '下一页';          
+            $config['next_link'] = '下一页';
             $config['full_tag_close'] = '</p>';
-            
+
             $config['display_pages'] = FALSE; // 不显示“数字”链接
             $config['first_link'] = FALSE;// 不显示起始链接
             $config['last_link'] = FALSE;
 
-            $this->pagination->initialize($config); 
+            $this->pagination->initialize($config);
 			$data['submit'] = $this->link_model->retrieve_latest_links($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
 
 			$data['title'] = '最新';
@@ -89,7 +89,7 @@
 			$this->load->view('submit/latest',$data);
 			$this->load->view('templates/footer');
 		}
-        
+
 
         public function top()
         {
@@ -100,14 +100,14 @@
 
             $config['total_rows'] = count($this->link_model->retrieve_top_links());
             $config['per_page'] = 4;
-            
+
             //$config['use_page_numbers'] = TRUE; //启用use_page_numbers后显示的是当前页码
-            
+
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '上一页';
-            $config['next_link'] = '下一页';          
+            $config['next_link'] = '下一页';
             $config['full_tag_close'] = '</p>';
-            
+
             $config['display_pages'] = FALSE; // 不显示“数字”链接
             $config['first_link'] = FALSE;// 不显示起始链接
             $config['last_link'] = FALSE;
@@ -121,19 +121,19 @@
 			$this->load->view('submit/top',$data);
 			$this->load->view('templates/footer');
         }
-        
+
         public function wiki()
         {
-            
+
         }
 
-		
+
 
         public function reply()
         {
             $this->load->helper(array('form','url')); //加载表单辅助函数和URL辅助函数
 			$this->load->library('form_validation');
-            
+
             $data['title'] = "首页";
 
 			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
@@ -143,7 +143,7 @@
 			{
 				$this->load->view('templates/header',$data);
 				$this->load->view('submit/success'); //
-				$this->load->view('templates/footer');			
+				$this->load->view('templates/footer');
 			}
 			else
 			{
@@ -153,6 +153,6 @@
 				$this->load->view('templates/footer');
 			}
         }
-	}	
+	}
 
 ?>
