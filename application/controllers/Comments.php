@@ -109,14 +109,18 @@
 
         public function up()
         {
-            $this->load->helper('url');
-            $this->link_model->update_score();
+			if ($this->data['is_user_logged_in']) {
+	            $this->load->helper('url');
+	            $this->link_model->update_score();
+			}
         }
 
 		public function down()
         {
-            $this->load->helper('url');
-            $this->link_model->update_score();
+			if ($this->data['is_user_logged_in']) {
+	            $this->load->helper('url');
+	            $this->link_model->update_score();
+			}
         }
 
         public function rply_up()

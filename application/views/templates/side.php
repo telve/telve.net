@@ -23,9 +23,20 @@
     -->
     <?php echo $login_form;?>
 
-    <a class="btn btn-block btn-info" href="<?php echo base_url("submit");?>">Submit a new link</a>
+    <a class="btn btn-block btn-info login-required" href="<?php echo base_url("submit");?>">Submit a new link</a>
     <br>
     <a class="btn btn-block btn-info" href="<?php echo base_url("submit/status");?>">Submit a new text post</a>
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.login-required').click(function() {
+            if (!<?php echo $is_user_logged_in;?>) {
+                $('#myModal').modal('toggle');
+                return false; //cancel the event
+            }
+        });
+    });
+</script>

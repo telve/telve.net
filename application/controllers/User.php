@@ -106,11 +106,7 @@
 
 		public function is_user_logged_in()
 		{
-			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
-				echo 1;
-			} else {
-				echo 0;
-			}
+			echo $this->data['is_user_logged_in'];
 		}
 	}
 ?>
