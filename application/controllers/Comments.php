@@ -12,9 +12,9 @@
 		public function view($id)
 		{
 
-			$this->data['link_item'] = $this->link_model->get_link($id);
-            $this->data['reply'] = $this->link_model->get_reply($id);
-            $this->data['tree'] = $this->link_model->get_reply_tree($id); //$pid
+			$this->data['link_item'] = $this->link_model->insert_link($id);
+            $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
+            $this->data['tree'] = $this->link_model->retrieve_reply_tree_by_id($id); //$pid
 
 			if(empty($this->data['link_item']))
 			{
@@ -33,8 +33,8 @@
 		public function tree($id)
 		{
 
-			$this->data['link_item'] = $this->link_model->get_link($id);
-            $this->data['reply'] = $this->link_model->get_reply_tree($id); //$pid
+			$this->data['link_item'] = $this->link_model->insert_link($id);
+            $this->data['reply'] = $this->link_model->retrieve_reply_tree_by_id($id); //$pid
 
 			if(empty($this->data['link_item']))
 			{
@@ -51,7 +51,7 @@
 		public function show()
 		{
 
-            $reply = $this->link_model->get_reply($this->input->post('id')); //$this->data['reply']
+            $reply = $this->link_model->retrieve_reply_by_id($this->input->post('id')); //$this->data['reply']
 
 			if(!empty($reply))
 			{
@@ -89,7 +89,7 @@
 			}
 			else
 			{
-				$this->link_model->set_reply();
+				$this->link_model->insert_reply();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
@@ -101,7 +101,7 @@
             $this->link_model->update_comments();
 
             $this->load->library('session');
-            if($this->link_model->set_reply()){
+            if($this->link_model->insert_reply()){
                 echo TRUE;
             }
             //$this->input->post('content').$this->input->post('pid');
@@ -122,13 +122,13 @@
         public function rply_up()
         {
             $this->load->helper('url');
-            $this->link_model->rply_update_score();
+            $this->link_model->reply_update_score();
         }
 
 		public function rply_down()
         {
             $this->load->helper('url');
-            $this->link_model->rply_update_score();
+            $this->link_model->reply_update_score();
         }
 	}
 

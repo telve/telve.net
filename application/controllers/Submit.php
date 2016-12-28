@@ -28,7 +28,7 @@
 
 			} else {
 
-                $this->link_model->set_link();
+                $this->link_model->insert_link();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');

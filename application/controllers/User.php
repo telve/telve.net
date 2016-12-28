@@ -27,7 +27,7 @@
 			}
 			else
 			{
-				$this->user_model->reg_user();
+				$this->user_model->insert_user();
 
         		//$this->load->view('templates/header',$this->data);
 				//$this->load->view('home/index',$this->data);
@@ -54,7 +54,7 @@
 
 			} else {
 
-				if ($this->user_model->login_check()) {
+				if ($this->user_model->authenticate()) {
 
 					$session['username'] = $this->input->post('username');
 					$this->session->set_userdata($session);
@@ -78,14 +78,14 @@
 			redirect(''); //default: home/index
         }
 
-        public function chk_username()
+        public function is_username_available()
         {
 
             if(strlen($this->input->post('username')) < 6)
             {
                 echo "<span style='color:red'>Invalid username</span>";
             } else {
-                if($this->user_model->get_username()){
+                if($this->user_model->check_username()){
                     echo "<span style='color:red'>The username already exists</span>";
                 } else {
                     echo "<span style='color:green'>The username is available</span>";

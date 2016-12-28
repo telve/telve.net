@@ -25,7 +25,7 @@
             $this->pagination->initialize($config);
 
             $this->data['title'] = 'Home';
-            $this->data['link'] = $this->link_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+            $this->data['link'] = $this->link_model->insert_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
@@ -61,7 +61,7 @@
 
             $config['base_url'] = base_url('home/latest');
 
-            $config['total_rows'] = count($this->link_model->get_latest());
+            $config['total_rows'] = count($this->link_model->retrieve_latest_links());
             $config['per_page'] = 4;
 
             //$config['use_page_numbers'] = TRUE; //use_page_numbers is enabled to display the current page number
@@ -76,7 +76,7 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config);
-			$this->data['submit'] = $this->link_model->get_latest($id = FALSE,$config['per_page'],$this->uri->segment(3)); //Latest
+			$this->data['submit'] = $this->link_model->retrieve_latest_links($id = FALSE,$config['per_page'],$this->uri->segment(3)); //Latest
 
 			$this->data['title'] = 'Latest';
 
@@ -102,7 +102,7 @@
 
             $config['base_url'] = base_url('submit/top');
 
-            $config['total_rows'] = count($this->link_model->get_top());
+            $config['total_rows'] = count($this->link_model->retrieve_top_links());
             $config['per_page'] = 4;
 
             //$config['use_page_numbers'] = TRUE; //use_page_numbers is enabled to display the current page number
@@ -117,7 +117,7 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config);
-			$this->data['submit'] = $this->link_model->get_top($id = FALSE,$config['per_page'],$this->uri->segment(3));
+			$this->data['submit'] = $this->link_model->retrieve_top_links($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
 			$this->data['title'] = 'Top';
 
@@ -151,7 +151,7 @@
 			}
 			else
 			{
-				$this->link_model->set_reply();
+				$this->link_model->insert_reply();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');

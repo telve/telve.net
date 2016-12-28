@@ -6,7 +6,7 @@
 			$this->load->database();
 		}
 
-		public function get_link($id = FALSE,$rows = NULL,$offset=NULL) //默认返回所有的状态
+		public function insert_link($id = FALSE,$rows = NULL,$offset=NULL) //默认返回所有的状态
 		{
 
 			if($id === FALSE)
@@ -47,7 +47,7 @@
             return $query->row_array();
 		}
 
-        public function get_latest($id = FALSE,$rows = NULL,$offset=NULL)
+        public function retrieve_latest_links($id = FALSE,$rows = NULL,$offset=NULL)
 		{
 
 			if($id === FALSE)
@@ -63,7 +63,7 @@
         //rising
         //controversial
 
-        public function get_top($id = FALSE,$rows = NULL,$offset=NULL)
+        public function retrieve_top_links($id = FALSE,$rows = NULL,$offset=NULL)
 		{
 
 			if($id === FALSE)
@@ -79,7 +79,7 @@
         //wiki
 
 
-        public function get_reply($id)
+        public function retrieve_reply_by_id($id)
         {
             //SELECT rank,score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id
 
@@ -95,7 +95,7 @@
             return $query->result_array();
         }
 
-		public function get_reply_tree($id)
+		public function retrieve_reply_tree_by_id($id)
 		{
 
 			$level=0;//深度
@@ -196,7 +196,7 @@
 			return $res.='</ul>';
         }
 
-		public function set_link()
+		public function insert_link()
 		{
 			$this->db->where('username',$this->session->userdata('username'));
 			$this->db->select('id');
@@ -225,7 +225,7 @@
 			return $this->db->insert('link',$data);
 		}
 
-        public function set_reply()
+        public function insert_reply()
 		{
             $this->db->where('username',$this->session->userdata('username'));
 			$this->db->select('id');
@@ -255,7 +255,7 @@
 			return $this->db->update('link',$data);
 		}
 
-        public function rply_update_score()
+        public function reply_update_score()
 		{
 
 			$data =array(

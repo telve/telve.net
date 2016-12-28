@@ -70,7 +70,7 @@
             //alert(username);
             $.ajax({
                 type:"POST",
-                url:"<?php echo base_url('user/chk_username');?>",
+                url:"<?php echo base_url('user/is_username_available');?>",
                 data:{'username':username},
                 error:function(){
                     alert("error");

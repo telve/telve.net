@@ -1,21 +1,21 @@
 <?php
 	class User_model extends CI_Model{
-		
+
 		public function __construct()
 		{
 			$this->load->database();
 		}
-		
+
 		private $salt = 'home';
 
         private $expire = 864000; //10 days
-        
+
         private function add_user_session($username,$password,$remember){
-            
+
             //$this->session->set_userdata('admin',$username);
             $this->session->set_userdata('username',$username);
             $this->session->set_userdata('logged_in',true);
-            
+
             if($remember == 'on'){
                 $cookie_admin = array(
                     'name'   => 'archnote_admin',
@@ -33,7 +33,7 @@
             }
         }
 
-        public function reg_user()
+        public function insert_user()
 		{
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -42,17 +42,17 @@
 
             if($captcha <> $this->session->userdata('captcha'))
             {
-                return '<p>验证码错误</p>';    
+                return '<p>Verification code error</p>';
             }else
             {
                 $data =array(
-                    'username' => $username,				
+                    'username' => $username,
                     'email' => $this->input->post('email'),
                     'password' => md5($password),
                     'credit' => 1,
                     'created' => time()
                 );
-                
+
                 $this->session->set_userdata('username',$username);
                 return $this->db->insert('user',$data);
                 //$this->add_user_session($username,$password,$remember);
@@ -60,7 +60,7 @@
                 //redirect('home');
             }
 		}
-		public function get_username()
+		public function check_username()
 		{
 			$this->db->where('username',$this->input->post('username'));
 			$query = $this->db->get('user');
@@ -70,12 +70,12 @@
 			}
 		}
 
-		public function login_check()
+		public function authenticate()
 		{
-				
+
 			$this->db->where('username', $this->input->post('username'));
 			$this->db->where('password', md5($this->input->post('password')));
-			
+
 			$query = $this->db->get('user');
 			if ($query->num_rows() > 0) {
 				return $query->row();
