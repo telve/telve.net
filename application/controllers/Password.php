@@ -13,7 +13,7 @@ class Password extends MY_Controller {
 
 		$this->load->view('templates/header',$this->data);
 		$this->load->view('submit/password');
-        $this->load->view('templates/right-pane');
+        $this->load->view('templates/side');
 		$this->load->view('templates/footer');
 
 		$this->form_validation->set_rules('username','username','trim|required|max_length[255]');

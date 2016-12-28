@@ -27,9 +27,30 @@
             $this->data['title'] = 'Home';
             $this->data['link'] = $this->get_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
 
+			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
+				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
+					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="折叠">X</a>
+					<a class="show-sidebar" href="javascript:void(0)" title="展开" ><</a>
+				</div>';
+				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
+				  <ul style="list-style-type:none">
+				    <li><a href="#">Subscribe</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Images</a></li>
+					<li><a href="#">Test</a></li>
+					<li><a href="#">Create</a></li>
+					<li><a href="#">Find</a></li>
+					<li><a href="#">My Collection</a></li>
+				  </ul>
+				</div>';
+			} else {
+				$this->data['toggle_sidebar'] = '';
+				$this->data['sidebar'] = '';
+			}
+
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('home/index',$this->data);
-			$this->load->view('templates/right-pane');
+			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
 

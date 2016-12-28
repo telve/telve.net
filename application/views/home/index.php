@@ -105,25 +105,12 @@
 	});
 </script>
 
-<div id="toggle-sidebar">
-	<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="折叠">X</a>
-	<a class="show-sidebar" href="javascript:void(0)" title="展开" ><</a>
-</div>
+<?php echo $toggle_sidebar ?>
 
 <div class="container-fluid">
   <div class="row-fluid">
 
-	<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
-	  <ul style="list-style-type:none">
-	    <li><a href="#">Subscribe</a></li>
-		<li><a href="#">News</a></li>
-		<li><a href="<?php echo base_url('imgur');?>">Images</a></li>
-		<li><a href="#">Test</a></li>
-		<li><a href="#">Create</a></li>
-		<li><a href="#">Find</a></li>
-		<li><a href="#">My Collection</a></li>
-	  </ul>
-	</div>
+	<?php echo $sidebar ?>
 
     <div id="right-content" class="span8"><!-- style="background:#abb;"-->
 

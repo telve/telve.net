@@ -26,7 +26,7 @@
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('comments/view',$this->data);
             //$this->load->view('comments/tree');
-			$this->load->view('templates/right-pane');
+			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
 
