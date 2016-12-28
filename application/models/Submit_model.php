@@ -1,11 +1,11 @@
 <?php
 	class Submit_model extends CI_Model{
-		
+
 		public function __construct()
 		{
 			$this->load->database();
 		}
-		
+
 		public function set_link()
 		{
 			$this->db->where('username',$this->session->userdata('username'));
@@ -13,19 +13,23 @@
 			$this->db->limit(1);
 			$query = $this->db->get('user');
 			$row = $query->row_array();
-			
+
             $url = $this->input->post('url');
             preg_match("/^(http:\/\/)?([^\/]+)/i", $url, $matches);
             preg_match("/[^\.\/]+\.[^\.\/]+$/", $matches[2], $result);
             $domain = $result[0];
-            
+
             $data =array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
+				'picurl' => 0,
                 'domain' => $domain,
                 'category' => $this->input->post('category'),
-                'uid' => $row['id'], //不直接用用户名 用户更换昵称 
-                'created' => time()
+                'uid' => $row['id'], //不直接用用户名 用户更换昵称
+                'created' => time(),
+				'score' => 0,
+				'rank' => 0,
+				'comments' => 0
 			);
 
 			return $this->db->insert('link',$data);
@@ -38,7 +42,7 @@
 			$this->db->limit(1);
 			$query = $this->db->get('user');
 			$row = $query->row_array();
-			
+
             $data =array(
 				'pid' => $this->input->post('pid'),
                 'uid' => $row['id'],
@@ -55,7 +59,7 @@
 			$data =array(
                 'score' =>$this->input->post('score')
 			);
-            
+
             $id = $this->input->post('id');
             $this->db->where('id',$id);
 			return $this->db->update('link',$data);
@@ -67,7 +71,7 @@
 			$data =array(
                 'score' =>$this->input->post('score')
 			);
-            
+
             $id = $this->input->post('id');
             $this->db->where('id',$id);
 			return $this->db->update('reply',$data);
@@ -79,10 +83,10 @@
 			$data =array(
                 'comments' =>$this->input->post('comments')
 			);
-            
+
             $id = $this->input->post('pid');
             $this->db->where('id',$id);
 			return $this->db->update('link',$data);
 		}
 	}
-?>		
+?>

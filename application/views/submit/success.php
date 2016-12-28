@@ -1,10 +1,9 @@
 <div class="container">
-<h1>
-<?php 
+<h2>
+<?php
     header("refresh:1;url=".base_url('')."");
-    print('提交成功...<br>自动跳转至首页');
-    //echo "<script>window.location.href='".base_url("")."'</script>"; 
+    print('Successful<br>Redirecting to home page...');
+    //echo "<script>window.location.href='".base_url("")."'</script>";
 ?>
 </h1>
 </div>
-
