@@ -29,6 +29,7 @@
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('home/index',$this->data);
+			$this->load->view('templates/right-pane');
 			$this->load->view('templates/footer');
 		}
 

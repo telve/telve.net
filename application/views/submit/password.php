@@ -27,31 +27,4 @@
     </div>
 
 
-    <div class="span3 pull-right">
-        <div class="pull-right"><?php echo $this->session->userdata('username');?>(<abbr title="链接积分"><strong>1</strong></abbr>) | <a title="没有新消息" href="<?php echo base_url('message/inbox');?>"><i class="icon-envelope"></i></a> | <strong><a href="#">偏好</a></strong> | <a href="<?php echo base_url("user/logout");?>">退出</a> </div>
-        <br>
-        <hr>
-        <div>
-            <input type="text" class="span12" placeholder="关键词搜索">
-        </div>
-
-		<table class="table table-bordered">
-			<tr><td>
-				<form class="form-inline">
-				  <?php echo form_open('user/login');?>
-				  <input type="text" class="span6" name="username" placeholder="用户名">
-				  <input type="password" class="span6 pull-right" name="password" placeholder="密码">
-				  <br><br>
-				  <label class="checkbox span4">
-					<input type="checkbox">记住我
-				  </label>
-
-				  <a class="checkbox" href="/password">忘记密码?</a>
-				  <button type="submit" class="btn pull-right">登录</button>
-				</form>
-			</tr></td>
-        </table>
-
-    </div>
-  </div>
-</div>
+    
