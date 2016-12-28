@@ -19,7 +19,7 @@
 			$this->form_validation->set_rules('passconf','confirm password','required');
       		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
-			if($this->form_validation->run() === FALSE)
+			if ($this->form_validation->run() === FALSE)
 			{
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('user/register');
@@ -103,5 +103,14 @@
             $captcha->showImg();
             $this->session->set_userdata('captcha',strtolower($rand_str));
         }
+
+		public function is_user_logged_in()
+		{
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+				echo 1;
+			} else {
+				echo 0;
+			}
+		}
 	}
 ?>

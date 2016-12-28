@@ -11,30 +11,34 @@
 
 		public function index()
 		{
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
 
-			$this->data['title'] = "Submit";
-			//$this->data['credit'] = $this->link_model->get_credit();
+				$this->data['title'] = "Submit";
+				//$this->data['credit'] = $this->link_model->get_credit();
 
-			$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
-            $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
-            $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
-            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
+				$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
+	            $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
+	            $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
+	            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 
-			if($this->form_validation->run() === FALSE){
+				if($this->form_validation->run() === FALSE){
 
-                $this->load->view('templates/header',$this->data);
-				$this->load->view('submit/link');
-				$this->load->view('templates/footer');
+	                $this->load->view('templates/header',$this->data);
+					$this->load->view('submit/link');
+					$this->load->view('templates/footer');
+
+				} else {
+
+	                $this->link_model->insert_link();
+					$this->load->view('templates/header',$this->data);
+					$this->load->view('submit/success');
+					$this->load->view('templates/footer');
+
+				}
 
 			} else {
-
-                $this->link_model->insert_link();
-				$this->load->view('templates/header',$this->data);
-				$this->load->view('submit/success');
-				$this->load->view('templates/footer');
-
+				redirect('');
 			}
-
 		}
 
         public function get_title(){
