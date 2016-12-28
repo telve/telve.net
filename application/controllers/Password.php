@@ -26,7 +26,7 @@ class Password extends MY_Controller {
 
 		}else{
 
-			$this->get_model->get_email();
+			$this->link_model->get_email();
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('submit/success');

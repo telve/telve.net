@@ -5,15 +5,15 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$this->load->model('submit_model');
-			//$this->load->model('get_model');
+			$this->load->model('link_model');
+			//$this->load->model('link_model');
 		}
 
 		public function index()
 		{
 
 			$this->data['title'] = "Submit";
-			//$this->data['credit'] = $this->get_model->get_credit();
+			//$this->data['credit'] = $this->link_model->get_credit();
 
 			$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
             $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
@@ -28,7 +28,7 @@
 
 			} else {
 
-                $this->submit_model->set_link();
+                $this->link_model->set_link();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
@@ -64,7 +64,7 @@
 			}
 			else
 			{
-				$this->submit_model->set_submit();
+				$this->link_model->set_submit();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');

@@ -4,7 +4,7 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$this->load->model('get_model');
+			$this->load->model('link_model');
 		}
 
 		public function index()
@@ -13,7 +13,7 @@
 
             $config['base_url'] = base_url('top/index');
 
-            $config['total_rows'] = count($this->get_model->get_link_count());
+            $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '上一页';
@@ -25,7 +25,7 @@
             $this->pagination->initialize($config); 
 			
             $data['title'] = '首页';
-            $data['link'] = $this->get_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+            $data['link'] = $this->link_model->get_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
             
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='链接积分'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>偏好</a></strong> | <a href='".base_url('user/logout')."'>退出</a> </div><br />";
@@ -66,7 +66,7 @@
 
             $config['base_url'] = base_url('home/latest');
 
-            $config['total_rows'] = count($this->get_model->get_latest());
+            $config['total_rows'] = count($this->link_model->get_latest());
             $config['per_page'] = 4;
             
             //$config['use_page_numbers'] = TRUE; //启用use_page_numbers后显示的是当前页码
@@ -81,7 +81,7 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config); 
-			$data['submit'] = $this->submit_model->get_latest($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
+			$data['submit'] = $this->link_model->get_latest($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
 
 			$data['title'] = '最新';
 
@@ -98,7 +98,7 @@
 
             $config['base_url'] = base_url('submit/top');
 
-            $config['total_rows'] = count($this->submit_model->get_top());
+            $config['total_rows'] = count($this->link_model->get_top());
             $config['per_page'] = 4;
             
             //$config['use_page_numbers'] = TRUE; //启用use_page_numbers后显示的是当前页码
@@ -113,7 +113,7 @@
             $config['last_link'] = FALSE;
 
             $this->pagination->initialize($config);
-			$data['submit'] = $this->submit_model->get_top($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
+			$data['submit'] = $this->link_model->get_top($id = FALSE,$config['per_page'],$this->uri->segment(3)); //最新
 
 			$data['title'] = '得分';
 
@@ -147,7 +147,7 @@
 			}
 			else
 			{
-				$this->submit_model->set_reply();
+				$this->link_model->set_reply();
 				$this->load->view('templates/header',$data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');

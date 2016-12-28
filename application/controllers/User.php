@@ -54,7 +54,7 @@
 
 			} else {
 
-				if($this->user_model->login_check()) {
+				if ($this->user_model->login_check()) {
 
 					$session['username'] = $this->input->post('username');
 					$this->session->set_userdata($session);

@@ -5,16 +5,16 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$this->load->model('get_model');
-            $this->load->model('submit_model');
+			$this->load->model('link_model');
+            $this->load->model('link_model');
 		}
 
 		public function view($id)
 		{
 
-			$this->data['link_item'] = $this->get_model->get_link($id);
-            $this->data['reply'] = $this->get_model->get_reply($id);
-            $this->data['tree'] = $this->get_model->get_reply_tree($id); //$pid
+			$this->data['link_item'] = $this->link_model->get_link($id);
+            $this->data['reply'] = $this->link_model->get_reply($id);
+            $this->data['tree'] = $this->link_model->get_reply_tree($id); //$pid
 
 			if(empty($this->data['link_item']))
 			{
@@ -33,8 +33,8 @@
 		public function tree($id)
 		{
 
-			$this->data['link_item'] = $this->get_model->get_link($id);
-            $this->data['reply'] = $this->get_model->get_reply_tree($id); //$pid
+			$this->data['link_item'] = $this->link_model->get_link($id);
+            $this->data['reply'] = $this->link_model->get_reply_tree($id); //$pid
 
 			if(empty($this->data['link_item']))
 			{
@@ -51,7 +51,7 @@
 		public function show()
 		{
 
-            $reply = $this->get_model->get_reply($this->input->post('id')); //$this->data['reply']
+            $reply = $this->link_model->get_reply($this->input->post('id')); //$this->data['reply']
 
 			if(!empty($reply))
 			{
@@ -89,7 +89,7 @@
 			}
 			else
 			{
-				$this->submit_model->set_reply();
+				$this->link_model->set_reply();
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('submit/success');
 				$this->load->view('templates/footer');
@@ -98,10 +98,10 @@
 
         public function reply_ajax()
         {
-            $this->submit_model->update_comments();
+            $this->link_model->update_comments();
 
             $this->load->library('session');
-            if($this->submit_model->set_reply()){
+            if($this->link_model->set_reply()){
                 echo TRUE;
             }
             //$this->input->post('content').$this->input->post('pid');
@@ -110,25 +110,25 @@
         public function up()
         {
             $this->load->helper('url');
-            $this->submit_model->update_score();
+            $this->link_model->update_score();
         }
 
 		public function down()
         {
             $this->load->helper('url');
-            $this->submit_model->update_score();
+            $this->link_model->update_score();
         }
 
         public function rply_up()
         {
             $this->load->helper('url');
-            $this->submit_model->rply_update_score();
+            $this->link_model->rply_update_score();
         }
 
 		public function rply_down()
         {
             $this->load->helper('url');
-            $this->submit_model->rply_update_score();
+            $this->link_model->rply_update_score();
         }
 	}
 
