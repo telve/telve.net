@@ -2,7 +2,6 @@
   <div class="row-fluid">
     <div class="span5">
         <ul class="nav nav-tabs" id="myTab">
-          <!--<li><a href="#link">        </a></li>-->
 		  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Reset your password</a></li>
         </ul>
 
@@ -25,6 +24,3 @@
         </div>
 
     </div>
-
-
-    

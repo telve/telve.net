@@ -15,6 +15,7 @@
 
 				$this->data['title'] = "Submit";
 				//$this->data['credit'] = $this->link_model->get_credit();
+				$this->data['is_text_post'] = $this->input->get("text");
 
 				$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
 	            $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
@@ -31,10 +32,6 @@
 				} else {
 
 	                $insert_id = $this->link_model->insert_link();
-					//$this->load->view('templates/header',$this->data);
-					//$this->load->view('comments/view/35');
-					//$this->load->view('templates/side');
-					//$this->load->view('templates/footer');
 					redirect('comments/view/'.$insert_id);
 
 				}
@@ -55,29 +52,6 @@
             //echo $arr[1]; //UTF-8
             echo $this->safeEncoding($arr[1]); //The character set is automatically recognized and transcoded
         }
-
-		public function status()
-		{
-
-			$this->data['title'] = "发布状态";
-
-			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
-
-			if($this->form_validation->run()===FALSE)
-			{
-				$this->load->view('templates/header',$this->data);
-				$this->load->view('submit/status');
-				$this->load->view('templates/footer');
-			}
-			else
-			{
-				$this->link_model->set_submit();
-				$this->load->view('templates/header',$this->data);
-				$this->load->view('submit/success');
-				$this->load->view('templates/footer');
-			}
-
-		}
 
         private function safeEncoding($string,$outEncoding ='UTF-8')
         {

@@ -2,14 +2,21 @@
   <div class="row-fluid">
     <div class="span5">
         <ul class="nav nav-tabs" id="myTab">
-          <!--<li><a href="#link">        </a></li>-->
-		  <li class="active"><a class="submit" href="#link">Submit a link</a></li>
-          <li><a class="submit" href="#status">Submit a text</a></li>
+          <?php if ($is_text_post) { ?>
+              <li><a class="submit" href="#link">Submit a link</a></li>
+              <li class="active"><a class="submit" href="#text">Submit a text</a></li>
+          <?php } else { ?>
+              <li class="active"><a class="submit" href="#link">Submit a link</a></li>
+              <li><a class="submit" href="#text">Submit a text</a></li>
+          <?php };?>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="link">
-
+            <?php if ($is_text_post) { ?>
+                <div class="tab-pane" id="link">
+            <?php } else { ?>
+                <div class="tab-pane active" id="link">
+            <?php };?>
                 <?php echo form_open('submit');?>
                 <fieldset>
 
@@ -56,11 +63,15 @@
                 </form>
 
             </div>
-            <div class="tab-pane" id="status">
 
-                <?php echo form_open('status/create');?>
+            <?php if ($is_text_post) { ?>
+                <div class="tab-pane active" id="text">
+            <?php } else { ?>
+                <div class="tab-pane" id="text">
+            <?php };?>
+                <?php echo form_open('submit');?>
                 <fieldset>
-                    <?php echo validation_errors();?>
+
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
 
                     <label for="title">Title</label>
@@ -116,7 +127,7 @@
 
 
 <script type="text/javascript">
-    function set_category(obj) { //函数名不能为category，与前面的id、class冲突
+    function set_category(obj) { //Function name can not be category, with the previous id, class conflict
         $("#category").val(obj.text)
     }
 
