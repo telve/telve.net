@@ -25,14 +25,17 @@
 
 	                $this->load->view('templates/header',$this->data);
 					$this->load->view('submit/link');
+					$this->load->view('templates/side');
 					$this->load->view('templates/footer');
 
 				} else {
 
-	                $this->link_model->insert_link();
-					$this->load->view('templates/header',$this->data);
-					$this->load->view('submit/success');
-					$this->load->view('templates/footer');
+	                $insert_id = $this->link_model->insert_link();
+					//$this->load->view('templates/header',$this->data);
+					//$this->load->view('comments/view/35');
+					//$this->load->view('templates/side');
+					//$this->load->view('templates/footer');
+					redirect('comments/view/'.$insert_id);
 
 				}
 

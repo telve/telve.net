@@ -9,6 +9,7 @@
         <link rel="shortcut icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link rel="icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link href="<?php echo base_url("assets/css/bootstrap.css");?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url("assets/css/style.css");?>" rel="stylesheet" type="text/css">
     	<style type="text/css">
     		/*
             body{

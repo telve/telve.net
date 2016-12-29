@@ -215,14 +215,15 @@
 				'picurl' => 0,
                 'domain' => $domain,
                 'category' => $this->input->post('category'),
-                'uid' => $row['id'], //不直接用用户名 用户更换昵称
+                'uid' => $row['id'], //User's ID
                 'created' => time(),
 				'score' => 0,
 				'rank' => 0,
 				'comments' => 0
 			);
 
-			return $this->db->insert('link',$data);
+			$this->db->insert('link',$data);
+			return $this->db->insert_id();
 		}
 
         public function insert_reply()
