@@ -18,7 +18,8 @@
 				$this->data['is_text_post'] = $this->input->get("text");
 
 				$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
-	            $this->form_validation->set_rules('url','URL','trim|required|max_length[255]');
+	            $this->form_validation->set_rules('url','URL','trim|max_length[255]');
+				$this->form_validation->set_rules('text','text','trim|max_length[255]');
 	            $this->form_validation->set_rules('category','category','trim|required|max_length[255]');
 	            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
 

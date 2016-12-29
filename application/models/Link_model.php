@@ -17,7 +17,7 @@
                 $query = $this->db->get('link',$rows,$offset);
                 */
 
-                $this->db->select('rank,score,link.id,title,url,picurl,domain,link.created,username,category,comments');
+                $this->db->select('rank,score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
                 $this->db->limit($rows,$offset);
@@ -26,7 +26,7 @@
                 return $query->result_array(); //返回所有的状态
             }
 
-            $this->db->select('rank,score,link.id,title,url,picurl,domain,link.created,username,category,comments');
+            $this->db->select('rank,score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
@@ -210,6 +210,7 @@
             $data =array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
+				'text' => $this->input->post('text'),
 				'picurl' => $this->find_largest_image($url),
                 'domain' => $parse['host'],
                 'category' => $this->input->post('category'),

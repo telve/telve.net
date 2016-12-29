@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span5">
+        <?php echo validation_errors();?>
         <ul class="nav nav-tabs" id="myTab">
           <?php if ($is_text_post) { ?>
               <li><a class="submit" href="#link">Submit a link</a></li>
@@ -36,7 +37,7 @@
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
                     <label for="category">Choose a category</label>
-                    <input type="text" class="span12" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
+                    <input type="text" class="span12 category" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
                     <div style="color:red"><?php echo form_error('category');?></div>
                         <!--Show popular categories-->
                         <a href="javascript:void(0)" onclick="set_category(this)">PICS</a>&nbsp;&nbsp;
@@ -87,7 +88,7 @@
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
                     <label for="category">Choose a category</label>
-                    <input type="text" class="span12" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
+                    <input type="text" class="span12 category" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
                     <div style="color:red"><?php echo form_error('category');?></div>
                         <!--Show popular categories-->
                         <a href="javascript:void(0)" onclick="set_category(this)">PICS</a>&nbsp;&nbsp;
@@ -128,7 +129,7 @@
 
 <script type="text/javascript">
     function set_category(obj) { //Function name can not be category, with the previous id, class conflict
-        $("#category").val(obj.text)
+        $(".category").val(obj.text)
     }
 
     $("#get_title").click(function(){

@@ -150,11 +150,19 @@
 
                         </div>
 
-                        <div class="middle"><a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" /></a></div>
+						<?php if (empty($link_item['url'])) { ?>
+                        	<div class="middle"><a href="<?php echo base_url("comments/view")."/".$link_item['id'];?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" /></a></div>
+						<?php } else { ?>
+							<div class="middle"><a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" /></a></div>
+						<?php }?>
 
                         <div class="row-fluid">
                             <div class="span8">
-                                <div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+								<?php if (empty($link_item['url'])) { ?>
+		                        	<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
+								<?php } else { ?>
+									<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+								<?php }?>
                                 <div>&nbsp;
                                     <small style="color:#888;">submitted <?php formatTime($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
                                 </div>
