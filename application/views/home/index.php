@@ -150,7 +150,7 @@
 
                         </div>
 
-                        <div class="middle"><a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo base_url("pics/id".$link_item['id'].".jpg");?>" onError="this.src='<?php echo base_url('image/nopic.gif');?>';" /></a></div>
+                        <div class="middle"><a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('image/nopic.gif');?>';" width="80" height="80" /></a></div>
 
                         <div class="row-fluid">
                             <div class="span8">

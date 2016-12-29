@@ -17,7 +17,7 @@
                 $query = $this->db->get('link',$rows,$offset);
                 */
 
-                $this->db->select('rank,score,link.id,title,url,domain,link.created,username,category,comments');
+                $this->db->select('rank,score,link.id,title,url,picurl,domain,link.created,username,category,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
                 $this->db->limit($rows,$offset);
@@ -26,7 +26,7 @@
                 return $query->result_array(); //返回所有的状态
             }
 
-            $this->db->select('rank,score,link.id,title,url,domain,link.created,username,category,comments');
+            $this->db->select('rank,score,link.id,title,url,picurl,domain,link.created,username,category,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
@@ -205,15 +205,13 @@
 			$row = $query->row_array();
 
             $url = $this->input->post('url');
-            preg_match("/^(http:\/\/)?([^\/]+)/i", $url, $matches);
-            preg_match("/[^\.\/]+\.[^\.\/]+$/", $matches[2], $result);
-            $domain = $result[0];
+			$parse = parse_url($url);
 
             $data =array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
-				'picurl' => 0,
-                'domain' => $domain,
+				'picurl' => $this->find_largest_image($url),
+                'domain' => $parse['host'],
                 'category' => $this->input->post('category'),
                 'uid' => $row['id'], //User's ID
                 'created' => time(),
@@ -278,6 +276,40 @@
             $id = $this->input->post('pid');
             $this->db->where('id',$id);
 			return $this->db->update('link',$data);
+		}
+
+		private function find_largest_image($url)
+		{
+			$this->load->library("simple_html_dom");
+			$html = new Simple_html_dom();
+			$html->load_file($url);
+
+			$biggestImage = 'path to "no image found" image'; // Is returned when no images are found.
+			$maxSize = -1;
+			$visited = array();
+			foreach($html->find('img') as $element) {
+			    $src = $element->src;
+			    if($src=='')continue;// it happens on your test url
+				if (strpos($src, '://') !== false) {
+					$imageurl = $src;
+				} elseif (substr( $src, 0, 2 ) === "//") {
+					$imageurl = 'http:'.$src;
+				} else {
+					$parse = parse_url($url);
+			    	$imageurl = $parse['scheme'].'://'.$parse['host'].'/'.$src;//get image absolute url
+				}
+			    // ignore already seen images, add new images
+			    if(in_array($imageurl, $visited))continue;
+			    $visited[]=$imageurl;
+			    // get image
+			    $image=@getimagesize($imageurl);// get the rest images width and height
+			    if (($image[0] * $image[1]) > $maxSize) {
+			        $maxSize = $image[0] * $image[1];  //compare sizes
+			        $biggest_img = $imageurl;
+			    }
+			}
+			return $biggest_img; //return the biggest found image
+			//return implode(" | ", $visited);
 		}
 
 	}

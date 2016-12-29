@@ -49,8 +49,8 @@
             $preg = "/<title>(.*?)<\/title>/si";
             preg_match($preg, $html, $arr);
             //echo trim(mb_convert_encoding($arr[1], "UTF-8", "GBK")); //GBK To UTF-8 Encoding conversion
-            //echo $arr[1]; //UTF-8
-            echo $this->safeEncoding($arr[1]); //The character set is automatically recognized and transcoded
+            echo $arr[1]; //UTF-8
+            //echo $this->safeEncoding($arr[1]); //The character set is automatically recognized and transcoded
         }
 
         private function safeEncoding($string,$outEncoding ='UTF-8')
