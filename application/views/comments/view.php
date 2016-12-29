@@ -27,7 +27,7 @@
 
 					<div class="picontainer">
 						<div class="middle">
-							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('image/nopic.gif');?>';" width="80" height="80" /></a>
+							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" /></a>
 						</div>
 					</div>
 
