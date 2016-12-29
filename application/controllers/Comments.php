@@ -6,7 +6,7 @@
 		{
 			parent::__construct();
 			$this->load->model('link_model');
-            $this->load->model('link_model');
+			$this->load->model('vote_model');
 		}
 
 		public function view($id)
@@ -110,16 +110,32 @@
         public function up()
         {
 			if ($this->data['is_user_logged_in']) {
-	            $this->load->helper('url');
-	            $this->link_model->update_score();
+
+				if (!$this->vote_model->right_to_vote()) {
+					$this->vote_model->insert_vote();
+
+		            $this->load->helper('url');
+		            $this->link_model->up_score();
+					echo 1;
+				} else {
+					echo 0;
+				}
 			}
         }
 
 		public function down()
         {
 			if ($this->data['is_user_logged_in']) {
-	            $this->load->helper('url');
-	            $this->link_model->update_score();
+
+				if (!$this->vote_model->right_to_vote()) {
+					$this->vote_model->insert_vote();
+
+		            $this->load->helper('url');
+		            $this->link_model->down_score();
+					echo 1;
+				} else {
+					echo 0;
+				}
 			}
         }
 

@@ -6,7 +6,7 @@
 			$this->load->database();
 		}
 
-		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL) //默认返回所有的状态
+		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -23,14 +23,14 @@
                 $this->db->limit($rows,$offset);
                 $query = $this->db->get();
 
-                return $query->result_array(); //返回所有的状态
+                return $query->result_array();
             }
 
             $this->db->select('rank,score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
-            $query = $this->db->get(); //返回某一条状态
+            $query = $this->db->get();
             return $query->row_array();
 		}
 
@@ -207,7 +207,7 @@
             $url = $this->input->post('url');
 			$parse = parse_url($url);
 
-            $data =array(
+            $data = array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
 				'text' => $this->input->post('text'),
@@ -243,16 +243,20 @@
 			return $this->db->insert('reply',$data);
 		}
 
-        public function update_score()
+        public function up_score()
 		{
-
-			$data =array(
-                'score' =>$this->input->post('score')
-			);
-
             $id = $this->input->post('id');
             $this->db->where('id',$id);
-			return $this->db->update('link',$data);
+			$this->db->set('score', 'score+1', FALSE);
+			$this->db->update('link');
+		}
+
+		public function down_score()
+		{
+			$id = $this->input->post('id');
+            $this->db->where('id',$id);
+			$this->db->set('score', 'score-1', FALSE);
+			$this->db->update('link');
 		}
 
         public function reply_update_score()

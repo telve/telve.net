@@ -190,30 +190,28 @@
 <script type="text/javascript">
     function up(id){
 		if (<?php echo $is_user_logged_in;?>) {
-			var upped=parseInt($("#show-"+id).html())+1;
 	        $.ajax({
-	               type:"POST",
-	               url:"<?php echo base_url('comments/up');?>",
-	               data:{ 'score' : upped,'id' : id },
-	               success:function(){
-	                  var scoreHTML = "";
-	                  scoreHTML = upped;
-	                  $("#show-"+id).html(scoreHTML);
+	               type: "POST",
+	               url: "<?php echo base_url('comments/up');?>",
+	               data: {'id' : id },
+	               success: function(data){
+					   if (data == 1) {
+						   $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
+					   }
 	               }
 	        });
 		}
 	}
 	function down(id){
 		if (<?php echo $is_user_logged_in;?>) {
-			var downed=parseInt($("#show-"+id).html())-1;
 	        $.ajax({
-	               type:"POST",
-	               url:"<?php echo base_url('comments/up');?>",
-	               data:{ 'score' : downed,'id' : id },
-	               success:function(){
-	                  var scoreHTML = "";
-	                  scoreHTML = downed;
-	                  $("#show-"+id).html(scoreHTML);
+	               type: "POST",
+	               url: "<?php echo base_url('comments/down');?>",
+	               data: {'id' : id },
+				   success: function(data){
+					   if (data == 1) {
+						   $("#show-"+id).html(parseInt($("#show-"+id).html())-1);
+					   }
 	               }
 	        });
 		}
