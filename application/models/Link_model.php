@@ -233,11 +233,14 @@
 			$query = $this->db->get('user');
 			$row = $query->row_array();
 
-            $data =array(
+            $data = array(
+				'content' => $this->input->post('content'),
 				'pid' => $this->input->post('pid'),
                 'uid' => $row['id'],
-                'content' => $this->input->post('content'),
-                'created' => time()
+                'rank' => 0,
+                'created' => time(),
+				'score' => 0,
+				'comments' => 0
 			);
 
 			return $this->db->insert('reply',$data);
@@ -271,16 +274,12 @@
 			return $this->db->update('reply',$data);
 		}
 
-        public function update_comments()
+        public function increase_comments()
 		{
-
-			$data =array(
-                'comments' =>$this->input->post('comments')
-			);
-
             $id = $this->input->post('pid');
             $this->db->where('id',$id);
-			return $this->db->update('link',$data);
+			$this->db->set('comments', 'comments+1', FALSE);
+			$this->db->update('link');
 		}
 
 		private function find_largest_image($url)

@@ -98,13 +98,15 @@
 
         public function reply_ajax()
         {
-            $this->link_model->update_comments();
+            if ($this->data['is_user_logged_in']) {
+	            if($this->link_model->insert_reply()) {
+					$this->link_model->increase_comments();
+	                echo 1;
+	            } else {
+					echo 0;
+				}
+			}
 
-            $this->load->library('session');
-            if($this->link_model->insert_reply()){
-                echo TRUE;
-            }
-            //$this->input->post('content').$this->input->post('pid');
         }
 
         public function up()
@@ -113,8 +115,6 @@
 
 				if (!$this->vote_model->right_to_vote()) {
 					$this->vote_model->insert_vote();
-
-		            $this->load->helper('url');
 		            $this->link_model->up_score();
 					echo 1;
 				} else {
@@ -129,8 +129,6 @@
 
 				if (!$this->vote_model->right_to_vote()) {
 					$this->vote_model->insert_vote();
-
-		            $this->load->helper('url');
 		            $this->link_model->down_score();
 					echo 1;
 				} else {

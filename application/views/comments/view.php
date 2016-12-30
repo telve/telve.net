@@ -159,16 +159,16 @@
             var commts = parseInt("<?php echo $link_item['comments'];?>")+1;
 
             $.ajax({
-                type:"POST",
-                url:"<?php echo base_url('comments/reply_ajax');?>",
-                data:{'content':content,'pid':pid,'comments':commts},
-                error:function(){
-                    alert("error");
+                type: "POST",
+                url: "<?php echo base_url('comments/reply_ajax');?>",
+                data: { 'content' : content, 'pid' :pid },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
                 },
-                success:function(data){
+                success: function(data){
 
                     //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
-                    if(data){
+                    if (data == 1) {
 
                         update_reply = "<div class='row-fluid'>"+
 
