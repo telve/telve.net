@@ -1,4 +1,6 @@
 <?php
+	require "formatTimeReturn.php";
+
 	class Link_model extends CI_Model{
 
 		public function __construct()
@@ -134,7 +136,7 @@
 		private function display_children($pid,$level,&$res)
 		{
 
-			$this->db->select('id,comments,content,score, created');
+			$this->db->select('id,comments,content,uid,score, created');
 			$this->db->where('pid',$pid);
 			$query = $this->db->get('reply');
 
@@ -147,10 +149,15 @@
 
             foreach ($query->result_array() as $row)
 			{
+				$this->db->select('username');
+				$this->db->where('id',$row['uid']);
+				$query = $this->db->get('user');
+				$username = $query->row_array()['username'];
+				$ago = formatTimeReturn($row['created']);
 
 				$res.='<li>';
 
-                $res.="<!--显示该状态的回复-->
+                $res.="<!--The reply to this status is displayed-->
                 <div>
 				<div class='row-fluid'>
 
@@ -164,9 +171,9 @@
 
 							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-                            <a style='color: #369;font-weight: bold;' href='#'>lizhijun</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span>分&nbsp;&nbsp;发表于<?php  formatTime(".$row['created'].");?>
+                            <a style='color: #369;font-weight: bold;' href='#'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
                             &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' class='hide_rply' href='<?php echo base_url('comments/view').'/'.".$row['id']."'> ".$row['comments']." 回复</a>)</small></span>
+								(<a style='color: gray;' class='hide_rply' href='<?php echo base_url('comments/view').'/'.".$row['id']."'> ".$row['comments']." replies </a>)</small></span>
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
@@ -178,7 +185,7 @@
 
 						<div class='hide_function' style='margin-bottom:8px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>举报</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>{回复}</small></a><!--&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>{reply}</small></a><!--&nbsp;&nbsp;
 								<small><a href='javascript:void(0)' id='".$row['id']."' onclick='show_reply(this)'>显示评论</a></small>-->
 							</div>
 						</div>

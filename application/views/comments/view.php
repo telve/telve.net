@@ -100,7 +100,7 @@
 
 							<a id="minus" href="javascript:void(0)" onclick="switch_state(this)">[-]</a>&nbsp;<small>
 
-                            <a href="#"><?php echo $reply_item['username']?></a>&nbsp;&nbsp;<span id="show-<?php echo $reply_item['id'];?>"><?php echo $reply_item['score'];?> </span>points&nbsp;&nbsp;published on<?php formatTime($reply_item['created']);?>
+                            <a href="#"><?php echo $reply_item['username']?></a>&nbsp;&nbsp;<span id="show-<?php echo $reply_item['id'];?>"><?php echo $reply_item['score'];?> </span>points&nbsp;&nbsp;published on <?php formatTime($reply_item['created']);?>
                             &nbsp;
 								(<a class="hide_rply" href="<?php echo base_url("comments/view")."/".$reply_item['id']?>"> <?php echo $reply_item['comments']?> replies</a> )</small>
 						</div>
@@ -168,8 +168,7 @@
                 success: function(data){
 
                     //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
-                    if (data == 1) {
-
+                    if (data) {
                         update_reply = "<div class='row-fluid'>"+
 
 					"<div class='span12'>"+
@@ -186,7 +185,7 @@
 
 							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on<?php //formatTime($reply_item['created']);?>"+
+                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
                             "&nbsp;"+
 								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
 						"</div>"+
@@ -364,7 +363,7 @@
 
 							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on<?php //formatTime($reply_item['created']);?>"+
+                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
                             "&nbsp;"+
 								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
 						"</div>"+
