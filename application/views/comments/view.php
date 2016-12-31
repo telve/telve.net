@@ -14,9 +14,9 @@
                     </style>
 
 					<div class="digg">
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);"><i class="icon-thumbs-up"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);" class="login-required"><i class="icon-thumbs-up"></i></a></div>
 						<strong><div id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);"><i class="icon-thumbs-down"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);" class="login-required"><i class="icon-thumbs-down"></i></a></div>
 					</div>
 
 					<div class="picontainer">
@@ -37,7 +37,7 @@
                             <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                         <?php }?>
 						<div>
-							<small style="color:#888;">submitted<?php formatTime($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
+							<small style="color:#888;">submitted <?php formatTime($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
 						</div>
 						<div>
 							<div><strong>
@@ -60,11 +60,11 @@
                     <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small>
                         <div>
                             <br>
-                            <textarea rows="4" class="span6" name="content" id="content"/></textarea><br />
+                            <textarea rows="4" class="span6" name="content" id="content" onfocus="first_of_all_login()"/></textarea><br />
 			                <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
             				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                             <!--<div id="error_msg"></div>-->
-                            <button type="submit" id="submit_reply">submit</button>
+                            <button type="submit" id="submit_reply" class="login-required">submit</button>
                 <!-- Horizontal dashed dotted line and submit text box -->
                             <br/>
                             <!--Newly submitted replies-->
@@ -95,100 +95,106 @@
         });
 
         $("#submit_reply").click(function(){
-            var content = $("#content").val();
-            var pid = $("#pid").val();
-            var commts = parseInt("<?php echo $link_item['comments'];?>")+1;
+            if (<?php echo $is_user_logged_in;?>) {
+                var content = $("#content").val();
+                var pid = $("#pid").val();
+                var commts = parseInt("<?php echo $link_item['comments'];?>")+1;
 
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('comments/reply_ajax');?>",
-                data: { 'content' : content, 'pid' :pid },
-                error: function(xhr, status, error) {
-                    console.log(xhr.responseText);
-                },
-                success: function(data){
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('comments/reply_ajax');?>",
+                    data: { 'content' : content, 'pid' :pid },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    },
+                    success: function(data){
+                        console.log(data);
+                        if (data == 1) {
+                            update_reply = "<div class='row-fluid'>"+
 
-                    if (data == 1) {
-                        update_reply = "<div class='row-fluid'>"+
+    					"<div class='span12'>"+
+    						"<style>"+
 
-					"<div class='span12'>"+
-						"<style>"+
+                                "/*#minus { color:#369;font-size:16px;}"+
 
-                            "/*#minus { color:#369;font-size:16px;}"+
+                                "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
 
-                            "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
+                            "</style>"+
 
-                        "</style>"+
+    						"<div id='switch'>"+
+    							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
 
-						"<div id='switch'>"+
-							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
+    							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
+                                "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
+                                "&nbsp;"+
+    								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
+    						"</div>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
-                            "&nbsp;"+
-								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
-						"</div>"+
+    						"<div class='hide_content'>"+
+                                "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
 
-						"<div class='hide_content'>"+
-                            "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
+                                "&nbsp;<span>"+content+"</span>"+
+                                "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
+    						"</div>"+
 
-                            "&nbsp;<span>"+content+"</span>"+
-                            "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
-						"</div>"+
+    						"<div class='hide_function'>"+
+    							"<div>"+
+    								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
+    								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
+    							"</div>"+
 
-						"<div class='hide_function'>"+
-							"<div>"+
-								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
-								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
-							"</div>"+
+                                "<!--Draw a dividing line-->"+
+    				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
+    						"</div>"+
+    					"</div>"+
 
-                            "<!--Draw a dividing line-->"+
-				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
-						"</div>"+
-					"</div>"+
+    				"</div>";
+                            $("#update_reply").html(update_reply);
+                        } else {
+                            alert(data);
+                        }
 
-				"</div>";
-                        $("#update_reply").html(update_reply);
-                    } else {
-                        alert(data);
+
                     }
-
-
-                }
-            });
+                });
+            }
 
         });
     });
 
     function up(obj){
-        //alert(obj.id);
-        var upped=parseInt($("#show-"+obj.id).html())+1;
-        $.ajax({
-               type:"POST",
-               url:"<?php echo base_url('comments/up');?>",
-               data:{ 'score' : upped,'id' : obj.id },
-               success:function(){
-                  var scoreHTML = "";
-                  scoreHTML = upped;
-                  $("#show-"+obj.id).html(scoreHTML);
-               }
-        });
+        if (<?php echo $is_user_logged_in;?>) {
+            $.ajax({
+                   type: "POST",
+                   url: "<?php echo base_url('comments/up');?>",
+                   data: { 'id' : obj.id },
+                   success: function(data) {
+                       if (data == 1) {
+                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+                       } else {
+                           alert(data);
+                       }
+                   }
+            });
+        }
     }
 
     function down(obj){
-        //alert(obj.id);
-        var upped=parseInt($("#show-"+obj.id).html())-1;
-        $.ajax({
-               type:"POST",
-               url:"<?php echo base_url('comments/down');?>",
-               data:{ 'score' : upped,'id' : obj.id },
-               success:function(){
-                  var scoreHTML = "";
-                  scoreHTML = upped;
-                  $("#show-"+obj.id).html(scoreHTML);
-               }
-        });
+        if (<?php echo $is_user_logged_in;?>) {
+            $.ajax({
+                   type: "POST",
+                   url: "<?php echo base_url('comments/down');?>",
+                   data: { 'id' : obj.id },
+                   success: function(data) {
+                       if (data == 1) {
+                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                       } else {
+                           alert(data);
+                       }
+                   }
+            });
+        }
     }
 
     function rply_up(obj){
@@ -231,9 +237,9 @@
 		}
 		else                   //This can not be used directly reply_item['id']
 		{
-			replyForm = "<div><div style='border-top:dashed 8px #fff;width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content'/></textarea><br />"+
+			replyForm = "<div><div style='border-top:dashed 8px #fff;width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()'/></textarea><br />"+
 				"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
-                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_reply(this)'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>cancel</button></div>";
+                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>cancel</button></div>";
 			$(obj).after(replyForm);
 			$(obj).nextAll("div").children("#content").focus();
 		}
@@ -272,67 +278,73 @@
         $(obj).parent().siblings(".").remove();
     }
 
-    function submit_reply(obj){
-        var content = $(obj).siblings("#content").val();
-        var pid = $(obj).siblings("#pid").val();
-        $.ajax({
-                type:"POST",
-                url:"<?php echo base_url('comments/reply_ajax');?>",
-                data:{'content':content,'pid':pid},
-                error:function(){
-                    alert("error");
-                },
-                success:function(data){
+    function submit_comment_reply(obj){
+        if (<?php echo $is_user_logged_in;?>) {
+            var content = $(obj).siblings("#content").val();
+            var pid = $(obj).siblings("#pid").val();
+            $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('comments/reply_ajax');?>",
+                    data: { 'content' : content, 'pid' : pid },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    },
+                    success:function(data){
+                        console.log(data);
+                        if (data == 1) {
 
-                    //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
-                    if(data){
+                            update_reply = "<ul style='list-style-type:none'><li><!--Draw a dividing line-->"+
+    				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
+    							"<div class='row-fluid'>"+
 
-                        update_reply = "<ul style='list-style-type:none'><li><!--Draw a dividing line-->"+
-				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
-							"<div class='row-fluid'>"+
+    					"<div class='span12'>"+
+    						"<style>"+
 
-					"<div class='span12'>"+
-						"<style>"+
+                                "/*#minus { color:#369;font-size:16px;}"+
 
-                            "/*#minus { color:#369;font-size:16px;}"+
+                                "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
 
-                            "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
+                            "</style>"+
 
-                        "</style>"+
+    						"<div id='switch'>"+
+    							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
 
-						"<div id='switch'>"+
-							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
+    							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
 
-							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
+                                "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
+                                "&nbsp;"+
+    								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
+    						"</div>"+
 
-                            "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
-                            "&nbsp;"+
-								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
-						"</div>"+
+    						"<div class='hide_content'>"+
+                                "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
 
-						"<div class='hide_content'>"+
-                            "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
+                                "&nbsp;<span>"+content+"</span>"+
+                                "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
+    						"</div>"+
 
-                            "&nbsp;<span>"+content+"</span>"+
-                            "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
-						"</div>"+
+    						"<div class='hide_function'>"+
+    							"<div>"+
+    								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
+    								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
+    							"</div>"+
+    						"</div>"+
+    					"</div>"+
 
-						"<div class='hide_function'>"+
-							"<div>"+
-								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
-								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
-							"</div>"+
-						"</div>"+
-					"</div>"+
+    				"</div></li></ul>";
+                            $(obj).parent().after(update_reply);
+                            $(obj).parent().hide();
+                        } else {
+                            alert(data);
+                        }
 
-				"</div></li></ul>";
-                        $(obj).parent().after(update_reply);
-                        $(obj).parent().hide();
+
                     }
-
-
-                }
             });
+        } else {
+            $('#myModal').modal('toggle');
+            return false; //cancel the event
+        }
     }
 
     function switch_state(obj){

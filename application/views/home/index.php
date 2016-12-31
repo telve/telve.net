@@ -194,7 +194,7 @@
 	               type: "POST",
 	               url: "<?php echo base_url('comments/up');?>",
 	               data: {'id' : id },
-	               success: function(data){
+	               success: function(data) {
 					   if (data == 1) {
 						   $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
 					   } else {
@@ -210,7 +210,7 @@
 	               type: "POST",
 	               url: "<?php echo base_url('comments/down');?>",
 	               data: {'id' : id },
-				   success: function(data){
+				   success: function(data) {
 					   if (data == 1) {
 						   $("#show-"+id).html(parseInt($("#show-"+id).html())-1);
 					   }
