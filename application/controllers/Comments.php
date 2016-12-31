@@ -125,6 +125,8 @@
 				} else {
 					echo "You have already casted your vote on this post.";
 				}
+			} else {
+				echo "Please login first.";
 			}
         }
 
@@ -139,19 +141,41 @@
 				} else {
 					echo "You have already casted your vote on this post.";
 				}
+			} else {
+				echo "Please login first.";
 			}
         }
 
         public function rply_up()
         {
-            $this->load->helper('url');
-            $this->link_model->reply_update_score();
+			if ($this->data['is_user_logged_in']) {
+
+				if (!$this->vote_model->right_to_rply_vote()) {
+					$this->vote_model->insert_rply_vote();
+		            $this->link_model->rply_up_score();
+					echo 1;
+				} else {
+					echo "You have already casted your vote on this comment.";
+				}
+			} else {
+				echo "Please login first.";
+			}
         }
 
 		public function rply_down()
         {
-            $this->load->helper('url');
-            $this->link_model->reply_update_score();
+			if ($this->data['is_user_logged_in']) {
+
+				if (!$this->vote_model->right_to_rply_vote()) {
+					$this->vote_model->insert_rply_vote();
+		            $this->link_model->rply_down_score();
+					echo 1;
+				} else {
+					echo "You have already casted your vote on this comment.";
+				}
+			} else {
+				echo "Please login first.";
+			}
         }
 	}
 

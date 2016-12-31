@@ -198,36 +198,43 @@
     }
 
     function rply_up(obj){
-        //alert(obj.id);
-        var upped=parseInt($("#show-"+obj.id).html())+1;
-        $.ajax({
-               type:"POST",
-               url:"<?php echo base_url('comments/rply_up');?>",
-               data:{ 'score' : upped,'id' : obj.id },
-               error:function(){
-                    alert("error");
-               },
-               success:function(){
-                  var scoreHTML = "";
-                  scoreHTML = upped;
-                  $("#show-"+obj.id).html(scoreHTML);
-               }
-        });
+        if (<?php echo $is_user_logged_in;?>) {
+            $.ajax({
+                   type: "POST",
+                   url: "<?php echo base_url('comments/rply_up');?>",
+                   data: { 'id' : obj.id },
+                   error: function(xhr, status, error) {
+                       console.log(xhr.responseText);
+                   },
+                   success:function(data){
+                      if (data == 1) {
+                          $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+                      } else {
+                          alert(data);
+                      }
+                   }
+            });
+        }
     }
 
     function rply_down(obj){
-        //alert(obj.id);
-        var upped=parseInt($("#show-"+obj.id).html())-1;
-        $.ajax({
-               type:"POST",
-               url:"<?php echo base_url('comments/rply_down');?>",
-               data:{ 'score' : upped,'id' : obj.id },
-               success:function(){
-                  var scoreHTML = "";
-                  scoreHTML = upped;
-                  $("#show-"+obj.id).html(scoreHTML);
-               }
-        });
+        if (<?php echo $is_user_logged_in;?>) {
+            $.ajax({
+                   type: "POST",
+                   url: "<?php echo base_url('comments/rply_down');?>",
+                   data: { 'id' : obj.id },
+                   error: function(xhr, status, error) {
+                       console.log(xhr.responseText);
+                   },
+                   success:function(data){
+                      if (data == 1) {
+                          $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                      } else {
+                          alert(data);
+                      }
+                   }
+            });
+        }
     }
 
     function set_reply(obj){

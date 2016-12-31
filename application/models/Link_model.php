@@ -157,7 +157,7 @@
 
 				$res.='<li>';
 
-                $res.="<!--The reply to this status is displayed-->
+                $res.="<!--One reply from the reply tree of this post-->
                 <div>
 				<div class='row-fluid'>
 
@@ -167,7 +167,7 @@
                         </style>
 
 						<div id='switch' style='margin-bottom:4px;color: #888;'>
-							<a class='hide_up' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>
+							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>
 
 							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
@@ -177,7 +177,7 @@
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
-                            <a href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>
+                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>
 
                             <span >".$row['content']."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
@@ -186,7 +186,7 @@
 						<div class='hide_function' style='margin-bottom:8px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>{reply}</small></a><!--&nbsp;&nbsp;
-								<small><a href='javascript:void(0)' id='".$row['id']."' onclick='show_reply(this)'>显示评论</a></small>-->
+								<small><a href='javascript:void(0)' id='".$row['id']."' onclick='show_reply(this)'>Show comments</a></small>-->
 							</div>
 						</div>
 					</div>
@@ -195,7 +195,7 @@
 
 				<?php endforeach?>
 				</div>
-				<!--该状态的回复显示完毕-->";
+				<!--One reply from the reply tree of this post-->";
 
 				$this->display_children($row['id'], $level+1,$res);
                 $res.='</li>';
@@ -269,16 +269,20 @@
 			$this->db->update('link');
 		}
 
-        public function reply_update_score()
+        public function rply_up_score()
 		{
-
-			$data =array(
-                'score' =>$this->input->post('score')
-			);
-
-            $id = $this->input->post('id');
+			$id = $this->input->post('id');
             $this->db->where('id',$id);
-			return $this->db->update('reply',$data);
+			$this->db->set('score', 'score+1', FALSE);
+			$this->db->update('reply');
+		}
+
+		public function rply_down_score()
+		{
+			$id = $this->input->post('id');
+            $this->db->where('id',$id);
+			$this->db->set('score', 'score-1', FALSE);
+			$this->db->update('reply');
 		}
 
         public function increase_comments()
@@ -287,6 +291,14 @@
             $this->db->where('id',$id);
 			$this->db->set('comments', 'comments+1', FALSE);
 			$this->db->update('link');
+		}
+
+		public function increase_rply_comments()
+		{
+            $id = $this->input->post('pid');
+            $this->db->where('id',$id);
+			$this->db->set('comments', 'comments+1', FALSE);
+			$this->db->update('reply');
 		}
 
 		private function find_largest_image($url)
