@@ -98,15 +98,20 @@
 
         public function reply_ajax()
         {
-            if ($this->data['is_user_logged_in']) {
-	            if($this->link_model->insert_reply()) {
-					$this->link_model->increase_comments();
-	                echo 1;
-	            } else {
-					echo 0;
+			if ($this->input->post('content')) {
+	            if ($this->data['is_user_logged_in']) {
+		            if($this->link_model->insert_reply()) {
+						$this->link_model->increase_comments();
+		                echo 1;
+		            } else {
+						echo "Operation was not succesful. Please try again.";
+					}
+				} else {
+					echo "Please login first.";
 				}
+			} else {
+				echo "You cannot send empty replies.";
 			}
-
         }
 
         public function up()
@@ -118,7 +123,7 @@
 		            $this->link_model->up_score();
 					echo 1;
 				} else {
-					echo 0;
+					echo "You have already casted your vote on this post.";
 				}
 			}
         }
@@ -132,7 +137,7 @@
 		            $this->link_model->down_score();
 					echo 1;
 				} else {
-					echo 0;
+					echo "You have already casted your vote on this post.";
 				}
 			}
         }

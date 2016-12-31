@@ -1,4 +1,3 @@
-<!--时间格式化-->
 <?php
 	function formatTimeReturn($timer){
 

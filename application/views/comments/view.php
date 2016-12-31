@@ -76,7 +76,7 @@
                 <br/>
 
                 <!--Newly submitted replies-->
-                <div id="update_reply"></div>
+                <div id="update_reply" style="margin: 0 0 10px 25px;"></div>
 
                 <?php echo $tree;?>
 
@@ -167,8 +167,7 @@
                 },
                 success: function(data){
 
-                    //$("#error_msg").html("<span style='color:red'>Here to say something</span>");
-                    if (data) {
+                    if (data == 1) {
                         update_reply = "<div class='row-fluid'>"+
 
 					"<div class='span12'>"+
@@ -210,6 +209,8 @@
 
 				"</div>";
                         $("#update_reply").html(update_reply);
+                    } else {
+                        alert(data);
                     }
 
 

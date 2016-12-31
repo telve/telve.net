@@ -197,6 +197,8 @@
 	               success: function(data){
 					   if (data == 1) {
 						   $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
+					   } else {
+						   alert(data);
 					   }
 	               }
 	        });
@@ -218,7 +220,7 @@
 	}
 	function set_share(obj){
 
-		if($(obj).text()=='share now?')
+		if($(obj).text()=='share')
 		{
 			replyForm = "<div class='share' style='margin-top:18px;'><form class='form-horizontal' action='<?php echo base_url('share');?>' method='post' accept-charset='utf-8'>"+
 
@@ -280,15 +282,16 @@
 			$(obj).parent().after(replyForm);
 			$(obj).text('cancel');
 			//$(obj).nextAll("div").children("#content").focus();
-		}else{
+		} else {
 
 			$(obj).parent().siblings(".share").remove();
-			$(obj).text('share now?');
+			$(obj).text('share');
 		}
     }
 	function cancel_share(obj){
 
-		$(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("share now?");
+		console.log("HURRAY");
+		$(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("share");
 		$(obj).parent().parent().parent().parent().remove().parent().remove();
     }
 	function submit_share(obj){
