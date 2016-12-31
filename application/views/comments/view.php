@@ -3,26 +3,20 @@
 <div class="container-fluid">
     <div class="row-fluid"><!-- style="background-color:#9bb;"-->
         <div class="span9">
-            <fieldset>
 
-			<!--The status is displayed-->
+			<!-- row-fluid > link -->
             <div class="row-fluid" style="margin:8px 0;">
                 <div id="link">
-
-				<style type="text/css">/*Need to be improved*/
-                    div.digg {/*background-color:#ffff99;*/height:40px;width:30px;float:left;text-align:center;}
-                    div.picontainer {/*background-color:#369;*/height:80px;width:90px;float:left;text-align:center;}
-					div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*Adaptive picture size*/
-                </style>
+    				<style type="text/css">/*Need to be improved*/
+                        div.digg {/*background-color:#ffff99;*/height:40px;width:30px;float:left;text-align:center;}
+                        div.picontainer {/*background-color:#369;*/height:80px;width:90px;float:left;text-align:center;}
+    					div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*Adaptive picture size*/
+                    </style>
 
 					<div class="digg">
-
 						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);"><i class="icon-thumbs-up"></i></a></div>
-
 						<strong><div id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
-
 						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);"><i class="icon-thumbs-down"></i></a></div>
-
 					</div>
 
 					<div class="picontainer">
@@ -53,95 +47,42 @@
 						</div>
                     </div>
 
-
-
 				</div>
 			</div>
+            <!-- row-fluid > link -->
 
-				<!--The status is displayed-->
-	    		<div>Top 200 comments  <small><a href="javascript:void(0)">display all 336</a></small><div>
-                <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
-
-                <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small><div>
-                <br>
-                <textarea rows="4" class="span6" name="content" id="content"/></textarea><br />
-				<input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
-				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
-                <!--<div id="error_msg"></div>-->
-                <button type="submit" id="submit_reply">submit</button>
-
-				</fieldset>
-				</form>
-
-                <br/>
-
-                <!--Newly submitted replies-->
-                <div id="update_reply" style="margin: 0 0 10px 25px;"></div>
-
-                <?php echo $tree;?>
-
-				<?php foreach($reply as $reply_item):?>
-
-				<!--The reply to this status is displayed-->
+			<!-- Comments block -->
+    		<div>
+                <!-- Horizontal dashed dotted line and submit text box -->
+                Top 200 comments  <small><a href="javascript:void(0)">display all 336</a></small>
                 <div>
-				<div class="row-fluid">
+                    <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
+                    <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small>
+                        <div>
+                            <br>
+                            <textarea rows="4" class="span6" name="content" id="content"/></textarea><br />
+			                <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
+            				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
+                            <!--<div id="error_msg"></div>-->
+                            <button type="submit" id="submit_reply">submit</button>
+                <!-- Horizontal dashed dotted line and submit text box -->
+                            <br/>
+                            <!--Newly submitted replies-->
+                            <div id="update_reply" style="margin: 0 0 10px 25px;"></div>
+                            <!-- Comment tree -->
+                            <?php echo $tree;?>
+                            <!-- Comment tree -->
 
-					<div class="span12">
-						<style>
-							/*
-                            #minus { color:#369;font-size:16px;}
-
-                            #switch a:hover{ color:#fff;background:#369;text-decoration: none;}
-						    */
-                        </style>
-
-						<div id="switch">
-							<a class="hide_up" href="javascript:void(0)" id="<?php echo $reply_item['id'];?>" onclick="rply_up(this)"><i class="icon-thumbs-up"></i></a>
-
-							<a id="minus" href="javascript:void(0)" onclick="switch_state(this)">[-]</a>&nbsp;<small>
-
-                            <a href="#"><?php echo $reply_item['username']?></a>&nbsp;&nbsp;<span id="show-<?php echo $reply_item['id'];?>"><?php echo $reply_item['score'];?> </span>points&nbsp;&nbsp;published on <?php formatTime($reply_item['created']);?>
-                            &nbsp;
-								(<a class="hide_rply" href="<?php echo base_url("comments/view")."/".$reply_item['id']?>"> <?php echo $reply_item['comments']?> replies</a> )</small>
-						</div>
-
-						<div class="hide_content">
-                            <a href="javascript:void(0)" id="<?php echo $reply_item['id'];?>" onclick="rply_down(this)"><i class="icon-thumbs-down"></i></a>
-
-                            <span ><?php echo $reply_item['content']?></span>
-                            <!--<input type="hidden" class="show" value="<?php echo $reply_item['id']?>"/>-->
-						</div>
-
-						<div class="hide_function">
-							<div>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href="#">collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href="javascript:void(0)" onclick="set_reply(this)" id="<?php echo $reply_item['id']?>"><small>{reply}</small></a><!--&nbsp;&nbsp;
-								<small><a href="javascript:void(0)" id="<?php //echo $reply_item['id']?>" onclick="show_reply(this)">show comments</a></small>--/>
-							</div>
-
-                            <!--Draw a dividing line-->
-				            <div style="border-top:dashed 8px #fff;width:100%;"> </div>
-						</div>
-					</div>
-
-				</div>
-
-				<?php endforeach?>
-				</div>
-				<!--The reply to this status is displayed-->
-
+        				</div>
+		            </div>
 			  </div>
-			  </div>
-              <a href="#load_more">Load more (192)</a> Each load 20
+              <div style="margin: 0 0 10px 25px;"> <a href="#load_more">Load more (192)</a> Each loads 20 </div>
 			</div>
 		</div>
 
 
-        <div class="span3">
 
-        </div>
 
-	</div>
-</div>
 
 <script type="text/javascript">
 		$(document).ready(function(){
