@@ -173,27 +173,25 @@
 
                             <a style='color: #369;font-weight: bold;' href='#'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
                             &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' class='hide_rply' href='<?php echo base_url('comments/view').'/'.".$row['id']."'> ".$row['comments']." replies </a>)</small></span>
+								(<a style='color: gray;' class='hide_rply' href='".base_url('comments/view')."/".$row['id']."'> ".$row['comments']." replies </a>)</small></span>
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
                             <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>
 
-                            <span >".$row['content']."</span>
+                            <span>".$row['content']."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
 						</div>
 
 						<div class='hide_function' style='margin-bottom:8px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>{reply}</small></a><!--&nbsp;&nbsp;
-								<small><a href='javascript:void(0)' id='".$row['id']."' onclick='show_reply(this)'>Show comments</a></small>-->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favorite&#9733;</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>report&#9873;</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply&#9889;</small></a>
 							</div>
 						</div>
 					</div>
 
 				</div>
 
-				<?php endforeach?>
 				</div>
 				<!--One reply from the reply tree of this post-->";
 

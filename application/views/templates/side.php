@@ -40,7 +40,6 @@
         });
     });
     function first_of_all_login() {
-        console.log("HURRAY");
         if (!<?php echo $is_user_logged_in;?>) {
             $('#myModal').modal('toggle');
         }

@@ -290,7 +290,6 @@
     }
 	function cancel_share(obj){
 
-		console.log("HURRAY");
 		$(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("share");
 		$(obj).parent().parent().parent().parent().remove().parent().remove();
     }

@@ -102,6 +102,7 @@
 	            if ($this->data['is_user_logged_in']) {
 		            if($this->link_model->insert_reply()) {
 						$this->link_model->increase_comments();
+						$this->link_model->increase_rply_comments();
 		                echo 1;
 		            } else {
 						echo "Operation was not succesful. Please try again.";

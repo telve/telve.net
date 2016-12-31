@@ -108,48 +108,39 @@
                         console.log(xhr.responseText);
                     },
                     success: function(data){
-                        console.log(data);
+
                         if (data == 1) {
-                            update_reply = "<div class='row-fluid'>"+
-
-    					"<div class='span12'>"+
-    						"<style>"+
-
-                                "/*#minus { color:#369;font-size:16px;}"+
-
-                                "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
-
-                            "</style>"+
-
-    						"<div id='switch'>"+
-    							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
-
-    							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
-
-                                "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
-                                "&nbsp;"+
-    								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
-    						"</div>"+
-
-    						"<div class='hide_content'>"+
-                                "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
-
-                                "&nbsp;<span>"+content+"</span>"+
-                                "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
-    						"</div>"+
-
-    						"<div class='hide_function'>"+
-    							"<div>"+
-    								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
-    								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
-    							"</div>"+
-
-                                "<!--Draw a dividing line-->"+
-    				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
-    						"</div>"+
-    					"</div>"+
-
-    				"</div>";
+                            $("#content").val('');
+                            update_reply = "<!--One reply from the reply tree of this post-->\
+                            <div>\
+            				<div class='row-fluid' style='font-weight: bold;'>\
+            \
+            					<div class='span12'>\
+            						<style>\
+            \
+                                    </style>\
+            \
+            						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
+            \
+            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+            \
+                                        <a style='color: #369;font-weight: bold;' href='#'><?php echo $link_item['username'];?></a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                        &nbsp;<span style='color: gray;'>\
+            								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
+            						</div>\
+            \
+            						<div class='hide_content' style='margin-bottom:6px;'>\
+            \
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + content + "</span>\
+                                        <!--<input type='hidden' class='show' value='0'/>-->\
+            						</div>\
+            \
+            					</div>\
+            \
+            				</div>\
+            \
+            				</div>\
+            				<!--One reply from the reply tree of this post-->";
                             $("#update_reply").html(update_reply);
                         } else {
                             alert(data);
@@ -297,48 +288,40 @@
                         console.log(xhr.responseText);
                     },
                     success:function(data){
-                        console.log(data);
+
                         if (data == 1) {
 
-                            update_reply = "<ul style='list-style-type:none'><li><!--Draw a dividing line-->"+
-    				            "<div style='border-top:dashed 8px #fff;width:100%;'> </div>"+
-    							"<div class='row-fluid'>"+
-
-    					"<div class='span12'>"+
-    						"<style>"+
-
-                                "/*#minus { color:#369;font-size:16px;}"+
-
-                                "#switch a:hover{ color:#fff;background:#369;text-decoration: none;}*/"+
-
-                            "</style>"+
-
-    						"<div id='switch'>"+
-    							"<a class='hide_up' href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_up(this)'><i class='icon-thumbs-up'></i></a>"+
-
-    							"&nbsp;<a id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[-]</a>&nbsp;<small>"+
-
-                                "<a href='#'><?php //echo $reply_item['username']?></a>&nbsp;&nbsp;<span id='show-<?php //echo $reply_item['id'];?>'><?php //echo $reply_item['score'];?></span>points&nbsp;&nbsp;published on <?php //formatTime($reply_item['created']);?>"+
-                                "&nbsp;"+
-    								"(<a class='hide_rply' href='<?php //echo base_url('comments/view').'/'.$reply_item['id']?>'> <?php //echo $reply_item['comments']?> reply</a>)</small>"+
-    						"</div>"+
-
-    						"<div class='hide_content'>"+
-                                "<a href='javascript:void(0)' id='<?php //echo $reply_item['id'];?>' onclick='rply_down(this)'><i class='icon-thumbs-down'></i></a>"+
-
-                                "&nbsp;<span>"+content+"</span>"+
-                                "<!--<input type='hidden' class='show' value='<?php //echo $reply_item['id']?>'/>-->"+
-    						"</div>"+
-
-    						"<div class='hide_function'>"+
-    							"<div>"+
-    								"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a href='#'>collection</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#'>report</a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a href='javascript:void(0)' onclick='set_reply(this)' id='<?php //echo $reply_item['id']?>'><small>{reply}</small></a><!--&nbsp;&nbsp;"+
-    								"<small><a href='javascript:void(0)' id='<?php //echo $reply_item['id']?>' onclick='show_reply(this)'>show comments</a></small>-->"+
-    							"</div>"+
-    						"</div>"+
-    					"</div>"+
-
-    				"</div></li></ul>";
+                            update_reply = "<!--One reply from the reply tree of this post-->\
+                            <ul style='list-style-type:none'><li><!--Draw a dividing line-->\
+    				            <div style='border-top:dashed 8px #fff;width:100%;'> </div>\
+            				<div class='row-fluid'>\
+            \
+            					<div class='span12'>\
+            						<style>\
+            \
+                                    </style>\
+            \
+            						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
+            \
+            							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+            \
+                                        <a style='color: #369;font-weight: bold;' href='#'><?php echo $link_item['username'];?></a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                        &nbsp;<span style='color: gray;'>\
+            								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
+            						</div>\
+            \
+            						<div class='hide_content' style='margin-bottom:6px;'>\
+            \
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + content + "</span>\
+                                        <!--<input type='hidden' class='show' value='0'/>-->\
+            						</div>\
+            \
+            					</div>\
+            \
+            				</div>\
+            \
+            				</div></li></ul>\
+            				<!--One reply from the reply tree of this post-->";
                             $(obj).parent().after(update_reply);
                             $(obj).parent().hide();
                         } else {
