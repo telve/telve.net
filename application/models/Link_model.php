@@ -138,6 +138,9 @@
 
 			$this->db->select('id,comments,content,uid,score, created');
 			$this->db->where('pid',$pid);
+			if (!$this->input->get('nolimit')) {
+				$this->db->limit(20);
+			}
 			$query = $this->db->get('reply');
 
 			if ($query->num_rows() == 0) return;

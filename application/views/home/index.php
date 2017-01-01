@@ -123,6 +123,9 @@
 
         <?php
 		$item_counter = 0;
+		if (count($link) == 0) {
+			echo '<br><br><h2 style="margin-left: 50px;">No posts were found</h2>';
+		}
 		foreach($link as $link_item):
 		$item_counter += 1;
 		$currentPage = floor(($this->uri->segment(3)/$per_page) + 1);

@@ -30,7 +30,7 @@
 					</div>
 
 
-                    <div><!--span10 pull-left-->
+                    <div style="margin-left: 120px;"><!--span10 pull-left-->
                         <?php if (empty($link_item['url'])) { ?>
                             <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
                         <?php } else { ?>
@@ -57,7 +57,16 @@
 			<!-- Comments block -->
     		<div>
                 <!-- Horizontal dashed dotted line and submit text box -->
-                Top 200 comments  <small><a href="javascript:void(0)">display all 336</a></small>
+                <?php
+                if($link_item['comments'] == 0) {
+                    echo 'No comments (yet)';
+                } else if ( ($link_item['comments'] < 20) || $this->input->get('nolimit') ) {
+                    echo 'all '.$link_item['comments'].' comments';
+                } else {
+                    echo 'Top 20 comments';
+                    echo '&nbsp; &nbsp;<small><a href="'.base_url("comments/view").'/'.$link_item['id'].'/?nolimit=1">display all '.$link_item['comments'].'</a></small>';
+                }
+                ?>
                 <div>
                     <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
                     <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small>
@@ -79,7 +88,7 @@
         				</div>
 		            </div>
 			  </div>
-              <div style="margin: 0 0 10px 25px;"> <a href="#load_more">Load more (192)</a> Each loads 20 </div>
+              <!-- <div style="margin: 0 0 10px 25px;"> <a href="#load_more">Load more (192)</a> Each loads 20 </div> -->
 			</div>
 		</div>
 
