@@ -22,7 +22,7 @@
 					<div class="picontainer">
 						<div class="middle">
                             <?php if (empty($link_item['url'])) { ?>
-                            	<a href="<?php echo base_url("comments/view")."/".$link_item['id'];?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" /></a>
+                            	<a href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" /></a>
     						<?php } else { ?>
     							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" /></a>
     						<?php }?>
@@ -32,7 +32,7 @@
 
                     <div style="margin-left: 120px;"><!--span10 pull-left-->
                         <?php if (empty($link_item['url'])) { ?>
-                            <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
+                            <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
                         <?php } else { ?>
                             <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                         <?php }?>
@@ -44,7 +44,7 @@
                         </div>
 						<div>
 							<div><strong>
-								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("comments/view")."/".$link_item['id']?>"><?php echo $link_item['comments']?> comments</a>
+								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><?php echo $link_item['comments']?> comments</a>
 								&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">share&#9974;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">favorite&#9733;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide&#9737;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">report&#9873;</a>
 							</div></strong>
 						</div>
@@ -58,18 +58,40 @@
     		<div>
                 <!-- Horizontal dashed dotted line and submit text box -->
                 <?php
+                $this->load->helper('get_param');
                 if($link_item['comments'] == 0) {
                     echo 'No comments (yet)';
                 } else if ( ($link_item['comments'] < 20) || $this->input->get('nolimit') ) {
                     echo 'all '.$link_item['comments'].' comments';
                 } else {
                     echo 'Top 20 comments';
-                    echo '&nbsp; &nbsp;<small><a href="'.base_url("comments/view").'/'.$link_item['id'].'/?nolimit=1">display all '.$link_item['comments'].'</a></small>';
+                    echo '&nbsp; &nbsp;<small><a href="'.append_get_param('nolimit=1').'">display all '.$link_item['comments'].'</a></small>';
                 }
                 ?>
                 <div>
                     <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
-                    <div><small style="color:#888;">Sorting: <a href="javascript:void(0)">the best</a> (drop-down selection)</small>
+                    <div><small style="color:#888;">
+                        <div class="dropdown">
+                            sorting:
+                            <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+                                <?php
+                                if ($this->input->get('sort')) {
+                                    echo $this->input->get('sort');
+                                } else {
+                                    echo "hot";
+                                }
+                                ?>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                <li><a tabindex="-1" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>">hot</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=top'); ?>">top</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=new'); ?>">new</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=controversial'); ?>">controversial</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=old'); ?>">old</a></li>
+                            </ul>
+                        </div>
+                    </small>
                         <div>
                             <br>
                             <textarea rows="4" class="span6" name="content" id="content" onfocus="first_of_all_login()"/></textarea><br />

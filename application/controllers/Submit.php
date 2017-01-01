@@ -33,7 +33,7 @@
 				} else {
 
 	                $insert_id = $this->link_model->insert_link();
-					redirect('comments/view/'.$insert_id);
+					redirect('comments/view/'.$insert_id.'/');
 
 				}
 
