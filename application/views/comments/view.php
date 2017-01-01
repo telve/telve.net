@@ -39,10 +39,13 @@
 						<div>
 							<small style="color:#888;">submitted <?php formatTime($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
 						</div>
+                        <div>
+                            <?php echo $link_item['text'];?>
+                        </div>
 						<div>
 							<div><strong>
 								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("comments/view")."/".$link_item['id']?>"><?php echo $link_item['comments']?> comments</a>
-								&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">share it</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">collection</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">report</a>
+								&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">share&#9974;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">favorite&#9733;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide&#9737;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">report&#9873;</a>
 							</div></strong>
 						</div>
                     </div>

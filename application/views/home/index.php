@@ -121,7 +121,13 @@
             div.middle {/*background-color:#369;height:80px;width:80px;*/float:left;text-align:center;}/*Adaptive picture size*/
         </style>
 
-        <?php foreach($link as $link_item):?>
+        <?php
+		$item_counter = 0;
+		foreach($link as $link_item):
+		$item_counter += 1;
+		$currentPage = floor(($this->uri->segment(3)/$per_page) + 1);
+		$rank = ($currentPage - 1) * 10 + $item_counter;
+		?>
 
 
             <div class="row-fluid">
@@ -134,7 +140,7 @@
                             <div class="row-fluid">
                                 <div class="rank">
                                 <div>  </div>
-                                <div style="color: #c6c6c6;font-size: medium;text-align: right;margin-right:10px;">  <br /><?php echo $link_item['rank']?></div>
+                                <div style="color: #c6c6c6;font-size: medium;text-align: right;margin-right:10px;">  <br /><?php echo $rank;?></div>
                                 <div>  </div>
                                 </div>
                                 <div class="digg">

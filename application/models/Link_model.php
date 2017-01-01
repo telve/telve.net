@@ -14,12 +14,12 @@
 			if($id === FALSE)
             {
                 /*
-                $sql = "SELECT rank,score,link.id,title,url,link.created,username,category,comments FROM link, user WHERE link.uid = user.id LIMIT ".$rows.",".$rows;
+                $sql = "SELECT score,link.id,title,url,link.created,username,category,comments FROM link, user WHERE link.uid = user.id LIMIT ".$rows.",".$rows;
                 $query = $this->db->query($sql);
                 $query = $this->db->get('link',$rows,$offset);
                 */
 
-                $this->db->select('rank,score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
+                $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
                 $this->db->limit($rows,$offset);
@@ -28,7 +28,7 @@
                 return $query->result_array();
             }
 
-            $this->db->select('rank,score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
+            $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
@@ -222,7 +222,6 @@
                 'uid' => $row['id'], //User's ID
                 'created' => time(),
 				'score' => 0,
-				'rank' => 0,
 				'comments' => 0
 			);
 

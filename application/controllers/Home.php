@@ -23,6 +23,7 @@
             $config['first_link'] = FALSE; //The start link is not displayed
             $config['last_link'] = FALSE;
             $this->pagination->initialize($config);
+			$this->data['per_page'] = $config['per_page'];
 
             $this->data['title'] = 'Home';
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
@@ -40,7 +41,7 @@
 					<li><a href="#">Test</a></li>
 					<li><a href="#">Create</a></li>
 					<li><a href="#">Find</a></li>
-					<li><a href="#">My Collection</a></li>
+					<li><a href="#">My Favorites</a></li>
 				  </ul>
 				</div>';
 			} else {
