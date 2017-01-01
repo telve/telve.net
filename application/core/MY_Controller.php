@@ -34,12 +34,7 @@
 				$this->data['is_user_logged_in'] = 0;
 			}
 
-			$CI =& get_instance();
-			$url = $CI->config->site_url($CI->uri->uri_string());
-			$this->data['current_full_url'] = $_SERVER['QUERY_STRING'] ? $url.'/?'.$_SERVER['QUERY_STRING'] : $url;
-
 		}
-
 
 	}
 

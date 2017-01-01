@@ -1,11 +1,11 @@
 <?php
-	require "formatTimeReturn.php";
 
 	class Link_model extends CI_Model{
 
 		public function __construct()
 		{
 			$this->load->database();
+			$this->load->helper('human_timing');
 		}
 
 		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL) //By default, all states are returned
@@ -141,6 +141,19 @@
 			if (!$this->input->get('nolimit')) {
 				$this->db->limit(20);
 			}
+			if ($this->input->get('sort') == 'top') {
+				$this->db->order_by("score", "desc");
+			} else if ($this->input->get('sort') == 'new') {
+				$this->db->order_by("created", "desc");
+			} else if ($this->input->get('sort') == 'controversial') {
+				$this->db->order_by("comments", "desc");
+			} else if ($this->input->get('sort') == 'old') {
+				$this->db->order_by("created", "asc");
+			} else {
+				//$this->db->where('created >= DATE_SUB(NOW(),INTERVAL 1 HOUR)'); //https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
+				$this->db->order_by("(.8 * score) + (.2 * created) DESC");
+				//echo $this->db->last_query();
+			}
 			$query = $this->db->get('reply');
 
 			if ($query->num_rows() == 0) return;
@@ -156,7 +169,7 @@
 				$this->db->where('id',$row['uid']);
 				$query = $this->db->get('user');
 				$username = $query->row_array()['username'];
-				$ago = formatTimeReturn($row['created']);
+				$ago = human_timing($row['created']);
 
 				$res.='<li>';
 
@@ -223,7 +236,6 @@
                 'domain' => $parse['host'],
                 'category' => $this->input->post('category'),
                 'uid' => $row['id'], //User's ID
-                'created' => time(),
 				'score' => 0,
 				'comments' => 0
 			);
@@ -245,7 +257,6 @@
 				'pid' => $this->input->post('pid'),
                 'uid' => $row['id'],
                 'rank' => 0,
-                'created' => time(),
 				'score' => 0,
 				'comments' => 0
 			);

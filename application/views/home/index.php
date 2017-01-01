@@ -1,4 +1,4 @@
-<?php require "formatTime.php";?><!--Format the time-->
+<?php $this->load->helper('human_timing'); ?><!--Format the time-->
 
 <style type="text/css">
 	#right-content {
@@ -173,7 +173,7 @@
 									<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
 								<?php }?>
                                 <div>&nbsp;
-                                    <small style="color:#888;">submitted <?php formatTime($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
+                                    <small style="color:#888;">submitted <?php echo human_timing($link_item['created']);?>&nbsp;&nbsp;by：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;&nbsp;to：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
                                 </div>
                                 <div>
                                     <div>&nbsp;
