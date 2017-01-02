@@ -30,7 +30,7 @@
 				$this->user_model->insert_user();
 
         		//$this->load->view('templates/header',$this->data);
-				//$this->load->view('hot/index',$this->data);
+				//$this->load->view('link/index',$this->data);
 				//$this->load->view('templates/footer');
 
         		redirect(''); //default: hot/index

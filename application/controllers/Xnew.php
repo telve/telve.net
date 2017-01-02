@@ -52,7 +52,7 @@
 			}
 
 			$this->load->view('templates/header',$this->data);
-			$this->load->view('hot/index',$this->data);
+			$this->load->view('link/index',$this->data);
 			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
