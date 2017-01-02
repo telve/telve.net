@@ -8,7 +8,7 @@
 			$this->load->helper('human_timing');
 		}
 
-		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL) //By default, all states are returned
+		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL,$sort) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -23,6 +23,17 @@
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
                 $this->db->limit($rows,$offset);
+				if ($sort == 'new') {
+					$this->db->order_by("created", "desc");
+				} else if ($sort == 'rising') {
+					$this->db->order_by("(200 * score) + (.1 * link.created) + (60 * comments) DESC");
+				} else if ($sort == 'controversial') {
+					$this->db->order_by("comments", "desc");
+				} else if ($sort == 'top') {
+					$this->db->order_by("score", "desc");
+				} else if ($sort == 'hot') {
+					$this->db->order_by("(400 * score) + (.1 * link.created) + (120 * comments) DESC");
+				}
                 $query = $this->db->get();
 
                 return $query->result_array();
@@ -151,7 +162,7 @@
 				$this->db->order_by("created", "asc");
 			} else {
 				//$this->db->where('created >= DATE_SUB(NOW(),INTERVAL 1 HOUR)'); //https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
-				$this->db->order_by("(.8 * score) + (.2 * created) DESC");
+				$this->db->order_by("(8 * score) + (.1 * created) + (6 * comments) DESC");
 				//echo $this->db->last_query();
 			}
 			$query = $this->db->get('reply');

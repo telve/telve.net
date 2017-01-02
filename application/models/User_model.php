@@ -6,7 +6,7 @@
 			$this->load->database();
 		}
 
-		private $salt = 'home';
+		private $salt = 'AtF)b6!F-fCcqJKpnPIe1&Wi)phb!zGkR$xkHQ6A';
 
         private $expire = 864000; //10 days
 
@@ -56,7 +56,7 @@
                 return $this->db->insert('user',$data);
                 //$this->add_user_session($username,$password,$remember);
                 return '<p>The registration is successful</p>';
-                //redirect('home');
+                //redirect('hot');
             }
 		}
 		public function check_username()

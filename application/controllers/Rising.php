@@ -1,5 +1,5 @@
 <?php
-	class Rising extends CI_Controller{
+	class Rising extends MY_Controller {
 
 		public function __construct()
 		{
@@ -16,75 +16,46 @@
             $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
-            $config['prev_link'] = '上一页';
-            $config['next_link'] = '下一页';
+            $config['prev_link'] = 'Previous page';
+            $config['next_link'] = 'Next page';
             $config['full_tag_close'] = '</p>';
-            $config['display_pages'] = FALSE; // 不显示“数字”链接
-            $config['first_link'] = FALSE;// 不显示起始链接
+            $config['display_pages'] = FALSE; //The "number" link is not displayed
+            $config['first_link'] = FALSE; //The start link is not displayed
             $config['last_link'] = FALSE;
+			$config['next_tag_open'] = '<span style="float:right;">';
+			$config['next_tag_close'] = "</span>";
             $this->pagination->initialize($config);
+			$this->data['per_page'] = $config['per_page'];
 
-            $data['title'] = '首页';
-            $data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3));
+            $this->data['title'] = 'Hot';
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3),'rising');
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
-				$data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='链接积分'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>偏好</a></strong> | <a href='".base_url('user/logout')."'>退出</a> </div><br />";
-
-				$data['login_form'] = "";//不显示登录表单
-			}else{
-				$data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>想要加入？马上</span> 注册或登录 <span style='color:gray;'>只需几秒</span></a>";
-				$data['login_form'] = "
-					<table class='table table-bordered'>
-						<tr><td>
-							".form_open('user/login')."
-							<input type='text' class='span6' name='username' placeholder='用户名'>
-							<input type='password' class='span6 pull-right' name='password' placeholder='密码'>
-							<br><br>
-							<label class='checkbox span4'>
-							<input type='checkbox'>记住我
-							</label>
-
-							<a class='checkbox' href='/password'>忘记密码?</a>
-							<button type='submit' class='btn pull-right'>登录</button>
-							</form>
-						</tr></td>
-					</table>
-
-				";
+				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
+					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="折叠">X</a>
+					<a class="show-sidebar" href="javascript:void(0)" title="展开" ><</a>
+				</div>';
+				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
+				  <ul style="list-style-type:none">
+				    <li><a href="#">Subscribe</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Images</a></li>
+					<li><a href="#">Test</a></li>
+					<li><a href="#">Create</a></li>
+					<li><a href="#">Find</a></li>
+					<li><a href="#">My Favorites</a></li>
+				  </ul>
+				</div>';
+			} else {
+				$this->data['toggle_sidebar'] = '';
+				$this->data['sidebar'] = '';
 			}
 
-
-			$this->load->view('templates/header',$data);
-			$this->load->view('rising/index',$data);
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('hot/index',$this->data);
+			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
 
-
-
-        public function reply()
-        {
-            $this->load->helper(array('form','url')); //加载表单辅助函数和URL辅助函数
-			$this->load->library('form_validation');
-
-            $data['title'] = "首页";
-
-			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
-            $this->form_validation->set_rules('sid','Sid','required'); //必须要设置规则才能提交该值
-
-            if($this->form_validation->run()===FALSE)
-			{
-				$this->load->view('templates/header',$data);
-				$this->load->view('submit/success'); //
-				$this->load->view('templates/footer');
-			}
-			else
-			{
-				$this->link_model->insert_reply();
-				$this->load->view('templates/header',$data);
-				$this->load->view('submit/success');
-				$this->load->view('templates/footer');
-			}
-        }
 	}
-
 ?>
