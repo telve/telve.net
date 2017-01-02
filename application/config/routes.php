@@ -44,5 +44,7 @@ $route['404_override'] = '';
 $route['new'] = 'xnew';
 $route['new/index/(:any)'] = 'xnew';
 
+$route['t/(:any)'] = 'topic';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
