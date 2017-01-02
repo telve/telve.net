@@ -61,7 +61,7 @@
                             <div class="span8">
                                 <div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                                 <div>&nbsp;
-                                    <small style="color:#888;">发布于 <?php formatTime($link_item['created']);?>&nbsp;&nbsp;发布者：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;&nbsp;分类：<a style="color: #369;" href="#"><?php echo $link_item['category']?></a></small>
+                                    <small style="color:#888;">发布于 <?php formatTime($link_item['created']);?>&nbsp;&nbsp;发布者：<a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;&nbsp;分类：<a style="color: #369;" href="#"><?php echo $link_item['topic']?></a></small>
                                 </div>
                                 <div>
                                     <div>&nbsp;

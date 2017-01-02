@@ -34,6 +34,9 @@
 				$this->data['is_user_logged_in'] = 0;
 			}
 
+			$this->load->model('link_model');
+			$this->data['topics'] = $this->link_model->retrieve_topics();
+
 		}
 
 	}

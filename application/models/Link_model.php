@@ -8,18 +8,18 @@
 			$this->load->helper('human_timing');
 		}
 
-		public function retrieve_link($id = FALSE,$rows = NULL,$offset=NULL,$sort) //By default, all states are returned
+		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
             {
                 /*
-                $sql = "SELECT score,link.id,title,url,link.created,username,category,comments FROM link, user WHERE link.uid = user.id LIMIT ".$rows.",".$rows;
+                $sql = "SELECT score,link.id,title,url,link.created,username,topic,comments FROM link, user WHERE link.uid = user.id LIMIT ".$rows.",".$rows;
                 $query = $this->db->query($sql);
                 $query = $this->db->get('link',$rows,$offset);
                 */
 
-                $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
+                $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
                 $this->db->limit($rows,$offset);
@@ -39,7 +39,7 @@
                 return $query->result_array();
             }
 
-            $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,category,comments');
+            $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
@@ -245,7 +245,7 @@
 				'text' => $this->input->post('text'),
 				'picurl' => $this->find_largest_image($url),
                 'domain' => $parse['host'],
-                'category' => $this->input->post('category'),
+                'topic' => $this->input->post('topic'),
                 'uid' => $row['id'], //User's ID
 				'score' => 0,
 				'comments' => 0
@@ -354,6 +354,15 @@
 			}
 			return $biggest_img; //return the biggest found image
 			//return implode(" | ", $visited);
+		}
+
+		public function retrieve_topics() {
+			$this->db->select('topic, COUNT(*) as topic_occurrence');
+			$this->db->from('link');
+			$this->db->group_by('topic');
+			$this->db->order_by('topic_occurrence','desc');
+			$query = $this->db->get();
+			return $query->result_array();
 		}
 
 	}

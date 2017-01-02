@@ -36,18 +36,18 @@
                     </td></tr></table>
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
-                    <label for="category">Choose a category</label>
-                    <input type="text" class="span12 category" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
-                    <div style="color:red"><?php echo form_error('category');?></div>
+                    <label for="topic">Choose a topic</label>
+                    <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="the topic of the link..."/><br />
+                    <div style="color:red"><?php echo form_error('topic');?></div>
                         <!--Show popular categories-->
-                        <a href="javascript:void(0)" onclick="set_category(this)">PICS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">FUNNY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">GAME</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">ASKTELVE</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">WORLDNEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">NEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">EDUCATION</a>
+                        <a href="javascript:void(0)" onclick="set_topic(this)">PICS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">FUNNY</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">GAME</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">ASKTELVE</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">WORLDNEWS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">NEWS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">EDUCATION</a>
                     </td></tr></table>
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
@@ -87,18 +87,18 @@
                     </td></tr></table>
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
-                    <label for="category">Choose a category</label>
-                    <input type="text" class="span12 category" id="category" value="<?php echo set_value('category');?>" name="category" placeholder="the category of the link..."/><br />
-                    <div style="color:red"><?php echo form_error('category');?></div>
+                    <label for="topic">Choose a topic</label>
+                    <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="the topic of the link..."/><br />
+                    <div style="color:red"><?php echo form_error('topic');?></div>
                         <!--Show popular categories-->
-                        <a href="javascript:void(0)" onclick="set_category(this)">PICS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">FUNNY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">GAME</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">ASKTELVE</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">WORLDNEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">NEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_category(this)">EDUCATION</a>
+                        <a href="javascript:void(0)" onclick="set_topic(this)">PICS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">FUNNY</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">GAME</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">ASKTELVE</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">WORLDNEWS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">NEWS</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
+      					<a href="javascript:void(0)" onclick="set_topic(this)">EDUCATION</a>
                     </td></tr></table>
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
@@ -128,8 +128,8 @@
 
 
 <script type="text/javascript">
-    function set_category(obj) { //Function name can not be category, with the previous id, class conflict
-        $(".category").val(obj.text)
+    function set_topic(obj) { //Function name can not be topic, with the previous id, class conflict
+        $(".topic").val(obj.text)
     }
 
     $("#get_title").click(function(){

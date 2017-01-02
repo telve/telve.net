@@ -35,26 +35,12 @@
                            </ul>
                            &nbsp;&nbsp;
                            <a style="color:red;" href="<?php echo base_url('');?>">Front</a> -
-                           <a href="#">All</a> -
-                           <a href="#">Random</a> |
-                           <a href="<?php echo base_url('imgur');?>">Pics</a> -
-                           <a href="#">Funny</a> -
-                           <a href="#">Game</a> -
-                           <a href="#">AskTelve</a> -
-                           <a href="#">WorldNews</a> -
-                           <a href="#">News</a> -
-                           <a href="#">Science and Technology</a> -
-                           <a href="#">Education</a> -
-                           <a href="#">Music</a> -
-                           <a href="#">Movies</a> -
-                           <a href="#">Gifs</a> -
-                           <a href="#">Popular</a> -
-                           <a href="#">Art</a> -
-                           <a href="#">Books</a> -
-                           <a href="#">Literature</a> -
-                           <a href="#">Finance and Economics</a> -
+                           <a href="<?php echo base_url('').'t/ALL/';?>">All</a> -
+                           <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
+                           <?php foreach($topics as $topic): ?>
+                               <a href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
+                           <?php endforeach ?>
                            <a href="#">More>></a>
-
                 </ul>
             </div>
         </div>
