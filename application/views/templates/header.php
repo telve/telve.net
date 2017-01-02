@@ -21,10 +21,10 @@
     </head>
 
     <body>
-	       <div class=".navbar-inverse" style="background-color: #f0f0f0;text-transform: uppercase;border-bottom: 1px solid gray;height: 20px;line-height: 18px;"><!--navbar navbar-fixed-top-->
+	       <div class=".navbar-inverse" style="background-color: #f0f0f0;text-transform: uppercase;border-bottom: 1px solid gray;height: 20px;line-height: 18px; overflow: hidden;"><!--navbar navbar-fixed-top-->
                <div>
                    <ul>
-                       <div class="dropdown">
+                       <div class="dropdown" style="width: 90%;">
                            <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">My Subscriptions<b class="caret"></b></a>
                            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Science and Technology</a></li>
@@ -40,7 +40,9 @@
                            <?php foreach($topics as $topic): ?>
                                <a href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
                            <?php endforeach ?>
-                           <a href="#">More>></a>
+
+                       </div>
+                       <a href="#" style="float: right; position: absolute; top: 0px; right: 10px;">More >></a>
                 </ul>
             </div>
         </div>

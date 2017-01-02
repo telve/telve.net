@@ -2,3 +2,13 @@
     background-color:#5f99cf;
     color:#fff;
 }
+
+.nav-tabs > li > a, .nav-pills > li > a {
+    margin: 50px 6px 1px 0;
+}
+
+.nav-tabs > li > a {
+    -webkit-border-radius: 0 0 0 0;
+    -moz-border-radius: 0 0 0 0;
+    border-radius: 0 0 0 0;
+}
