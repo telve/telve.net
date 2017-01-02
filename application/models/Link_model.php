@@ -8,7 +8,7 @@
 			$this->load->helper('human_timing');
 		}
 
-		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL) //By default, all states are returned
+		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -33,6 +33,9 @@
 					$this->db->order_by("score", "desc");
 				} else if ($sort == 'hot') {
 					$this->db->order_by("(400 * score) + (.1 * link.created) + (120 * comments) DESC");
+				}
+				if ($topic) {
+					$this->db->where('topic',$topic);
 				}
                 $query = $this->db->get();
 
@@ -239,13 +242,15 @@
             $url = $this->input->post('url');
 			$parse = parse_url($url);
 
+			$topic = str_replace(' ', '', $this->input->post('topic'));
+
             $data = array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
 				'text' => $this->input->post('text'),
 				'picurl' => $this->find_largest_image($url),
                 'domain' => $parse['host'],
-                'topic' => $this->input->post('topic'),
+                'topic' => strtoupper($topic),
                 'uid' => $row['id'], //User's ID
 				'score' => 0,
 				'comments' => 0
