@@ -22,9 +22,9 @@
 					<div class="picontainer">
 						<div class="middle">
                             <?php if (empty($link_item['url'])) { ?>
-                            	<a href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" /></a>
+                            	<a href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" style="max-height: 70px;"/></a>
     						<?php } else { ?>
-    							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" /></a>
+    							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" style="max-height: 70px;"/></a>
     						<?php }?>
 						</div>
 					</div>

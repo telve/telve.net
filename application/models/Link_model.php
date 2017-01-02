@@ -83,9 +83,9 @@
 
         public function retrieve_reply_by_id($id)
         {
-            //SELECT rank,score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id
+            //SELECT score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id
 
-            $this->db->select('rank,score,comments,reply.id,content,reply.created,username');
+            $this->db->select('score,comments,reply.id,content,reply.created,username');
             $this->db->from('reply');
             $this->db->where('pid',$id);
             $this->db->join('user','reply.uid = user.id');
@@ -256,7 +256,6 @@
 				'content' => $this->input->post('content'),
 				'pid' => $this->input->post('pid'),
                 'uid' => $row['id'],
-                'rank' => 0,
 				'score' => 0,
 				'comments' => 0
 			);

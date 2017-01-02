@@ -78,7 +78,7 @@
 
             $this->data['title'] = "Reply";
 
-			$this->form_validation->set_rules('content','Content','trim|required|max_length[228]');
+			$this->form_validation->set_rules('content','Content','trim|required|max_length[10000]');
             $this->form_validation->set_rules('lid','Lid','required'); //You must set up a rule to submit the value
 
             if($this->form_validation->run() === FALSE)

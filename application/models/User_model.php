@@ -49,14 +49,13 @@
                     'username' => $username,
                     'email' => $this->input->post('email'),
                     'password' => md5($password),
-                    'credit' => 1,
-                    'created' => time()
+                    'karma' => 0
                 );
 
                 $this->session->set_userdata('username',$username);
                 return $this->db->insert('user',$data);
                 //$this->add_user_session($username,$password,$remember);
-                return '<p>注册成功</p>';
+                return '<p>The registration is successful</p>';
                 //redirect('home');
             }
 		}

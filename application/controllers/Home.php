@@ -141,7 +141,7 @@
 
             $this->data['title'] = "首页";
 
-			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[228]');
+			$this->form_validation->set_rules('content','Content','trim|required|min_length[5]|max_length[10000]');
             $this->form_validation->set_rules('sid','Sid','required'); //You must set up a rule to submit the value
 
             if($this->form_validation->run()===FALSE)

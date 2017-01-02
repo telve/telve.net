@@ -21,7 +21,7 @@
                 'linkid' => $id
 			);
 
-            return $this->db->insert('vote',$data);
+            return $this->db->insert('vote_link',$data);
         }
 
 		public function right_to_vote()
@@ -34,7 +34,7 @@
 
             $id = $this->input->post('id');
 
-			$this->db->from('vote');
+			$this->db->from('vote_link');
 			$this->db->where('uid',$row['id']);
 			$this->db->where('linkid',$id);
 
@@ -54,10 +54,10 @@
 
             $data = array(
                 'uid' => $row['id'],
-                'rply_id' => $id
+                'reply_id' => $id
 			);
 
-            return $this->db->insert('rply_vote',$data);
+            return $this->db->insert('vote_reply',$data);
         }
 
 		public function right_to_rply_vote()
@@ -70,9 +70,9 @@
 
             $id = $this->input->post('id');
 
-			$this->db->from('rply_vote');
+			$this->db->from('vote_reply');
 			$this->db->where('uid',$row['id']);
-			$this->db->where('rply_id',$id);
+			$this->db->where('reply_id',$id);
 
 			$query = $this->db->get();
             return $query->row_array();
