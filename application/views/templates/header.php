@@ -50,14 +50,15 @@
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
         <script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 
+        <?php //echo $base_url;?>
         <ul class="nav nav-tabs" style="background:#CEE3F8;">
             <li><a class="text-center" style="float:left;width:120px;" href="<?php echo base_url("");?>">front</a></li>
-            <li<?php if ( ($this->uri->segment(1) == 'hot') || !$this->uri->segment(1) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment(1) == 'hot') || !$this->uri->segment(1) ) echo 'style="color:red;"' ?> href="<?php echo base_url("");?>">hot</a></li>
-            <li<?php if ($this->uri->segment(1) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment(1) == 'new') echo 'style="color:red;"' ?> href="<?php echo base_url("new");?>">new</a></li>
-            <li<?php if ($this->uri->segment(1) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment(1) == 'rising') echo 'style="color:red;"' ?> href="<?php echo base_url("rising");?>">rising</a></li>
-            <li<?php if ($this->uri->segment(1) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment(1) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo base_url("controversial");?>">controversial</a></li>
-            <li<?php if ($this->uri->segment(1) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment(1) == 'top') echo 'style="color:red;"' ?> href="<?php echo base_url("top");?>">top</a></li>
-            <li<?php if ($this->uri->segment(1) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment(1) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki</a></li>
+            <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot</a></li>
+            <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new</a></li>
+            <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising</a></li>
+            <li<?php if ($this->uri->segment($sn) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo $base_url.'controversial/';?>">controversial</a></li>
+            <li<?php if ($this->uri->segment($sn) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'top') echo 'style="color:red;"' ?> href="<?php echo $base_url.'top/';?>">top</a></li>
+            <li<?php if ($this->uri->segment($sn) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki</a></li>
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
             <li style="float:right;width:300px;"><?php echo $login_info;?></a></li>
        </ul>

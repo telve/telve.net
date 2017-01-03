@@ -37,6 +37,9 @@
 			$this->load->model('link_model');
 			$this->data['topics'] = $this->link_model->retrieve_topics();
 
+			$this->data['base_url'] = base_url("");
+			$this->data['sn'] = 1;
+
 		}
 
 	}

@@ -45,6 +45,7 @@ $route['new'] = 'xnew';
 $route['new/index/(:any)'] = 'xnew';
 
 $route['t/(:any)'] = 'topic';
+$route['t/(:any)/(:any)'] = 'topic';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
