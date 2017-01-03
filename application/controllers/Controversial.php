@@ -10,6 +10,8 @@
 		public function index()
 		{
             $this->load->library('pagination');
+			$this->load->library('hashids');
+			$hashids = new Hashids();
 
             $config['base_url'] = base_url('controversial');
 
@@ -30,6 +32,11 @@
             $this->data['title'] = 'Hot';
 			$this->data['offset'] = $this->uri->segment(2);
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'controversial');
+
+			foreach ($this->data['link'] as &$link_item) {
+				$link_item['id'] = $hashids->encode($link_item['id']);
+			}
+			unset($link_item);
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">

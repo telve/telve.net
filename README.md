@@ -11,3 +11,8 @@ You can browse and submit links to content on the Internet or post your own orig
 Requires a LAMP stack with PHP version 5.3.10 (Ubuntu 12.04) because it's using CodeIgniter version 3.1.2 web framework.
 
 Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
+
+### Requirements
+
+* [Vesta CP](https://vestacp.com/#install)
+* Install PHP BC Math library: `sudo apt-get install php-bcmath`
