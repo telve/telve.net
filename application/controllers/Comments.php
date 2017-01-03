@@ -11,14 +11,6 @@
 
 		public function view($id)
 		{
-			$this->load->library('hashids');
-			$hashids = new Hashids();
-			$decoded_arr = $hashids->decode($id);
-			if(empty($decoded_arr)) {
-				show_404(); //The page does not exist
-			} else {
-				$id = $decoded_arr[0];
-			}
 
 			$this->data['link_item'] = $this->link_model->retrieve_link($id);
             $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);

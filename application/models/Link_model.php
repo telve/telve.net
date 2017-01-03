@@ -6,6 +6,8 @@
 		{
 			$this->load->database();
 			$this->load->helper('human_timing');
+			$this->load->library('hashids');
+			$this->hashids = new Hashids();
 		}
 
 		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL) //By default, all states are returned
@@ -39,15 +41,16 @@
 				}
                 $query = $this->db->get();
 
-                return $query->result_array();
+                return $this->hash_multirow($query->result_array());
             }
 
+			$id = $this->hashids->decode($id)[0];
             $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
             $this->db->where('link.id',$id);
             $query = $this->db->get();
-            return $query->row_array();
+            return $this->hash_row($query->row_array());
 		}
 
         public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL)
@@ -371,6 +374,19 @@
 			$this->db->order_by('topic_occurrence','desc');
 			$query = $this->db->get();
 			return $query->result_array();
+		}
+
+		private function hash_multirow($multirow) {
+			foreach ($multirow as &$row) {
+				$row['id'] = $this->hashids->encode($row['id']);
+			}
+			unset($row);
+			return $multirow;
+		}
+
+		private function hash_row($row) {
+			$row['id'] = $this->hashids->encode($row['id']);
+			return $row;
 		}
 
 	}

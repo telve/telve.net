@@ -10,8 +10,6 @@
 		public function index()
 		{
             $this->load->library('pagination');
-			$this->load->library('hashids');
-			$hashids = new Hashids();
 
 			$config['base_url'] = base_url('t/'.$this->uri->segment(2));
 			if ( !is_numeric($this->uri->segment(3)) && !empty($this->uri->segment(3)) ) {
@@ -55,11 +53,6 @@
             $this->data['title'] = $this->uri->segment(2);
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$this->uri->segment(2));
 			$this->data['sn'] = 3;
-
-			foreach ($this->data['link'] as &$link_item) {
-				$link_item['id'] = $hashids->encode($link_item['id']);
-			}
-			unset($link_item);
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
