@@ -11,11 +11,11 @@
 
 <?php foreach($status as $status_item):?>
     
-    &nbsp &nbsp &nbsp &nbsp<a href="#"><i class="icon-thumbs-up"></i></a><br />
+    &nbsp &nbsp &nbsp &nbsp<a href="#"><i class="icon-arrow-up"></i></a><br />
 
     <?php echo $status_item['rank']?> &nbsp <?php echo $status_item['score']?> &nbsp &nbsp<?php echo $status_item['content']?><br />
 
-    &nbsp &nbsp &nbsp &nbsp<a href="#"><i class="icon-thumbs-down"></i></a><br /><br />
+    &nbsp &nbsp &nbsp &nbsp<a href="#"><i class="icon-arrow-down"></i></a><br /><br />
     
     <i class="icon-time"></i>
     <?php 

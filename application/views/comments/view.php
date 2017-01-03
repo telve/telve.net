@@ -14,9 +14,9 @@
                     </style>
 
 					<div class="digg">
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);" class="login-required"><i class="icon-thumbs-up"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);" class="login-required"><i class="icon-arrow-up"></i></a></div>
 						<strong><div id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);" class="login-required"><i class="icon-thumbs-down"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);" class="login-required"><i class="icon-arrow-down"></i></a></div>
 					</div>
 
 					<div class="picontainer">
@@ -384,7 +384,7 @@
 		{
 			$(obj).text("[–]");
 			$(obj).parent().siblings(".hide_content").show().siblings(".hide_function").show();
-            $(obj).siblings(".hide_up").html("<i class='icon-thumbs-up'></i>");
+            $(obj).siblings(".hide_up").html("<i class='icon-arrow-up'></i>");
             $(obj).parent().parent().parent().parent().nextAll("ul").show('fast');
 		}
     }

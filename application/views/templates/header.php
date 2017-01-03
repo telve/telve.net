@@ -34,11 +34,11 @@
                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon-edit"></i> Edit the subscription</a></li>
                            </ul>
                            &nbsp;&nbsp;
-                           <a style="color:red;" href="<?php echo base_url('');?>">Front</a> -
-                           <a href="<?php echo base_url('').'t/ALL/';?>">All</a> -
+                           <a <?php if ('t' != $this->uri->segment(1)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
+                           <a <?php if ('ALL' == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/ALL/';?>">All</a> -
                            <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
                            <?php foreach($topics as $topic): ?>
-                               <a href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
+                               <a <?php if ($topic['topic'] == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
                            <?php endforeach ?>
 
                        </div>
@@ -53,7 +53,7 @@
         <?php //echo $base_url;?>
         <ul class="nav nav-tabs" style="background:#CEE3F8;">
             <li><a class="text-center" style="float:left;width:120px;" href="<?php echo base_url("");?>">front</a></li>
-            <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot</a></li>
+            <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot</a></li>
             <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new</a></li>
             <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising</a></li>
             <li<?php if ($this->uri->segment($sn) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo $base_url.'controversial/';?>">controversial</a></li>
