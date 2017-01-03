@@ -42,10 +42,16 @@ $route['default_controller'] = "hot";
 $route['404_override'] = '';
 
 $route['new'] = 'xnew';
-$route['new/index/(:any)'] = 'xnew';
 
 $route['t/(:any)'] = 'topic';
 $route['t/(:any)/(:any)'] = 'topic';
+$route['t/(:any)/(:any)/(:any)'] = 'topic';
+
+$route[':num'] = 'hot';
+$route['new/:num'] = 'xnew';
+$route['rising/:num'] = 'rising';
+$route['controversial/:num'] = 'controversial';
+$route['top/:num'] = 'top';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -11,7 +11,7 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('new/index');
+            $config['base_url'] = base_url('new');
 
             $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;
@@ -28,7 +28,8 @@
 			$this->data['per_page'] = $config['per_page'];
 
             $this->data['title'] = 'New';
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->uri->segment(3),'new');
+			$this->data['offset'] = $this->uri->segment(2);
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'new');
 
 			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">

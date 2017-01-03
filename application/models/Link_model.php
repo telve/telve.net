@@ -50,11 +50,14 @@
             return $query->row_array();
 		}
 
-        public function get_link_count($id = FALSE,$rows = NULL,$offset=NULL)
+        public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL)
 		{
 
 			if($id === FALSE)
             {
+				if ($topic) {
+					$this->db->where('topic',$topic);
+				}
                 $query = $this->db->get('link',$rows,$offset);
                 return $query->result_array(); //返回所有的状态
             }

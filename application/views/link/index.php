@@ -128,7 +128,7 @@
 		}
 		foreach($link as $link_item):
 		$item_counter += 1;
-		$currentPage = floor(($this->uri->segment(3)/$per_page) + 1);
+		$currentPage = floor(($offset/$per_page) + 1);
 		$rank = ($currentPage - 1) * 10 + $item_counter;
 		?>
 
