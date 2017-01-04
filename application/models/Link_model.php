@@ -62,49 +62,19 @@
 					$this->db->where('topic',$topic);
 				}
                 $query = $this->db->get('link',$rows,$offset);
-                return $query->result_array(); //返回所有的状态
+                return $this->hash_multirow($query->result_array());
             }
 
+			$id = $this->hashids->decode($id)[0];
             $query = $this->db->get_where('link',array('id' => $id )); //返回某一条状态
-            return $query->row_array();
+            return $this->hash_row($query->row_array());
 		}
-
-        public function retrieve_latest_links($id = FALSE,$rows = NULL,$offset=NULL)
-		{
-
-			if($id === FALSE)
-            {
-                $this->db->order_by('created','desc');
-                $query = $this->db->get('status',$rows,$offset);
-                return $query->result_array(); //返回所有的状态
-            }
-            $query = $this->db->get_where('status',array('id' => $id ));
-            return $query->row_array();
-		}
-
-        //rising
-        //controversial
-
-        public function retrieve_top_links($id = FALSE,$rows = NULL,$offset=NULL)
-		{
-
-			if($id === FALSE)
-            {
-                $this->db->order_by('score','desc');
-                $query = $this->db->get('status',$rows,$offset);
-                return $query->result_array(); //返回所有的状态
-            }
-            $query = $this->db->get_where('status',array('id' => $id ));
-            return $query->row_array();
-		}
-
-        //wiki
-
 
         public function retrieve_reply_by_id($id)
         {
             //SELECT score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id
 
+			$id = $this->hashids->decode($id)[0];
             $this->db->select('score,comments,reply.id,content,reply.created,username');
             $this->db->from('reply');
             $this->db->where('pid',$id);
@@ -114,14 +84,14 @@
 
 
             //$query = $this->db->get_where('reply',array('pid' => $id ));
-            return $query->result_array();
+            return $this->hash_multirow($query->result_array());
         }
 
 		public function retrieve_reply_tree_by_id($id)
 		{
 
-			$level=0;//深度
-            $res ="";
+			$level = 0; //depth
+            $res = "";
 			return $this->display_children($id,$level,$res);
 
 		}
@@ -155,7 +125,7 @@
 
 		private function display_children($pid,$level,&$res)
 		{
-
+			$pid = $this->hashids->decode($pid)[0];
 			$this->db->select('id,comments,content,uid,score, created');
 			$this->db->where('pid',$pid);
 			if (!$this->input->get('nolimit')) {
@@ -183,7 +153,7 @@
 			else
 				$res.='<ul style="list-style-type:none;margin-left:14px;padding-left: .8em;border-left: 1px dashed #ccc;">';
 
-            foreach ($query->result_array() as $row)
+            foreach ($this->hash_multirow($query->result_array()) as $row)
 			{
 				$this->db->select('username');
 				$this->db->where('id',$row['uid']);
@@ -263,7 +233,7 @@
 			);
 
 			$this->db->insert('link',$data);
-			return $this->db->insert_id();
+			return $this->hashids->encode($this->db->insert_id());
 		}
 
         public function insert_reply()
@@ -276,7 +246,7 @@
 
             $data = array(
 				'content' => $this->input->post('content'),
-				'pid' => $this->input->post('pid'),
+				'pid' => $this->hashids->decode($this->input->post('pid'))[0],
                 'uid' => $row['id'],
 				'score' => 0,
 				'comments' => 0
@@ -288,6 +258,7 @@
         public function up_score()
 		{
             $id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('score', 'score+1', FALSE);
 			$this->db->update('link');
@@ -296,6 +267,7 @@
 		public function down_score()
 		{
 			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('score', 'score-1', FALSE);
 			$this->db->update('link');
@@ -304,6 +276,7 @@
         public function rply_up_score()
 		{
 			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('score', 'score+1', FALSE);
 			$this->db->update('reply');
@@ -312,6 +285,7 @@
 		public function rply_down_score()
 		{
 			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('score', 'score-1', FALSE);
 			$this->db->update('reply');
@@ -320,6 +294,7 @@
         public function increase_comments()
 		{
             $id = $this->input->post('pid');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('comments', 'comments+1', FALSE);
 			$this->db->update('link');
@@ -328,6 +303,7 @@
 		public function increase_rply_comments()
 		{
             $id = $this->input->post('pid');
+			$id = $this->hashids->decode($id)[0];
             $this->db->where('id',$id);
 			$this->db->set('comments', 'comments+1', FALSE);
 			$this->db->update('reply');
