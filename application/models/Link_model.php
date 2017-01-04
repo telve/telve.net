@@ -322,9 +322,10 @@
 			$html = new Simple_html_dom();
 			$html->load_file($url);
 
-			$biggestImage = 'path to "no image found" image'; // Is returned when no images are found.
-			$maxSize = -1;
+			$biggestImage = ''; // Is returned when no images are found.
+			$maxSize = 0;
 			$visited = array();
+			$forOnce = '';
 			foreach($html->find('img') as $element) {
 			    $src = $element->src;
 			    if($src=='')continue;// it happens on your test url
@@ -338,11 +339,26 @@
 				}
 			    // ignore already seen images, add new images
 			    if(in_array($imageurl, $visited))continue;
-			    $visited[]=$imageurl;
-			    // get image
-			    $image=@getimagesize($imageurl);// get the rest images width and height
-			    if (($image[0] * $image[1]) > $maxSize) {
-			        $maxSize = $image[0] * $image[1];  //compare sizes
+				$visited[]=$imageurl;
+
+				// get original size of first image occurrence without any width and height attribute
+				if ( (empty($element->width) || $element->width == 0) && (empty($element->height) || $element->height == 0) && (empty($forOnce)) ) {
+				     $image=@getimagesize($imageurl); // get the rest images width and height
+					 $forOnce = $imageurl;
+					 if ($image[0] > $maxSize) {
+	 			        $maxSize = $image[0];
+	 			        $biggest_img = $imageurl;
+	 			    } else if ($image[1] > $maxSize) {
+	 			        $maxSize = $image[1];
+	 			        $biggest_img = $imageurl;
+	 			    }
+				}
+
+			    if ($element->width > $maxSize) {
+			        $maxSize = $element->width;  //compare sizes
+			        $biggest_img = $imageurl;
+			    } else if ($element->height > $maxSize) {
+			        $maxSize = $element->height;  //compare sizes
 			        $biggest_img = $imageurl;
 			    }
 			}
