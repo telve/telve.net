@@ -4,6 +4,8 @@
 		public function __construct()
 		{
 			$this->load->database();
+			$this->load->library('hashids');
+			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
         public function insert_vote()
@@ -15,6 +17,7 @@
             $row = $query->row_array();
 
             $id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
 
             $data = array(
                 'uid' => $row['id'],
@@ -33,6 +36,7 @@
             $row = $query->row_array();
 
             $id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
 
 			$this->db->from('vote_link');
 			$this->db->where('uid',$row['id']);
@@ -51,6 +55,7 @@
             $row = $query->row_array();
 
             $id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
 
             $data = array(
                 'uid' => $row['id'],
@@ -69,6 +74,7 @@
             $row = $query->row_array();
 
             $id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
 
 			$this->db->from('vote_reply');
 			$this->db->where('uid',$row['id']);
