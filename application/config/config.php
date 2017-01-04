@@ -346,6 +346,9 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+// Hashids Salt https://github.com/ivanakimov/hashids.php
+
+$config['hashids_salt'] = 'NGd5hZ2lRC';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -7,7 +7,7 @@
 			$this->load->database();
 			$this->load->helper('human_timing');
 			$this->load->library('hashids');
-			$this->hashids = new Hashids();
+			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
 		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL) //By default, all states are returned
@@ -128,6 +128,12 @@
 			$pid = $this->hashids->decode($pid)[0];
 			$this->db->select('id,comments,content,uid,score, created');
 			$this->db->where('pid',$pid);
+
+			if(!$level)
+				$this->db->where('is_parent_link',1);
+			else
+				$this->db->where('is_parent_link',0);
+
 			if (!$this->input->get('nolimit')) {
 				$this->db->limit(20);
 			}
@@ -249,7 +255,8 @@
 				'pid' => $this->hashids->decode($this->input->post('pid'))[0],
                 'uid' => $row['id'],
 				'score' => 0,
-				'comments' => 0
+				'comments' => 0,
+				'is_parent_link' => $this->input->post('is_parent_link')
 			);
 
 			return $this->db->insert('reply',$data);

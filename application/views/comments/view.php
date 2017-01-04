@@ -137,7 +137,7 @@
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url('comments/reply_ajax');?>",
-                    data: { 'content' : content, 'pid' :pid },
+                    data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 1 },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                     },
@@ -317,7 +317,7 @@
             $.ajax({
                     type: "POST",
                     url: "<?php echo base_url('comments/reply_ajax');?>",
-                    data: { 'content' : content, 'pid' : pid },
+                    data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 0 },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                     },
