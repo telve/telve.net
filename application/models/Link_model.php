@@ -58,9 +58,22 @@
             }
 
 			$id = $this->hashids->decode($id)[0];
-            $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
-            $this->db->from('link');
-            $this->db->join('user', 'link.uid = user.id');
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+				$this->db->where('username',$this->session->userdata('username'));
+				$this->db->select('id');
+				$this->db->limit(1);
+				$query_for_uid = $this->db->get('user');
+				$user = $query_for_uid->row_array();
+
+				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
+	            $this->db->from('link');
+	            $this->db->join('user', 'link.uid = user.id');
+				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.linkid','left');
+			} else {
+				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
+	            $this->db->from('link');
+	            $this->db->join('user', 'link.uid = user.id');
+			}
             $this->db->where('link.id',$id);
             $query = $this->db->get();
             return $this->hash_row($query->row_array());
@@ -139,8 +152,23 @@
 		private function display_children($pid,$level,&$res)
 		{
 			$pid = $this->hashids->decode($pid)[0];
-			$this->db->select('id,comments,content,uid,score, created');
-			$this->db->where('pid',$pid);
+
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+				$this->db->where('username',$this->session->userdata('username'));
+				$this->db->select('id');
+				$this->db->limit(1);
+				$query_for_uid = $this->db->get('user');
+				$user = $query_for_uid->row_array();
+
+				$this->db->select('reply.id,comments,content,reply.uid,score, created,up_down');
+				$this->db->from('reply');
+				$this->db->where('pid',$pid);
+				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
+			} else {
+				$this->db->select('id,comments,content,uid,score, created');
+				$this->db->from('reply');
+				$this->db->where('pid',$pid);
+			}
 
 			if(!$level)
 				$this->db->where('is_parent_link',1);
@@ -163,7 +191,7 @@
 				$this->db->order_by("(8 * score) + (.1 * created) + (6 * comments) DESC");
 				//echo $this->db->last_query();
 			}
-			$query = $this->db->get('reply');
+			$query = $this->db->get();
 
 			if ($query->num_rows() == 0) return;
 
@@ -180,6 +208,14 @@
 				$username = $query->row_array()['username'];
 				$ago = human_timing($row['created']);
 
+				if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+					$up_style = ($row['up_down'] == 1 ? 'color:green;' : 'color:black;');
+					$down_style = ( (!($row['up_down'] == '') && ($row['up_down'] == 0)) ? 'color:red;' : 'color:black;');
+				} else {
+					$up_style = 'color:black;';
+					$down_style = 'color:black;';
+				}
+
 				$res.='<li>';
 
                 $res.="<!--One reply from the reply tree of this post-->
@@ -192,7 +228,7 @@
                         </style>
 
 						<div id='switch' style='margin-bottom:4px;color: #888;'>
-							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='color:black;'></i></a>
+							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
 
 							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
@@ -202,7 +238,7 @@
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
-                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='color:black;'></i></a>
+                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
                             <span>".$row['content']."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
