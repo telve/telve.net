@@ -148,11 +148,11 @@
                                 </div>
                                 <div class="digg">
 
-									<div><a href="javascript:void(0)" id="up-<?php echo $link_item['id'];?>" class="login-required" onclick="up('<?php echo $link_item['id'];?>')"><i class="icon-arrow-up"></i></a></div>
+									<div><a href="javascript:void(0)" id="up-<?php echo $link_item['id'];?>" class="login-required" onclick="up('<?php echo $link_item['id'];?>')"><i class="glyphicon glyphicon-arrow-up" style="color:black;"></i></a></div>
 
-									<strong><div class="text-center" style="line-height: 1.6em;font-weight: bold;" id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
+									<strong><div class="text-center" style="line-height: 1.6em;font-weight: bold; margin-bottom:2px;" id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
 
-									<div><a href="javascript:void(0)" id="down-<?php echo $link_item['id'];?>" class="login-required" onclick="down('<?php echo $link_item['id'];?>')"><i class="icon-arrow-down"></i></a></div>
+									<div><a href="javascript:void(0)" id="down-<?php echo $link_item['id'];?>" class="login-required" onclick="down('<?php echo $link_item['id'];?>')"><i class="glyphicon glyphicon-arrow-down" style="color:black;"></i></a></div>
 
 								</div>
                             </div>

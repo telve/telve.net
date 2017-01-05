@@ -179,7 +179,7 @@
                         </style>
 
 						<div id='switch' style='margin-bottom:4px;color: #888;'>
-							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='icon-arrow-up'></i></a>
+							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='color:black;'></i></a>
 
 							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
@@ -189,7 +189,7 @@
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
-                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='icon-arrow-down'></i></a>
+                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='color:black;'></i></a>
 
                             <span>".$row['content']."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->

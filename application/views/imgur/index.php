@@ -271,8 +271,8 @@
 	$("td ul li").hover(
 		function () {
 			$(this).addClass("hover");
-			$(this).children(".thumbnail").children(".img").after("<button href='javascript:void(0)' style='position:absolute;left:4px;top:4px;'><i class='icon-arrow-up'></i></button>"+
-							  "<button href='javascript:void(0)' style='position:absolute;left:4px;top:29px;'><i class='icon-arrow-down'></i></button>");
+			$(this).children(".thumbnail").children(".img").after("<button href='javascript:void(0)' style='position:absolute;left:4px;top:4px;'><i class='glyphicon glyphicon-arrow-up'></i></button>"+
+							  "<button href='javascript:void(0)' style='position:absolute;left:4px;top:29px;'><i class='glyphicon glyphicon-arrow-down'></i></button>");
 		},
 		function () {
 			$(this).removeClass("hover");
