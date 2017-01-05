@@ -21,9 +21,22 @@
                 $query = $this->db->get('link',$rows,$offset);
                 */
 
-                $this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
-                $this->db->from('link');
-                $this->db->join('user', 'link.uid = user.id');
+				if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+					$this->db->where('username',$this->session->userdata('username'));
+					$this->db->select('id');
+					$this->db->limit(1);
+					$query_for_uid = $this->db->get('user');
+					$user = $query_for_uid->row_array();
+
+					$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
+	                $this->db->from('link');
+	                $this->db->join('user', 'link.uid = user.id');
+					$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.linkid','left');
+				} else {
+					$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
+	                $this->db->from('link');
+	                $this->db->join('user', 'link.uid = user.id');
+				}
                 $this->db->limit($rows,$offset);
 				if ($sort == 'new') {
 					$this->db->order_by("created", "desc");
