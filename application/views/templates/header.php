@@ -52,7 +52,7 @@
 
         <?php //echo $base_url;?>
         <ul class="nav nav-tabs" style="background:#CEE3F8;">
-            <li><a class="text-center" style="float:left;width:120px;" href="<?php echo base_url("");?>">front</a></li>
+            <li><img src="/assets/img/logo/<?php echo rand(1,5);?>.png" style="height:50px; margin-top:26px; margin-left:2px; position:relative; z-index:1; margin-bottom: -20px;"/><img src="/assets/img/logo/telve.png" style="height:40px; margin-top:36px; margin-right:10px; margin-left:-15px;"/></li>
             <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot</a></li>
             <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new</a></li>
             <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising</a></li>
