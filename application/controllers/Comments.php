@@ -101,8 +101,11 @@
 			if ($this->input->post('content')) {
 	            if ($this->data['is_user_logged_in']) {
 		            if($this->link_model->insert_reply()) {
-						$this->link_model->increase_comments();
-						$this->link_model->increase_rply_comments();
+						if ($this->input->post('is_parent_link') == 1) {
+							$this->link_model->increase_comments();
+						} else if ($this->input->post('is_parent_link') == 0) {
+							$this->link_model->increase_rply_comments();
+						}
 		                echo 1;
 		            } else {
 						echo "Operation was not succesful. Please try again.";
@@ -120,7 +123,7 @@
 			if ($this->data['is_user_logged_in']) {
 
 				if (!$this->vote_model->right_to_vote()) {
-					$this->vote_model->insert_vote();
+					$this->vote_model->insert_vote(1);
 		            $this->link_model->up_score();
 					echo 1;
 				} else {
@@ -136,7 +139,7 @@
 			if ($this->data['is_user_logged_in']) {
 
 				if (!$this->vote_model->right_to_vote()) {
-					$this->vote_model->insert_vote();
+					$this->vote_model->insert_vote(0);
 		            $this->link_model->down_score();
 					echo 1;
 				} else {
@@ -152,7 +155,7 @@
 			if ($this->data['is_user_logged_in']) {
 
 				if (!$this->vote_model->right_to_rply_vote()) {
-					$this->vote_model->insert_rply_vote();
+					$this->vote_model->insert_rply_vote(1);
 		            $this->link_model->rply_up_score();
 					echo 1;
 				} else {
@@ -168,7 +171,7 @@
 			if ($this->data['is_user_logged_in']) {
 
 				if (!$this->vote_model->right_to_rply_vote()) {
-					$this->vote_model->insert_rply_vote();
+					$this->vote_model->insert_rply_vote(0);
 		            $this->link_model->rply_down_score();
 					echo 1;
 				} else {

@@ -8,7 +8,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
-        public function insert_vote()
+        public function insert_vote($up_down)
         {
             $this->db->where('username',$this->session->userdata('username'));
             $this->db->select('id');
@@ -21,7 +21,8 @@
 
             $data = array(
                 'uid' => $row['id'],
-                'linkid' => $id
+                'linkid' => $id,
+				'up_down' => $up_down
 			);
 
             return $this->db->insert('vote_link',$data);
@@ -46,7 +47,7 @@
             return $query->row_array();
 		}
 
-		public function insert_rply_vote()
+		public function insert_rply_vote($up_down)
         {
             $this->db->where('username',$this->session->userdata('username'));
             $this->db->select('id');
@@ -59,7 +60,8 @@
 
             $data = array(
                 'uid' => $row['id'],
-                'reply_id' => $id
+                'reply_id' => $id,
+				'up_down' => $up_down
 			);
 
             return $this->db->insert('vote_reply',$data);

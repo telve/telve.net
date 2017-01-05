@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2017 at 07:43 AM
+-- Generation Time: Jan 05, 2017 at 03:04 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -77,7 +77,9 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `to
 (29, 1, 'Game of Thrones - Wikipedia', 'https://en.wikipedia.org/wiki/Game_of_Thrones', NULL, 'https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg', 'en.wikipedia.org', 'TELEVISION', '2017-01-02 21:53:30', 0, 1),
 (30, 1, 'Coding for Kids | Tynker', 'https://www.tynker.com/', NULL, 'https://www.tynker.com//image/homepage-update/ourmission-1200.jpg', 'www.tynker.com', 'CODING', '2017-01-02 21:56:40', 0, 0),
 (32, 1, 'IBM working on bot to help elderly age at home | Fox News', 'http://www.foxnews.com/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483480244101.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:31:24', 0, 1),
-(33, 1, 'Jenny McCarthy: Mariah Carey should stop blaming everyone else for NYE | Fox News', 'http://www.foxnews.com/entertainment/2017/01/03/jenny-mccarthy-mariah-carey-should-stop-blaming-everyone-else-for-nye.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/03/jenny-mccarthy-says-mariah-carey-should-stop-blaming-others-for-nye-performance/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483472892039.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:34:55', 0, 0);
+(33, 1, 'Jenny McCarthy: Mariah Carey should stop blaming everyone else for NYE | Fox News', 'http://www.foxnews.com/entertainment/2017/01/03/jenny-mccarthy-mariah-carey-should-stop-blaming-everyone-else-for-nye.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/03/jenny-mccarthy-says-mariah-carey-should-stop-blaming-others-for-nye-performance/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483472892039.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:34:55', -1, 0),
+(34, 1, 'First details surrounding Samsung\'s Galaxy Note 8 just leaked | Fox News', 'http://www.foxnews.com/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483455163501.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 08:28:49', 0, 4),
+(35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,7 @@ CREATE TABLE `reply` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `score` int(7) NOT NULL,
   `comments` int(7) NOT NULL,
-  `is_parent_link` tinyint(1) NOT NULL
+  `is_parent_link` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
@@ -112,8 +114,14 @@ INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comment
 (9, 'sample comment level1', 7, 1, '2017-01-02 03:56:28', 0, 1, 0),
 (10, 'sample comment level2', 9, 1, '2017-01-02 03:56:38', 0, 0, 0),
 (11, 'sample comment', 29, 1, '2017-01-04 04:35:25', 0, 1, 1),
-(12, 'sample comment level1', 11, 1, '2017-01-04 04:35:34', 0, 0, 0),
-(13, 'sample comment', 32, 1, '2017-01-04 04:35:47', 0, 0, 1);
+(12, 'sample comment level1', 11, 1, '2017-01-04 04:35:34', -1, 0, 0),
+(13, 'sample comment', 32, 1, '2017-01-04 04:35:47', 0, 0, 1),
+(14, 'sample comment1', 34, 1, '2017-01-04 08:29:40', 0, 0, 1),
+(15, 'sample comment2', 34, 1, '2017-01-04 08:29:52', 0, 1, 1),
+(16, 'sample comment3', 34, 1, '2017-01-04 08:29:57', 1, 0, 1),
+(17, 'sample comment4', 34, 1, '2017-01-04 08:30:02', 0, 0, 1),
+(18, 'sample comment level1', 15, 1, '2017-01-04 08:30:43', 0, 1, 0),
+(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -146,15 +154,17 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `karma`, `created`) V
 CREATE TABLE `vote_link` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `linkid` int(11) NOT NULL
+  `linkid` int(11) NOT NULL,
+  `up_down` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
 
 --
 -- Dumping data for table `vote_link`
 --
 
-INSERT INTO `vote_link` (`id`, `uid`, `linkid`) VALUES
-(1, 1, 8);
+INSERT INTO `vote_link` (`id`, `uid`, `linkid`, `up_down`) VALUES
+(1, 1, 8, 1),
+(2, 1, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -165,16 +175,19 @@ INSERT INTO `vote_link` (`id`, `uid`, `linkid`) VALUES
 CREATE TABLE `vote_reply` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `reply_id` int(11) NOT NULL
+  `reply_id` int(11) NOT NULL,
+  `up_down` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
 
 --
 -- Dumping data for table `vote_reply`
 --
 
-INSERT INTO `vote_reply` (`id`, `uid`, `reply_id`) VALUES
-(1, 1, 5),
-(2, 1, 1);
+INSERT INTO `vote_reply` (`id`, `uid`, `reply_id`, `up_down`) VALUES
+(1, 1, 5, 1),
+(2, 1, 1, 1),
+(3, 1, 16, 1),
+(4, 1, 12, 0);
 
 --
 -- Indexes for dumped tables
@@ -218,12 +231,12 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -233,12 +246,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vote_link`
 --
 ALTER TABLE `vote_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `vote_reply`
 --
 ALTER TABLE `vote_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
