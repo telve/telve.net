@@ -47,7 +47,7 @@
 
 			if ($this->form_validation->run() == FALSE){
 
-				$this->data['data'] = "An error occured";
+				$this->data['login_error'] = "";
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('user/login');
 				$this->load->view('templates/footer');
@@ -62,7 +62,7 @@
 
 				} else {
 
-					$this->data['title'] = 'Login failed, please check your information!';
+					$this->data['login_error'] = 'Login failed, please check your information!<br>';
 					$this->load->view('templates/header',$this->data);
 					$this->load->view('user/login');
 					$this->load->view('templates/footer');

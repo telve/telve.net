@@ -198,7 +198,7 @@
 			if(!$level)
 				$res.='<ul style="list-style-type:none;">';
 			else
-				$res.='<ul style="list-style-type:none;margin-left:14px;padding-left: .8em;border-left: 1px dashed #ccc;">';
+				$res.='<ul style="list-style-type:none; margin-left:14px; padding-left:.8em; border-left:solid 1px rgba(0, 0, 0, .2);">';
 
             foreach ($this->hash_multirow($query->result_array()) as $row)
 			{

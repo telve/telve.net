@@ -56,7 +56,7 @@
 
 			<!-- Comments block -->
     		<div>
-                <!-- Horizontal dashed dotted line and submit text box -->
+                <!-- Horizontal solid line and submit text box -->
                 <?php
                 $this->load->helper('get_param');
                 if($link_item['comments'] == 0) {
@@ -69,7 +69,7 @@
                 }
                 ?>
                 <div>
-                    <div style="border-top:dashed 1px #000000;width:100%;"> </div><!--Draw a dashed dotted line-->
+                    <div style="border-top:solid 1px rgba(0, 0, 0, .3); width:100%;"> </div><!--Draw a solid line-->
                     <div><small style="color:#888;">
                         <div class="dropdown">
                             sorting:
@@ -99,7 +99,7 @@
             				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                             <!--<div id="error_msg"></div>-->
                             <button type="submit" id="submit_reply" class="login-required">submit</button>
-                <!-- Horizontal dashed dotted line and submit text box -->
+                <!-- Horizontal solid line and submit text box -->
                             <br/>
                             <!--Newly submitted replies-->
                             <div id="update_reply" style="margin: 0 0 10px 25px;"></div>
@@ -273,7 +273,7 @@
 		}
 		else                   //This can not be used directly reply_item['id']
 		{
-			replyForm = "<div><div style='border-top:dashed 8px #fff;width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()'/></textarea><br />"+
+			replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()'/></textarea><br />"+
 				"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
                 "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>cancel</button></div>";
 			$(obj).after(replyForm);
@@ -331,7 +331,7 @@
 
                             update_reply = "<!--One reply from the reply tree of this post-->\
                             <ul style='list-style-type:none'><li><!--Draw a dividing line-->\
-    				            <div style='border-top:dashed 8px #fff;width:100%;'> </div>\
+    				            <div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'> </div>\
             				<div class='row-fluid'>\
             \
             					<div class='span12'>\

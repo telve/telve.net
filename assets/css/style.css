@@ -12,3 +12,11 @@
     -moz-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
 }
+
+#myModal .modal-body {
+    max-height: 600px;
+}
+
+li > a.submit {
+    margin-top: 20px;
+}

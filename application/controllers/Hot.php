@@ -16,8 +16,8 @@
             $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
-            $config['prev_link'] = 'Previous page';
-            $config['next_link'] = 'Next page';
+            $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> Previous page';
+            $config['next_link'] = 'Next page <span class="glyphicon glyphicon-arrow-right"></span>';
             $config['full_tag_close'] = '</p>';
             $config['display_pages'] = FALSE; //The "number" link is not displayed
             $config['first_link'] = FALSE; //The start link is not displayed
