@@ -160,7 +160,7 @@
                         </div>
 
 						<?php if (empty($link_item['url'])) { ?>
-                        	<div class="middle"><a href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" style="max-height: 70px;"/></a></div>
+                        	<div class="middle"><a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" style="max-height: 70px;"/></a></div>
 						<?php } else { ?>
 							<div class="middle"><a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" style="max-height: 70px;"/></a></div>
 						<?php }?>
@@ -168,7 +168,7 @@
                         <div class="row-fluid">
                             <div class="span8">
 								<?php if (empty($link_item['url'])) { ?>
-		                        	<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
+		                        	<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
 								<?php } else { ?>
 									<div>&nbsp;&nbsp;<strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
 								<?php }?>
@@ -177,7 +177,7 @@
                                 </div>
                                 <div>
                                     <div>&nbsp;
-                                        <strong><a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"> <?php echo $link_item['comments'];?>&nbsp;comments</a>
+                                        <strong><a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"> <?php echo $link_item['comments'];?>&nbsp;comments</a>
                                         &nbsp;&nbsp;
                                         <a class="sharer" style="color:#888;line-height: 1.6em;" href="javascript:void(0)" onclick="set_share(this)">share</a></strong>
                                     </div>

@@ -9,8 +9,9 @@
 			$this->load->model('vote_model');
 		}
 
-		public function view($id)
+		public function view()
 		{
+			$id = $this->uri->segment(4);
 
 			$this->data['link_item'] = $this->link_model->retrieve_link($id);
             $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
@@ -19,6 +20,11 @@
 			if(empty($this->data['link_item']))
 			{
 				show_404(); //The page does not exist
+			}
+
+			$this->data['link_item']['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $this->data['link_item']['title']) ), 0, 6) ) ) );
+			if (empty($this->uri->segment(5)) || $this->uri->segment(5) != $this->data['link_item']['seo_segment']) {
+				redirect('t/'.$this->data['link_item']['topic'].'/comments/'.$id.'/'.$this->data['link_item']['seo_segment'].'/');
 			}
 
 			$this->data['title']=$this->data['link_item']['title'];

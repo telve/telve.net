@@ -234,7 +234,7 @@
 
                             <a style='color: #369;font-weight: bold;' href='#'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
                             &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' class='hide_rply' href='".base_url('comments/view')."/".$row['id']."'> ".$row['comments']." replies </a>)</small></span>
+								(<a style='color: gray;' class='hide_rply' href=''> ".$row['comments']." replies </a>)</small></span>
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
@@ -274,6 +274,7 @@
 			$parse = parse_url($url);
 
 			$topic = str_replace(' ', '', $this->input->post('topic'));
+			$topic = preg_replace('/[^a-zA-Z0-9]+/', '', $topic);
 
             $data = array(
 				'title' => $this->input->post('title'),

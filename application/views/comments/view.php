@@ -22,7 +22,7 @@
 					<div class="picontainer">
 						<div class="middle">
                             <?php if (empty($link_item['url'])) { ?>
-                            	<a href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" style="max-height: 70px;"/></a>
+                            	<a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><img class="media-object" src="<?php echo base_url('assets/img/icons/17837.png');?>" width="70" height="70" style="max-height: 70px;"/></a>
     						<?php } else { ?>
     							<a href="<?php echo $link_item['url'];?>"><img class="media-object" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';" width="70" height="70" style="max-height: 70px;"/></a>
     						<?php }?>
@@ -32,7 +32,7 @@
 
                     <div style="margin-left: 120px;"><!--span10 pull-left-->
                         <?php if (empty($link_item['url'])) { ?>
-                            <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
+                            <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<span style="color:#888;">text post</span>)</span></div>
                         <?php } else { ?>
                             <div><strong><a style="text-decoration: none;color: blue;" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp; &nbsp;<span style="color:#888;">(<a style="color:#888;" href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                         <?php }?>
@@ -44,7 +44,7 @@
                         </div>
 						<div>
 							<div><strong>
-								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>"><?php echo $link_item['comments']?> comments</a>
+								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['comments']?> comments</a>
 								&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">share&#9974;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">favorite&#9733;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide&#9737;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">report&#9873;</a>
 							</div></strong>
 						</div>
@@ -84,7 +84,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                <li><a tabindex="-1" href="<?php echo base_url("comments/view")."/".$link_item['id']."/";?>">hot</a></li>
+                                <li><a tabindex="-1" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>">hot</a></li>
                                 <li><a tabindex="-1" href="<?php echo append_get_param('sort=top'); ?>">top</a></li>
                                 <li><a tabindex="-1" href="<?php echo append_get_param('sort=new'); ?>">new</a></li>
                                 <li><a tabindex="-1" href="<?php echo append_get_param('sort=controversial'); ?>">controversial</a></li>

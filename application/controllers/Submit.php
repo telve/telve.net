@@ -33,7 +33,9 @@
 				} else {
 
 	                $insert_id = $this->link_model->insert_link();
-					redirect('comments/view/'.$insert_id.'/');
+					$topic = str_replace(' ', '', $this->input->post('topic'));
+					$topic = preg_replace('/[^a-zA-Z0-9]+/', '', $topic);
+					redirect('t/'.strtoupper($topic).'/comments/'.$insert_id.'/');
 
 				}
 

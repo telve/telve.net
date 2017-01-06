@@ -43,6 +43,8 @@ $route['404_override'] = '';
 
 $route['new'] = 'xnew';
 
+$route['t/(:any)/comments/(:any)'] = 'comments/view';
+$route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';
 $route['t/(:any)'] = 'topic';
 $route['t/(:any)/(:any)'] = 'topic';
 $route['t/(:any)/(:any)/(:any)'] = 'topic';

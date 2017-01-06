@@ -75,6 +75,11 @@
 				$this->data['sidebar'] = '';
 			}
 
+			foreach ($this->data['link'] as &$link_item) {
+				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
+			}
+			unset($link_item);
+
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('link/index',$this->data);
 			$this->load->view('templates/side');
