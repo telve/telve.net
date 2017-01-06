@@ -21,7 +21,7 @@
 
             $data = array(
                 'uid' => $row['id'],
-                'linkid' => $id,
+                'link_id' => $id,
 				'up_down' => $up_down
 			);
 
@@ -41,7 +41,7 @@
 
 			$this->db->from('vote_link');
 			$this->db->where('uid',$row['id']);
-			$this->db->where('linkid',$id);
+			$this->db->where('link_id',$id);
 
 			$query = $this->db->get();
             return $query->row_array();

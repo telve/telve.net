@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2017 at 03:04 AM
+-- Generation Time: Jan 07, 2017 at 02:26 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -64,11 +64,11 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `to
 (17, 1, 'The best concept yachts of 2016 | Fox News', 'http://www.foxnews.com/travel/2016/12/29/best-concept-yachts-2016.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/29/best-concept-yachts-2016/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1481818559947.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:45:34', 0, 0),
 (18, 1, 'The best concept yachts of 2016 | Fox News', 'http://www.foxnews.com/travel/2016/12/29/best-concept-yachts-2016.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/29/best-concept-yachts-2016/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1481818559947.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:46:17', 0, 0),
 (19, 1, 'Korean airline will allow crew members to use stun guns | Fox News', 'http://www.foxnews.com/travel/2016/12/27/korean-airline-will-allow-crew-members-to-use-stun-guns.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/27/korean-airline-will-allow-crew-members-to-use-stun-guns/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1482845922160.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:46:35', 0, 0),
-(20, 1, 'Vandal changes iconic LA sign to \'Hollyweed\' | Fox News', 'http://www.foxnews.com/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483297451886.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:47:52', 0, 0),
+(20, 1, 'Vandal changes iconic LA sign to \'Hollyweed\' | Fox News', 'http://www.foxnews.com/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483297451886.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:47:52', 1, 3),
 (21, 1, '10 Unusual Places to Hang Christmas Stockings | Fox News', 'http://www.foxnews.com/leisure/2016/12/23/10-unusual-places-to-hang-christmas-stockings/', NULL, 'http://global.fncstatic.com/static/managed/img/share/source/houzz.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:48:51', 0, 0),
-(22, 1, 'New Groove: Vinyl Floors Are Back! | Fox News', 'http://www.foxnews.com/leisure/2016/12/23/new-groove-vinyl-floors-are-back/', NULL, 'http://global.fncstatic.com/static/managed/img/share/source/houzz.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:49:58', 0, 0),
+(22, 1, 'New Groove: Vinyl Floors Are Back! | Fox News', 'http://www.foxnews.com/leisure/2016/12/23/new-groove-vinyl-floors-are-back/', NULL, 'http://global.fncstatic.com/static/managed/img/share/source/houzz.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:49:58', -1, 0),
 (23, 1, 'Obama\'s full-blown, year-end temper tantrum | Fox News', 'http://www.foxnews.com/opinion/2016/12/30/obamas-full-blown-year-end-temper-tantrum.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/opinion/2016/12/30/obamas-full-blown-year-end-temper-tantrum/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483122077360.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:51:32', 0, 0),
-(31, 1, 'Billie Lourd speaks out on deaths of mother Carrie Fisher, grandmother | Fox News', 'http://www.foxnews.com/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483399145585.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-03 02:41:09', 0, 0),
+(31, 1, 'Billie Lourd speaks out on deaths of mother Carrie Fisher, grandmother | Fox News', 'http://www.foxnews.com/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483399145585.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-03 02:41:09', 1, 0),
 (24, 1, '6 surprising facts about french fries | Fox News', 'http://www.foxnews.com/food-drink/2017/01/02/6-surprising-facts-about-french-fries.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/food-drink/2017/01/02/6-surprising-facts-about-french-fries/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483107684238.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 17:27:45', 0, 0),
 (25, 1, 'Annoyed Picard · Memeful', 'http://memeful.com/edit/Annoyed-Picard', NULL, NULL, 'memeful.com', 'FUNNY', '2017-01-02 21:37:27', 0, 0),
 (26, 1, 'Dota 2 Best WTF Moments 2016 - YouTube', 'https://www.youtube.com/watch?v=SgiPK9uDrI8', NULL, 'http://yt3.ggpht.com/4KHLzth-MIVTyf1FDECMK2ZWB6spVdRGBrXXdmK7Ur1FP8dur8naTNtRiw_l1PDN7s-835OFsZ0bobZt-0s=w40-nd', 'www.youtube.com', 'VIDEOS', '2017-01-02 21:39:05', 0, 0),
@@ -79,7 +79,8 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `to
 (32, 1, 'IBM working on bot to help elderly age at home | Fox News', 'http://www.foxnews.com/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483480244101.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:31:24', 0, 1),
 (33, 1, 'Jenny McCarthy: Mariah Carey should stop blaming everyone else for NYE | Fox News', 'http://www.foxnews.com/entertainment/2017/01/03/jenny-mccarthy-mariah-carey-should-stop-blaming-everyone-else-for-nye.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/03/jenny-mccarthy-says-mariah-carey-should-stop-blaming-others-for-nye-performance/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483472892039.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:34:55', -1, 0),
 (34, 1, 'First details surrounding Samsung\'s Galaxy Note 8 just leaked | Fox News', 'http://www.foxnews.com/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483455163501.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 08:28:49', 0, 4),
-(35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0);
+(35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0),
+(36, 1, 'Surprise! Monster burst of radio waves arose in tiny galaxy   | Fox News', 'http://www.foxnews.com/science/2017/01/05/surprise-monster-burst-radio-waves-arose-in-tiny-galaxy.html', NULL, 'http://www.foxnews.com//content/global/source/space-com/_jcr_content/image.img.png/1425337726306.png', 'www.foxnews.com', 'SCIENCE', '2017-01-06 09:18:42', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `reply` (
 
 INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comments`, `is_parent_link`) VALUES
 (1, 'sample comment', 9, 1, '2017-01-02 03:53:17', 1, 0, 1),
-(2, 'sample comment1', 4, 1, '2017-01-02 03:53:37', 0, 0, 1),
+(2, 'sample comment1', 4, 1, '2017-01-02 03:53:37', -1, 0, 1),
 (3, 'sample comment2', 4, 1, '2017-01-02 03:53:48', 0, 0, 1),
 (4, 'sample comment1', 3, 1, '2017-01-02 03:55:27', 0, 0, 1),
 (5, 'sample comment2', 3, 1, '2017-01-02 03:55:36', 1, 0, 1),
@@ -121,7 +122,10 @@ INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comment
 (16, 'sample comment3', 34, 1, '2017-01-04 08:29:57', 1, 0, 1),
 (17, 'sample comment4', 34, 1, '2017-01-04 08:30:02', 0, 0, 1),
 (18, 'sample comment level1', 15, 1, '2017-01-04 08:30:43', 0, 1, 0),
-(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0);
+(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0),
+(20, 'sample comment1', 20, 1, '2017-01-06 07:00:57', -1, 0, 1),
+(21, 'sample comment2', 20, 1, '2017-01-06 07:02:03', 1, 0, 1),
+(22, 'sample comment3', 20, 1, '2017-01-06 07:02:38', -1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +158,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `karma`, `created`) V
 CREATE TABLE `vote_link` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `linkid` int(11) NOT NULL,
+  `link_id` int(11) NOT NULL,
   `up_down` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
 
@@ -162,9 +166,12 @@ CREATE TABLE `vote_link` (
 -- Dumping data for table `vote_link`
 --
 
-INSERT INTO `vote_link` (`id`, `uid`, `linkid`, `up_down`) VALUES
+INSERT INTO `vote_link` (`id`, `uid`, `link_id`, `up_down`) VALUES
 (1, 1, 8, 1),
-(2, 1, 33, 0);
+(2, 1, 33, 0),
+(3, 1, 31, 1),
+(4, 1, 22, 0),
+(5, 1, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -187,7 +194,11 @@ INSERT INTO `vote_reply` (`id`, `uid`, `reply_id`, `up_down`) VALUES
 (1, 1, 5, 1),
 (2, 1, 1, 1),
 (3, 1, 16, 1),
-(4, 1, 12, 0);
+(4, 1, 12, 0),
+(5, 1, 2, 0),
+(6, 1, 20, 0),
+(7, 1, 21, 1),
+(8, 1, 22, 0);
 
 --
 -- Indexes for dumped tables
@@ -231,12 +242,12 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -246,12 +257,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vote_link`
 --
 ALTER TABLE `vote_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `vote_reply`
 --
 ALTER TABLE `vote_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

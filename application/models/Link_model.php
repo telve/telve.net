@@ -31,7 +31,7 @@
 					$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
 	                $this->db->from('link');
 	                $this->db->join('user', 'link.uid = user.id');
-					$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.linkid','left');
+					$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
 				} else {
 					$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
 	                $this->db->from('link');
@@ -68,7 +68,7 @@
 				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
 	            $this->db->from('link');
 	            $this->db->join('user', 'link.uid = user.id');
-				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.linkid','left');
+				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
 			} else {
 				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
 	            $this->db->from('link');
