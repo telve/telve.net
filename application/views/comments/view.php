@@ -197,6 +197,7 @@
                    success: function(data) {
                        if (data == 1) {
                            $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+						   $('i', obj).css('color', 'green');
                        } else {
                            alert(data);
                        }
@@ -214,6 +215,7 @@
                    success: function(data) {
                        if (data == 1) {
                            $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                           $('i', obj).css('color', 'red');
                        } else {
                            alert(data);
                        }
@@ -234,6 +236,7 @@
                    success:function(data){
                       if (data == 1) {
                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+                          $('i', obj).css('color', 'green');
                       } else {
                           alert(data);
                       }
@@ -254,6 +257,7 @@
                    success:function(data){
                       if (data == 1) {
                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                          $('i', obj).css('color', 'red');
                       } else {
                           alert(data);
                       }

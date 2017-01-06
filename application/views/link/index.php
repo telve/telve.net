@@ -206,6 +206,8 @@
 	               success: function(data) {
 					   if (data == 1) {
 						   $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
+						   var parent = $('#up-'+id)[0];
+						   $('i', parent).css('color', 'green');
 					   } else {
 						   alert(data);
 					   }
@@ -222,6 +224,8 @@
 				   success: function(data) {
 					   if (data == 1) {
 						   $("#show-"+id).html(parseInt($("#show-"+id).html())-1);
+						   var parent = $('#down-'+id)[0];
+						   $('i', parent).css('color', 'red');
 					   } else {
 						   alert(data);
 					   }
