@@ -11,6 +11,21 @@
 
 				$this->data['login_form'] = ""; //The login form is not displayed
 				$this->data['is_user_logged_in'] = 1;
+				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
+					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="close"><span class="glyphicon glyphicon-indent-right"></span></a>
+					<a class="show-sidebar" href="javascript:void(0)" title="Your subscriptions"><span class="glyphicon glyphicon-indent-left"></span></a>
+				</div>';
+				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
+				  <ul style="list-style-type:none">
+				    <li><a href="#">Subscribe</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Images</a></li>
+					<li><a href="#">Test</a></li>
+					<li><a href="#">Create</a></li>
+					<li><a href="#">Find</a></li>
+					<li><a href="#">My Favorites</a></li>
+				  </ul>
+				</div>';
 			} else {
 				$this->data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
 				$this->data['login_form'] = "
@@ -32,6 +47,8 @@
 
 				";
 				$this->data['is_user_logged_in'] = 0;
+				$this->data['toggle_sidebar'] = '';
+				$this->data['sidebar'] = '';
 			}
 
 			$this->load->model('link_model');

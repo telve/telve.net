@@ -54,27 +54,6 @@
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$this->uri->segment(2));
 			$this->data['sn'] = 3;
 
-			if(!empty($this->session->userdata['username']) && $this->session->userdata['username']){
-				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
-					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="折叠">X</a>
-					<a class="show-sidebar" href="javascript:void(0)" title="展开" ><</a>
-				</div>';
-				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
-				  <ul style="list-style-type:none">
-				    <li><a href="#">Subscribe</a></li>
-					<li><a href="#">News</a></li>
-					<li><a href="#">Images</a></li>
-					<li><a href="#">Test</a></li>
-					<li><a href="#">Create</a></li>
-					<li><a href="#">Find</a></li>
-					<li><a href="#">My Favorites</a></li>
-				  </ul>
-				</div>';
-			} else {
-				$this->data['toggle_sidebar'] = '';
-				$this->data['sidebar'] = '';
-			}
-
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
 			}
