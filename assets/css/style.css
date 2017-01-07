@@ -85,3 +85,7 @@ li > a.submit {
  }
 }
 /* SCROLLING TEXT */
+
+#site-logo, #turkish-coffee {
+    cursor: pointer;
+}

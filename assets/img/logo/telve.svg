@@ -13,13 +13,13 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    xml:space="preserve"
-   width="454.67023"
-   height="115.44801"
-   viewBox="0 0 454.67025 115.44799"
+   width="528.19049"
+   height="110.76661"
+   viewBox="0 0 528.19052 110.76659"
    sodipodi:docname="telve.svg"
-   inkscape:export-filename="/home/admin/Documents/TelveLogo/telve-512.png"
-   inkscape:export-xdpi="399.14072"
-   inkscape:export-ydpi="399.14072"><metadata
+   inkscape:export-filename="/home/admin/Documents/NewTelveLogo/telve-512.png"
+   inkscape:export-xdpi="416.00986"
+   inkscape:export-ydpi="416.00986"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -41,8 +41,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1.2914786"
-     inkscape:cx="263.48246"
-     inkscape:cy="68.033648"
+     inkscape:cx="144.63842"
+     inkscape:cy="69.620563"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -50,7 +50,7 @@
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="ink_ext_XXXXXX"
-     transform="matrix(1.25,0,0,-1.25,-611.64908,542.36777)"><g
+     transform="matrix(1.25,0,0,-1.25,-613.96002,536.09946)"><g
        id="g12"
        transform="scale(0.1,0.1)"><text
          xml:space="preserve"
@@ -64,9 +64,9 @@
            id="tspan5074"
            x="4891.3677"
            y="-3415.3582"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1300.00012207px;font-family:'Black Coffee Shadow';-inkscape-font-specification:'Black Coffee Shadow';fill:#312d3a;fill-opacity:1">TELVE.<tspan
-   style="font-size:1000.00006104px"
-   id="tspan3338">NET</tspan></tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1300.00012207px;font-family:Harabara;-inkscape-font-specification:'Harabara Bold';fill:#312d3a;fill-opacity:1">telve<tspan
+   style="letter-spacing:32.00000381px"
+   id="tspan3339">.n</tspan>et</tspan></text>
 <g
          transform="matrix(5.5864784,0,0,5.5864784,2234.2831,1413.8533)"
          inkscape:label="ink_ext_XXXXXX"

@@ -52,7 +52,8 @@
 
         <?php //echo $base_url;?>
         <ul class="nav nav-tabs" style="background:#CEE3F8;">
-            <li><img src="/assets/img/logo/<?php echo rand(1,5);?>.png" style="height:50px; margin-top:26px; margin-left:2px; position:relative; z-index:1; margin-bottom: -20px;"/><img src="/assets/img/logo/telve.png" style="height:40px; margin-top:36px; margin-right:10px; margin-left:-15px;"/></li>
+            <!-- <li><img src="/assets/img/logo/<?php //echo rand(1,5);?>.png" style="height:50px; margin-top:26px; margin-left:2px; position:relative; z-index:1; margin-bottom: -20px;"/><img src="/assets/img/logo/telve.png" style="height:40px; margin-top:36px; margin-right:10px; margin-left:-15px;"/></li> -->
+            <li><img src="/assets/img/logo/turkish-coffee.png" id="turkish-coffee" style="height:40px; margin-top:36px; margin-left:2px; position:relative; z-index:1; margin-bottom: -50px;"/><img src="/assets/img/logo/telve.png" id="site-logo" style="height:30px; margin-top:46px; margin-right:10px; margin-left:-15px;"/></li>
             <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot<span class="glyphicon glyphicon-fire" style="font-size:13px;"></span></a></li>
             <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new<span class="glyphicon glyphicon-gift" style="font-size:13px;"></span></a></li>
             <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising<span class="glyphicon glyphicon-signal" style="font-size:13px;"></span></a></li>
@@ -62,3 +63,12 @@
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
             <?php echo $login_info;?>
        </ul>
+
+       <script type="text/javascript">
+            $('#turkish-coffee').click(function(){
+                window.location = 'https://tr.wikipedia.org/wiki/T%C3%BCrk_kahvesi';
+            });
+            $('#site-logo').click(function(){
+                window.location = '<?php echo base_url("");?>';
+            });
+       </script>
