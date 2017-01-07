@@ -43,9 +43,16 @@
                             <?php echo $link_item['text'];?>
                         </div>
 						<div>
-							<div><strong>
-								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['comments']?> comments</a>
-								&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">share&#9974;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">favorite&#9733;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide&#9737;</a>&nbsp; &nbsp;<a style="color:#888;line-height: 1.6em;" href="#">report&#9873;</a>
+							<div style="font-size:13px;"><strong>
+								<a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['comments']?> comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
+                                &nbsp;&nbsp;
+                                <a style="color:#888;line-height: 1.6em;" href="#">favorite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span></a>
+                                &nbsp;&nbsp;
+                                <a style="color:#888;line-height: 1.6em;" href="#">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                &nbsp;&nbsp;
+                                <a style="color:#888;line-height: 1.6em;" id="hide_link" href="javascript:void(0)">hide<span class="glyphicon glyphicon-eye-close" style="font-size:12px;"></span></a>
+                                &nbsp;&nbsp;
+                                <a style="color:#888;line-height: 1.6em;" href="#">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
 							</div></strong>
 						</div>
                     </div>
@@ -98,7 +105,7 @@
 			                <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
             				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                             <!--<div id="error_msg"></div>-->
-                            <button type="submit" id="submit_reply" class="login-required">submit</button>
+                            <button type="submit" id="submit_reply" class="login-required" style="margin-top:10px; font-weight:bold; color:#888;">submit</button>
                 <!-- Horizontal solid line and submit text box -->
                             <br/>
                             <!--Newly submitted replies-->
@@ -273,9 +280,9 @@
 		}
 		else                   //This can not be used directly reply_item['id']
 		{
-			replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()'/></textarea><br />"+
+			replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;'/></textarea><br />"+
 				"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
-                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)'>cancel</button></div>";
+                "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>cancel</button></div>";
 			$(obj).after(replyForm);
 			$(obj).nextAll("div").children("#content").focus();
 		}

@@ -20,3 +20,15 @@
 li > a.submit {
     margin-top: 20px;
 }
+
+.special-reply-icon {
+    -moz-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -ms-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+}
+
+.btn, .pagination {
+    font-weight: bold;
+}

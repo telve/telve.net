@@ -176,10 +176,12 @@
                                     <small style="color:#888;">submitted <?php echo human_timing($link_item['created']);?>&nbsp;&nbsp;by <a style="color: #369;" href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to <a style="color: #369;" href="#"><?php echo $link_item['topic']?></a></small>
                                 </div>
                                 <div>
-                                    <div>&nbsp;
-                                        <strong><a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"> <?php echo $link_item['comments'];?>&nbsp;comments</a>
+                                    <div style="font-size:13px;">&nbsp;
+                                        <strong><a style="color:#888;line-height: 1.6em;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"> <?php echo $link_item['comments'];?>&nbsp;comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
+										&nbsp;&nbsp;
+                                        <a style="color:#888;line-height: 1.6em;" href="#">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
-                                        <a class="sharer" style="color:#888;line-height: 1.6em;" href="javascript:void(0)" onclick="set_share(this)">share</a></strong>
+                                        <a class="sharer" style="color:#888;line-height: 1.6em;" href="javascript:void(0)" onclick="set_share(this)">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a></strong>
                                     </div>
                                 </div>
                             </div>
@@ -295,12 +297,12 @@
 			"</form></div>";
 
 			$(obj).parent().after(replyForm);
-			$(obj).text('cancel');
+			$(obj).html('cancel<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
 			//$(obj).nextAll("div").children("#content").focus();
 		} else {
 
 			$(obj).parent().siblings(".share").remove();
-			$(obj).text('share');
+			$(obj).html('share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
 		}
     }
 	function cancel_share(obj){

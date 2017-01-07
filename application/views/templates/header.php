@@ -26,7 +26,7 @@
                <div>
                    <ul>
                        <div class="dropdown" style="width: 90%;">
-                           <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">My Subscriptions<b class="caret"></b></a>
+                           <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-bullhorn" style="font-size:13px;"></span> My Subscriptions</a>
                            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Science and Technology</a></li>
                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon-picture"></i> Images</a></li>
@@ -43,7 +43,7 @@
                            <?php endforeach ?>
 
                        </div>
-                       <a href="#" style="float: right; position: absolute; top: 0px; right: 10px;">More >></a>
+                       <a href="#" style="float: right; position: absolute; top: 0px; right: 10px;">More<span class="glyphicon glyphicon-chevron-right" style="font-size:13px;"></span></a>
                 </ul>
             </div>
         </div>
@@ -54,12 +54,12 @@
         <?php //echo $base_url;?>
         <ul class="nav nav-tabs" style="background:#CEE3F8;">
             <li><img src="/assets/img/logo/<?php echo rand(1,5);?>.png" style="height:50px; margin-top:26px; margin-left:2px; position:relative; z-index:1; margin-bottom: -20px;"/><img src="/assets/img/logo/telve.png" style="height:40px; margin-top:36px; margin-right:10px; margin-left:-15px;"/></li>
-            <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot</a></li>
-            <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new</a></li>
-            <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising</a></li>
-            <li<?php if ($this->uri->segment($sn) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo $base_url.'controversial/';?>">controversial</a></li>
-            <li<?php if ($this->uri->segment($sn) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'top') echo 'style="color:red;"' ?> href="<?php echo $base_url.'top/';?>">top</a></li>
-            <li<?php if ($this->uri->segment($sn) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki</a></li>
+            <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot<span class="glyphicon glyphicon-fire" style="font-size:13px;"></span></a></li>
+            <li<?php if ($this->uri->segment($sn) == 'new') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'new') echo 'style="color:red;"' ?> href="<?php echo $base_url.'new/';?>">new<span class="glyphicon glyphicon-gift" style="font-size:13px;"></span></a></li>
+            <li<?php if ($this->uri->segment($sn) == 'rising') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'rising') echo 'style="color:red;"' ?> href="<?php echo $base_url.'rising/';?>">rising<span class="glyphicon glyphicon-signal" style="font-size:13px;"></span></a></li>
+            <li<?php if ($this->uri->segment($sn) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo $base_url.'controversial/';?>">controversial<span class="glyphicon glyphicon-comment" style="font-size:13px;"></span></a></li>
+            <li<?php if ($this->uri->segment($sn) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'top') echo 'style="color:red;"' ?> href="<?php echo $base_url.'top/';?>">top<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:13px;"></span></a></li>
+            <li<?php if ($this->uri->segment($sn) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
             <li style="float:right;width:300px;"><?php echo $login_info;?></a></li>
        </ul>
