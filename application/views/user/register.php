@@ -32,7 +32,7 @@
 				<input type="checkbox" name="remember"/> remember me
             </label>
 
-			<button class="btn btn-primary" type="submit" name="submit" >Submit</button>
+			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Submit</button>
 
             <!--Error message<span id="msg"></span>-->
 

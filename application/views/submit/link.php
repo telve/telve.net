@@ -32,7 +32,7 @@
                     <input type="text" class="span12" name="url" id="url" value="<?php echo set_value('url');?>" placeholder="the URL of the link..."/><br />
                     <div style="color:red"><?php echo form_error('url');?></div>
 
-                    <a href="javascript:void(0)" class="btn btn-primary pull-right" id="get_title">Suggest title</a>
+                    <a href="javascript:void(0)" class="btn btn-primary pull-right btn-blue" id="get_title">Suggest title</a>
                     </td></tr></table>
 
                     <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
@@ -58,7 +58,7 @@
                     <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
                     </td></tr></table>
 
-                    <button class="btn btn-primary  pull-left" type="submit" name="submit" >Submit</button>
+                    <button class="btn btn-primary btn-blue pull-left" type="submit" name="submit" >Submit</button>
 
                 </fieldset>
                 </form>
@@ -109,7 +109,7 @@
                     <div style="color:red;"><?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?></div>
                     </td></tr></table>
 
-                    <button class="btn btn-primary  pull-left" type="submit" name="submit" >Submit</button>
+                    <button class="btn btn-primary btn-blue pull-left" type="submit" name="submit" >Submit</button>
 
                 </fieldset>
                 </form>

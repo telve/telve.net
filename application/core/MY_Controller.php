@@ -61,7 +61,7 @@
 							</label>
 
 							<a class='checkbox' href='/password'>forgot password?</a>
-							<button type='submit' class='btn pull-right'>log in</button>
+							<button type='submit' class='btn pull-right' style='margin-top:10px;'>log in</button>
 							</form>
 						</tr></td>
 					</table>

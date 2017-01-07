@@ -19,7 +19,7 @@
 			</label>
 			<!--Error message-->
 			<span style="color:red;"><?php echo $login_error;?></span><br>
-			<button class="btn btn-primary" type="submit" name="submit" >Log in</button>
+			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Log in</button>
 		</fieldset>
 	</form>
 	</div>

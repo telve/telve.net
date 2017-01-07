@@ -89,3 +89,56 @@ li > a.submit {
 #site-logo, #turkish-coffee {
     cursor: pointer;
 }
+
+.btn, input[class*="span"], input[type="text"], input[type="password"], .table-bordered, .table-bordered tbody > tr, .table-bordered tbody:last-child tr:last-child > td:last-child {
+    border-radius: 0px;
+}
+
+/* BLUE BUTTON */
+.btn-blue {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #2f6fa7;
+  background-image: -moz-linear-gradient(top,#337ab7,#285f8f);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#337ab7),to(#285f8f));
+  background-image: -webkit-linear-gradient(top,#337ab7,#285f8f);
+  background-image: -o-linear-gradient(top,#337ab7,#285f8f);
+  background-image: linear-gradient(to bottom,#337ab7,#285f8f);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff275f8f', GradientType=0);
+  border-color: #285f8f #285f8f #173853;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.btn-blue:hover,
+.btn-blue:focus {
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position .1s linear;
+  -moz-transition: background-position .1s linear;
+  -o-transition: background-position .1s linear;
+  transition: background-position .1s linear;
+}
+.btn-blue:hover,
+.btn-blue:focus {
+  background-color: #285f8f;
+}
+.btn-blue:active,
+.btn-blue.active,
+.btn-blue.active:hover {
+  background-color: #2d6da3;
+  border-color: #285f8f;
+}
+.btn-blue.disabled:hover,
+.btn-blue.disabled:focus,
+.btn-blue.disabled:active,
+.btn-blue.disabled.active,
+.btn-blue[disabled] .btn-blue:hover,
+.btn-blue[disabled] .btn-blue:focus,
+.btn-blue[disabled] .btn-blue:active,
+.btn-blue[disabled] .btn-blue.active {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+/* BLUE BUTTON */

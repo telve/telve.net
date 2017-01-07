@@ -48,7 +48,7 @@
         <h4 id="myModalLabel">You need to be logged in to submit things.</h4>
     </div>
 
-    <div class="modal-body">
+    <div class="modal-body" style="margin-left:20px;">
         <div class="row-fluid">
             <div class="span4">
                 <?php echo form_open('user/register');?>
@@ -84,7 +84,7 @@
                         <input type="checkbox" name="remember"/> remember me
                     </label>
         			<br/>
-        			<button class="btn btn-primary" type="submit" name="submit" >Submit</button>
+        			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Submit</button>
 
                     <!--Error message<span id="msg"></span>-->
 
@@ -110,7 +110,7 @@
 					<p>For more information, please visit <a href="#">Privacy Policy</a>.</p>
 				</div>
 				<div class="span1"><!--Draw a vertical dividing line-->
-					<table style=" border-right:2px solid #ddd;height:530px;" >
+					<table style="border-right:2px solid #ddd; height:530px; margin-left:20px;">
 						<tr><td >&nbsp;</td></tr>
 					</table>
 				</div>
@@ -120,7 +120,7 @@
 		<div class="span5">
 			<?php echo form_open('user/login');?>
             <br/>
-			<fieldset>
+			<fieldset style="margin-left:20px;">
                 <strong><div style="font-size:18px">Log in</div></strong>
                 <small>Already have an account and want to sign in?</small>
                 <br/><br/>
@@ -139,7 +139,7 @@
 
                 <a class="checkbox" href="recover_pwd">forgot password?</a>
                 <br/><br/>
-    			<button class="btn btn-primary" type="submit" name="submit" >Log in</button>
+    			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Log in</button>
 
 			</fieldset>
         </form>

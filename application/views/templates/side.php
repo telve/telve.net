@@ -1,6 +1,6 @@
 <div class="span3" style="float:right;margin-top:11px;">
     <div>
-        <input type="text" class="span12" placeholder="Search">
+        <input type="text" class="span12" placeholder="Search" style="margin-bottom:20px;">
     </div>
 
     <!--
@@ -23,9 +23,9 @@
     -->
     <?php echo $login_form;?>
 
-    <a class="btn btn-block btn-info login-required" href="<?php echo base_url("submit");?>">Submit a new link</a>
+    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("submit");?>">Submit a new link</a>
     <br>
-    <a class="btn btn-block btn-info login-required" href="<?php echo base_url("submit")."?text=true";?>">Submit a new text post</a>
+    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("submit")."?text=true";?>">Submit a new text post</a>
 </div>
 </div>
 </div>
