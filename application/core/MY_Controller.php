@@ -7,7 +7,28 @@
 			parent::__construct();
 
 			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
-				$this->data['login_info'] = "<div class='pull-right'>".$this->session->userdata('username')."(<abbr title='Link integration'><strong>1</strong></abbr>) | <a href='#'><i class='icon-envelope'></i></a> | <strong><a href='#'>Preference</a></strong> | <a href='".base_url('user/logout')."'>Log out</a> </div><br />";
+				$this->data['login_info'] = "
+				<li style='float:right;'>
+					<a href='".base_url('user/logout')."'>
+						logout <span class='glyphicon glyphicon-log-out'></span>
+					</a>
+				</li>
+				<li style='float:right;'>
+					<a href='#'>
+						preference<span class='glyphicon glyphicon-cog'></span>
+					</a>
+				</li>
+				<li style='float:right;'>
+					<a href='#'>
+						<span class='glyphicon glyphicon-inbox'></span>
+					</a>
+				</li>
+				<li style='float:right;'>
+					<a href='#'>
+						".$this->session->userdata('username')."<span class='glyphicon glyphicon-user'></span>
+					</a>
+				</li>
+				";
 
 				$this->data['login_form'] = ""; //The login form is not displayed
 				$this->data['is_user_logged_in'] = 1;
@@ -27,7 +48,7 @@
 				  </ul>
 				</div>';
 			} else {
-				$this->data['login_info'] = "<a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span style='color:gray;'>in seconds</span></a>";
+				$this->data['login_info'] = "<li style='float:right;width:302px;'><a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span class='glyphicon glyphicon-log-in'></span> <span style='color:gray;'>&nbsp;in seconds</span></a></li>";
 				$this->data['login_form'] = "
 					<table class='table table-bordered'>
 						<tr><td>

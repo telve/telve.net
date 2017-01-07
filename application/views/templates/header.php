@@ -61,5 +61,5 @@
             <li<?php if ($this->uri->segment($sn) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'top') echo 'style="color:red;"' ?> href="<?php echo $base_url.'top/';?>">top<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:13px;"></span></a></li>
             <li<?php if ($this->uri->segment($sn) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
-            <li style="float:right;width:300px;"><?php echo $login_info;?></a></li>
+            <?php echo $login_info;?>
        </ul>
