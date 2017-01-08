@@ -425,6 +425,16 @@
 			return $query->result_array();
 		}
 
+		public function random_topic() {
+			$this->db->select('topic');
+			$this->db->from('link');
+			$this->db->group_by('topic');
+			$this->db->order_by('rand()');
+			$this->db->limit(1);
+			$query = $this->db->get();
+			return $query->row_array();
+		}
+
 		private function hash_multirow($multirow) {
 			foreach ($multirow as &$row) {
 				$row['id'] = $this->hashids->encode($row['id']);

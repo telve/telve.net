@@ -9,6 +9,10 @@
 
 		public function index()
 		{
+			if ($this->uri->segment(2) == 'RANDOM') {
+				redirect('t/'.$this->link_model->random_topic()['topic'].'/');
+			}
+
             $this->load->library('pagination');
 
 			$config['base_url'] = base_url('t/'.$this->uri->segment(2));
@@ -51,7 +55,12 @@
 			}
 
             $this->data['title'] = $this->uri->segment(2);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$this->uri->segment(2));
+
+			$topic = $this->uri->segment(2);
+			if ($topic == 'ALL') {
+				$topic = NULL;
+			}
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);
 			$this->data['sn'] = 3;
 
 			foreach ($this->data['link'] as &$link_item) {
