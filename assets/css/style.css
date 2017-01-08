@@ -142,3 +142,13 @@ li > a.submit {
   border-color: #337ab7;
 }
 /* BLUE BUTTON */
+
+@font-face { font-family: Harabara; src: url('/assets/img/logo/Harabara.ttf'); }
+
+li.topic-title {
+    font-family: Harabara;
+    font-size: 20px;
+    margin-top: 56px;
+    margin-right: 10px;
+    letter-spacing: 1px;
+}

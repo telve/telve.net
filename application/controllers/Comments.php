@@ -12,6 +12,7 @@
 		public function view()
 		{
 			$id = $this->uri->segment(4);
+			$this->data['base_url'] = base_url('t/'.$this->uri->segment(2).'/');
 
 			$this->data['link_item'] = $this->link_model->retrieve_link($id);
             $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
