@@ -65,6 +65,11 @@
             <li<?php if ($this->uri->segment($sn) == 'controversial') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'controversial') echo 'style="color:red;"' ?> href="<?php echo $base_url.'controversial/';?>">controversial<span class="glyphicon glyphicon-comment" style="font-size:13px;"></span></a></li>
             <li<?php if ($this->uri->segment($sn) == 'top') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'top') echo 'style="color:red;"' ?> href="<?php echo $base_url.'top/';?>">top<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:13px;"></span></a></li>
             <li<?php if ($this->uri->segment($sn) == 'wiki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'wiki') echo 'style="color:red;"' ?> href="<?php echo base_url("wiki/index");?>">wiki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
+
+            <?php if ($this->uri->segment(3) == 'comments') { ?>
+                <li class="active"><a style="color:red;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>">comments</a></li>
+            <?php }?>
+
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
             <?php echo $login_info;?>
        </ul>
