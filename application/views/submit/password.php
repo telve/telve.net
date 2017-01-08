@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span5">
-        <ul class="nav nav-tabs" id="myTab">
+        <ul class="nav nav-tabs form-tabs" id="myTab">
 		  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Reset your password</a></li>
         </ul>
 

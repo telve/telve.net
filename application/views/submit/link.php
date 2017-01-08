@@ -2,7 +2,7 @@
   <div class="row-fluid">
     <div class="span5">
         <?php echo validation_errors();?>
-        <ul class="nav nav-tabs" id="myTab">
+        <ul class="nav nav-tabs form-tabs" id="myTab">
           <?php if ($is_text_post) { ?>
               <li><a class="submit" href="#link">Submit a link</a></li>
               <li class="active"><a class="submit" href="#text">Submit a text</a></li>

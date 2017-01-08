@@ -35,7 +35,7 @@
                            </a>
 
                            &nbsp;&nbsp;
-                           <a <?php if ( ('t' != $this->uri->segment(1)) && ('domain' != $this->uri->segment(1)) ) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
+                           <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
                            <a <?php if ('ALL' == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/ALL/';?>">All</a> -
                            <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
                            <?php foreach($topics as $topic): ?>

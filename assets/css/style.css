@@ -161,6 +161,6 @@ li.topic-title {
     margin-top: 10px;
 }
 
-div#link {
+div#link, .form-tabs {
     margin-left: 15px;
 }

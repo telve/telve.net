@@ -15,7 +15,7 @@
 				</li>
 				<li style='float:right;'>
 					<a href='#'>
-						preference<span class='glyphicon glyphicon-cog'></span>
+						preferences<span class='glyphicon glyphicon-cog'></span>
 					</a>
 				</li>
 				<li style='float:right;'>
@@ -77,6 +77,8 @@
 
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
+
+			$this->data['front_forbidden'] = array('t','domain','submit','user','password');
 
 		}
 
