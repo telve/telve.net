@@ -19,6 +19,11 @@
     		}
             */
     	</style>
+        <script type="text/javascript">
+            var base_url = "<?php echo base_url('');?>";
+            var is_user_logged_in = "<?php echo $is_user_logged_in;?>";
+            is_user_logged_in = parseInt(is_user_logged_in);
+        </script>
     </head>
 
     <body>
@@ -73,12 +78,3 @@
             <!--Want to join? immediately <a href="#myModal" data-toggle="modal">Register or login</a>-->
             <?php echo $login_info;?>
        </ul>
-
-       <script type="text/javascript">
-            $('#turkish-coffee').click(function(){
-                window.location = 'https://tr.wikipedia.org/wiki/T%C3%BCrk_kahvesi';
-            });
-            $('#site-logo').click(function(){
-                window.location = '<?php echo base_url("");?>';
-            });
-       </script>

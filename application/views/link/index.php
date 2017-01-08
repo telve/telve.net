@@ -89,22 +89,6 @@
 	}
 </style>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.close-sidebar').click(function() {
-		   $('.close-sidebar').hide();
-		   $('.show-sidebar').show();
-		   $('#right-content').animate({width: "72%"},'fast').prev().hide('fast');
-		});
-
-		$('.show-sidebar').click(function() {
-		   $('.show-sidebar').hide();
-		   $('.close-sidebar').show();
-		   $('#right-content').animate({width: "64%"}, 'fast').prev().show('fast');
-		});
-	});
-</script>
-
 <?php echo $toggle_sidebar ?>
 
 <div class="container-fluid">
@@ -199,42 +183,6 @@
 
 
 <script type="text/javascript">
-    function up(id){
-		if (<?php echo $is_user_logged_in;?>) {
-	        $.ajax({
-	               type: "POST",
-	               url: "<?php echo base_url('comments/up');?>",
-	               data: {'id' : id },
-	               success: function(data) {
-					   if (data == 1) {
-						   $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
-						   var parent = $('#up-'+id)[0];
-						   $('i', parent).css('color', 'green');
-					   } else {
-						   alert(data);
-					   }
-	               }
-	        });
-		}
-	}
-	function down(id){
-		if (<?php echo $is_user_logged_in;?>) {
-	        $.ajax({
-	               type: "POST",
-	               url: "<?php echo base_url('comments/down');?>",
-	               data: {'id' : id },
-				   success: function(data) {
-					   if (data == 1) {
-						   $("#show-"+id).html(parseInt($("#show-"+id).html())-1);
-						   var parent = $('#down-'+id)[0];
-						   $('i', parent).css('color', 'red');
-					   } else {
-						   alert(data);
-					   }
-	               }
-	        });
-		}
-	}
 	function set_share(obj){
 
 		if($(obj).text()=='share')

@@ -29,19 +29,3 @@
 </div>
 </div>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.login-required').click(function() {
-            if (!<?php echo $is_user_logged_in;?>) {
-                $('#myModal').modal('toggle');
-                return false; //cancel the event
-            }
-        });
-    });
-    function first_of_all_login() {
-        if (!<?php echo $is_user_logged_in;?>) {
-            $('#myModal').modal('toggle');
-        }
-    }
-</script>

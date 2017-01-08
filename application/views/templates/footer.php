@@ -151,5 +151,8 @@
 <p class="text-center" style="color:gray;">
 Copyright &copy; 2016&nbsp;&nbsp;telve.net&nbsp;&nbsp;All Rights Reserved.
 </p>
+
+<script src="<?php echo base_url("assets/js/telve.js");?>"></script>
+
 </body>
 </html>

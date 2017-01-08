@@ -14,9 +14,9 @@
                     </style>
 
 					<div class="digg">
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up(this);" class="login-required"><i class="glyphicon glyphicon-arrow-up" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ($link_item['up_down'] == 1 ? 'color:green;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="up_on_view(this);" class="login-required"><i class="glyphicon glyphicon-arrow-up" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ($link_item['up_down'] == 1 ? 'color:green;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
 						<strong><div id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
-						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down(this);" class="login-required"><i class="glyphicon glyphicon-arrow-down" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ( (!($link_item['up_down'] == '') && ($link_item['up_down'] == 0)) ? 'color:red;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
+						<div><a href="javascript:void(0);" id="<?php echo $link_item['id'];?>" onclick="down_on_view(this);" class="login-required"><i class="glyphicon glyphicon-arrow-down" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ( (!($link_item['up_down'] == '') && ($link_item['up_down'] == 0)) ? 'color:red;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
 					</div>
 
 					<div class="picontainer">
@@ -195,83 +195,6 @@
         });
     });
 
-    function up(obj){
-        if (<?php echo $is_user_logged_in;?>) {
-            $.ajax({
-                   type: "POST",
-                   url: "<?php echo base_url('comments/up');?>",
-                   data: { 'id' : obj.id },
-                   success: function(data) {
-                       if (data == 1) {
-                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
-						   $('i', obj).css('color', 'green');
-                       } else {
-                           alert(data);
-                       }
-                   }
-            });
-        }
-    }
-
-    function down(obj){
-        if (<?php echo $is_user_logged_in;?>) {
-            $.ajax({
-                   type: "POST",
-                   url: "<?php echo base_url('comments/down');?>",
-                   data: { 'id' : obj.id },
-                   success: function(data) {
-                       if (data == 1) {
-                           $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
-                           $('i', obj).css('color', 'red');
-                       } else {
-                           alert(data);
-                       }
-                   }
-            });
-        }
-    }
-
-    function rply_up(obj){
-        if (<?php echo $is_user_logged_in;?>) {
-            $.ajax({
-                   type: "POST",
-                   url: "<?php echo base_url('comments/rply_up');?>",
-                   data: { 'id' : obj.id },
-                   error: function(xhr, status, error) {
-                       console.log(xhr.responseText);
-                   },
-                   success:function(data){
-                      if (data == 1) {
-                          $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
-                          $('i', obj).css('color', 'green');
-                      } else {
-                          alert(data);
-                      }
-                   }
-            });
-        }
-    }
-
-    function rply_down(obj){
-        if (<?php echo $is_user_logged_in;?>) {
-            $.ajax({
-                   type: "POST",
-                   url: "<?php echo base_url('comments/rply_down');?>",
-                   data: { 'id' : obj.id },
-                   error: function(xhr, status, error) {
-                       console.log(xhr.responseText);
-                   },
-                   success:function(data){
-                      if (data == 1) {
-                          $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
-                          $('i', obj).css('color', 'red');
-                      } else {
-                          alert(data);
-                      }
-                   }
-            });
-        }
-    }
 
     function set_reply(obj){
         if($(obj).nextAll().is("div"))
