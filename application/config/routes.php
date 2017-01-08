@@ -55,5 +55,9 @@ $route['rising/:num'] = 'rising';
 $route['controversial/:num'] = 'controversial';
 $route['top/:num'] = 'top';
 
+$route['domain/(:any)'] = 'domain';
+$route['domain/(:any)/(:any)'] = 'domain';
+$route['domain/(:any)/(:any)/(:any)'] = 'domain';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

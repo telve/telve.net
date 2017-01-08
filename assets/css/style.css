@@ -151,4 +151,16 @@ li.topic-title {
     margin-top: 56px;
     margin-right: 10px;
     letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 8em;
+    text-overflow: ellipsis;
+}
+
+.container-fluid {
+    margin-top: 10px;
+}
+
+div#link {
+    margin-left: 15px;
 }

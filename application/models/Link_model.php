@@ -10,7 +10,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
-		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL) //By default, all states are returned
+		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -52,6 +52,9 @@
 				if ($topic) {
 					$this->db->where('topic',$topic);
 				}
+				if ($domain) {
+					$this->db->where('domain',$domain);
+				}
                 $query = $this->db->get();
 
                 return $this->hash_multirow($query->result_array());
@@ -79,13 +82,16 @@
             return $this->hash_row($query->row_array());
 		}
 
-        public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL)
+        public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL, $domain = NULL)
 		{
 
 			if($id === FALSE)
             {
 				if ($topic) {
 					$this->db->where('topic',$topic);
+				}
+				if ($domain) {
+					$this->db->where('domain',$domain);
 				}
                 $query = $this->db->get('link',$rows,$offset);
                 return $this->hash_multirow($query->result_array());

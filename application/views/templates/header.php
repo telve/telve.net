@@ -35,7 +35,7 @@
                            </a>
 
                            &nbsp;&nbsp;
-                           <a <?php if ('t' != $this->uri->segment(1)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
+                           <a <?php if ( ('t' != $this->uri->segment(1)) && ('domain' != $this->uri->segment(1)) ) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
                            <a <?php if ('ALL' == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/ALL/';?>">All</a> -
                            <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
                            <?php foreach($topics as $topic): ?>
@@ -55,7 +55,7 @@
             <!-- <li><img src="/assets/img/logo/<?php //echo rand(1,5);?>.png" style="height:50px; margin-top:26px; margin-left:2px; position:relative; z-index:1; margin-bottom: -20px;"/><img src="/assets/img/logo/telve.png" style="height:40px; margin-top:36px; margin-right:10px; margin-left:-15px;"/></li> -->
             <li><img src="/assets/img/logo/turkish-coffee.png" id="turkish-coffee" style="height:40px; margin-top:36px; margin-left:2px; position:relative; z-index:1; margin-bottom: -50px;"/><img src="/assets/img/logo/telve.png" id="site-logo" style="height:30px; margin-top:46px; margin-right:10px; margin-left:-15px;"/></li>
 
-            <?php if ($this->uri->segment(1) == 't') { ?>
+            <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'domain') ) { ?>
                 <li class="topic-title"><?php echo $this->uri->segment(2);?></li>
             <?php }?>
 

@@ -1,5 +1,5 @@
 <?php
-	class Topic extends MY_Controller {
+	class Domain extends MY_Controller {
 
 		public function __construct()
 		{
@@ -9,13 +9,9 @@
 
 		public function index()
 		{
-			if ($this->uri->segment(2) == 'RANDOM') {
-				redirect('t/'.$this->link_model->random_topic()['topic'].'/');
-			}
-
             $this->load->library('pagination');
 
-			$config['base_url'] = base_url('t/'.$this->uri->segment(2));
+			$config['base_url'] = base_url('domain/'.$this->uri->segment(2));
 			if ( !is_numeric($this->uri->segment(3)) && !empty($this->uri->segment(3)) ) {
 				$config['base_url'] = $config['base_url'].'/'.$this->uri->segment(3);
 				$this->data['offset'] = $this->uri->segment(4);
@@ -23,9 +19,9 @@
 				$this->data['offset'] = $this->uri->segment(3);
 			}
 
-			$this->data['base_url'] = base_url('t/'.$this->uri->segment(2).'/');
+			$this->data['base_url'] = base_url('domain/'.$this->uri->segment(2).'/');
 
-            $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, $this->uri->segment(2)));
+            $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, NULL,$this->uri->segment(2)));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
@@ -56,11 +52,7 @@
 
             $this->data['title'] = $this->uri->segment(2);
 
-			$topic = $this->uri->segment(2);
-			if ($topic == 'ALL') {
-				$topic = NULL;
-			}
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,NULL,$this->uri->segment(2));
 			$this->data['sn'] = 3;
 
 			foreach ($this->data['link'] as &$link_item) {
