@@ -166,12 +166,12 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('reply.id,comments,content,reply.uid,score, created,up_down');
+				$this->db->select('reply.id,comments,content,reply.uid,score,reply.created,up_down');
 				$this->db->from('reply');
 				$this->db->where('pid',$pid);
 				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
 			} else {
-				$this->db->select('id,comments,content,uid,score, created');
+				$this->db->select('id,comments,content,uid,score,created');
 				$this->db->from('reply');
 				$this->db->where('pid',$pid);
 			}
@@ -187,14 +187,14 @@
 			if ($this->input->get('sort') == 'top') {
 				$this->db->order_by("score", "desc");
 			} else if ($this->input->get('sort') == 'new') {
-				$this->db->order_by("created", "desc");
+				$this->db->order_by("reply.created", "desc");
 			} else if ($this->input->get('sort') == 'controversial') {
 				$this->db->order_by("comments", "desc");
 			} else if ($this->input->get('sort') == 'old') {
-				$this->db->order_by("created", "asc");
+				$this->db->order_by("reply.created", "asc");
 			} else {
-				//$this->db->where('created >= DATE_SUB(NOW(),INTERVAL 1 HOUR)'); //https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
-				$this->db->order_by("(8 * score) + (.1 * created) + (6 * comments) DESC");
+				//$this->db->where('reply.created >= DATE_SUB(NOW(),INTERVAL 1 HOUR)'); //https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
+				$this->db->order_by("(8 * score) + (.1 * reply.created) + (6 * comments) DESC");
 				//echo $this->db->last_query();
 			}
 			$query = $this->db->get();
