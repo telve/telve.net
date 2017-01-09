@@ -1,0 +1,215 @@
+div.navbar-inverse {
+    background-color: #f0f0f0;
+    text-transform: uppercase;
+    border-bottom: 1px solid gray;
+    height: 20px;
+    line-height: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+div.navbar-inverse div#no-more {
+    width: 90%;
+    overflow: hidden;
+}
+
+div.navbar-inverse div#no-more div#bullhorn-announcement {
+    float: left;
+    width: 150px;
+    overflow: hidden;
+}
+
+div.navbar-inverse div#no-more div#bullhorn-announcement div.scroll-left {
+    float: left;
+    width: 500px;
+}
+
+div.navbar-inverse a#more {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+
+div.navbar-inverse a#more span.glyphicon-chevron-right {
+    font-size: 13px;
+}
+
+ul.nav-tabs#header {
+    background: #CEE3F8;
+}
+
+img#turkish-coffee {
+    height: 40px;
+    margin-top: 36px;
+    margin-left: 2px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -50px;
+}
+
+img#site-logo {
+    height: 30px;
+    margin-top: 46px;
+    margin-right: 10px;
+    margin-left: -15px;
+}
+
+ul.nav-tabs#header .glyphicon {
+    font-size: 13px;
+}
+
+#right-content {
+    background: none repeat scroll 0 0 white;
+    color: black;
+    float: left;
+    padding-bottom: 10px;
+    width: 72%;
+}
+#sidebar {
+    display: none;
+    float: left;
+    width: 8%;
+}
+#toggle-sidebar {
+    position: absolute;
+    left: 0;
+}
+#toggle-sidebar .show-sidebar {
+    background:#fff;
+    border: 1px solid #D2D2D2;
+    border-top:0;
+    box-shadow: 0 0 1px #CCCCCC;
+    color: #808080;
+    cursor: pointer;
+    float: left;
+    font-family: Consolas,monospace;
+    font-size: 12px;
+    padding: 415px 3px;
+    text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
+    text-decoration:none;
+}
+#toggle-sidebar .close-sidebar{
+    background:#fff;
+    border: 1px solid #D2D2D2;
+    border-top:0;
+    box-shadow: 0 0 1px #CCCCCC;
+    color: #808080;
+    cursor: pointer;
+    float: left;
+    margin-left:120px;
+    font-family: Consolas,monospace;
+    font-size: 12px;
+    padding: 415px 3px;
+    text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
+    text-decoration:none;
+}
+#toggle-sidebar a:hover {
+    background:#F7F7F7;
+    border: 1px solid #D2D2D2;
+    border-top:0;
+    box-shadow: 0 0 1px #CCCCCC;
+    color: #808080;
+    cursor: pointer;
+    float: left;
+    font-family: Consolas,monospace;
+    font-size: 12px;
+    padding: 415px 3px;
+    text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
+    text-decoration:none;
+}
+#sidebar {
+    list-style-type:none;
+    background:#F7F7F7;
+    background-image: -moz-linear-gradient(center top , #F8F8F8, #E8E8E8);
+    border: 1px solid #D2D2D2;
+    border-top:0;
+    border-top:left;
+    box-shadow: 0 0 1px #CCCCCC;
+    height:851px;
+}
+#sidebar ul li {
+    text-decoration:none;
+    background:#E9F2FC;
+    border:5px solid #E9F2FC;
+    margin-top:28px;
+}
+#sidebar ul li a {
+    text-decoration:none;
+}
+#sidebar ul li a:hover {
+    text-decoration:none;
+}
+
+div.left {
+    /*background-color: #369;*/
+    height: 60px;
+    width: 50px;
+    float: left;
+    text-align: center;
+}
+div.rank {
+    /*background-color: #ffff99;*/
+    height: 40px;
+    width: 20px;
+    float: left;
+    text-align: center;
+}
+div.digg {
+    /*background-color: #ffff99;*/
+    height: 40px;
+    width: 20px;
+    float: left;
+    text-align: center;
+}
+div.middle { /*Adaptive picture size*/
+    /*background-color: #369;
+    height: 80px;
+    width: 80px;*/
+    float: left;
+    text-align: center;
+}
+
+div.link {
+    margin-top: 11px;
+}
+
+div.rank > div {
+    color: #c6c6c6;
+    font-size: medium;
+    text-align: right;
+    margin-right: 10px;
+}
+
+div.rank #score {
+    line-height: 1.6em;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+img.link-thumbnail {
+    width: 70px;
+    max-height: 70px;
+}
+
+a.link-title {
+    text-decoration: none;
+    color: blue;
+}
+
+span.link-domain, span.link-domain > a, small.details {
+    color: #888;
+}
+
+small.details > a {
+    color: #369;
+}
+
+div.link-actions {
+    font-size: 13px;
+}
+
+div.link-actions a {
+    color: #888;
+    line-height: 1.6em;
+}

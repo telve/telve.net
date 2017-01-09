@@ -44,7 +44,7 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="关闭">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="Close">&times;</button>
         <h4 id="myModalLabel">You need to be logged in to submit things.</h4>
     </div>
 

@@ -482,3 +482,11 @@ $(document).ready(function(){
         });
     });
 });
+
+// JavaScript under submit/link - tab switching
+$(document).ready(function(){
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+});

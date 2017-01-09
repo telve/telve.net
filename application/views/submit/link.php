@@ -115,13 +115,4 @@
                 </form>
             </div>
         </div>
-
-		<!--Tab switching-->
-        <script>
-            $('#myTab a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show');
-            })
-        </script>
-
     </div>
