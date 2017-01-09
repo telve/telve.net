@@ -40,25 +40,3 @@
 		</form>
 	</div>
 </div>
-
-
-
-<script type="text/javascript">
-   $(document).ready(function(){
-        $("#reg_username").keyup(function(){
-            var username = $(this).val();
-            //alert(username);
-            $.ajax({
-                type:"POST",
-                url:"<?php echo base_url('user/is_username_available');?>",
-                data:{'username':username},
-                error:function(){
-                    alert("error");
-                },
-                success:function(msg){
-                    $("#chk_msg").html(msg);
-                }
-            });
-        });
-   });
-</script>

@@ -125,28 +125,3 @@
         </script>
 
     </div>
-
-
-<script type="text/javascript">
-    function set_topic(obj) { //Function name can not be topic, with the previous id, class conflict
-        $(".topic").val(obj.text)
-    }
-
-    $("#get_title").click(function(){
-        var url = $("#url").val();
-        //alert(url);
-
-        $.ajax({
-            type:"POST",
-            url:"<?php echo base_url('submit/get_title');?>",
-            data:{'url':url},
-            error:function(){
-                alert("error");
-            },
-            success:function(data){
-                //alert(data);
-                $("#title").val(data);
-            }
-        });
-    });
-</script>

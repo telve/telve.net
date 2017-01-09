@@ -23,6 +23,18 @@
             var base_url = "<?php echo base_url('');?>";
             var is_user_logged_in = "<?php echo $is_user_logged_in;?>";
             is_user_logged_in = parseInt(is_user_logged_in);
+
+            // Share form related
+            var set_value_toEmail = "<?php echo set_value('toEmail');?>";
+            var form_error_toEmail = "<?php echo form_error('toEmail');?>";
+            var set_value_fromName = "<?php echo set_value('fromName');?>";
+            var form_error_fromName = "<?php echo form_error('fromName');?>";
+            var set_value_fromEmail = "<?php echo set_value('fromEmail');?>";
+            var form_error_fromEmail = "<?php echo form_error('fromEmail');?>";
+            var set_value_message = "<?php echo set_value('message');?>";
+            var form_error_message = "<?php echo form_error('message');?>";
+            var form_error_captcha = "<?php if(!empty($error)){echo $error;}?><?php echo form_error('captcha');?>";
+            var link_username = "<?php if (isset($link_item['username'])) echo $link_item['username'];?>";
         </script>
     </head>
 
