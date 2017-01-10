@@ -144,7 +144,7 @@ ul.nav-tabs#header .glyphicon {
 div.left {
     /*background-color: #369;*/
     height: 60px;
-    width: 50px;
+    width: 70px;
     float: left;
     text-align: center;
 }
@@ -158,7 +158,7 @@ div.rank {
 div.digg {
     /*background-color: #ffff99;*/
     height: 40px;
-    width: 20px;
+    width: 40px;
     float: left;
     text-align: center;
 }
@@ -171,7 +171,7 @@ div.middle { /*Adaptive picture size*/
 }
 
 div.link {
-    margin-top: 11px;
+    margin-top: 15px;
 }
 
 div.rank > div {
@@ -179,12 +179,15 @@ div.rank > div {
     font-size: medium;
     text-align: right;
     margin-right: 10px;
+    position: relative;
+    top: -5px;
 }
 
-div.rank #score {
+div.digg .score {
     line-height: 1.6em;
     font-weight: bold;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    margin-left: 1.2px;
 }
 
 img.link-thumbnail {
@@ -212,4 +215,37 @@ div.link-actions {
 div.link-actions a {
     color: #888;
     line-height: 1.6em;
+}
+
+div.link-title {
+    position: relative;
+    top: -3px;
+    line-height: 18px;
+}
+
+div#comments-block {
+    margin-top: 20px;
+}
+
+div#comments-solid-line {
+    border-top:solid 1px rgba(0, 0, 0, .3);
+    width: 100%;
+}
+
+small#sorting-text {
+    color: #888;
+}
+
+div#submit_reply {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #888;
+}
+
+div#update_reply {
+    margin: 0 0 10px 25px;
+}
+
+table.submit-form {
+    background-color: #cee3f8;
 }

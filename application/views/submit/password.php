@@ -10,7 +10,7 @@
 
                 <?php echo form_open('password');?>
                 <fieldset>
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
 
                     <label for="title">Username</label>
                     <input class="span12" id="username" name="username" placeholder="enter your username"/><br />

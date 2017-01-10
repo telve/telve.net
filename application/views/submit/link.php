@@ -21,13 +21,13 @@
                 <?php echo form_open('submit');?>
                 <fieldset>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="title">Title</label>
                     <textarea rows="2" class="span12" id="title" name="title" value="<?php echo set_value('title');?>" placeholder="the title of the link..."/></textarea><br />
                     <div style="color:red"><?php echo form_error('title');?></div>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="url">URL</label>
                     <input type="text" class="span12" name="url" id="url" value="<?php echo set_value('url');?>" placeholder="the URL of the link..."/><br />
                     <div style="color:red"><?php echo form_error('url');?></div>
@@ -35,7 +35,7 @@
                     <a href="javascript:void(0)" class="btn btn-primary pull-right btn-blue" id="get_title">Suggest title</a>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="topic">Choose a topic</label>
                     <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="the topic of the link..."/><br />
                     <div style="color:red"><?php echo form_error('topic');?></div>
@@ -50,7 +50,7 @@
       					<a href="javascript:void(0)" onclick="set_topic(this)">EDUCATION</a>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <img src="<?php echo base_url('user/captcha');?>" />
                     <br/>
                     <label for="captcha">Verification code</label>
