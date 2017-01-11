@@ -422,7 +422,7 @@
 			//return implode(" | ", $visited);
 		}
 
-		public function retrieve_topics() {
+		public function retrieve_topics_for_header() {
 			$this->db->select('topic, COUNT(*) as topic_occurrence');
 			$this->db->from('link');
 			$this->db->group_by('topic');
@@ -439,6 +439,16 @@
 			$this->db->limit(1);
 			$query = $this->db->get();
 			return $query->row_array();
+		}
+
+		public function retrieve_topics($rows,$offset) {
+			$this->db->select('topic, COUNT(*) as topic_occurrence');
+			$this->db->from('link');
+			$this->db->group_by('topic');
+			$this->db->order_by('topic_occurrence','desc');
+			$this->db->limit($rows,$offset);
+			$query = $this->db->get();
+			return $query->result_array();
 		}
 
 		private function hash_multirow($multirow) {

@@ -73,12 +73,12 @@
 			}
 
 			$this->load->model('link_model');
-			$this->data['topics'] = $this->link_model->retrieve_topics();
+			$this->data['topics'] = $this->link_model->retrieve_topics_for_header();
 
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
 
-			$this->data['front_forbidden'] = array('t','domain','submit','user','password');
+			$this->data['front_forbidden'] = array('t','domain','submit','user','password','subscriptions');
 
 		}
 

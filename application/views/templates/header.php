@@ -53,7 +53,7 @@
                    <?php endforeach ?>
 
                </div>
-               <a id="more" href="#">More<span class="glyphicon glyphicon-chevron-right"></span></a>
+               <a id="more" href="<?php echo base_url('subscriptions');?>">More<span class="glyphicon glyphicon-chevron-right"></span></a>
            </div>
 
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>

@@ -54,6 +54,7 @@ $route['new/:num'] = 'xnew';
 $route['rising/:num'] = 'rising';
 $route['controversial/:num'] = 'controversial';
 $route['top/:num'] = 'top';
+$route['subscriptions/:num'] = 'subscriptions';
 
 $route['domain/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)'] = 'domain';
