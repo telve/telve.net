@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2017 at 07:19 AM
+-- Generation Time: Jan 12, 2017 at 09:45 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -135,6 +135,40 @@ INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comment
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subscription`
+--
+
+CREATE TABLE `subscription` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `topic` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topic`
+--
+
+CREATE TABLE `topic` (
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `topic`
+--
+
+INSERT INTO `topic` (`name`, `description`, `created`) VALUES
+('NEWS', 'News of all kind', '2017-01-12 21:22:52'),
+('WORLDNEWS', 'World wide news like serious shit', '2017-01-12 21:33:56'),
+('SCIENCE', 'Nerds, this is your topic come over here!', '2017-01-12 21:34:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -229,6 +263,18 @@ ALTER TABLE `reply`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `topic`
+--
+ALTER TABLE `topic`
+  ADD PRIMARY KEY (`name`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -260,6 +306,11 @@ ALTER TABLE `link`
 --
 ALTER TABLE `reply`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --

@@ -48,7 +48,8 @@
 		                        <div class="link-title"><strong><a class="link-title" href="<?php echo base_url("")."t/".$topic['topic']."/";?>"><?php echo "/t/".$topic['topic']; ?></a></strong></div>
 
                                 <div style="line-height: 14px;">
-                                    <small class="details">0 subscribers,&nbsp;&nbsp;a community for <?php echo substr(human_timing($link_item['created']), 0, -4);?>,&nbsp;&nbsp;created by <a href="#"><?php echo $link_item['username']?></a></small>
+									<?php if ($topic['description']) echo $topic['description'].'<br>';?>
+                                    <small class="details">0 subscribers,&nbsp;&nbsp;a community for <?php echo substr(human_timing($topic['created']), 0, -4);?></small>
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>

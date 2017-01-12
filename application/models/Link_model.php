@@ -442,11 +442,12 @@
 		}
 
 		public function retrieve_topics($rows,$offset) {
-			$this->db->select('topic, COUNT(*) as topic_occurrence');
+			$this->db->select('topic, COUNT(topic) as topic_occurrence, MIN(link.created) as created, MIN(topic.description) as description');
 			$this->db->from('link');
 			$this->db->group_by('topic');
 			$this->db->order_by('topic_occurrence','desc');
 			$this->db->limit($rows,$offset);
+			$this->db->join('topic', 'link.topic = topic.name','left');
 			$query = $this->db->get();
 			return $query->result_array();
 		}
