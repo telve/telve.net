@@ -48,7 +48,7 @@
                    <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
                    <a <?php if ('ALL' == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/ALL/';?>">All</a> -
                    <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
-                   <?php foreach($topics as $topic): ?>
+                   <?php foreach($topics_for_header as $topic): ?>
                        <a <?php if ($topic['topic'] == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
                    <?php endforeach ?>
 

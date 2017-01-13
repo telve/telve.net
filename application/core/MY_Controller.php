@@ -73,7 +73,7 @@
 			}
 
 			$this->load->model('link_model');
-			$this->data['topics'] = $this->link_model->retrieve_topics_for_header();
+			$this->data['topics_for_header'] = $this->link_model->retrieve_topics_for_header();
 
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
