@@ -6,6 +6,9 @@
 		{
 			parent::__construct();
 
+			$this->load->model('subscription_model');
+			$this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
+
 			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
 				$this->data['login_info'] = "
 				<li style='float:right; margin-right:15px;'>
@@ -37,15 +40,11 @@
 					<a class="show-sidebar" href="javascript:void(0)" title="Your subscriptions"><span class="glyphicon glyphicon-indent-left"></span></a>
 				</div>';
 				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
-				  <ul style="list-style-type:none">
-				    <li><a href="#">Subscribe</a></li>
-					<li><a href="#">News</a></li>
-					<li><a href="#">Images</a></li>
-					<li><a href="#">Test</a></li>
-					<li><a href="#">Create</a></li>
-					<li><a href="#">Find</a></li>
-					<li><a href="#">My Favorites</a></li>
-				  </ul>
+				  <ul style="list-style-type:none">';
+				  foreach ($this->data['subscriptions'] as $subscription) {
+				  		$this->data['sidebar'] .= '<li><a href="'.base_url("")."t/".$subscription['topic']."/".'">'.$subscription['topic'].'</a></li>';
+				  }
+				  $this->data['sidebar'] .= '</ul>
 				</div>';
 			} else {
 				$this->data['login_info'] = "<li style='float:right;width:302px;margin-right:15px;'><a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span class='glyphicon glyphicon-log-in'></span> <span style='color:gray;'>&nbsp;in seconds</span></a></li>";

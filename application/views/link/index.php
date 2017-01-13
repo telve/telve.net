@@ -7,7 +7,7 @@
 
 	<?php echo $sidebar ?>
 
-    	<div class="span8"><!-- style="background:#abb;"-->
+    	<div id="right-content" class="span8"><!-- style="background:#abb;"-->
 
         <?php
 		$item_counter = 0;

@@ -70,6 +70,8 @@ ul.nav-tabs#header .glyphicon {
     display: none;
     float: left;
     width: 8%;
+    position:relative;
+    overflow:hidden;
 }
 #toggle-sidebar {
     position: absolute;
@@ -132,7 +134,7 @@ ul.nav-tabs#header .glyphicon {
     text-decoration:none;
     background:#E9F2FC;
     border:5px solid #E9F2FC;
-    margin-top:28px;
+    margin-top:10px;
 }
 #sidebar ul li a {
     text-decoration:none;

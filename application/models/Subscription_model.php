@@ -84,5 +84,22 @@
 			return $query->result_array();
 		}
 
+		public function retrieve_only_subscribed() {
+			$this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+			$this->db->select('link.topic, COUNT(link.topic) as topic_occurrence, MIN(topic.description) as description');
+			$this->db->from('link');
+			$this->db->group_by('topic');
+			$this->db->order_by('topic_occurrence','desc');
+			$this->db->join('topic', 'link.topic = topic.name','left');
+			$this->db->join('subscription', 'link.topic = subscription.topic AND '.$row['id'].' = subscription.uid');
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
     }
 ?>
