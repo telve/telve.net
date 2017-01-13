@@ -5,6 +5,7 @@
 		{
 			parent::__construct();
 			$this->load->model('link_model');
+			$this->load->model('subscription_model');
 		}
 
 		public function index()
@@ -45,6 +46,21 @@
 			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
+
+		public function subscribe()
+        {
+			if ($this->data['is_user_logged_in']) {
+
+				if (!$this->subscription_model->right_to_subscribe()) {
+					$this->vote_model->insert_subscription();
+					echo 1;
+				} else {
+					echo "You have already subscribed to this topic.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
 
 	}
 ?>
