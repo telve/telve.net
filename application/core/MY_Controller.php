@@ -6,10 +6,11 @@
 		{
 			parent::__construct();
 
-			$this->load->model('subscription_model');
-			$this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
-
 			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+
+				$this->load->model('subscription_model');
+				$this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
+
 				$this->data['login_info'] = "
 				<li style='float:right; margin-right:15px;'>
 					<a href='".base_url('user/logout')."'>
@@ -40,9 +41,13 @@
 					<a class="show-sidebar" href="javascript:void(0)" title="Your subscriptions"><span class="glyphicon glyphicon-indent-left"></span></a>
 				</div>';
 				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
-				  <ul style="list-style-type:none">';
+				  <ul style="list-style-type:none; margin:0;">';
 				  foreach ($this->data['subscriptions'] as $subscription) {
-				  		$this->data['sidebar'] .= '<li><a href="'.base_url("")."t/".$subscription['topic']."/".'">'.$subscription['topic'].'</a></li>';
+					    if ($subscription['topic'] == $this->uri->segment(2))
+							$style = 'style="color:red;"';
+						else
+							$style = '';
+				  		$this->data['sidebar'] .= '<li><a href="'.base_url("")."t/".$subscription['topic']."/".'" '.$style.'>'.$subscription['topic'].'</a></li>';
 				  }
 				  $this->data['sidebar'] .= '</ul>
 				</div>';

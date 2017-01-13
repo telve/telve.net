@@ -55,7 +55,7 @@
 									<div class="link-title"><strong><a class="link-title" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'domain/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
 								<?php }?>
                                 <div style="line-height: 14px;">
-                                    <small class="details">submitted <?php echo human_timing($link_item['created']);?>&nbsp;&nbsp;by <a href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to <a href="#"><?php echo $link_item['topic']?></a></small>
+                                    <small class="details">submitted <?php echo human_timing($link_item['created']);?>&nbsp;&nbsp;by <a href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to <a href="<?php echo base_url('').'t/'.$link_item['topic'].'/';?>"><?php echo $link_item['topic']?></a></small>
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>

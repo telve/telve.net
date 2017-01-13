@@ -35,6 +35,9 @@
 			$this->data['offset'] = $this->uri->segment(2);
 			$this->data['topics'] = $this->subscription_model->retrieve_subscriptions($config['per_page'],$this->data['offset']);
 
+			$this->data['toggle_sidebar'] = '';
+			$this->data['sidebar'] = '';
+
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('subscriptions/index',$this->data);
 			$this->load->view('templates/side');
