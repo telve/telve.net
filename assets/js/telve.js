@@ -253,9 +253,6 @@ function rply_down(obj){
 }
 $(document).ready(function(){
 
-    //Default post mode submission
-	//$(".show").load( base_url +'comments/show_load', {'id':$(".show").val()},function(data){alert(data);});
-
 	$("#hide_link").click(function(){
         $("#link").fadeOut(800);
     });
@@ -329,33 +326,6 @@ function set_reply(obj){
 		$(obj).nextAll("div").children("#content").focus();
 	}
 }
-
-/*
-function show_reply(obj){
-	//alert(obj.id);
-	$.ajax({
-		type:"POST",
-		url: base_url + 'comments/show',
-		data:{'id':obj.id},
-		error:function(){
-			alert("error");
-		},
-		success:function(json_data){
-
-
-			var json=eval(json_data); //JSON string will be resolved into JSON data format
-
-			$.each(json, function(k)   //Iterate over the jQuery object and execute the function for each matching element
-			{
-
-				//json[k]['id'];
-				alert(decodeURI(json[k]['content']));
-			});
-
-		}
-	});
-}
-*/
 
 function cancel_reply(obj){
     //alert($(obj).parent());
