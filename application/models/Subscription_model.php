@@ -22,7 +22,21 @@
             return $this->db->insert('subscription',$data);
         }
 
-		public function right_to_subscribe()
+		public function delete_subscription()
+        {
+            $this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+            $this->db->where('uid', $row['id']);
+            $this->db->where('topic', $this->input->post('topic'));
+
+            return $this->db->delete('subscription');
+        }
+
+		public function right_to_unsubscribe()
 		{
 			$this->db->where('username',$this->session->userdata('username'));
             $this->db->select('id');
@@ -42,6 +56,13 @@
 		{
             $this->db->where('name',$this->input->post('topic'));
 			$this->db->set('subscribers', 'subscribers+1', FALSE);
+			$this->db->update('topic');
+		}
+
+		public function decrease_subscribers()
+		{
+            $this->db->where('name',$this->input->post('topic'));
+			$this->db->set('subscribers', 'subscribers-1', FALSE);
 			$this->db->update('topic');
 		}
 

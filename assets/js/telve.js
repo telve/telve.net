@@ -510,3 +510,21 @@ function subscribe(obj){
         });
     }
 }
+function unsubscribe(obj){
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'subscriptions/unsubscribe',
+               data: { 'topic' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $('a.btn#'+obj.id).text('Subscribe');
+                       $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-success');
+                       $('a.btn#'+obj.id).attr('onclick', 'subscribe(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}

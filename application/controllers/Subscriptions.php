@@ -44,9 +44,24 @@
 		public function subscribe()
         {
 			if ($this->data['is_user_logged_in']) {
-				if (!$this->subscription_model->right_to_subscribe()) {
+				if (!$this->subscription_model->right_to_unsubscribe()) {
 					$this->subscription_model->insert_subscription();
 					$this->subscription_model->increase_subscribers();
+					echo 1;
+				} else {
+					echo "You have already subscribed to this topic.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function unsubscribe()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if ($this->subscription_model->right_to_unsubscribe()) {
+					$this->subscription_model->delete_subscription();
+					$this->subscription_model->decrease_subscribers();
 					echo 1;
 				} else {
 					echo "You have already subscribed to this topic.";
