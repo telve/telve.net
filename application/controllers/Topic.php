@@ -5,6 +5,7 @@
 		{
 			parent::__construct();
 			$this->load->model('link_model');
+			$this->load->model('topic_model');
 		}
 
 		public function index()
@@ -50,6 +51,13 @@
 				$ranking = 'controversial';
 			} else if ($segment == 'top') {
 				$ranking = 'top';
+			} else if ($segment == 'wiki') {
+				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($this->uri->segment(2));
+				$this->load->view('templates/header',$this->data);
+				$this->load->view('wiki/index',$this->data);
+				$this->load->view('templates/side');
+				$this->load->view('templates/footer');
+				return 1;
 			} else {
 				$ranking = 'hot';
 			}

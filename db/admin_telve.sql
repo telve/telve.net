@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2017 at 03:49 PM
+-- Generation Time: Jan 13, 2017 at 10:36 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -152,8 +152,8 @@ CREATE TABLE `subscription` (
 
 INSERT INTO `subscription` (`id`, `uid`, `topic`, `created`) VALUES
 (1, 1, 'NEWS', '2017-01-13 15:01:06'),
-(2, 1, 'WORLDNEWS', '2017-01-13 15:01:16'),
-(3, 1, 'FUNNY', '2017-01-13 15:01:18');
+(3, 1, 'FUNNY', '2017-01-13 15:01:18'),
+(5, 1, 'WORLDNEWS', '2017-01-13 17:20:33');
 
 -- --------------------------------------------------------
 
@@ -332,7 +332,7 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user`
 --

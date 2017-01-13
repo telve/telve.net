@@ -30,5 +30,14 @@
             return $query->row_array();
 		}
 
+		public function retrieve_topic($name) {
+			$this->db->select('*');
+			$this->db->from('topic');
+			$this->db->where('name',$name);
+
+			$query = $this->db->get();
+            return $query->row_array();
+		}
+
     }
 ?>

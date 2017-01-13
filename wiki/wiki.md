@@ -1,44 +1,32 @@
-[91头条网](http://112.124.27.94/) 是一个全新的新闻聚合站点，口号：提前于新闻发生，来自互联网的声音。
+# Welcome to telve.net!
 
-你可以浏览并提交互联网上内容的链接或者发布自己的原创。别人可以对你发布的链接或文字进行投票，得分突出的链接会被放到首页。也可以对你发布的链接或文字进行评论以及回复其他评论者。
+Here you can browse and submit links to content on the Internet or post your own originals. Other people can vote on the links or text you post, highlighting the links will be placed on the home page. You can also comment on the links or text you post and reply to other reviewers.
 
-主要
--------------------
-[常见问题](/wiki/faq)   
-[关于](/about)
+Each individual topics (URLs starts with `/t` like `/t/NEWS`) has its own concepts, formats, restrictions etc. and when you do not comply with these rules while posting your content to the topic, your content can be deleted or be hidden if somebody report it.
 
-反馈
--------------------
-[联系我们](/feedback)  
-[官方博客](http://blog.91toutiao.com)  
-[新浪微博](http://weibo.com/91toutiao)  
+Popular topics are always listed at the top of the site. By clicking **MORE<span class="glyphicon glyphicon-chevron-right" style="font-size:12px"></span>** you get the page where you can edit your subscriptions. Subscriptions will affect the rankings under **hot<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** tab. Sidebar(**<span class="glyphicon glyphicon-indent-left" style="font-size:12px"></span>**) at your left will provide you a quick access to your subscriptions.
 
-用户相关
--------------------
-[注册](/wiki/registration)  
-[个人信息](/wiki/your_profile)  
-[朋友](/wiki/friends)   
+**new<span class="glyphicon glyphicon-gift" style="font-size:12px"></span>** tab will give you the latest posts.
 
-使用指南
--------------------
-[导航](/wiki/navigation)  
-[投票](/wiki/voting)  
-[分享链接](/wiki/sharing)  
-[举报链接](/wiki/reporting)  
-[工具栏](/wiki/toolbar)  
-[搜索技巧](/wiki/search)  
+**controversial<span class="glyphicon glyphicon-comment" style="font-size:12px"></span>** tab will give you the posts which gets most comments.
 
-高级选项
--------------------
-[漂亮的功能](/wiki/nifty)  
-[书签设置](/bookmarklets)  
+**top<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:12px"></span>** tab will give you the posts which gets most upvotes.
 
-使用帮助
--------------------
-[编辑器语法](http://daringfireball.net/projects/markdown/syntax)  
+**rising<span class="glyphicon glyphicon-signal" style="font-size:12px"></span>** tab is some sort of combination of these three.
 
-其他
--------------------
-[隐私政策](/wiki/privacypolicy)  
-[用户协议](/wiki/useragreement)  
-[联系方式](/wiki/press)   
+**hot<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** tab is the combination of these four plus your subscriptions.
+
+When you submit a new link [telve.net](http://telve.net) automatically detects the best image from the given URL. It means you do not interfere with this job.
+
+So what do you waiting for? **[Share a link now](/submit)** with thousands of community members.
+
+### Notes for Developers
+
+Requires a LAMP stack with PHP version 5.3.10 (Ubuntu 12.04) because it's using CodeIgniter version 3.1.2 web framework.
+
+Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
+
+### Requirements
+
+* [Vesta CP](https://vestacp.com/#install)
+* Install PHP BC Math library: `sudo apt-get install php-bcmath`
