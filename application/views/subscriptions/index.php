@@ -11,10 +11,6 @@
 
         <?php
 		$item_counter = 0;
-		if (count($link) == 0) {
-			echo '<br><br><h2 style="margin-left: 50px;">No posts were found</h2>';
-		}
-		$link_item = $link[0];
 		foreach($topics as $topic):
 		$item_counter += 1;
 		$currentPage = floor(($offset/$per_page) + 1);
@@ -39,7 +35,11 @@
                         </div>
 
 						<div class="middle">
-							<a href="javascript:void(0);" id="<?php echo $topic['topic'];?>" class="btn btn-small btn-success" onclick="subscribe(this);" style="width:70px;">Subscribe</a>
+							<?php if ($topic['subscribed']) {?>
+								<a href="javascript:void(0);" id="<?php echo $topic['topic'];?>" class="btn btn-small btn-danger" onclick="unsubscribe(this);" style="width:70px;">Unsubscribe</a>
+							<?php } else { ?>
+								<a href="javascript:void(0);" id="<?php echo $topic['topic'];?>" class="btn btn-small btn-success" onclick="subscribe(this);" style="width:70px;">Subscribe</a>
+							<?php }?>
 						</div>
 
                         <div class="row-fluid">
@@ -49,7 +49,7 @@
 
                                 <div style="line-height: 14px;">
 									<?php if ($topic['description']) echo $topic['description'].'<br>';?>
-                                    <small class="details">0 subscribers,&nbsp;&nbsp;a community for <?php echo substr(human_timing($topic['created']), 0, -4);?></small>
+                                    <small class="details"><?php echo $topic['subscribers'];?> subscribers,&nbsp;&nbsp;a community for <?php echo substr(human_timing($topic['created']), 0, -4);?></small>
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2017 at 09:45 PM
+-- Generation Time: Jan 13, 2017 at 03:13 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -145,6 +145,15 @@ CREATE TABLE `subscription` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`id`, `uid`, `topic`, `created`) VALUES
+(1, 1, 'NEWS', '2017-01-13 15:01:06'),
+(2, 1, 'WORLDNEWS', '2017-01-13 15:01:16'),
+(3, 1, 'FUNNY', '2017-01-13 15:01:18');
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +162,9 @@ CREATE TABLE `subscription` (
 
 CREATE TABLE `topic` (
   `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `subscribers` int(11) NOT NULL DEFAULT '0',
+  `header_image` varchar(255) DEFAULT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -161,10 +172,19 @@ CREATE TABLE `topic` (
 -- Dumping data for table `topic`
 --
 
-INSERT INTO `topic` (`name`, `description`, `created`) VALUES
-('NEWS', 'News of all kind', '2017-01-12 21:22:52'),
-('WORLDNEWS', 'World wide news like serious shit', '2017-01-12 21:33:56'),
-('SCIENCE', 'Nerds, this is your topic come over here!', '2017-01-12 21:34:31');
+INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `created`) VALUES
+('NEWS', 'News of all kind', 1, NULL, '2017-01-12 21:22:52'),
+('WORLDNEWS', 'World wide news like serious shit', 1, NULL, '2017-01-12 21:33:56'),
+('SCIENCE', 'Nerds, this is your topic come over here!', 0, NULL, '2017-01-12 21:34:31'),
+('MOVIES', 'All kinds of movies', 0, NULL, '2017-01-13 15:05:23'),
+('TELEVISION', 'Your favorite TV Shows', 0, NULL, '2017-01-13 15:06:20'),
+('PICS', 'Your nudes are leaking', 0, NULL, '2017-01-13 15:06:56'),
+('MUSIC', 'No Justin Bieber allowed', 0, NULL, '2017-01-13 15:07:28'),
+('FUNNY', '9GAG but different', 0, NULL, '2017-01-13 15:07:58'),
+('CODING', 'Your programming base', 0, NULL, '2017-01-13 15:08:34'),
+('GAMING', 'PC Master Race vs Console Peasents', 0, NULL, '2017-01-13 15:08:54'),
+('VIDEOS', '+98 Videos', 0, NULL, '2017-01-13 15:09:13'),
+('TRAVEL', 'From Prague to Beijing', 0, NULL, '2017-01-13 15:09:53');
 
 -- --------------------------------------------------------
 
@@ -310,7 +330,7 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --

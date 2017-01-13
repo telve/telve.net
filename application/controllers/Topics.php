@@ -29,13 +29,7 @@
 
             $this->data['title'] = 'Topics';
 			$this->data['offset'] = $this->uri->segment(2);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
 			$this->data['topics'] = $this->link_model->retrieve_topics($config['per_page'],$this->data['offset']);
-
-			foreach ($this->data['link'] as &$link_item) {
-				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
-			}
-			unset($link_item);
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('topics/index',$this->data);

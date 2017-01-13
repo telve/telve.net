@@ -33,13 +33,7 @@
 
             $this->data['title'] = 'Subscriptions';
 			$this->data['offset'] = $this->uri->segment(2);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
-			$this->data['topics'] = $this->link_model->retrieve_topics($config['per_page'],$this->data['offset']);
-
-			foreach ($this->data['link'] as &$link_item) {
-				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
-			}
-			unset($link_item);
+			$this->data['topics'] = $this->subscription_model->retrieve_subscriptions($config['per_page'],$this->data['offset']);
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('subscriptions/index',$this->data);
@@ -52,6 +46,7 @@
 			if ($this->data['is_user_logged_in']) {
 				if (!$this->subscription_model->right_to_subscribe()) {
 					$this->subscription_model->insert_subscription();
+					$this->subscription_model->increase_subscribers();
 					echo 1;
 				} else {
 					echo "You have already subscribed to this topic.";
