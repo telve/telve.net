@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2017 at 03:13 PM
+-- Generation Time: Jan 13, 2017 at 03:49 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -81,7 +81,8 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `to
 (34, 1, 'First details surrounding Samsung\'s Galaxy Note 8 just leaked | Fox News', 'http://www.foxnews.com/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483455163501.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 08:28:49', 0, 4),
 (35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0),
 (36, 1, 'Surprise! Monster burst of radio waves arose in tiny galaxy   | Fox News', 'http://www.foxnews.com/science/2017/01/05/surprise-monster-burst-radio-waves-arose-in-tiny-galaxy.html', NULL, 'http://a57.foxnews.com/media2.foxnews.com/2017/01/05/876/493/010517_galaxy_1280.jpg?ve=1&tl=1', 'www.foxnews.com', 'SCIENCE', '2017-01-06 09:18:42', 1, 0),
-(37, 1, 'Inside Disney\'s new \'Avatar\' theme park | Fox News', 'http://www.foxnews.com/travel/2016/11/23/inside-disneys-new-avatar-theme-park.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/11/23/inside-disneys-new-avatar-theme-park/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1479923409969.jpg?ve=1&tl=1', 'www.foxnews.com', 'TRAVEL', '2017-01-07 07:50:28', 0, 0);
+(37, 1, 'Inside Disney\'s new \'Avatar\' theme park | Fox News', 'http://www.foxnews.com/travel/2016/11/23/inside-disneys-new-avatar-theme-park.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/11/23/inside-disneys-new-avatar-theme-park/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1479923409969.jpg?ve=1&tl=1', 'www.foxnews.com', 'TRAVEL', '2017-01-07 07:50:28', 0, 0),
+(38, 1, 'Pile of skeletons found inside 2,400-year-old tomb in Iraq  | Fox News', 'http://www.foxnews.com/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484215996769.jpg?ve=1&tl=1', 'www.foxnews.com', 'ARCHEOLOGY', '2017-01-13 15:48:14', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +185,8 @@ INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `crea
 ('CODING', 'Your programming base', 0, NULL, '2017-01-13 15:08:34'),
 ('GAMING', 'PC Master Race vs Console Peasents', 0, NULL, '2017-01-13 15:08:54'),
 ('VIDEOS', '+98 Videos', 0, NULL, '2017-01-13 15:09:13'),
-('TRAVEL', 'From Prague to Beijing', 0, NULL, '2017-01-13 15:09:53');
+('TRAVEL', 'From Prague to Beijing', 0, NULL, '2017-01-13 15:09:53'),
+('ARCHEOLOGY', NULL, 0, NULL, '2017-01-13 15:48:14');
 
 -- --------------------------------------------------------
 
@@ -320,7 +322,7 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `reply`
 --
