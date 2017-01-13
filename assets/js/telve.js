@@ -490,3 +490,23 @@ $(document).ready(function(){
         $(this).tab('show');
     });
 });
+
+// JavaScript for subscriptions
+function subscribe(obj){
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'subscriptions/subscribe',
+               data: { 'topic' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $('a.btn#'+obj.id).text('Unsubscribe');
+                       $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-danger');
+                       $('a.btn#'+obj.id).attr('onclick', 'unsubscribe(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}

@@ -39,7 +39,7 @@
                         </div>
 
 						<div class="middle">
-							<a href="#" class="btn btn-small btn-success">Subscribe</a>
+							<a href="javascript:void(0);" id="<?php echo $topic['topic'];?>" class="btn btn-small btn-success" onclick="subscribe(this);" style="width:70px;">Subscribe</a>
 						</div>
 
                         <div class="row-fluid">
