@@ -1,5 +1,5 @@
 <?php
-	class Subscriptions extends MY_Controller {
+	class Topics extends MY_Controller {
 
 		public function __construct()
 		{
@@ -9,12 +9,9 @@
 
 		public function index()
 		{
-			if (!$this->data['is_user_logged_in']) {
-				redirect('');
-			}
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('subscriptions');
+            $config['base_url'] = base_url('topics');
 
             $config['total_rows'] = count($this->link_model->retrieve_topics_for_header());
             $config['per_page'] = 10;
@@ -30,7 +27,7 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'Subscriptions';
+            $this->data['title'] = 'Topics';
 			$this->data['offset'] = $this->uri->segment(2);
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
 			$this->data['topics'] = $this->link_model->retrieve_topics($config['per_page'],$this->data['offset']);
@@ -41,7 +38,7 @@
 			unset($link_item);
 
 			$this->load->view('templates/header',$this->data);
-			$this->load->view('subscriptions/index',$this->data);
+			$this->load->view('topics/index',$this->data);
 			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}

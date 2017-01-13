@@ -53,7 +53,11 @@
                    <?php endforeach ?>
 
                </div>
-               <a id="more" href="<?php echo base_url('subscriptions');?>">More<span class="glyphicon glyphicon-chevron-right"></span></a>
+               <a id="more" href="<?php
+               if ($is_user_logged_in)
+                    echo base_url('subscriptions');
+               else
+                    echo base_url('topics'); ?>">More<span class="glyphicon glyphicon-chevron-right"></span></a>
            </div>
 
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
