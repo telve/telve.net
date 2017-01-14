@@ -1,5 +1,5 @@
 <?php
-	include("markdown.php");
+	$this->load->helper('markdown');
 
     $url = "./wiki/wiki.md";
     $read = fopen($url,'r') or die('Failed to open the file!');

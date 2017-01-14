@@ -1,4 +1,5 @@
 <?php $this->load->helper('human_timing'); ?><!--Format the time-->
+<?php $this->load->helper('markdown'); ?>
 
 <div class="container-fluid">
     <div class="row-fluid"><!-- style="background-color:#9bb;"-->
@@ -41,7 +42,7 @@
         							<small class="details">submitted <?php echo human_timing($link_item['created']);?>&nbsp;&nbsp;by <a href="#"><?php echo $link_item['username']?></a>&nbsp;&nbsp;to <a href="#"><?php echo $link_item['topic']?></a></small>
         						</div>
                                 <div>
-                                    <?php echo $link_item['text'];?>
+                                    <?php echo markdown($link_item['text']);?>
                                 </div>
         						<div>
         							<div class="link-actions"><strong>
