@@ -39,15 +39,12 @@
                     <label for="topic">Choose a topic</label>
                     <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="the topic of the link..."/><br />
                     <div style="color:red"><?php echo form_error('topic');?></div>
-                        <!--Show popular categories-->
-                        <a href="javascript:void(0)" onclick="set_topic(this)">PICS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">FUNNY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">GAME</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">ASKTELVE</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">WORLDNEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">NEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">EDUCATION</a>
+                    <!--Show popular topics-->
+                    <div class="popular-topics">
+                        <?php foreach($topics_for_header as $topic): ?>
+                            <a href="javascript:void(0)" onclick="set_topic(this)"><?php echo $topic['topic']; ?></a>&nbsp;&nbsp;
+                        <?php endforeach ?>
+                    </div>
                     </td></tr></table>
 
                     <table class="table table-bordered submit-form"><tr><td>
@@ -73,35 +70,31 @@
                 <?php echo form_open('submit');?>
                 <fieldset>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
-
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="title">Title</label>
                     <textarea rows="2" class="span12" id="title" name="title" value="<?php echo set_value('title');?>" placeholder="the title of the post..."/></textarea><br />
                     <div style="color:red"><?php echo form_error('title');?></div>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="text">Text (optional)</label>
                     <textarea rows="5" class="span12" id="text" name="text" value="<?php echo set_value('text');?>" placeholder="the content of the post..."/></textarea><br />
                     <div style="color:red"><?php echo form_error('title');?></div>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <label for="topic">Choose a topic</label>
                     <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="the topic of the link..."/><br />
                     <div style="color:red"><?php echo form_error('topic');?></div>
-                        <!--Show popular categories-->
-                        <a href="javascript:void(0)" onclick="set_topic(this)">PICS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">FUNNY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">GAME</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">ASKTELVE</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">WORLDNEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">NEWS</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">SCIENCE AND TECHNOLOGY</a>&nbsp;&nbsp;
-      					<a href="javascript:void(0)" onclick="set_topic(this)">EDUCATION</a>
+                    <!--Show popular topics-->
+                    <div class="popular-topics">
+                        <?php foreach($topics_for_header as $topic): ?>
+                            <a href="javascript:void(0)" onclick="set_topic(this)"><?php echo $topic['topic']; ?></a>&nbsp;&nbsp;
+                        <?php endforeach ?>
+                    </div>
                     </td></tr></table>
 
-                    <table style="background-color:#cee3f8" class="table table-bordered"><tr><td>
+                    <table class="table table-bordered submit-form"><tr><td>
                     <img src="<?php echo base_url('user/captcha');?>" />
                     <br/>
                     <label for="captcha">Verification code</label>

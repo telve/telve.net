@@ -164,6 +164,11 @@ li.topic-title {
     margin-top: 10px;
 }
 
-div#link, .form-tabs {
+div#link, .form-tabs, .tab-pane {
     margin-left: 15px;
+}
+
+div.popular-topics {
+    height: 60px;
+    overflow: hidden;
 }
