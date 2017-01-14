@@ -10,7 +10,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
-		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL) //By default, all states are returned
+		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -55,6 +55,13 @@
 				if ($domain) {
 					$this->db->where('domain',$domain);
 				}
+				if ($search_query) {
+					$this->db->where('MATCH (link.title) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.text) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.domain) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.url) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.topic) AGAINST ("'.$search_query.'")', NULL, FALSE);
+				}
                 $query = $this->db->get();
 
                 return $this->hash_multirow($query->result_array());
@@ -82,7 +89,7 @@
             return $this->hash_row($query->row_array());
 		}
 
-        public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL, $domain = NULL)
+        public function get_link_count($id = FALSE, $rows = NULL, $offset = NULL, $topic = NULL, $domain = NULL, $search_query = NULL)
 		{
 
 			if($id === FALSE)
@@ -92,6 +99,13 @@
 				}
 				if ($domain) {
 					$this->db->where('domain',$domain);
+				}
+				if ($search_query) {
+					$this->db->where('MATCH (link.title) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.text) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.domain) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.url) AGAINST ("'.$search_query.'")', NULL, FALSE);
+					$this->db->or_where('MATCH (link.topic) AGAINST ("'.$search_query.'")', NULL, FALSE);
 				}
                 $query = $this->db->get('link',$rows,$offset);
                 return $this->hash_multirow($query->result_array());

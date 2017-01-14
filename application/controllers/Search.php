@@ -11,9 +11,11 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('');
+            $config['base_url'] = base_url('search');
 
-            $config['total_rows'] = count($this->link_model->get_link_count());
+			$this->data['search_query'] = $this->input->get("q");
+
+            $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, NULL, NULL, $this->data['search_query']));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
@@ -28,8 +30,8 @@
 			$this->data['per_page'] = $config['per_page'];
 
             $this->data['title'] = 'Hot';
-			$this->data['offset'] = $this->uri->segment(1);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
+			$this->data['offset'] = $this->uri->segment(2);
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot',NULL,NULL,$this->data['search_query']);
 
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );

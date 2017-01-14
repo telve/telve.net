@@ -56,6 +56,7 @@ $route['controversial/:num'] = 'controversial';
 $route['top/:num'] = 'top';
 $route['subscriptions/:num'] = 'subscriptions';
 $route['topics/:num'] = 'topics';
+$route['search/:num'] = 'search';
 
 $route['domain/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)'] = 'domain';
