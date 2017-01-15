@@ -7,6 +7,7 @@
 			parent::__construct();
 			$this->load->model('link_model');
 			$this->load->model('vote_model');
+			$this->load->model('report_model');
 		}
 
 		public function view()
@@ -116,6 +117,21 @@
 					echo 1;
 				} else {
 					echo "You have already casted your vote on this comment.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function report_link()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if (!$this->report_model->right_to_report_link()) {
+					$title = $this->report_model->insert_report_link();
+		            $this->link_model->inscrease_link_reported();
+					echo '1 '.$title;
+				} else {
+					echo "You have already reported this topic.";
 				}
 			} else {
 				echo "Please login first.";

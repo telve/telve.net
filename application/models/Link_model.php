@@ -473,6 +473,15 @@
 			$this->db->update('topic');
 		}
 
+		public function inscrease_link_reported()
+		{
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+            $this->db->where('id',$id);
+			$this->db->set('reported', 'reported+1', FALSE);
+			$this->db->update('link');
+		}
+
 		private function hash_multirow($multirow) {
 			foreach ($multirow as &$row) {
 				$row['id'] = $this->hashids->encode($row['id']);

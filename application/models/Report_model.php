@@ -40,5 +40,50 @@
             return $query->row_array();
 		}
 
+		public function insert_report_link()
+        {
+            $this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+
+            $data = array(
+                'uid' => $row['id'],
+                'link_id' => $id
+			);
+
+            $this->db->insert('report_link',$data);
+
+			$this->db->select('link.title');
+			$this->db->from('link');
+			$this->db->where('link.id',$id);
+			$query = $this->db->get();
+			$result = $query->row_array();
+			return $result['title'];
+        }
+
+		public function right_to_report_link()
+		{
+			$this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+
+			$this->db->from('report_link');
+			$this->db->where('uid',$row['id']);
+			$this->db->where('link_id',$id);
+
+			$query = $this->db->get();
+            return $query->row_array();
+		}
+
     }
 ?>

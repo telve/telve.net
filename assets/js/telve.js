@@ -508,7 +508,23 @@ function report_topic(topic_name) {
                data: { 'name' : topic_name },
                success: function(data) {
                    if (data == 1) {
-                       alert('topic ' + topic_name + ' reported.')
+                       alert('Topic ' + topic_name + ' reported.')
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}
+function report_link(link_id) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/report_link',
+               data: { 'id' : link_id },
+               success: function(data) {
+                   if (data[0] == '1') {
+                       alert('Post with title "' + data.substring(2) + '" reported.')
                    } else {
                        alert(data);
                    }

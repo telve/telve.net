@@ -50,7 +50,7 @@
                                         &nbsp;&nbsp;
                                         <a href="#">favorite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span></a>
                                         &nbsp;&nbsp;
-                                        <a href="#">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
                                         <a id="hide_link" href="javascript:void(0)">hide<span class="glyphicon glyphicon-eye-close" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
