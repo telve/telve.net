@@ -6,6 +6,7 @@
 		{
 			$this->load->database();
 			$this->load->helper('human_timing');
+			$this->load->helper('markdown');
 			$this->load->library('hashids');
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
@@ -260,13 +261,13 @@
 						<div class='hide_content' style='margin-bottom:6px;'>
                             <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
-                            <span>".$row['content']."</span>
+                            <span style='display:inline-block;'>".markdown($row['content'])."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
 						</div>
 
 						<div class='hide_function' style='margin-bottom:8px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favorite<span class='glyphicon glyphicon-star-empty'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favourite<span class='glyphicon glyphicon-star-empty'></span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")'>report<span class='glyphicon glyphicon-flag'></span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 							</div>
