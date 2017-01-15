@@ -18,11 +18,11 @@
 				//$this->data['credit'] = $this->link_model->get_credit();
 				$this->data['is_text_post'] = $this->input->get("text");
 
-				$this->form_validation->set_rules('title','title','trim|required|max_length[255]');
-	            $this->form_validation->set_rules('url','URL','trim|max_length[255]');
-				$this->form_validation->set_rules('text','text','trim|max_length[10000]');
-	            $this->form_validation->set_rules('topic','topic','trim|required|max_length[255]');
-	            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
+				$this->form_validation->set_rules('title','title','trim|required|max_length[255]|xss_clean');
+	            $this->form_validation->set_rules('url','URL','trim|max_length[255]|xss_clean');
+				$this->form_validation->set_rules('text','text','trim|max_length[10000]|xss_clean');
+	            $this->form_validation->set_rules('topic','topic','trim|required|max_length[255]|xss_clean');
+	            $this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower|xss_clean');
 
 				if($this->form_validation->run() === FALSE){
 

@@ -5,6 +5,7 @@
 		public function __construct()
 		{
 			$this->load->database();
+			$this->load->helper('security');
 			$this->load->helper('human_timing');
 			$this->load->helper('markdown');
 			$this->load->library('hashids');
@@ -324,7 +325,7 @@
 			$row = $query->row_array();
 
             $data = array(
-				'content' => $this->input->post('content'),
+				'content' => xss_clean($this->input->post('content')),
 				'pid' => $this->hashids->decode($this->input->post('pid'))[0],
                 'uid' => $row['id'],
 				'score' => 0,

@@ -238,7 +238,7 @@ small#sorting-text {
     color: #888;
 }
 
-div#submit_reply {
+button#submit_reply {
     margin-top: 10px;
     font-weight: bold;
     color: #888;

@@ -13,11 +13,11 @@
 
 			$this->data['title'] = "Register a user";
 
-			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|regex_match[/^((?!admin).)*$/]|regex_match[/^((?!moderator).)*$/]');
-			$this->form_validation->set_rules('email','email','required|valid_email|is_unique[user.email]');
-			$this->form_validation->set_rules('password','password','trim|required|min_length[6]|matches[passconf]');
-			$this->form_validation->set_rules('passconf','confirm password','required');
-      		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower');
+			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|regex_match[/^((?!admin).)*$/]|regex_match[/^((?!moderator).)*$/]|xss_clean');
+			$this->form_validation->set_rules('email','email','required|valid_email|is_unique[user.email]|xss_clean');
+			$this->form_validation->set_rules('password','password','trim|required|min_length[6]|matches[passconf]|xss_clean');
+			$this->form_validation->set_rules('passconf','confirm password','required|xss_clean');
+      		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower|xss_clean');
 
 			if ($this->form_validation->run() === FALSE)
 			{
@@ -42,8 +42,8 @@
         {
 
 			$this->data['title'] = "Log in";
-			$this->form_validation->set_rules('username','username','required');
-			$this->form_validation->set_rules('password','password','required');
+			$this->form_validation->set_rules('username','username','required|xss_clean');
+			$this->form_validation->set_rules('password','password','required|xss_clean');
 
 			if ($this->form_validation->run() == FALSE){
 
