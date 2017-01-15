@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->load->model('link_model');
 			$this->load->model('subscription_model');
+			$this->load->model('report_model');
 		}
 
 		public function index()
@@ -68,6 +69,21 @@
 					echo 1;
 				} else {
 					echo "You have already subscribed to this topic.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function report_topic()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if (!$this->report_model->right_to_report_topic()) {
+					$this->report_model->insert_report_topic();
+		            $this->link_model->inscrease_topic_reported();
+					echo 1;
+				} else {
+					echo "You have already reported this topic.";
 				}
 			} else {
 				echo "Please login first.";

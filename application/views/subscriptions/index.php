@@ -53,7 +53,7 @@
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>
-                                        <a href="#">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="report_topic('<?php echo $topic['topic'];?>')">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
                                         <a class="sharer" href="javascript:void(0)" onclick="set_share(this)">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
                                     </strong></div>

@@ -466,6 +466,13 @@
 			return $query->result_array();
 		}
 
+		public function inscrease_topic_reported()
+		{
+            $this->db->where('name',$this->input->post('name'));
+			$this->db->set('reported', 'reported+1', FALSE);
+			$this->db->update('topic');
+		}
+
 		private function hash_multirow($multirow) {
 			foreach ($multirow as &$row) {
 				$row['id'] = $this->hashids->encode($row['id']);

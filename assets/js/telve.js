@@ -498,3 +498,21 @@ function unsubscribe(obj){
         });
     }
 }
+
+// REPORT
+function report_topic(topic_name) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'subscriptions/report_topic',
+               data: { 'name' : topic_name },
+               success: function(data) {
+                   if (data == 1) {
+                       alert('topic ' + topic_name + ' reported.')
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}
