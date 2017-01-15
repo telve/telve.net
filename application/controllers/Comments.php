@@ -131,7 +131,22 @@
 		            $this->link_model->inscrease_link_reported();
 					echo '1 '.$title;
 				} else {
-					echo "You have already reported this topic.";
+					echo "You have already reported this post.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function report_reply()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if (!$this->report_model->right_to_report_reply()) {
+					$username = $this->report_model->insert_report_reply();
+		            $this->link_model->inscrease_reply_reported();
+					echo '1 '.$username;
+				} else {
+					echo "You have already reported this comment/reply.";
 				}
 			} else {
 				echo "Please login first.";

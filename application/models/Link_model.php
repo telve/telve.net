@@ -266,7 +266,9 @@
 
 						<div class='hide_function' style='margin-bottom:8px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favorite<span class='glyphicon glyphicon-star-empty'></span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='#'>report<span class='glyphicon glyphicon-flag'></span></a>&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favorite<span class='glyphicon glyphicon-star-empty'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")'>report<span class='glyphicon glyphicon-flag'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 							</div>
 						</div>
 					</div>
@@ -480,6 +482,15 @@
             $this->db->where('id',$id);
 			$this->db->set('reported', 'reported+1', FALSE);
 			$this->db->update('link');
+		}
+
+		public function inscrease_reply_reported()
+		{
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+            $this->db->where('id',$id);
+			$this->db->set('reported', 'reported+1', FALSE);
+			$this->db->update('reply');
 		}
 
 		private function hash_multirow($multirow) {

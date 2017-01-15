@@ -85,5 +85,51 @@
             return $query->row_array();
 		}
 
+		public function insert_report_reply()
+        {
+            $this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+
+            $data = array(
+                'uid' => $row['id'],
+                'reply_id' => $id
+			);
+
+            $this->db->insert('report_reply',$data);
+
+			$this->db->select('user.username');
+			$this->db->from('reply');
+			$this->db->where('reply.id',$id);
+			$this->db->join('user', 'reply.uid = user.id');
+			$query = $this->db->get();
+			$result = $query->row_array();
+			return $result['username'];
+        }
+
+		public function right_to_report_reply()
+		{
+			$this->db->where('username',$this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+
+			$id = $this->input->post('id');
+			$id = $this->hashids->decode($id)[0];
+
+			$this->db->from('report_reply');
+			$this->db->where('uid',$row['id']);
+			$this->db->where('reply_id',$id);
+
+			$query = $this->db->get();
+            return $query->row_array();
+		}
+
     }
 ?>

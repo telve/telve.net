@@ -532,3 +532,19 @@ function report_link(link_id) {
         });
     }
 }
+function report_reply(reply_id) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/report_reply',
+               data: { 'id' : reply_id },
+               success: function(data) {
+                   if (data[0] == '1') {
+                       alert('Comment of user "' + data.substring(2) + '" reported.')
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}
