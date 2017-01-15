@@ -77,10 +77,11 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
+				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down,favourite_link.uid as is_favorited');
 	            $this->db->from('link');
 	            $this->db->join('user', 'link.uid = user.id');
 				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
+				$this->db->join('favourite_link', 'favourite_link.uid = user.id AND link.id = favourite_link.link_id','left');
 			} else {
 				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
 	            $this->db->from('link');
@@ -266,10 +267,10 @@
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
 						</div>
 
-						<div class='hide_function' style='margin-bottom:8px;'>
+						<div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favourite<span class='glyphicon glyphicon-star-empty'></span></a>
-								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")'>report<span class='glyphicon glyphicon-flag'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>report<span class='glyphicon glyphicon-flag'></span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 							</div>
 						</div>
@@ -470,14 +471,14 @@
 			return $query->result_array();
 		}
 
-		public function inscrease_topic_reported()
+		public function increase_topic_reported()
 		{
             $this->db->where('name',$this->input->post('name'));
 			$this->db->set('reported', 'reported+1', FALSE);
 			$this->db->update('topic');
 		}
 
-		public function inscrease_link_reported()
+		public function increase_link_reported()
 		{
 			$id = $this->input->post('id');
 			$id = $this->hashids->decode($id)[0];
@@ -486,7 +487,7 @@
 			$this->db->update('link');
 		}
 
-		public function inscrease_reply_reported()
+		public function increase_reply_reported()
 		{
 			$id = $this->input->post('id');
 			$id = $this->hashids->decode($id)[0];

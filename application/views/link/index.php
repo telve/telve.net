@@ -61,7 +61,7 @@
                                     <div class="link-actions"><strong>
                                         <a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"> <?php echo $link_item['comments'];?>&nbsp;comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
 										&nbsp;&nbsp;
-                                        <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')" class="login-required">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
                                         <a class="sharer" href="javascript:void(0)" onclick="set_share(this)">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
                                     </strong></div>

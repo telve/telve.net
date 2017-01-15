@@ -80,7 +80,7 @@
 			if ($this->data['is_user_logged_in']) {
 				if (!$this->report_model->right_to_report_topic()) {
 					$this->report_model->insert_report_topic();
-		            $this->link_model->inscrease_topic_reported();
+		            $this->link_model->increase_topic_reported();
 					echo 1;
 				} else {
 					echo "You have already reported this topic.";

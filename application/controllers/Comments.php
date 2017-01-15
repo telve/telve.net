@@ -8,6 +8,7 @@
 			$this->load->model('link_model');
 			$this->load->model('vote_model');
 			$this->load->model('report_model');
+			$this->load->model('favourite_model');
 		}
 
 		public function view()
@@ -128,7 +129,7 @@
 			if ($this->data['is_user_logged_in']) {
 				if (!$this->report_model->right_to_report_link()) {
 					$title = $this->report_model->insert_report_link();
-		            $this->link_model->inscrease_link_reported();
+		            $this->link_model->increase_link_reported();
 					echo '1 '.$title;
 				} else {
 					echo "You have already reported this post.";
@@ -143,10 +144,40 @@
 			if ($this->data['is_user_logged_in']) {
 				if (!$this->report_model->right_to_report_reply()) {
 					$username = $this->report_model->insert_report_reply();
-		            $this->link_model->inscrease_reply_reported();
+		            $this->link_model->increase_reply_reported();
 					echo '1 '.$username;
 				} else {
 					echo "You have already reported this comment/reply.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function favourite_link()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if (!$this->favourite_model->right_to_unfavourite_link()) {
+					$this->favourite_model->insert_favourite_link();
+					$this->favourite_model->increase_link_favorited();
+					echo 1;
+				} else {
+					echo "You have already favorited this post.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function unfavourite_link()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if ($this->favourite_model->right_to_unfavourite_link()) {
+					$this->favourite_model->delete_favourite_link();
+					$this->favourite_model->decrease_link_favorited();
+					echo 1;
+				} else {
+					echo "You have already unfavorited this post.";
 				}
 			} else {
 				echo "Please login first.";

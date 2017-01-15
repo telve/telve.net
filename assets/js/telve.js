@@ -548,3 +548,39 @@ function report_reply(reply_id) {
         });
     }
 }
+
+// FAVOURITE
+function favourite_link(obj) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/favourite_link',
+               data: { 'id' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $(obj).html('favourite<span class="glyphicon glyphicon-star" style="font-size:13px;"></span>');
+                       $(obj).attr('onclick', 'unfavourite_link(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}
+function unfavourite_link(obj) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/unfavourite_link',
+               data: { 'id' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $(obj).html('favourite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span>');
+                       $(obj).attr('onclick', 'favourite_link(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}

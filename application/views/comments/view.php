@@ -48,9 +48,13 @@
         							<div class="link-actions"><strong>
         								<a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['comments']?> comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
                                         &nbsp;&nbsp;
-                                        <a href="#">favourite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span></a>
+                                        <?php if (isset($link_item['is_favorited'])) { ;?>
+                                            <a id="<?php echo $link_item['id'];?>" href="javascript:void(0)" onclick="unfavourite_link(this)">favourite<span class="glyphicon glyphicon-star" style="font-size:13px;"></span></a>
+                                        <?php } else { ?>
+                                            <a id="<?php echo $link_item['id'];?>" href="javascript:void(0)" onclick="favourite_link(this)">favourite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span></a>
+                                        <?php } ?>
                                         &nbsp;&nbsp;
-                                        <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')" class="login-required">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
                                         <a id="hide_link" href="javascript:void(0)">hide<span class="glyphicon glyphicon-eye-close" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
