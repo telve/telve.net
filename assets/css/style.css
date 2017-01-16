@@ -172,3 +172,7 @@ div.popular-topics {
     height: 60px;
     overflow: hidden;
 }
+
+.a2a_svg, .a2a_count {
+    border-radius: 0 !important;
+}

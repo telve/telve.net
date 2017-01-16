@@ -46,7 +46,7 @@
                                 </div>
         						<div>
         							<div class="link-actions"><strong>
-        								<a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['comments']?> comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
+        								<a href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>" class="comments"><?php echo $link_item['comments']?> comments<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
                                         &nbsp;&nbsp;
                                         <?php if (isset($link_item['is_favorited'])) { ;?>
                                             <a id="<?php echo $link_item['id'];?>" href="javascript:void(0)" onclick="unfavourite_link(this)" class="login-required">favourite<span class="glyphicon glyphicon-star" style="font-size:13px;"></span></a>
@@ -58,7 +58,7 @@
                                         &nbsp;&nbsp;
                                         <a id="hide_link" href="javascript:void(0)">hide<span class="glyphicon glyphicon-eye-close" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
-                                        <a href="#">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="share_link(this)">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
         							</strong></div>
         						</div>
                             </div>

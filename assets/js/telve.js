@@ -75,99 +75,63 @@ function down(id){
     }
 }
 
-function set_share(obj){
+function share_link(obj){
     if($(obj).text()=='share')
     {
-        replyForm = "<div class='share' style='margin-top:18px;'><form class='form-horizontal' action='" + base_url + 'share' + "' method='post' accept-charset='utf-8'>"+
-
-          "<div class='control-group'>"+
-            "<label class='control-label' for='toEmail'>email address to be sent</label>"+
-            "<div class='controls'>"+
-              "<input class='span8' type='text' name='toEmail' value='" + set_value_toEmail + "'>"+
-              "<span style='color:red;' class='help-inline'>" + form_error_toEmail + "</span>"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<label class='control-label' for='fromName'>your name</label>"+
-            "<div class='controls'>"+
-              "<input class='span8' type='text' name='fromName' value='" + set_value_fromName + "'>"+
-              "<span style='color:red;' class='help-inline'>" + from_error_fromName + "</span>"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<label class='control-label' for='fromEmail'>your email</label>"+
-            "<div class='controls'>"+
-              "<input class='span8' type='text' name='fromEmail' value='" + set_value_fromEmail + "'>"+
-              "<span style='color:red;' class='help-inline'>" + form_error_fromEmail + "</span>"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<label class='control-label' for='message'>your message</label>"+
-            "<div class='controls'>"+
-              "<textarea rows=3 class='span8' type='text' name='message'>" + set_value_message + "</textarea>"+
-              "<span style='color:red;' class='help-inline'>" + form_error_message + "</span>"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<div class='controls'>"+
-              "<img src='" + base_url + 'user/captcha' + "' />"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<label class='control-label' for='captcha'>verification code</label>"+
-            "<div class='controls'>"+
-              "<input class='span8' type='text' name='captcha' placeholder='enter the four characters in the figure above'>"+
-              "<span style='color:red;' class='help-inline'>" + form_error_captcha + "</span>"+
-            "</div>"+
-          "</div>"+
-
-          "<div class='control-group'>"+
-            "<div class='controls'>"+
-              "<button type='button' onclick='submit_share(this)'>submit</button>&nbsp;&nbsp;"+
-              "<button type='button' onclick='cancel_share(this)'>cancel</button>"+
-            "</div>"+
-          "</div>"+
-
-        "</form></div>";
+        replyForm = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="display:none;">\
+                    <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + $(obj).parent().parent().find('.comments')[0].href + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
+                    <a class="a2a_button_facebook"></a>\
+                    <a class="a2a_button_twitter"></a>\
+                    <a class="a2a_button_google_plus"></a>\
+                    <a class="a2a_button_google_gmail"></a>\
+                    <a class="a2a_button_whatsapp"></a>\
+                    <a class="a2a_button_facebook_messenger"></a>\
+                    </div>\
+                    <script>\
+                    var a2a_config = a2a_config || {};\
+                    a2a_config.linkname = "' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '";\
+                    a2a_config.linkurl = "' + $(obj).parent().parent().find('.comments')[0].href + '";\
+                    </script>\
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>';
 
         $(obj).parent().after(replyForm);
+        $(obj).parent().siblings().fadeIn("slow","swing");
         $(obj).html('cancel<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
-        //$(obj).nextAll("div").children("#content").focus();
     } else {
-
-        $(obj).parent().siblings(".share").remove();
+        $(obj).parent().siblings().fadeOut("slow","swing").promise().done( function() {
+            $(obj).parent().siblings().remove();
+        });
         $(obj).html('share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
     }
 }
-function cancel_share(obj){
+function share_topic(obj){
+    if($(obj).text()=='share')
+    {
+        replyForm = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="display:none;">\
+                    <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + $(obj).parent().parent().parent().parent().find('a.link-title')[0].href + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
+                    <a class="a2a_button_facebook"></a>\
+                    <a class="a2a_button_twitter"></a>\
+                    <a class="a2a_button_google_plus"></a>\
+                    <a class="a2a_button_google_gmail"></a>\
+                    <a class="a2a_button_whatsapp"></a>\
+                    <a class="a2a_button_facebook_messenger"></a>\
+                    </div>\
+                    <script>\
+                    var a2a_config = a2a_config || {};\
+                    a2a_config.linkname = "' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '";\
+                    a2a_config.linkurl = "' + $(obj).parent().parent().parent().parent().find('a.link-title')[0].href + '";\
+                    </script>\
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>';
 
-    $(obj).parent().parent().parent().parent().siblings("strong").children(".sharer").text("share");
-    $(obj).parent().parent().parent().parent().remove().parent().remove();
-}
-function submit_share(obj){
-    //var content = $(obj).siblings("#content").val();
-    //var pid = $(obj).siblings("#pid").val();
-    alert('Features are still being developed');
-    $.ajax({
-            type: "POST",
-            url: base_url + 'comments/reply_ajax',
-            data: { 'content': content, 'pid': pid },
-            error: function() {
-                alert("error");
-            },
-            success: function(data) {
-                if (data) {
-                    update_reply = "The link has been shared";
-                    $(obj).parent().after(update_reply);
-                    $(obj).parent().hide();
-                }
-            }
+        $(obj).parent().after(replyForm);
+        $(obj).parent().siblings().fadeIn("slow","swing");
+        $(obj).html('cancel<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
+    } else {
+        $(obj).parent().siblings().fadeOut("slow","swing").promise().done( function() {
+            $(obj).parent().siblings().remove();
         });
+        $(obj).html('share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
+    }
 }
 $(document).ready(function(){
     $("#reg_username").change(function(){
