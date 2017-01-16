@@ -584,3 +584,37 @@ function unfavourite_link(obj) {
         });
     }
 }
+function favourite_reply(obj) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/favourite_reply',
+               data: { 'id' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $(obj).html('favourite<span class="glyphicon glyphicon-star"></span>');
+                       $(obj).attr('onclick', 'unfavourite_reply(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}
+function unfavourite_reply(obj) {
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'comments/unfavourite_reply',
+               data: { 'id' : obj.id },
+               success: function(data) {
+                   if (data == 1) {
+                       $(obj).html('favourite<span class="glyphicon glyphicon-star-empty"></span>');
+                       $(obj).attr('onclick', 'favourite_reply(this);');
+                   } else {
+                       alert(data);
+                   }
+               }
+        });
+    }
+}

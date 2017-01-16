@@ -183,6 +183,36 @@
 				echo "Please login first.";
 			}
         }
+
+		public function favourite_reply()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if (!$this->favourite_model->right_to_unfavourite_reply()) {
+					$this->favourite_model->insert_favourite_reply();
+					$this->favourite_model->increase_reply_favorited();
+					echo 1;
+				} else {
+					echo "You have already favorited this reply.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
+
+		public function unfavourite_reply()
+        {
+			if ($this->data['is_user_logged_in']) {
+				if ($this->favourite_model->right_to_unfavourite_reply()) {
+					$this->favourite_model->delete_favourite_reply();
+					$this->favourite_model->decrease_reply_favorited();
+					echo 1;
+				} else {
+					echo "You have already unfavorited this reply.";
+				}
+			} else {
+				echo "Please login first.";
+			}
+        }
 	}
 
 ?>

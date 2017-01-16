@@ -183,10 +183,11 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('reply.id,comments,content,reply.uid,score,reply.created,up_down');
+				$this->db->select('reply.id,comments,content,reply.uid,score,reply.created,up_down,favourite_reply.uid as is_favorited');
 				$this->db->from('reply');
 				$this->db->where('pid',$pid);
 				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
+				$this->db->join('favourite_reply', 'favourite_reply.uid = '.$user['id'].' AND reply.id = favourite_reply.reply_id','left');
 			} else {
 				$this->db->select('id,comments,content,uid,score,created');
 				$this->db->from('reply');
@@ -239,6 +240,9 @@
 					$down_style = 'color:black;';
 				}
 
+				$favourite_onclick = ( isset($row['is_favorited']) ? 'unfavourite_reply(this)' : 'favourite_reply(this)' );
+				$favourite_html = ( isset($row['is_favorited']) ? 'favourite<span class="glyphicon glyphicon-star"></span>' : 'favourite<span class="glyphicon glyphicon-star-empty"></span>' );
+
 				$res.='<li>';
 
                 $res.="<!--One reply from the reply tree of this post-->
@@ -269,7 +273,7 @@
 
 						<div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' href='#'>favourite<span class='glyphicon glyphicon-star-empty'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$row['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
 								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>report<span class='glyphicon glyphicon-flag'></span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 							</div>
