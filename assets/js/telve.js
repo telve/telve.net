@@ -250,7 +250,7 @@ $(document).ready(function(){
         \
         							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='#'>" + link_username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                    <a style='color: #369;font-weight: bold;' href='#'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
                                     &nbsp;<span style='color: gray;'>\
         								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
         						</div>\
@@ -326,7 +326,7 @@ function submit_comment_reply(obj){
         \
         							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='#'>" + link_username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                    <a style='color: #369;font-weight: bold;' href='#'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
                                     &nbsp;<span style='color: gray;'>\
         								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
         						</div>\

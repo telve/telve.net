@@ -17,6 +17,7 @@
             var base_url = "<?php echo base_url('');?>";
             var is_user_logged_in = "<?php echo $is_user_logged_in;?>";
             is_user_logged_in = parseInt(is_user_logged_in);
+            var username = "<?php echo $this->session->userdata('username'); ?>";
         </script>
     </head>
 
