@@ -11,6 +11,13 @@
 				$this->load->model('subscription_model');
 				$this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
 
+				if ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) == $this->session->userdata('username')) ) {
+					$user_tab_class = 'class="active"';
+					$user_tab_style = 'style="color:red;"';
+				} else {
+					$user_tab_class = '';
+					$user_tab_style = '';
+				}
 				$this->data['login_info'] = "
 				<li style='float:right; margin-right:15px;'>
 					<a href='".base_url('user/logout')."'>
@@ -27,8 +34,8 @@
 						<span class='glyphicon glyphicon-inbox'></span>
 					</a>
 				</li>
-				<li style='float:right;'>
-					<a href='#'>
+				<li style='float:right;' ".$user_tab_class.">
+					<a href='".base_url('user/').$this->session->userdata('username').'/'."' ".$user_tab_style.">
 						".$this->session->userdata('username')."<span class='glyphicon glyphicon-user'></span>
 					</a>
 				</li>

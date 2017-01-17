@@ -259,7 +259,7 @@
 
 							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-                            <a style='color: #369;font-weight: bold;' href='#'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
+                            <a style='color: #369;font-weight: bold;' href='".base_url('user/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
                             &nbsp;<span style='color: gray;'>
 								(<a style='color: gray;' class='hide_rply' href=''> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
 						</div>
