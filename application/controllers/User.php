@@ -31,7 +31,7 @@
 
             $this->data['title'] = $this->uri->segment(2);
 			$this->data['offset'] = $this->uri->segment(3);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'new',NULL,NULL,NULL,$this->uri->segment(2));
+			$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );

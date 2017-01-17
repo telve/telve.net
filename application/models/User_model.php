@@ -4,6 +4,8 @@
 		public function __construct()
 		{
 			$this->load->database();
+			$this->load->library('hashids');
+			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
 		private $salt = 'AtF)b6!F-fCcqJKpnPIe1&Wi)phb!zGkR$xkHQ6A';
@@ -79,6 +81,53 @@
 			if ($query->num_rows() > 0) {
 				return $query->row();
 			}
+		}
+
+		public function user_overview($this_user, $rows = NULL, $offset = NULL) //By default, all states are returned
+		{
+			$this->db->where('username',$this_user);
+			$this->db->select('id');
+			$this->db->limit(1);
+			$query_for_this_user = $this->db->get('user');
+			$this_user_id = $query_for_this_user->row_array()['id'];
+
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+				$this->db->where('username',$this->session->userdata('username'));
+				$this->db->select('id');
+				$this->db->limit(1);
+				$query_for_uid = $this->db->get('user');
+				$user = $query_for_uid->row_array();
+
+				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
+                $this->db->from('link');
+                $this->db->join('user', 'link.uid = user.id');
+				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
+			} else {
+				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
+                $this->db->from('link');
+                $this->db->join('user', 'link.uid = user.id');
+			}
+            $this->db->limit($rows,$offset);
+			$this->db->order_by("created", "desc");
+
+			$this->db->where('link.uid',$this_user_id);
+
+            $query = $this->db->get();
+
+            return $this->hash_multirow($query->result_array());
+		}
+
+		private function hash_multirow($multirow) {
+			foreach ($multirow as &$row) {
+				$row['id'] = $this->hashids->encode($row['id']);
+			}
+			unset($row);
+			return $multirow;
+		}
+
+		private function hash_row($row) {
+			$row['id'] = $this->hashids->encode($row['id']);
+			return $row;
 		}
 	}
 ?>
