@@ -336,7 +336,8 @@
                 'uid' => $row['id'],
 				'score' => 0,
 				'comments' => 0,
-				'is_parent_link' => $this->input->post('is_parent_link')
+				'is_parent_link' => $this->input->post('is_parent_link'),
+				'link_id' => $this->hashids->decode($this->input->post('link_id'))[0]
 			);
 
 			return $this->db->insert('reply',$data);

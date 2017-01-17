@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2017 at 09:48 PM
+-- Generation Time: Jan 18, 2017 at 02:15 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -33,6 +33,13 @@ CREATE TABLE `favourite_link` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `favourite_link`
+--
+
+INSERT INTO `favourite_link` (`id`, `uid`, `link_id`, `created`) VALUES
+(4, 1, 39, '2017-01-16 02:31:13');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +52,13 @@ CREATE TABLE `favourite_reply` (
   `reply_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `favourite_reply`
+--
+
+INSERT INTO `favourite_reply` (`id`, `uid`, `reply_id`, `created`) VALUES
+(3, 1, 27, '2017-01-16 02:59:23');
 
 -- --------------------------------------------------------
 
@@ -110,7 +124,8 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `to
 (35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0, 0, 0),
 (36, 1, 'Surprise! Monster burst of radio waves arose in tiny galaxy   | Fox News', 'http://www.foxnews.com/science/2017/01/05/surprise-monster-burst-radio-waves-arose-in-tiny-galaxy.html', NULL, 'http://a57.foxnews.com/media2.foxnews.com/2017/01/05/876/493/010517_galaxy_1280.jpg?ve=1&tl=1', 'www.foxnews.com', 'SCIENCE', '2017-01-06 09:18:42', 1, 0, 0, 0),
 (37, 1, 'Inside Disney\'s new \'Avatar\' theme park | Fox News', 'http://www.foxnews.com/travel/2016/11/23/inside-disneys-new-avatar-theme-park.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/11/23/inside-disneys-new-avatar-theme-park/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1479923409969.jpg?ve=1&tl=1', 'www.foxnews.com', 'TRAVEL', '2017-01-07 07:50:28', 0, 0, 1, 0),
-(38, 1, 'Pile of skeletons found inside 2,400-year-old tomb in Iraq  | Fox News', 'http://www.foxnews.com/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484215996769.jpg?ve=1&tl=1', 'www.foxnews.com', 'ARCHEOLOGY', '2017-01-13 15:48:14', 0, 0, 1, 0);
+(38, 1, 'Pile of skeletons found inside 2,400-year-old tomb in Iraq  | Fox News', 'http://www.foxnews.com/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484215996769.jpg?ve=1&tl=1', 'www.foxnews.com', 'ARCHEOLOGY', '2017-01-13 15:48:14', 0, 0, 1, 0),
+(39, 1, 'YouTube removes influential conservative website\'s channel | Fox News', 'http://www.foxnews.com/tech/2017/01/13/youtube-removes-influential-conservative-websites-channel.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/13/youtube-removes-influential-conservative-websites-channel/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484320422698.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-15 23:27:40', 0, 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -127,6 +142,7 @@ CREATE TABLE `reply` (
   `score` int(7) NOT NULL DEFAULT '0',
   `comments` int(7) NOT NULL DEFAULT '0',
   `is_parent_link` tinyint(1) NOT NULL DEFAULT '1',
+  `link_id` int(11) NOT NULL,
   `reported` int(7) NOT NULL DEFAULT '0',
   `favorited` int(7) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -135,33 +151,36 @@ CREATE TABLE `reply` (
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comments`, `is_parent_link`, `reported`, `favorited`) VALUES
-(1, 'sample comment', 9, 1, '2017-01-02 03:53:17', 1, 0, 1, 0, 0),
-(2, 'sample comment1', 4, 1, '2017-01-02 03:53:37', -1, 0, 1, 0, 0),
-(3, 'sample comment2', 4, 1, '2017-01-02 03:53:48', 0, 0, 1, 0, 0),
-(4, 'sample comment1', 3, 1, '2017-01-02 03:55:27', 0, 0, 1, 0, 0),
-(5, 'sample comment2', 3, 1, '2017-01-02 03:55:36', 1, 0, 1, 0, 0),
-(6, 'sample comment3', 3, 1, '2017-01-02 03:55:44', 0, 0, 1, 0, 0),
-(7, 'sample comment4', 3, 1, '2017-01-02 03:55:54', 0, 1, 1, 0, 0),
-(8, 'sample comment5', 3, 1, '2017-01-02 03:56:04', 0, 0, 1, 0, 0),
-(9, 'sample comment level1', 7, 1, '2017-01-02 03:56:28', 0, 2, 0, 0, 0),
-(10, 'sample comment level2', 9, 1, '2017-01-02 03:56:38', 0, 0, 0, 0, 0),
-(11, 'sample comment', 29, 1, '2017-01-04 04:35:25', 0, 1, 1, 0, 0),
-(12, 'sample comment level1', 11, 1, '2017-01-04 04:35:34', -1, 0, 0, 0, 0),
-(13, 'sample comment', 32, 1, '2017-01-04 04:35:47', 0, 0, 1, 0, 0),
-(14, 'sample comment1', 34, 1, '2017-01-04 08:29:40', 0, 0, 1, 0, 0),
-(15, 'sample comment2', 34, 1, '2017-01-04 08:29:52', 0, 1, 1, 0, 0),
-(16, 'sample comment3', 34, 1, '2017-01-04 08:29:57', 1, 0, 1, 1, 0),
-(17, 'sample comment4', 34, 1, '2017-01-04 08:30:02', 0, 0, 1, 0, 0),
-(18, 'sample comment level1', 15, 1, '2017-01-04 08:30:43', 0, 1, 0, 0, 0),
-(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0, 0, 0),
-(20, 'sample comment1', 20, 1, '2017-01-06 07:00:57', -1, 0, 1, 0, 0),
-(21, 'sample comment2', 20, 1, '2017-01-06 07:02:03', 1, 0, 1, 0, 0),
-(22, 'sample comment3', 20, 1, '2017-01-06 07:02:38', -1, 0, 1, 0, 0),
-(23, 'sample comment2 level2', 9, 1, '2017-01-07 05:01:49', 0, 0, 0, 0, 0),
-(24, 'sample comment6', 3, 1, '2017-01-07 05:19:02', 0, 0, 1, 1, 0),
-(25, 'sample comment2', 29, 1, '2017-01-09 07:06:11', 1, 1, 1, 0, 0),
-(26, 'sample comment2 level1', 25, 1, '2017-01-09 07:06:33', 1, 0, 0, 0, 0);
+INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comments`, `is_parent_link`, `link_id`, `reported`, `favorited`) VALUES
+(1, 'sample comment', 9, 1, '2017-01-02 03:53:17', 1, 0, 1, 9, 0, 0),
+(2, 'sample comment1', 4, 1, '2017-01-02 03:53:37', -1, 0, 1, 4, 0, 0),
+(3, 'sample comment2', 4, 1, '2017-01-02 03:53:48', 0, 0, 1, 4, 0, 0),
+(4, 'sample comment1', 3, 1, '2017-01-02 03:55:27', 0, 0, 1, 3, 0, 0),
+(5, 'sample comment2', 3, 1, '2017-01-02 03:55:36', 1, 0, 1, 3, 0, 0),
+(6, 'sample comment3', 3, 1, '2017-01-02 03:55:44', 0, 0, 1, 3, 0, 0),
+(7, 'sample comment4', 3, 1, '2017-01-02 03:55:54', 0, 1, 1, 3, 0, 0),
+(8, 'sample comment5', 3, 1, '2017-01-02 03:56:04', 0, 0, 1, 3, 0, 0),
+(9, 'sample comment level1', 7, 1, '2017-01-02 03:56:28', 0, 2, 0, 3, 0, 0),
+(10, 'sample comment level2', 9, 1, '2017-01-02 03:56:38', 0, 0, 0, 3, 0, 0),
+(11, 'sample comment', 29, 1, '2017-01-04 04:35:25', 0, 1, 1, 29, 0, 0),
+(12, 'sample comment level1', 11, 1, '2017-01-04 04:35:34', -1, 0, 0, 29, 0, 0),
+(13, 'sample comment', 32, 1, '2017-01-04 04:35:47', 0, 0, 1, 32, 0, 0),
+(14, 'sample comment1', 34, 1, '2017-01-04 08:29:40', 0, 0, 1, 34, 0, 0),
+(15, 'sample comment2', 34, 1, '2017-01-04 08:29:52', 0, 1, 1, 34, 0, 0),
+(16, 'sample comment3', 34, 1, '2017-01-04 08:29:57', 1, 0, 1, 34, 1, 0),
+(17, 'sample comment4', 34, 1, '2017-01-04 08:30:02', 0, 0, 1, 34, 0, 0),
+(18, 'sample comment level1', 15, 1, '2017-01-04 08:30:43', 0, 1, 0, 34, 0, 0),
+(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0, 34, 0, 0),
+(20, 'sample comment1', 20, 1, '2017-01-06 07:00:57', -1, 0, 1, 20, 0, 0),
+(21, 'sample comment2', 20, 1, '2017-01-06 07:02:03', 1, 0, 1, 20, 0, 0),
+(22, 'sample comment3', 20, 1, '2017-01-06 07:02:38', -1, 0, 1, 20, 0, 0),
+(23, 'sample comment2 level2', 9, 1, '2017-01-07 05:01:49', 0, 0, 0, 3, 0, 0),
+(24, 'sample comment6', 3, 1, '2017-01-07 05:19:02', 0, 0, 1, 3, 1, 0),
+(25, 'sample comment2', 29, 1, '2017-01-09 07:06:11', 1, 1, 1, 29, 0, 0),
+(26, 'sample comment2 level1', 25, 1, '2017-01-09 07:06:33', 1, 0, 0, 29, 0, 0),
+(27, 'sample comment1', 39, 1, '2017-01-15 23:32:17', 0, 0, 1, 39, 0, 1),
+(28, 'sample comment2', 39, 1, '2017-01-18 02:13:36', 0, 1, 1, 39, 0, 0),
+(29, 'sample comment level1', 28, 1, '2017-01-18 02:14:16', 0, 0, 0, 39, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -428,7 +447,8 @@ ALTER TABLE `topic`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `vote_link`
@@ -450,22 +470,22 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `favourite_link`
 --
 ALTER TABLE `favourite_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `favourite_reply`
 --
 ALTER TABLE `favourite_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `report_link`
 --

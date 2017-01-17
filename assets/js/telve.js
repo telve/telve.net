@@ -229,7 +229,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 url: base_url + 'comments/reply_ajax',
-                data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 1 },
+                data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 1, 'link_id' : $('.digg > div > a')[0].id },
                 error: function(xhr, status, error) {
                     console.log(xhr.responseText);
                 },
@@ -304,7 +304,7 @@ function submit_comment_reply(obj){
         $.ajax({
                 type: "POST",
                 url: base_url + 'comments/reply_ajax',
-                data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 0 },
+                data: { 'content' : content, 'pid' : pid, 'is_parent_link' : 0, 'link_id' : $('.digg > div > a')[0].id },
                 error: function(xhr, status, error) {
                     console.log(xhr.responseText);
                 },
