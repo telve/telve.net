@@ -98,22 +98,41 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down');
+				$this->db->select('link.id,link.id,title,url,link.uid,score,link.created,up_down,link.uid,picurl,domain,username,topic,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
 				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
 			} else {
-				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
+				$this->db->select('link.id,link.id,title,url,score,link.created,picurl,domain,username,topic,comments');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
 			}
-            $this->db->limit($rows,$offset);
-			$this->db->order_by("created", "desc");
-
+            //$this->db->limit($rows,$offset);
+			//$this->db->order_by("created", "desc");
 			$this->db->where('link.uid',$this_user_id);
+            $link_query = $this->db->get_compiled_select();
 
-            $query = $this->db->get();
+			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
+				$this->db->where('username',$this->session->userdata('username'));
+				$this->db->select('id');
+				$this->db->limit(1);
+				$query_for_uid = $this->db->get('user');
+				$user = $query_for_uid->row_array();
 
+				$this->db->select('reply.id,comments,content,content,reply.uid,score,reply.created,up_down,favourite_reply.uid as is_favorited,content,content,content,content,comments');
+				$this->db->from('reply');
+				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
+				$this->db->join('favourite_reply', 'favourite_reply.uid = '.$user['id'].' AND reply.id = favourite_reply.reply_id','left');
+			} else {
+				$this->db->select('id,comments,content,content,uid,score,created,content,content,content,comments');
+				$this->db->from('reply');
+			}
+			//$this->db->order_by("reply.created", "desc");
+			$reply_query = $this->db->get_compiled_select();
+
+			$query = $this->db->query($link_query . ' UNION ' . $reply_query . 'ORDER BY created desc');
+
+			//print_r($query->result_array());
             return $this->hash_multirow($query->result_array());
 		}
 
