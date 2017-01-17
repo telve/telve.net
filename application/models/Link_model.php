@@ -12,7 +12,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 		}
 
-		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL) //By default, all states are returned
+		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL, $only_this_user = NULL) //By default, all states are returned
 		{
 
 			if($id === FALSE)
@@ -22,6 +22,14 @@
                 $query = $this->db->query($sql);
                 $query = $this->db->get('link',$rows,$offset);
                 */
+
+				if ($only_this_user) {
+					$this->db->where('username',$only_this_user);
+					$this->db->select('id');
+					$this->db->limit(1);
+					$query_for_only_this_user = $this->db->get('user');
+					$only_this_user_id = $query_for_only_this_user->row_array()['id'];
+				}
 
 				if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
 					$this->db->where('username',$this->session->userdata('username'));
@@ -63,6 +71,9 @@
 					$this->db->or_where('MATCH (link.domain) AGAINST ("'.$search_query.'")', NULL, FALSE);
 					$this->db->or_where('MATCH (link.url) AGAINST ("'.$search_query.'")', NULL, FALSE);
 					$this->db->or_where('MATCH (link.topic) AGAINST ("'.$search_query.'")', NULL, FALSE);
+				}
+				if ($only_this_user) {
+					$this->db->where('link.uid',$only_this_user_id);
 				}
                 $query = $this->db->get();
 

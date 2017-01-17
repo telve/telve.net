@@ -13,7 +13,7 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('user');
+            $config['base_url'] = base_url('user/').$this->uri->segment(2);
 
             $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;
@@ -29,9 +29,9 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'User';
-			$this->data['offset'] = $this->uri->segment(2);
-            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
+            $this->data['title'] = $this->uri->segment(2);
+			$this->data['offset'] = $this->uri->segment(3);
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'new',NULL,NULL,NULL,$this->uri->segment(2));
 
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
@@ -39,7 +39,7 @@
 			unset($link_item);
 
 			$this->load->view('templates/header',$this->data);
-			$this->load->view('link/index',$this->data);
+			$this->load->view('user/index',$this->data);
 			$this->load->view('templates/side');
 			$this->load->view('templates/footer');
 		}
