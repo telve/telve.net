@@ -62,5 +62,13 @@ $route['domain/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)/(:any)'] = 'domain';
 
+$route['user/register'] = 'user/register';
+$route['user/login'] = 'user/login';
+$route['user/logout'] = 'user/logout';
+$route['user/is_username_available'] = 'user/is_username_available';
+$route['user/captcha'] = 'user/captcha';
+$route['user/is_user_logged_in'] = 'user/is_user_logged_in';
+$route['user/(:any)'] = 'user';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

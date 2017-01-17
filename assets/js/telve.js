@@ -218,7 +218,7 @@ function rply_down(obj){
 $(document).ready(function(){
 
 	$("#hide_link").click(function(){
-        $("#link").fadeOut(800);
+        $(".link").fadeOut(800);
     });
 
     $("#submit_reply").click(function(){

@@ -6,6 +6,42 @@
 		{
 			parent::__construct();
 			$this->load->model('user_model');
+			$this->load->model('link_model');
+		}
+
+		public function index()
+		{
+            $this->load->library('pagination');
+
+            $config['base_url'] = base_url('user');
+
+            $config['total_rows'] = count($this->link_model->get_link_count());
+            $config['per_page'] = 10;
+            $config['full_tag_open'] = '<p>'; //class = "btn"
+            $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
+            $config['next_link'] = '<span class="pagination">Next page</span> <span class="glyphicon glyphicon-arrow-right"></span>';
+            $config['full_tag_close'] = '</p>';
+            $config['display_pages'] = FALSE; //The "number" link is not displayed
+            $config['first_link'] = FALSE; //The start link is not displayed
+            $config['last_link'] = FALSE;
+			$config['next_tag_open'] = '<span style="float:right;">';
+			$config['next_tag_close'] = "</span>";
+            $this->pagination->initialize($config);
+			$this->data['per_page'] = $config['per_page'];
+
+            $this->data['title'] = 'User';
+			$this->data['offset'] = $this->uri->segment(2);
+            $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'hot');
+
+			foreach ($this->data['link'] as &$link_item) {
+				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
+			}
+			unset($link_item);
+
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('link/index',$this->data);
+			$this->load->view('templates/side');
+			$this->load->view('templates/footer');
 		}
 
         public function register()
@@ -13,7 +49,8 @@
 
 			$this->data['title'] = "Register a user";
 
-			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|regex_match[/^((?!admin).)*$/]|regex_match[/^((?!moderator).)*$/]|xss_clean');
+			$reserved_usernames = 'regex_match[/^((?!admin).)*$/i]|regex_match[/^((?!moderator).)*$/i]|regex_match[/^((?!register).)*$/i]|regex_match[/^((?!login).)*$/i]|regex_match[/^((?!logout).)*$/i]|regex_match[/^((?!is_username_available).)*$/i]|regex_match[/^((?!captcha).)*$/i]|regex_match[/^((?!is_user_logged_in).)*$/i]|regex_match[/^((?!allah).)*$/i]';
+			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
 			$this->form_validation->set_rules('email','email','required|valid_email|is_unique[user.email]|xss_clean');
 			$this->form_validation->set_rules('password','password','trim|required|min_length[6]|matches[passconf]|xss_clean');
 			$this->form_validation->set_rules('passconf','confirm password','required|xss_clean');
