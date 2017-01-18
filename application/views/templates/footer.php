@@ -148,9 +148,62 @@
 </div>
 </div>
 
-<p class="text-center" style="color:gray;">
-Copyright &copy; 2016&nbsp;&nbsp;telve.net&nbsp;&nbsp;All Rights Reserved.
-</p>
+<br><br><br><br>
+<div class="container">
+<div class="row-fluid">
+		<div class="span12" style="margin-left: 15%;">
+			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em;">
+				<ul class="unstyled">
+					<li>about<li>
+					<li><a href="#">blog</a></li>
+					<li><a href="#">about</a></li>
+					<li><a href="#">source code</a></li>
+					<li><a href="#">advertise</a></li>
+					<li><a href="#">jobs</a></li>
+				</ul>
+			</div>
+			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+				<ul class="unstyled">
+					<li>help<li>
+					<li><a href="#">site rules</a></li>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">wiki</a></li>
+					<li><a href="#">transparency</a></li>
+                    <li><a href="#">contact us</a></li>
+				</ul>
+			</div>
+			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+				<ul class="unstyled">
+					<li>apps & tools<li>
+					<li><a href="#">Telve for iPhone</a></li>
+					<li><a href="#">Telve for Android</a></li>
+					<li><a href="#">mobile website</a></li>
+					<li><a href="#">buttons</a></li>
+				</ul>
+			</div>
+			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+				<ul class="unstyled">
+					<li><3<li>
+					<li><a href="#" style="color:#9A7D2E;">telvegold</a></li>
+					<li><a href="#">telvegifts</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6">
+				<a href="#">User Agreement</a>
+                 and
+				<a href="#" style="color:green;">Privacy Policy (updated)</a>
+			</div>
+			<div class="span6">
+				<p class="muted pull-right">Copyright &copy; 2016&nbsp;&nbsp;<a href="http://dragon.computer/">dragon.computer</a>&nbsp;&nbsp;All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script src="<?php echo base_url("assets/js/telve.js");?>"></script>
 
