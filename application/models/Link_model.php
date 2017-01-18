@@ -247,7 +247,6 @@
 				$res.='<li>';
 
                 $res.="<!--One reply from the reply tree of this post-->
-                <div>
 				<div class='row-fluid'>
 
 					<div class='span12'>
@@ -262,7 +261,7 @@
 
                             <a style='color: #369;font-weight: bold;' href='".base_url('user/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
                             &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' class='hide_rply' href=''> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
+								(<a style='color: gray;' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
@@ -280,8 +279,6 @@
 							</div>
 						</div>
 					</div>
-
-				</div>
 
 				</div>
 				<!--One reply from the reply tree of this post-->";

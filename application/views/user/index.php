@@ -1,4 +1,8 @@
-<?php $this->load->helper('human_timing'); ?><!--Format the time-->
+<?php
+	$this->load->helper('human_timing');
+	$this->load->library('hashids');
+	$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
+?><!--Format the time-->
 
 <?php echo $toggle_sidebar ?>
 
@@ -103,13 +107,16 @@
 
 						<a style='color: #369;font-weight: bold;' href='".base_url('user/').$link_item['username'].'/'."'>".$link_item['username']."</a>&nbsp;&nbsp;<span id='show-".$link_item['id']."'>".$link_item['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
 						&nbsp;<span style='color: gray;'>
-							(<a style='color: gray;' class='hide_rply' href=''> ".$link_item['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
+							(<a style='color: gray;' class='hide_rply'> ".$link_item['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)
+							&nbsp;
+							<a style='color: gray;' class='hide_rply' href='".base_url("")."t/".$link_item['topic']."/comments/".$this->hashids->encode($link_item['url'])."/".$link_item['seo_segment']."/"."'>link<span class='glyphicon glyphicon-link' style='font-size:10px;'></span></a>
+							</span></small>
 					</div>
 
 					<div class='hide_content' style='margin-bottom:6px;'>
 						<a class='login-required' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
-						<span style='display:inline-block;'>".markdown($link_item['title'])."</span>
+						<span style='display:inline-block;'>".markdown($link_item['text'])."</span>
 						<!--<input type='hidden' class='show' value='".$link_item['id']."'/>-->
 					</div>
 

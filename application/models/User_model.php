@@ -98,12 +98,12 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('link.id as id,title,url,score,link.created as created,up_down,link.id as is_favorited,picurl,domain,username,topic,comments,is_link_for_union');
+				$this->db->select('link.id as id,title,url,score,link.created as created,up_down,link.id as is_favorited,picurl,domain,username,topic,comments,text,is_link_for_union');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
 				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
 			} else {
-				$this->db->select('link.id as id,title,url,score,link.created as created,picurl,domain,username,topic,comments,is_link_for_union');
+				$this->db->select('link.id as id,title,url,score,link.created as created,picurl,domain,username,topic,comments,text,is_link_for_union');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
 			}
@@ -119,16 +119,17 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('reply.id as id,content as title,content as url,score,reply.created as created,up_down,favourite_reply.uid as is_favorited,content as picurl,content as domain,user.username as username,content as topic,comments,is_link_for_union');
+				$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,up_down,favourite_reply.uid as is_favorited,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
 				$this->db->from('reply');
 				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
 				$this->db->join('favourite_reply', 'favourite_reply.uid = '.$user['id'].' AND reply.id = favourite_reply.reply_id','left');
 			} else {
-				$this->db->select('reply.id as id,content as title,content as url,score,reply.created as created,content as picurl,content as domain,user.username as username,content as topic,comments,is_link_for_union');
+				$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
 				$this->db->from('reply');
 			}
 			//$this->db->order_by("reply.created", "desc");
 			$this->db->join('user', 'reply.uid = user.id');
+			$this->db->join('link', 'reply.link_id = link.id');
 			$reply_query = $this->db->get_compiled_select();
 
 			if (!$offset) {
