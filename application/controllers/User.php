@@ -19,21 +19,30 @@
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
 				$this->data['offset'] = $this->uri->segment(3);
 				$this->data['activity_tab'] = NULL;
-				$config['base_url'] = base_url('user/').$this->uri->segment(2).'/';
+				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/';
 			} else {
 				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'submitted') && ($this->uri->segment(3) != 'comments') ) redirect( base_url('user/').$this->uri->segment(2).'/' );
 				$this->data['offset'] = $this->uri->segment(4);
 				$this->data['activity_tab'] = $this->uri->segment(3);
-				$config['base_url'] = base_url('user/').$this->uri->segment(2).'/'.$this->uri->segment(3);
+				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/'.$this->uri->segment(3);
 			}
 
-			if ($this->uri->segment(3) == 'submitted') {
+			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
+				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,NULL));
+			} else if ($this->uri->segment(3) == 'gonderiler') {
 				$config['total_rows'] = count($this->user_model->user_submitted($this->uri->segment(2),NULL,NULL));
-			} else if ($this->uri->segment(3) == 'comments') {
+			} else if ($this->uri->segment(3) == 'yorumlar') {
 				$config['total_rows'] = count($this->user_model->user_comments($this->uri->segment(2),NULL,NULL));
+			} else if ($this->uri->segment(3) == 'yukarilar') {
+				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'upvoted'));
+			} else if ($this->uri->segment(3) == 'asagilar') {
+				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'downvoted'));
+			} else if ($this->uri->segment(3) == 'favoriler') {
+				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'favourites'));
 			} else {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,$this->data['activity_tab']));
+				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
 			}
+
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
@@ -47,22 +56,26 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'overview for '.$this->uri->segment(2);
-			if ($this->uri->segment(3) == 'submitted') {
+			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
+				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],NULL);
+				$this->data['title'] = 'overview for '.$this->uri->segment(2);
+			} else if ($this->uri->segment(3) == 'gonderiler') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 				$this->data['title'] = 'submitted by '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'comments') {
+			} else if ($this->uri->segment(3) == 'yorumlar') {
 				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 				$this->data['title'] = 'comments by '.$this->uri->segment(2);
+			} else if ($this->uri->segment(3) == 'yukarilar') {
+				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'upvoted');
+				$this->data['title'] = 'upvoted by '.$this->uri->segment(2);
+			} else if ($this->uri->segment(3) == 'asagilar') {
+				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'downvoted');
+				$this->data['title'] = 'downvoted by '.$this->uri->segment(2);
+			} else if ($this->uri->segment(3) == 'favoriler') {
+				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'favourites');
+				$this->data['title'] = $this->uri->segment(2)."'s favourites";
 			} else {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],$this->data['activity_tab']);
-				if ($this->uri->segment(3) == 'upvoted') {
-					$this->data['title'] = 'upvoted by '.$this->uri->segment(2);
-				} else if ($this->uri->segment(3) == 'downvoted') {
-					$this->data['title'] = 'downvoted by '.$this->uri->segment(2);
-				} else if ($this->uri->segment(3) == 'favourites') {
-					$this->data['title'] = $this->uri->segment(2)."'s favourites";
-				}
+				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
 			}
 
 			foreach ($this->data['link'] as &$link_item) {

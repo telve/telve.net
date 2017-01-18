@@ -76,10 +76,11 @@ $route['cikis'] = 'user/logout';
 $route['user/is_username_available'] = 'user/is_username_available';
 $route['user/captcha'] = 'user/captcha';
 $route['user/is_user_logged_in'] = 'user/is_user_logged_in';
-$route['user/(:any)'] = 'user';
-$route['user/(:any)/:num'] = 'user';
-$route['user/(:any)/(:any)'] = 'user';
-$route['user/(:any)/(:any)/:num'] = 'user';
+$route['kullanici/(:any)'] = 'user';
+$route['kullanici/(:any)/:num'] = 'user';
+$route['kullanici/(:any)/(:any)'] = 'user';
+$route['kullanici/(:any)/(:any)/:num'] = 'user';
+$route['kullanici/(:any)/(:any)/(:any)/:num'] = 'user';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

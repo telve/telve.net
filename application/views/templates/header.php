@@ -56,18 +56,18 @@
             <!-- <li><img src="/assets/img/logo/<?php //echo rand(1,5);?>.png"/><img src="/assets/img/logo/telve.png"/></li> -->
             <li><img src="/assets/img/logo/turkish-coffee.png" id="turkish-coffee"/><img src="/assets/img/logo/telve.png" id="site-logo"/></li>
 
-            <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'domain') || ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) ) { ?>
+            <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'domain') || ( ($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) ) { ?>
                 <li class="topic-title"><?php echo urldecode($this->uri->segment(2));?></li>
             <?php } ?>
 
-            <?php if ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) { ?>
-                <li<?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo ' class="active"'; ?>><a <?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/"; ?>">overview</a></li>
-                <li<?php if ($this->uri->segment(3) == 'submitted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'submitted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/submitted/"; ?>">submitted</a></li>
-                <li<?php if ($this->uri->segment(3) == 'comments') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'comments') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/comments/"; ?>">comments</a></li>
+            <?php if ( ($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) { ?>
+                <li<?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo ' class="active"'; ?>><a <?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/"; ?>">özet</a></li>
+                <li<?php if ($this->uri->segment(3) == 'gonderiler') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'gonderiler') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/gonderiler/"; ?>">gönderiler</a></li>
+                <li<?php if ($this->uri->segment(3) == 'yorumlar') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'yorumlar') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/yorumlar/"; ?>">yorumlar</a></li>
                 <?php if ($is_user_logged_in) { ?>
-                    <li<?php if ($this->uri->segment(3) == 'upvoted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'upvoted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/upvoted/"; ?>">upvoted</a></li>
-                    <li<?php if ($this->uri->segment(3) == 'downvoted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'downvoted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/downvoted/"; ?>">downvoted</a></li>
-                    <li<?php if ($this->uri->segment(3) == 'favourites') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'favourites') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/favourites/"; ?>">favourites</a></li>
+                    <li<?php if ($this->uri->segment(3) == 'yukarilar') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'yukarilar') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/yukarilar/"; ?>">yukarılar</a></li>
+                    <li<?php if ($this->uri->segment(3) == 'asagilar') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'asagilar') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/asagilar/"; ?>">aşağılar</a></li>
+                    <li<?php if ($this->uri->segment(3) == 'favoriler') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'favoriler') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/favoriler/"; ?>">favoriler</a></li>
                 <?php } ?>
             <?php } else { ?>
 

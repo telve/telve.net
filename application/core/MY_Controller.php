@@ -11,7 +11,7 @@
 				$this->load->model('subscription_model');
 				$this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
 
-				if ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) == $this->session->userdata('username')) ) {
+				if ( ($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) == $this->session->userdata('username')) ) {
 					$user_tab_class = 'class="active"';
 					$user_tab_style = 'style="color:red;"';
 				} else {
@@ -42,7 +42,7 @@
 					</a>
 				</li>
 				<li style='float:right;' ".$user_tab_class.">
-					<a href='".base_url('user/').$this->session->userdata('username').'/'."' ".$user_tab_style.">
+					<a href='".base_url('kullanici/').$this->session->userdata('username').'/'."' ".$user_tab_style.">
 						".$this->session->userdata('username')."<span class='glyphicon glyphicon-user'></span>
 					</a>
 				</li>
