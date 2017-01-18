@@ -68,8 +68,8 @@ $route['domain/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)/(:any)'] = 'domain';
 
-$route['user/register'] = 'user/register';
-$route['user/login'] = 'user/login';
+$route['uye-ol'] = 'user/register';
+$route['giris-yap'] = 'user/login';
 $route['user/logout'] = 'user/logout';
 $route['user/is_username_available'] = 'user/is_username_available';
 $route['user/captcha'] = 'user/captcha';

@@ -66,7 +66,7 @@
 				  $this->data['sidebar'] .= '</ul>
 				</div>';
 			} else {
-				$this->data['login_info'] = "<li style='float:right;width:302px;margin-right:15px;'><a href='#myModal' data-toggle='modal'><span style='color:gray;'>Want to join?</span> Log in or sign up <span class='glyphicon glyphicon-log-in'></span> <span style='color:gray;'>&nbsp;in seconds</span></a></li>";
+				$this->data['login_info'] = "<li style='float:right;margin-right:15px;'><a href='#myModal' data-toggle='modal'><span style='color:gray;'>Hâlâ üye değil misin?</span> Giriş yap veya üye ol <span class='glyphicon glyphicon-log-in'></span></a></li>";
 				$this->data['login_form'] = "
 					<table class='table table-bordered'>
 						<tr><td>

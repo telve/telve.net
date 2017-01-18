@@ -1,17 +1,17 @@
 <div class="row-fluid">
 	<div class="span11 pull-right">
-		<?php echo form_open('user/login');?>
+		<?php echo form_open('giris-yap');?>
 
 		<br>
 		<fieldset>
-			<legend>Log in</legend>
+			<legend>Giriş yapın</legend>
 
-			<label for="username">Username</label>
-			<input type="text" name="username" placeholder="username"/><br />
+			<label for="username">Kullanıcı adı</label>
+			<input type="text" name="username" placeholder="kullanıcı adı"/><br />
 			<div style="color:red;"><?php echo form_error('username');?></div>
 
-			<label for="password">Password</label>
-			<input type="password" name="password" placeholder="password"/><br />
+			<label for="password">Şifre</label>
+			<input type="password" name="password" placeholder="şifre"/><br />
 			<div style="color:red;"><?php echo form_error('password');?></div>
 
 			<label class="checkbox">

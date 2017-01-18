@@ -26,7 +26,12 @@
 
 			$this->data['base_url'] = base_url('t/'.$this->uri->segment(2).'/');
 
-            $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, $this->uri->segment(2)));
+			$topic = $this->uri->segment(2);
+			if (urldecode($topic) == 'TÜMÜ') {
+				$topic = NULL;
+			}
+
+            $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, $topic));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
@@ -72,10 +77,6 @@
 				redirect($this->data['base_url']);
 			}
 
-			$topic = $this->uri->segment(2);
-			if (urldecode($topic) == 'TÜMÜ') {
-				$topic = NULL;
-			}
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);
 
 			foreach ($this->data['link'] as &$link_item) {
