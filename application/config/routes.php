@@ -70,6 +70,7 @@ $route['user/captcha'] = 'user/captcha';
 $route['user/is_user_logged_in'] = 'user/is_user_logged_in';
 $route['user/(:any)'] = 'user';
 $route['user/(:any)/:num'] = 'user';
+$route['user/(:any)/(:any)'] = 'user';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

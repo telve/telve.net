@@ -30,7 +30,11 @@
 			$this->data['per_page'] = $config['per_page'];
 
             $this->data['title'] = $this->uri->segment(2);
-			$this->data['offset'] = $this->uri->segment(3);
+			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
+				$this->data['offset'] = $this->uri->segment(3);
+			} else {
+				$this->data['offset'] = $this->uri->segment(4);
+			}
 			$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 
 			foreach ($this->data['link'] as &$link_item) {

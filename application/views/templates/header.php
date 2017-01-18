@@ -42,7 +42,7 @@
                    <?php endforeach ?>
 
                </div>
-               <a id="more" href="<?php
+               <a id="more" <?php if ( ($this->uri->segment(1) == 'topics') || ($this->uri->segment(1) == 'subscriptions') ) echo 'style="color:red;"'; ?> href="<?php
                if ($is_user_logged_in)
                     echo base_url('subscriptions');
                else
@@ -61,12 +61,14 @@
             <?php } ?>
 
             <?php if ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) { ?>
-                <li<?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo 'style="color:red;"' ?> href="#">overview</a></li>
-                <li><a href="#">submitted</a></li>
-                <li><a href="#">comments</a></li>
-                <li><a href="#">upvoted</a></li>
-                <li><a href="#">downvoted</a></li>
-                <li><a href="#">favourites</a></li>
+                <li<?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo ' class="active"'; ?>><a <?php if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/"; ?>">overview</a></li>
+                <li<?php if ($this->uri->segment(3) == 'submitted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'submitted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/submitted/"; ?>">submitted</a></li>
+                <li<?php if ($this->uri->segment(3) == 'comments') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'comments') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/comments/"; ?>">comments</a></li>
+                <?php if ($is_user_logged_in) { ?>
+                    <li<?php if ($this->uri->segment(3) == 'upvoted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'upvoted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/upvoted/"; ?>">upvoted</a></li>
+                    <li<?php if ($this->uri->segment(3) == 'downvoted') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'downvoted') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/downvoted/"; ?>">downvoted</a></li>
+                    <li<?php if ($this->uri->segment(3) == 'favourites') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'favourites') echo 'style="color:red;"'; ?> href="<?php echo base_url("user")."/".$this->uri->segment(2)."/favourites/"; ?>">favourites</a></li>
+                <?php } ?>
             <?php } else { ?>
 
                 <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">hot<span class="glyphicon glyphicon-fire"></span></a></li>
