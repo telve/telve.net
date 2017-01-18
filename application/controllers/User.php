@@ -12,6 +12,9 @@
 		public function index()
 		{
             $this->load->library('pagination');
+			if (!$this->user_model->check_username_by_param($this->uri->segment(2))) {
+				redirect('');
+			}
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
 				$this->data['offset'] = $this->uri->segment(3);

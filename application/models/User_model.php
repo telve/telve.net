@@ -65,9 +65,21 @@
 		{
 			$this->db->where('username',$this->input->post('username'));
 			$query = $this->db->get('user');
-			if($query->num_rows > 0)
-			{
-				return count($query->num_rows);
+			if(count($query->result_array()) > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public function check_username_by_param($username)
+		{
+			$this->db->where('username',$username);
+			$query = $this->db->get('user');
+			if(count($query->result_array()) > 0) {
+				return true;
+			} else {
+				return false;
 			}
 		}
 
@@ -147,6 +159,7 @@
 			//$this->db->order_by("reply.created", "desc");
 			$this->db->join('user', 'reply.uid = user.id');
 			$this->db->join('link', 'reply.link_id = link.id');
+			$this->db->where('reply.uid',$this_user_id);
 			$reply_query = $this->db->get_compiled_select();
 
 			if (!$offset) {
@@ -163,7 +176,7 @@
 			} else if ($activity_tab == 'downvoted') {
 				$query = $this->db->query('SELECT * FROM (' . $link_query . ' UNION ' . $reply_query . ') AS u WHERE u.up_down=0 ORDER BY created desc '.$limit_clause);
 			} else {
-				$query = $this->db->query($link_query . ' UNION ' . $reply_query . 'ORDER BY created desc '.$limit_clause);
+				$query = $this->db->query($link_query . ' UNION ' . $reply_query . ' ORDER BY created desc '.$limit_clause);
 			}
 
 			//print_r($this->hash_multirow($query->result_array()));
