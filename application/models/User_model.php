@@ -83,7 +83,7 @@
 			}
 		}
 
-		public function user_overview($this_user, $rows = NULL, $offset = NULL) //By default, all states are returned
+		public function user_overview($this_user, $rows = NULL, $offset = NULL, $activity_tab = NULL)
 		{
 			$this->db->where('username',$this_user);
 			$this->db->select('id');
@@ -98,10 +98,14 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('link.id as id,title,url,score,link.created as created,up_down,link.id as is_favorited,picurl,domain,username,topic,comments,text,is_link_for_union');
+				$this->db->select('link.id as id,title,url,score,link.created as created,vote_link.up_down as up_down,link.id as is_favorited,picurl,domain,username,topic,comments,text,is_link_for_union');
                 $this->db->from('link');
                 $this->db->join('user', 'link.uid = user.id');
-				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
+				if ( ($activity_tab == 'upvoted') || ($activity_tab == 'downvoted') ) {
+					$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id');
+				} else {
+					$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
+				}
 			} else {
 				$this->db->select('link.id as id,title,url,score,link.created as created,picurl,domain,username,topic,comments,text,is_link_for_union');
                 $this->db->from('link');
@@ -119,9 +123,13 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,up_down,favourite_reply.uid as is_favorited,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
+				$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,vote_reply.up_down as up_down,favourite_reply.uid as is_favorited,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
 				$this->db->from('reply');
-				$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
+				if ( ($activity_tab == 'upvoted') || ($activity_tab == 'downvoted') ) {
+					$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id');
+				} else {
+					$this->db->join('vote_reply', $user['id'].' = vote_reply.uid AND reply.id = vote_reply.reply_id','left');
+				}
 				$this->db->join('favourite_reply', 'favourite_reply.uid = '.$user['id'].' AND reply.id = favourite_reply.reply_id','left');
 			} else {
 				$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
@@ -135,8 +143,19 @@
 			if (!$offset) {
 				$offset = 0;
 			}
+			if (!$rows) {
+				$limit_clause = '';
+			} else {
+				$limit_clause = 'LIMIT '.$rows.' OFFSET '.$offset;
+			}
 
-			$query = $this->db->query($link_query . ' UNION ' . $reply_query . 'ORDER BY created desc LIMIT '.$rows.' OFFSET '.$offset);
+			if ($activity_tab == 'upvoted') {
+				$query = $this->db->query('SELECT * FROM (' . $link_query . ' UNION ' . $reply_query . ') AS u WHERE u.up_down=1 ORDER BY created desc '.$limit_clause);
+			} else if ($activity_tab == 'downvoted') {
+				$query = $this->db->query('SELECT * FROM (' . $link_query . ' UNION ' . $reply_query . ') AS u WHERE u.up_down=0 ORDER BY created desc '.$limit_clause);
+			} else {
+				$query = $this->db->query($link_query . ' UNION ' . $reply_query . 'ORDER BY created desc '.$limit_clause);
+			}
 
 			//print_r($this->hash_multirow($query->result_array()));
             return $this->hash_multirow($query->result_array());

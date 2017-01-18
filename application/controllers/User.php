@@ -13,9 +13,17 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('user/').$this->uri->segment(2);
+			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
+				$this->data['offset'] = $this->uri->segment(3);
+				$this->data['activity_tab'] = NULL;
+				$config['base_url'] = base_url('user/').$this->uri->segment(2);
+			} else {
+				$this->data['offset'] = $this->uri->segment(4);
+				$this->data['activity_tab'] = $this->uri->segment(3);
+				$config['base_url'] = base_url('user/').$this->uri->segment(2).'/'.$this->uri->segment(3);
+			}
 
-            $config['total_rows'] = count($this->link_model->get_link_count());
+            $config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,$this->data['activity_tab']));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
@@ -30,12 +38,7 @@
 			$this->data['per_page'] = $config['per_page'];
 
             $this->data['title'] = $this->uri->segment(2);
-			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
-				$this->data['offset'] = $this->uri->segment(3);
-			} else {
-				$this->data['offset'] = $this->uri->segment(4);
-			}
-			$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset']);
+			$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],$this->data['activity_tab']);
 
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
