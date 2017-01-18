@@ -18,14 +18,21 @@
 					$user_tab_class = '';
 					$user_tab_style = '';
 				}
+				if ($this->uri->segment(1) == 'preferences') {
+					$preferences_tab_class = 'class="active"';
+					$preferences_tab_style = 'style="color:red;"';
+				} else {
+					$preferences_tab_class = '';
+					$preferences_tab_style = '';
+				}
 				$this->data['login_info'] = "
 				<li style='float:right; margin-right:15px;'>
 					<a href='".base_url('user/logout')."'>
 						logout <span class='glyphicon glyphicon-log-out'></span>
 					</a>
 				</li>
-				<li style='float:right;'>
-					<a href='#'>
+				<li style='float:right;' ".$preferences_tab_class.">
+					<a href='".base_url('preferences')."' ".$preferences_tab_style.">
 						preferences<span class='glyphicon glyphicon-cog'></span>
 					</a>
 				</li>
@@ -89,7 +96,7 @@
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
 
-			$this->data['front_forbidden'] = array('t','domain','submit','user','password','topics','subscriptions','search');
+			$this->data['front_forbidden'] = array('t','domain','submit','user','password','topics','subscriptions','search','preferences');
 
 		}
 
