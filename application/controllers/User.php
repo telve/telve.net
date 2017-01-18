@@ -26,6 +26,8 @@
 
 			if ($this->uri->segment(3) == 'submitted') {
 				$config['total_rows'] = count($this->user_model->user_submitted($this->uri->segment(2),NULL,NULL));
+			} else if ($this->uri->segment(3) == 'comments') {
+				$config['total_rows'] = count($this->user_model->user_comments($this->uri->segment(2),NULL,NULL));
 			} else {
 				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,$this->data['activity_tab']));
 			}
@@ -45,6 +47,8 @@
             $this->data['title'] = $this->uri->segment(2);
 			if ($this->uri->segment(3) == 'submitted') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
+			} else if ($this->uri->segment(3) == 'comments') {
+				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 			} else {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],$this->data['activity_tab']);
 			}
