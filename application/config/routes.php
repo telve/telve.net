@@ -41,7 +41,11 @@
 $route['default_controller'] = "hot";
 $route['404_override'] = '';
 
-$route['new'] = 'xnew';
+$route['yeni'] = 'xnew';
+$route['yukselen'] = 'rising';
+$route['tartismali'] = 'controversial';
+$route['zirve'] = 'top';
+$route['viki'] = 'wiki';
 
 $route['t/(:any)/comments/(:any)'] = 'comments/view';
 $route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';
@@ -50,10 +54,10 @@ $route['t/(:any)/(:any)'] = 'topic';
 $route['t/(:any)/(:any)/(:any)'] = 'topic';
 
 $route[':num'] = 'hot';
-$route['new/:num'] = 'xnew';
-$route['rising/:num'] = 'rising';
-$route['controversial/:num'] = 'controversial';
-$route['top/:num'] = 'top';
+$route['yeni/:num'] = 'xnew';
+$route['yukselen/:num'] = 'rising';
+$route['tartismali/:num'] = 'controversial';
+$route['zirve/:num'] = 'top';
 $route['subscriptions/:num'] = 'subscriptions';
 $route['topics/:num'] = 'topics';
 $route['search/:num'] = 'search';

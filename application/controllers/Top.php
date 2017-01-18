@@ -11,7 +11,7 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('top');
+            $config['base_url'] = base_url('zirve');
 
             $config['total_rows'] = count($this->link_model->get_link_count());
             $config['per_page'] = 10;

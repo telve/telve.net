@@ -22,9 +22,11 @@ So what do you waiting for? **[Share a link now](http://telve.net/submit)** with
 
 ### Notes for Developers
 
-Requires a LAMP stack with PHP version 5.3.10 (Ubuntu 12.04) because it's using CodeIgniter version 3.1.2 web framework.
+Requires a LAMP stack with PHP version 7.0.8 (Ubuntu 16.04) and it's using CodeIgniter version 3.1.2 web framework.
 
 Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
+
+This project was developed fully in English language until commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` (129. commit). Later on it translated to Turkish language (language of target client) rather than being multilingual because the complexity of handling the support for multiple languages was huge. If you are a global visitor/cloner, I suggest you to revert back to commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` or contact me mert.yildiran@bil.omu.edu.tr for my help to translate it back to English language.
 
 ### Requirements
 

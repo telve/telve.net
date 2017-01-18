@@ -22,7 +22,7 @@ So what do you waiting for? **[Share a link now](/submit)** with thousands of co
 
 ### Notes for Developers
 
-Requires a LAMP stack with PHP version 5.3.10 (Ubuntu 12.04) because it's using CodeIgniter version 3.1.2 web framework.
+Requires a LAMP stack with PHP version 7.0.8 (Ubuntu 16.04) and it's using CodeIgniter version 3.1.2 web framework.
 
 Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
 
