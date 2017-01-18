@@ -44,13 +44,22 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = $this->uri->segment(2);
+            $this->data['title'] = 'overview for '.$this->uri->segment(2);
 			if ($this->uri->segment(3) == 'submitted') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
+				$this->data['title'] = 'submitted by '.$this->uri->segment(2);
 			} else if ($this->uri->segment(3) == 'comments') {
 				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
+				$this->data['title'] = 'comments by '.$this->uri->segment(2);
 			} else {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],$this->data['activity_tab']);
+				if ($this->uri->segment(3) == 'upvoted') {
+					$this->data['title'] = 'upvoted by '.$this->uri->segment(2);
+				} else if ($this->uri->segment(3) == 'downvoted') {
+					$this->data['title'] = 'downvoted by '.$this->uri->segment(2);
+				} else if ($this->uri->segment(3) == 'favourites') {
+					$this->data['title'] = $this->uri->segment(2)."'s favourites";
+				}
 			}
 
 			foreach ($this->data['link'] as &$link_item) {
@@ -67,7 +76,7 @@
         public function register()
 		{
 
-			$this->data['title'] = "Register a user";
+			$this->data['title'] = "Register";
 
 			$reserved_usernames = 'regex_match[/^((?!admin).)*$/i]|regex_match[/^((?!moderator).)*$/i]|regex_match[/^((?!register).)*$/i]|regex_match[/^((?!login).)*$/i]|regex_match[/^((?!logout).)*$/i]|regex_match[/^((?!is_username_available).)*$/i]|regex_match[/^((?!captcha).)*$/i]|regex_match[/^((?!is_user_logged_in).)*$/i]|regex_match[/^((?!allah).)*$/i]';
 			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');

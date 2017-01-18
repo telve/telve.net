@@ -30,7 +30,7 @@
 				redirect('t/'.$this->data['link_item']['topic'].'/comments/'.$id.'/'.$this->data['link_item']['seo_segment'].'/');
 			}
 
-			$this->data['title']=$this->data['link_item']['title'];
+			$this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('comments/view',$this->data);

@@ -3,9 +3,9 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php //echo $title;?>telve: the front page of the internet</title>
+        <title><?php echo $title; ?></title>
         <meta name="description" content="User-generated news links. Votes promote stories to the front page." />
-        <meta name="keywords" content="telve, social, news, links" />
+        <meta name="keywords" content="telve, social, news, links, comment" />
         <link rel="shortcut icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link rel="icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link href="<?php echo base_url("assets/css/bootstrap.css");?>" rel="stylesheet" media="screen">

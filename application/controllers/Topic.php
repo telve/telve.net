@@ -40,36 +40,41 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
+			$this->data['sn'] = 3;
+			$this->data['title'] = $this->uri->segment(2);
+
 			$segment = $this->uri->segment(3);
 			if ( ($segment == 'hot') || ($segment == '') ) {
 				$ranking = 'hot';
 			} else if ($segment == 'new') {
 				$ranking = 'new';
+				$this->data['title'] = 'newest submissions | '.$this->data['title'];
 			} else if ($segment == 'rising') {
 				$ranking = 'rising';
+				$this->data['title'] = 'rising submissions | '.$this->data['title'];
 			} else if ($segment == 'controversial') {
 				$ranking = 'controversial';
+				$this->data['title'] = 'most controversial links | '.$this->data['title'];
 			} else if ($segment == 'top') {
 				$ranking = 'top';
+				$this->data['title'] = 'top scoring links | '.$this->data['title'];
 			} else if ($segment == 'wiki') {
 				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($this->uri->segment(2));
+				$this->data['title'] = 'wiki of '.$this->data['title'];
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('wiki/index',$this->data);
 				$this->load->view('templates/side');
 				$this->load->view('templates/footer');
 				return 1;
 			} else {
-				$ranking = 'hot';
+				redirect($this->data['base_url']);
 			}
-
-            $this->data['title'] = $this->uri->segment(2);
 
 			$topic = $this->uri->segment(2);
 			if ($topic == 'ALL') {
 				$topic = NULL;
 			}
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);
-			$this->data['sn'] = 3;
 
 			foreach ($this->data['link'] as &$link_item) {
 				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );

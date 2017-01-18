@@ -98,6 +98,8 @@
 
 			$this->data['front_forbidden'] = array('t','domain','submit','user','password','topics','subscriptions','search','preferences');
 
+			$this->data['title'] = 'telve: the front page of the internet';
+
 		}
 
 	}
