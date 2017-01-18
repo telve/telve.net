@@ -76,7 +76,7 @@
 		</div>
 
 		<div class="span5">
-			<?php echo form_open('giris-yap');?>
+			<?php echo form_open('giris');?>
             <br/>
 			<fieldset style="margin-left:20px;">
                 <strong><div style="font-size:18px">Giriş yapın</div></strong>
@@ -95,7 +95,7 @@
                     <input type="checkbox" name="remember"/> beni hatırla
                 </label>
 
-                <a class="checkbox" href="recover_pwd">şifremi unuttum?</a>
+                <a class="checkbox" href="<?php echo base_url('sifremi-unuttum');?>">şifremi unuttum?</a>
                 <br/><br/>
     			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Giriş yap</button>
 

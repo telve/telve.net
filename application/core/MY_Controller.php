@@ -18,7 +18,7 @@
 					$user_tab_class = '';
 					$user_tab_style = '';
 				}
-				if ($this->uri->segment(1) == 'preferences') {
+				if ($this->uri->segment(1) == 'tercihler') {
 					$preferences_tab_class = 'class="active"';
 					$preferences_tab_style = 'style="color:red;"';
 				} else {
@@ -27,13 +27,13 @@
 				}
 				$this->data['login_info'] = "
 				<li style='float:right; margin-right:15px;'>
-					<a href='".base_url('user/logout')."'>
-						logout <span class='glyphicon glyphicon-log-out'></span>
+					<a href='".base_url('cikis')."'>
+						çıkış <span class='glyphicon glyphicon-log-out'></span>
 					</a>
 				</li>
 				<li style='float:right;' ".$preferences_tab_class.">
-					<a href='".base_url('preferences')."' ".$preferences_tab_style.">
-						preferences<span class='glyphicon glyphicon-cog'></span>
+					<a href='".base_url('tercihler')."' ".$preferences_tab_style.">
+						tercihler<span class='glyphicon glyphicon-cog'></span>
 					</a>
 				</li>
 				<li style='float:right;'>

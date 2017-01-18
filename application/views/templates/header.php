@@ -34,7 +34,7 @@
                    </a>
 
                    &nbsp;&nbsp;
-                   <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Manşet</a> -
+                   <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Ön</a> -
                    <a <?php if ('TÜMÜ' == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/TÜMÜ/';?>">Tümü</a> -
                    <a href="<?php echo base_url('').'t/RASTGELE/';?>">Rastgele</a> &nbsp;|&nbsp;
                    <?php foreach($topics_for_header as $topic): ?>

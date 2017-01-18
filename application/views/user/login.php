@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span11 pull-right">
-		<?php echo form_open('giris-yap');?>
+		<?php echo form_open('giris');?>
 
 		<br>
 		<fieldset>
@@ -15,11 +15,13 @@
 			<div style="color:red;"><?php echo form_error('password');?></div>
 
 			<label class="checkbox">
-				<input type="checkbox" name="remember"/> remember me
+				<input type="checkbox" name="remember"/> beni hatırla
 			</label>
+			<a class="checkbox" href="<?php echo base_url('sifremi-unuttum');?>">şifremi unuttum?</a>
+			<br/>
 			<!--Error message-->
 			<span style="color:red;"><?php echo $login_error;?></span><br>
-			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Log in</button>
+			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Giriş yap</button>
 		</fieldset>
 	</form>
 	</div>

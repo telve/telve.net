@@ -48,6 +48,8 @@ $route['zirve'] = 'top';
 $route['viki'] = 'wiki';
 $route['konular'] = 'topics';
 $route['aboneliklerim'] = 'subscriptions';
+$route['tercihler'] = 'preferences';
+$route['sifremi-unuttum'] = 'password';
 
 $route['t/(:any)/comments/(:any)'] = 'comments/view';
 $route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';
@@ -69,8 +71,8 @@ $route['domain/(:any)/(:any)'] = 'domain';
 $route['domain/(:any)/(:any)/(:any)'] = 'domain';
 
 $route['uye-ol'] = 'user/register';
-$route['giris-yap'] = 'user/login';
-$route['user/logout'] = 'user/logout';
+$route['giris'] = 'user/login';
+$route['cikis'] = 'user/logout';
 $route['user/is_username_available'] = 'user/is_username_available';
 $route['user/captcha'] = 'user/captcha';
 $route['user/is_user_logged_in'] = 'user/is_user_logged_in';
