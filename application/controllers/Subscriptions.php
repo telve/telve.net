@@ -16,7 +16,7 @@
 			}
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('subscriptions');
+            $config['base_url'] = base_url('aboneliklerim');
 
             $config['total_rows'] = count($this->link_model->retrieve_topics_for_header());
             $config['per_page'] = 10;

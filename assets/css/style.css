@@ -146,14 +146,14 @@ li > a.submit {
 }
 /* BLUE BUTTON */
 
-@font-face { font-family: Harabara; src: url('/assets/img/logo/Harabara.ttf'); }
+@font-face { font-family: Play-Bold; src: url('/assets/img/logo/Play-Bold.ttf'); }
+@font-face { font-family: Play-Regular; src: url('/assets/img/logo/Play-Regular.ttf'); }
 
 li.topic-title {
-    font-family: Harabara;
+    font-family: Play-Bold;
     font-size: 20px;
     margin-top: 56px;
     margin-right: 10px;
-    letter-spacing: 1px;
     white-space: nowrap;
     overflow: hidden;
     max-width: 8em;

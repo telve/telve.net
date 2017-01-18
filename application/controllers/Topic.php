@@ -10,7 +10,7 @@
 
 		public function index()
 		{
-			if ($this->uri->segment(2) == 'RANDOM') {
+			if (urldecode($this->uri->segment(2)) == 'RASTGELE') {
 				redirect('t/'.$this->link_model->random_topic()['topic'].'/');
 			}
 
@@ -41,24 +41,24 @@
 			$this->data['per_page'] = $config['per_page'];
 
 			$this->data['sn'] = 3;
-			$this->data['title'] = $this->uri->segment(2);
+			$this->data['title'] = urldecode($this->uri->segment(2));
 
 			$segment = $this->uri->segment(3);
-			if ( ($segment == 'hot') || ($segment == '') ) {
+			if ( ($segment == 'sicak') || ($segment == '') ) {
 				$ranking = 'hot';
-			} else if ($segment == 'new') {
+			} else if ($segment == 'yeni') {
 				$ranking = 'new';
 				$this->data['title'] = 'newest submissions | '.$this->data['title'];
-			} else if ($segment == 'rising') {
+			} else if ($segment == 'yukselen') {
 				$ranking = 'rising';
 				$this->data['title'] = 'rising submissions | '.$this->data['title'];
-			} else if ($segment == 'controversial') {
+			} else if ($segment == 'tartismali') {
 				$ranking = 'controversial';
 				$this->data['title'] = 'most controversial links | '.$this->data['title'];
-			} else if ($segment == 'top') {
+			} else if ($segment == 'zirve') {
 				$ranking = 'top';
 				$this->data['title'] = 'top scoring links | '.$this->data['title'];
-			} else if ($segment == 'wiki') {
+			} else if ($segment == 'viki') {
 				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($this->uri->segment(2));
 				$this->data['title'] = 'wiki of '.$this->data['title'];
 				$this->load->view('templates/header',$this->data);
@@ -66,12 +66,14 @@
 				$this->load->view('templates/side');
 				$this->load->view('templates/footer');
 				return 1;
+			} else if (is_numeric($segment)) {
+				$ranking = 'hot';
 			} else {
 				redirect($this->data['base_url']);
 			}
 
 			$topic = $this->uri->segment(2);
-			if ($topic == 'ALL') {
+			if (urldecode($topic) == 'TÜMÜ') {
 				$topic = NULL;
 			}
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);

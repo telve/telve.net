@@ -11,7 +11,7 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('topics');
+            $config['base_url'] = base_url('konular');
 
             $config['total_rows'] = count($this->link_model->retrieve_topics_for_header());
             $config['per_page'] = 10;

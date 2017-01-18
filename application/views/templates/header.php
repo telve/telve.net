@@ -27,26 +27,26 @@
                    <a href="#">
                        <div id="bullhorn-announcement">
                            <div class="scroll-left">
-                               <span>Welcome to the front page of the internet</span>
+                               <span>İNTERNETİN ÖN SAYFASINA HOŞ GELDİNİZ</span>
                            </div>
                        </div>
                        <span class="glyphicon glyphicon-bullhorn special-bullhorn-icon"></span>
                    </a>
 
                    &nbsp;&nbsp;
-                   <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Front</a> -
-                   <a <?php if ('ALL' == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/ALL/';?>">All</a> -
-                   <a href="<?php echo base_url('').'t/RANDOM/';?>">Random</a> &nbsp;|&nbsp;
+                   <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Manşet</a> -
+                   <a <?php if ('TÜMÜ' == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/TÜMÜ/';?>">Tümü</a> -
+                   <a href="<?php echo base_url('').'t/RASTGELE/';?>">Rastgele</a> &nbsp;|&nbsp;
                    <?php foreach($topics_for_header as $topic): ?>
                        <a <?php if ($topic['topic'] == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
                    <?php endforeach ?>
 
                </div>
-               <a id="more" <?php if ( ($this->uri->segment(1) == 'topics') || ($this->uri->segment(1) == 'subscriptions') ) echo 'style="color:red;"'; ?> href="<?php
+               <a id="more" <?php if ( ($this->uri->segment(1) == 'konular') || ($this->uri->segment(1) == 'aboneliklerim') ) echo 'style="color:red;"'; ?> href="<?php
                if ($is_user_logged_in)
-                    echo base_url('subscriptions');
+                    echo base_url('aboneliklerim');
                else
-                    echo base_url('topics'); ?>">More<span class="glyphicon glyphicon-chevron-right"></span></a>
+                    echo base_url('konular'); ?>">Devamı<span class="glyphicon glyphicon-chevron-right"></span></a>
            </div>
 
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
@@ -57,7 +57,7 @@
             <li><img src="/assets/img/logo/turkish-coffee.png" id="turkish-coffee"/><img src="/assets/img/logo/telve.png" id="site-logo"/></li>
 
             <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'domain') || ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) ) { ?>
-                <li class="topic-title"><?php echo $this->uri->segment(2);?></li>
+                <li class="topic-title"><?php echo urldecode($this->uri->segment(2));?></li>
             <?php } ?>
 
             <?php if ( ($this->uri->segment(1) == 'user') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) { ?>

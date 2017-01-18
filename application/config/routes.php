@@ -46,6 +46,8 @@ $route['yukselen'] = 'rising';
 $route['tartismali'] = 'controversial';
 $route['zirve'] = 'top';
 $route['viki'] = 'wiki';
+$route['konular'] = 'topics';
+$route['aboneliklerim'] = 'subscriptions';
 
 $route['t/(:any)/comments/(:any)'] = 'comments/view';
 $route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';
@@ -58,8 +60,8 @@ $route['yeni/:num'] = 'xnew';
 $route['yukselen/:num'] = 'rising';
 $route['tartismali/:num'] = 'controversial';
 $route['zirve/:num'] = 'top';
-$route['subscriptions/:num'] = 'subscriptions';
-$route['topics/:num'] = 'topics';
+$route['aboneliklerim/:num'] = 'subscriptions';
+$route['konular/:num'] = 'topics';
 $route['search/:num'] = 'search';
 
 $route['domain/(:any)'] = 'domain';
