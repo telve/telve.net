@@ -144,7 +144,7 @@
 
 				} else {
 
-					$this->data['login_error'] = 'Login failed, please check your information!<br>';
+					$this->data['login_error'] = 'Giriş başarısız, lütfen bilgilerinizi kontrol edin!<br>';
 					$this->load->view('templates/header',$this->data);
 					$this->load->view('user/login');
 					$this->load->view('templates/footer');
@@ -163,14 +163,14 @@
         public function is_username_available()
         {
 
-            if(strlen($this->input->post('username')) < 6)
+            if(strlen($this->input->post('username')) < 3)
             {
-                echo "<span style='color:red'>Invalid username</span>";
+                echo "<span style='color:red'>Kullanıcı adınız en az 3 karakter olmalıdır!</span>";
             } else {
                 if($this->user_model->check_username()){
-                    echo "<span style='color:red'>The username already exists</span>";
+                    echo "<span style='color:red'>Üzgünüz, bu kullanıcı adı zaten alınmış</span>";
                 } else {
-                    echo "<span style='color:green'>The username is available</span>";
+                    echo "<span style='color:green'>Kullanıcı adı kullanılabilir</span>";
                 }
             }
         }

@@ -44,7 +44,7 @@
 
             if($captcha <> $this->session->userdata('captcha'))
             {
-                return '<p>Verification code error</p>';
+                return '<p>Doğrulama kodu hatası</p>';
             }else
             {
                 $data =array(
@@ -57,7 +57,7 @@
                 $this->session->set_userdata('username',$username);
                 return $this->db->insert('user',$data);
                 //$this->add_user_session($username,$password,$remember);
-                return '<p>The registration is successful</p>';
+                return '<p>Hesabınız başarıyla oluşturuldu</p>';
                 //redirect('hot');
             }
 		}

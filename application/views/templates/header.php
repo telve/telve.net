@@ -76,8 +76,9 @@
                 <li<?php if ($this->uri->segment($sn) == 'yukselen') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'yukselen') echo 'style="color:red;"' ?> href="<?php echo $base_url.'yukselen/';?>">yükselen<span class="glyphicon glyphicon-signal"></span></a></li>
                 <li<?php if ($this->uri->segment($sn) == 'tartismali') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'tartismali') echo 'style="color:red;"' ?> href="<?php echo $base_url.'tartismali/';?>">tartışmalı<span class="glyphicon glyphicon-comment"></span></a></li>
                 <li<?php if ($this->uri->segment($sn) == 'zirve') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'zirve') echo 'style="color:red;"' ?> href="<?php echo $base_url.'zirve/';?>">zirve<span class="glyphicon glyphicon-circle-arrow-up"></span></a></li>
-                <li<?php if ($this->uri->segment($sn) == 'viki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'viki') echo 'style="color:red;"' ?> href="<?php echo $base_url.'viki/';?>">viki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
-
+                <?php if (!($this->uri->segment(1) == 'alan-adi')) { ?>
+                    <li<?php if ($this->uri->segment($sn) == 'viki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'viki') echo 'style="color:red;"' ?> href="<?php echo $base_url.'viki/';?>">viki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
+                <?php } ?>
                 <?php if ($this->uri->segment(3) == 'comments') { ?>
                     <li class="active"><a style="color:red;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>">comments</a></li>
                 <?php } ?>

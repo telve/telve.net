@@ -50,13 +50,13 @@
 						}
 		                echo 1;
 		            } else {
-						echo "Operation was not succesful. Please try again.";
+						echo "Bir hata oluştu. Lütfen tekrar deneyin.";
 					}
 				} else {
-					echo "Please login first.";
+					echo "Lütfen öncelikle giriş yapın.";
 				}
 			} else {
-				echo "You cannot send empty replies.";
+				echo "Boş bir yorum/yanıt gönderemezsiniz.";
 			}
         }
 
@@ -69,10 +69,10 @@
 		            $this->link_model->up_score();
 					echo 1;
 				} else {
-					echo "You have already casted your vote on this post.";
+					echo "Bu gönderi için oyunuzu zaten kullandınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -85,10 +85,10 @@
 		            $this->link_model->down_score();
 					echo 1;
 				} else {
-					echo "You have already casted your vote on this post.";
+					echo "Bu gönderi için oyunuzu zaten kullandınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -101,10 +101,10 @@
 		            $this->link_model->rply_up_score();
 					echo 1;
 				} else {
-					echo "You have already casted your vote on this comment.";
+					echo "Bu yorum/yanıt için oyunuzu zaten kullandınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -117,10 +117,10 @@
 		            $this->link_model->rply_down_score();
 					echo 1;
 				} else {
-					echo "You have already casted your vote on this comment.";
+					echo "Bu yorum/yanıt için oyunuzu zaten kullandınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -132,10 +132,10 @@
 		            $this->link_model->increase_link_reported();
 					echo '1 '.$title;
 				} else {
-					echo "You have already reported this post.";
+					echo "Bu gönderiyi zaten şikayet ettiniz.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -147,10 +147,10 @@
 		            $this->link_model->increase_reply_reported();
 					echo '1 '.$username;
 				} else {
-					echo "You have already reported this comment/reply.";
+					echo "Bu yorumu/yanıtı zaten şikayet ettiniz.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -162,10 +162,10 @@
 					$this->favourite_model->increase_link_favorited();
 					echo 1;
 				} else {
-					echo "You have already favorited this post.";
+					echo "Bu gönderi zaten favorilerinizde.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -177,10 +177,10 @@
 					$this->favourite_model->decrease_link_favorited();
 					echo 1;
 				} else {
-					echo "You have already unfavorited this post.";
+					echo "Bu gönderiyi zaten favorilerinizden çıkardınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -192,10 +192,10 @@
 					$this->favourite_model->increase_reply_favorited();
 					echo 1;
 				} else {
-					echo "You have already favorited this reply.";
+					echo "Bu yorum/yanıt zaten favorilerinizde.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -207,10 +207,10 @@
 					$this->favourite_model->decrease_reply_favorited();
 					echo 1;
 				} else {
-					echo "You have already unfavorited this reply.";
+					echo "Bu yorumu/yanıtı zaten favorilerinizden çıkardınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 	}

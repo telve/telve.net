@@ -53,10 +53,10 @@
 					$this->subscription_model->increase_subscribers();
 					echo 1;
 				} else {
-					echo "You have already subscribed to this topic.";
+					echo "Bu konuya zaten abone oldunuz.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -68,10 +68,10 @@
 					$this->subscription_model->decrease_subscribers();
 					echo 1;
 				} else {
-					echo "You have already subscribed to this topic.";
+					echo "Bu konunun aboneliğinden zaten çıktınız.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 
@@ -83,10 +83,10 @@
 		            $this->link_model->increase_topic_reported();
 					echo 1;
 				} else {
-					echo "You have already reported this topic.";
+					echo "Bu konuyu zaten şikayet ettiniz.";
 				}
 			} else {
-				echo "Please login first.";
+				echo "Lütfen öncelikle giriş yapın.";
 			}
         }
 

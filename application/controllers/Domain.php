@@ -11,7 +11,7 @@
 		{
             $this->load->library('pagination');
 
-			$config['base_url'] = base_url('domain/'.$this->uri->segment(2));
+			$config['base_url'] = base_url('alan-adi/'.$this->uri->segment(2));
 			if ( !is_numeric($this->uri->segment(3)) && !empty($this->uri->segment(3)) ) {
 				$config['base_url'] = $config['base_url'].'/'.$this->uri->segment(3);
 				$this->data['offset'] = $this->uri->segment(4);
@@ -19,7 +19,7 @@
 				$this->data['offset'] = $this->uri->segment(3);
 			}
 
-			$this->data['base_url'] = base_url('domain/'.$this->uri->segment(2).'/');
+			$this->data['base_url'] = base_url('alan-adi/'.$this->uri->segment(2).'/');
 
             $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, NULL,$this->uri->segment(2)));
             $config['per_page'] = 10;
@@ -36,21 +36,21 @@
 			$this->data['per_page'] = $config['per_page'];
 
 			$segment = $this->uri->segment(3);
-			if ( ($segment == 'hot') || ($segment == '') ) {
+			if ( ($segment == 'sicak') || ($segment == '') ) {
 				$ranking = 'hot';
-			} else if ($segment == 'new') {
+			} else if ($segment == 'yeni') {
 				$ranking = 'new';
-			} else if ($segment == 'rising') {
+			} else if ($segment == 'yukselen') {
 				$ranking = 'rising';
-			} else if ($segment == 'controversial') {
+			} else if ($segment == 'tartismali') {
 				$ranking = 'controversial';
-			} else if ($segment == 'top') {
+			} else if ($segment == 'zirve') {
 				$ranking = 'top';
 			} else {
 				$ranking = 'hot';
 			}
 
-            $this->data['title'] = $this->uri->segment(2);
+            $this->data['title'] = $this->uri->segment(2).' | telve.net';
 
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,NULL,$this->uri->segment(2));
 			$this->data['sn'] = 3;

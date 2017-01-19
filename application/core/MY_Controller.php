@@ -96,7 +96,7 @@
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
 
-			$this->data['front_forbidden'] = array('t','domain','gonder','kullanici','sifremi-unuttum','konular','aboneliklerim','search','tercihler','giris','uye-ol');
+			$this->data['front_forbidden'] = array('t','alan-adi','gonder','kullanici','sifremi-unuttum','konular','aboneliklerim','arama','tercihler','giris','uye-ol');
 
 			$this->data['title'] = 'telve: internetin ön sayfası';
 
