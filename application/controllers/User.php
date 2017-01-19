@@ -21,7 +21,7 @@
 				$this->data['activity_tab'] = NULL;
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/';
 			} else {
-				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'gonderiler') && ($this->uri->segment(3) != 'yorumlar') ) redirect( base_url('kullanici/').$this->uri->segment(2).'/' );
+				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'gonderileri') && ($this->uri->segment(3) != 'yorumlari') ) redirect( base_url('kullanici/').$this->uri->segment(2).'/' );
 				$this->data['offset'] = $this->uri->segment(4);
 				$this->data['activity_tab'] = $this->uri->segment(3);
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/'.$this->uri->segment(3);
@@ -29,15 +29,15 @@
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
 				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,NULL));
-			} else if ($this->uri->segment(3) == 'gonderiler') {
+			} else if ($this->uri->segment(3) == 'gonderileri') {
 				$config['total_rows'] = count($this->user_model->user_submitted($this->uri->segment(2),NULL,NULL));
-			} else if ($this->uri->segment(3) == 'yorumlar') {
+			} else if ($this->uri->segment(3) == 'yorumlari') {
 				$config['total_rows'] = count($this->user_model->user_comments($this->uri->segment(2),NULL,NULL));
-			} else if ($this->uri->segment(3) == 'yukarilar') {
+			} else if ($this->uri->segment(3) == 'evetoylari') {
 				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'upvoted'));
-			} else if ($this->uri->segment(3) == 'asagilar') {
+			} else if ($this->uri->segment(3) == 'hayiroylari') {
 				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'downvoted'));
-			} else if ($this->uri->segment(3) == 'favoriler') {
+			} else if ($this->uri->segment(3) == 'favorileri') {
 				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'favourites'));
 			} else {
 				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
@@ -59,19 +59,19 @@
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],NULL);
 				$this->data['title'] = 'overview for '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'gonderiler') {
+			} else if ($this->uri->segment(3) == 'gonderileri') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 				$this->data['title'] = 'submitted by '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'yorumlar') {
+			} else if ($this->uri->segment(3) == 'yorumlari') {
 				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
 				$this->data['title'] = 'comments by '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'yukarilar') {
+			} else if ($this->uri->segment(3) == 'evetoylari') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'upvoted');
 				$this->data['title'] = 'upvoted by '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'asagilar') {
+			} else if ($this->uri->segment(3) == 'hayiroylari') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'downvoted');
 				$this->data['title'] = 'downvoted by '.$this->uri->segment(2);
-			} else if ($this->uri->segment(3) == 'favoriler') {
+			} else if ($this->uri->segment(3) == 'favorileri') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'favourites');
 				$this->data['title'] = $this->uri->segment(2)."'s favourites";
 			} else {

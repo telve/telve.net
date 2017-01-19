@@ -1,4 +1,4 @@
-<?php $this->load->helper('human_timing'); ?><!--Format the time-->
+<?php $this->load->helper('human_timingv2'); ?><!--Format the time-->
 
 <?php echo $toggle_sidebar ?>
 
@@ -49,7 +49,7 @@
 
                                 <div style="line-height: 14px;">
 									<?php if ($topic['description']) echo $topic['description'].'<br>';?>
-                                    <small class="details"><?php echo $topic['subscribers'];?> subscribers,&nbsp;&nbsp;a community for <?php echo substr(human_timing($topic['created']), 0, -4);?></small>
+                                    <small class="details"><?php echo $topic['subscribers'];?> subscribers,&nbsp;&nbsp;a community for <?php echo human_timingv2($topic['created']);?></small>
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>
