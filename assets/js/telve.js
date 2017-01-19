@@ -76,7 +76,7 @@ function down(id){
 }
 
 function share_link(obj){
-    if($(obj).text()=='share')
+    if($(obj).text()=='paylaş')
     {
         replyForm = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="display:none;">\
                     <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + $(obj).parent().parent().find('.comments')[0].href + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
@@ -89,6 +89,7 @@ function share_link(obj){
                     </div>\
                     <script>\
                     var a2a_config = a2a_config || {};\
+                    a2a_config.locale = "tr";\
                     a2a_config.linkname = "' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '";\
                     a2a_config.linkurl = "' + $(obj).parent().parent().find('.comments')[0].href + '";\
                     </script>\
@@ -96,16 +97,16 @@ function share_link(obj){
 
         $(obj).parent().after(replyForm);
         $(obj).parent().siblings().fadeIn("slow","swing");
-        $(obj).html('cancel<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
+        $(obj).html('iptal<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
     } else {
         $(obj).parent().siblings().fadeOut("slow","swing").promise().done( function() {
             $(obj).parent().siblings().remove();
         });
-        $(obj).html('share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
+        $(obj).html('paylaş<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
     }
 }
 function share_topic(obj){
-    if($(obj).text()=='share')
+    if($(obj).text()=='paylaş')
     {
         replyForm = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="display:none;">\
                     <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + $(obj).parent().parent().parent().parent().find('a.link-title')[0].href + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
@@ -118,6 +119,7 @@ function share_topic(obj){
                     </div>\
                     <script>\
                     var a2a_config = a2a_config || {};\
+                    a2a_config.locale = "tr";\
                     a2a_config.linkname = "' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '";\
                     a2a_config.linkurl = "' + $(obj).parent().parent().parent().parent().find('a.link-title')[0].href + '";\
                     </script>\
@@ -125,12 +127,12 @@ function share_topic(obj){
 
         $(obj).parent().after(replyForm);
         $(obj).parent().siblings().fadeIn("slow","swing");
-        $(obj).html('cancel<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
+        $(obj).html('iptal<span class="glyphicon glyphicon-remove" style="font-size:12px;"></span>');
     } else {
         $(obj).parent().siblings().fadeOut("slow","swing").promise().done( function() {
             $(obj).parent().siblings().remove();
         });
-        $(obj).html('share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
+        $(obj).html('paylaş<span class="glyphicon glyphicon-share" style="font-size:12px;"></span>');
     }
 }
 $(document).ready(function(){
@@ -435,7 +437,7 @@ function subscribe(obj){
                data: { 'topic' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $('a.btn#'+obj.id).text('Unsubscribe');
+                       $('a.btn#'+obj.id).text('Abonelikten çık');
                        $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-danger');
                        $('a.btn#'+obj.id).attr('onclick', 'unsubscribe(this);');
                    } else {
@@ -453,7 +455,7 @@ function unsubscribe(obj){
                data: { 'topic' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $('a.btn#'+obj.id).text('Subscribe');
+                       $('a.btn#'+obj.id).text('Abone ol');
                        $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-success');
                        $('a.btn#'+obj.id).attr('onclick', 'subscribe(this);');
                    } else {

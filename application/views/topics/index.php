@@ -41,13 +41,13 @@
 
                                 <div style="line-height: 14px;">
 									<?php if ($topic['description']) echo $topic['description'].'<br>';?>
-                                    <small class="details">0 subscribers,&nbsp;&nbsp;a community for <?php echo human_timingv2($topic['created']);?></small>
+                                    <small class="details"><?php echo $topic['subscribers'];?> abone,&nbsp;&nbsp;<?php echo human_timingv2($topic['created']);?> bir konu</small>
                                 </div>
                                 <div>
                                     <div class="link-actions"><strong>
-                                        <a href="javascript:void(0)" onclick="report_topic('<?php echo $topic['topic'];?>')" class="login-required">report<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="report_topic('<?php echo $topic['topic'];?>')" class="login-required">şikayet<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;
-                                        <a href="javascript:void(0)" onclick="share_topic(this)">share<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
+                                        <a href="javascript:void(0)" onclick="share_topic(this)">paylaş<span class="glyphicon glyphicon-share" style="font-size:12px;"></span></a>
                                     </strong></div>
                                 </div>
                             </div>
