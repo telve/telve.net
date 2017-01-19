@@ -51,6 +51,7 @@ $route['aboneliklerim'] = 'subscriptions';
 $route['tercihler'] = 'preferences';
 $route['sifremi-unuttum'] = 'password';
 $route['gonder'] = 'submit';
+$route['arama'] = 'search';
 
 $route['t/(:any)/yorumlar/(:any)'] = 'comments/view';
 $route['t/(:any)/yorumlar/(:any)/(:any)'] = 'comments/view';
@@ -65,7 +66,7 @@ $route['tartismali/:num'] = 'controversial';
 $route['zirve/:num'] = 'top';
 $route['aboneliklerim/:num'] = 'subscriptions';
 $route['konular/:num'] = 'topics';
-$route['search/:num'] = 'search';
+$route['arama/:num'] = 'search';
 
 $route['alan-adi/(:any)'] = 'domain';
 $route['alan-adi/(:any)/(:any)'] = 'domain';

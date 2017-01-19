@@ -1,8 +1,12 @@
 <div class="span3" style="float:right;margin-top:11px;">
     <div>
-        <form action="<?php echo base_url("search");?>" method="get" accept-charset="utf-8" style="margin:0;">
+        <form action="<?php echo base_url("arama");?>" method="get" accept-charset="utf-8" style="margin:0;">
             <?php if ( isset($search_query) ) { ?>
-                <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;color:green;" value="<?php echo $search_query; ?>">
+                <?php if ($search_total_rows > 0) { ?>
+                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;color:green;" value="<?php echo $search_query; ?>">
+                <?php } else { ?>
+                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;color:red;" value="<?php echo $search_query; ?>">
+                <?php } ?>
             <?php } else { ?>
                 <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;">
             <?php } ?>

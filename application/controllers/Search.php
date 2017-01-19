@@ -11,11 +11,12 @@
 		{
             $this->load->library('pagination');
 
-            $config['base_url'] = base_url('search');
+            $config['base_url'] = base_url('arama');
 
 			$this->data['search_query'] = $this->input->get("q");
 
             $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, NULL, NULL, $this->data['search_query']));
+			$this->data['search_total_rows'] = $config['total_rows'];
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Önceki sayfa</span>';
