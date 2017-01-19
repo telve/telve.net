@@ -248,11 +248,11 @@ $(document).ready(function(){
         \
         						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
         \
-        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='#'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
                                     &nbsp;<span style='color: gray;'>\
-        								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
+        								(<a style='color: gray;' class='hide_rply' href=''> senin yorumun </a>)</small></span>\
         						</div>\
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\
@@ -285,7 +285,7 @@ function set_reply(obj){
 	} else { //This can not be used directly reply_item['id']
 		replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;'/></textarea><br />"+
 			"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
-            "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>submit</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>cancel</button></div>";
+            "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>gönder</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>iptal</button></div>";
 		$(obj).after(replyForm);
 		$(obj).nextAll("div").children("#content").focus();
 	}
@@ -324,11 +324,11 @@ function submit_comment_reply(obj){
         \
         						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
         \
-        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='#'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> points&nbsp;&nbsp;submitted just a moment ago\
+                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
                                     &nbsp;<span style='color: gray;'>\
-        								(<a style='color: gray;' class='hide_rply' href=''> your comment </a>)</small></span>\
+        								(<a style='color: gray;' class='hide_rply' href=''> senin yanıtın </a>)</small></span>\
         						</div>\
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\

@@ -90,20 +90,20 @@
                             sıralama:
                             <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
                                 <?php
-                                if ($this->input->get('sort')) {
-                                    echo $this->input->get('sort');
+                                if ($this->input->get('sirala')) {
+                                    echo $this->input->get('sirala');
                                 } else {
-                                    echo "hot";
+                                    echo "sıcak";
                                 }
                                 ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                <li><a tabindex="-1" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>">hot</a></li>
-                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=top'); ?>">top</a></li>
-                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=new'); ?>">new</a></li>
-                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=controversial'); ?>">controversial</a></li>
-                                <li><a tabindex="-1" href="<?php echo append_get_param('sort=old'); ?>">old</a></li>
+                                <li><a tabindex="-1" href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>">sıcak</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sirala=zirve'); ?>">zirve</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sirala=yeni'); ?>">yeni</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sirala=tartismali'); ?>">tartismali</a></li>
+                                <li><a tabindex="-1" href="<?php echo append_get_param('sirala=eski'); ?>">eski</a></li>
                             </ul>
                         </div>
                     </small>
@@ -113,7 +113,7 @@
 			                <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
             				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                             <!--<div id="error_msg"></div>-->
-                            <button type="submit" id="submit_reply" class="login-required">submit</button>
+                            <button type="submit" id="submit_reply" class="login-required">gönder</button>
                 <!-- Horizontal solid line and submit text box -->
                             <br/>
                             <!--Newly submitted replies-->

@@ -16,7 +16,7 @@
 
 				$this->data['title'] = "Submit";
 				//$this->data['credit'] = $this->link_model->get_credit();
-				$this->data['is_text_post'] = $this->input->get("text");
+				$this->data['is_text_post'] = $this->input->get("metin");
 
 				$this->form_validation->set_rules('title','title','trim|required|max_length[255]|xss_clean');
 	            $this->form_validation->set_rules('url','URL','trim|max_length[255]|xss_clean');

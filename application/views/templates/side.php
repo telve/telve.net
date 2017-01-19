@@ -17,7 +17,7 @@
 
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder");?>">Yeni bir link gönder</a>
     <br>
-    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?text=true";?>">Yeni bir metin gönder</a>
+    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>">Yeni bir metin gönder</a>
 </div>
 </div>
 </div>

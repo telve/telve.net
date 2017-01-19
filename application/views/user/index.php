@@ -90,7 +90,7 @@
 			}
 
 			$favourite_onclick = ( isset($link_item['is_favorited']) ? 'unfavourite_reply(this)' : 'favourite_reply(this)' );
-			$favourite_html = ( isset($link_item['is_favorited']) ? 'favourite<span class="glyphicon glyphicon-star"></span>' : 'favourite<span class="glyphicon glyphicon-star-empty"></span>' );
+			$favourite_html = ( isset($link_item['is_favorited']) ? 'favori<span class="glyphicon glyphicon-star"></span>' : 'favori<span class="glyphicon glyphicon-star-empty"></span>' );
 
 			echo "<!--One reply from the reply tree of this post-->
 			<div class='row-fluid'>
@@ -101,20 +101,20 @@
 					</style>
 
 					<div id='switch' style='margin-bottom:4px;color: #888;'>
-						<a class='hide_up login-required' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
+						<a class='hide_up login-required' title='evet' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
 
-						<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
+						<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-						<a style='color: #369;font-weight: bold;' href='".base_url('user/').$link_item['username'].'/'."'>".$link_item['username']."</a>&nbsp;&nbsp;<span id='show-".$link_item['id']."'>".$link_item['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
+						<a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$link_item['username'].'/'."'>".$link_item['username']."</a>&nbsp;&nbsp;<span id='show-".$link_item['id']."'>".$link_item['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
 						&nbsp;<span style='color: gray;'>
-							(<a style='color: gray;' class='hide_rply'> ".$link_item['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)
+							(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$link_item['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)
 							&nbsp;
-							<a style='color: gray;' class='hide_rply' href='".base_url("")."t/".$link_item['topic']."/comments/".$this->hashids->encode($link_item['url'])."/".$link_item['seo_segment']."/"."'>link<span class='glyphicon glyphicon-link' style='font-size:10px;'></span></a>
+							<a style='color: gray;' class='hide_rply' href='".base_url("")."t/".$link_item['topic']."/yorumlar/".$this->hashids->encode($link_item['url'])."/".$link_item['seo_segment']."/"."'>bağlantı<span class='glyphicon glyphicon-link' style='font-size:10px;'></span></a>
 							</span></small>
 					</div>
 
 					<div class='hide_content' style='margin-bottom:6px;'>
-						<a class='login-required' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
+						<a class='login-required' title='hayır' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
 						<span style='display:inline-block;'>".markdown($link_item['text'])."</span>
 						<!--<input type='hidden' class='show' value='".$link_item['id']."'/>-->
@@ -123,8 +123,8 @@
 					<div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
 						<div style='color: #888;font-weight: bold;padding: 0 1px;'>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$link_item['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
-							&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$link_item['id']."\")' class='login-required'>report<span class='glyphicon glyphicon-flag'></span></a>
-							&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$link_item['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$link_item['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
+							&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$link_item['id']."'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 						</div>
 					</div>
 				</div>

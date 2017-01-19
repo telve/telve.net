@@ -203,13 +203,13 @@
 			if (!$this->input->get('nolimit')) {
 				$this->db->limit(20);
 			}
-			if ($this->input->get('sort') == 'top') {
+			if ($this->input->get('sirala') == 'zirve') {
 				$this->db->order_by("score", "desc");
-			} else if ($this->input->get('sort') == 'new') {
+			} else if ($this->input->get('sirala') == 'yeni') {
 				$this->db->order_by("reply.created", "desc");
-			} else if ($this->input->get('sort') == 'controversial') {
+			} else if ($this->input->get('sirala') == 'tartismali') {
 				$this->db->order_by("comments", "desc");
-			} else if ($this->input->get('sort') == 'old') {
+			} else if ($this->input->get('sirala') == 'eski') {
 				$this->db->order_by("reply.created", "asc");
 			} else {
 				//$this->db->where('reply.created >= DATE_SUB(NOW(),INTERVAL 1 HOUR)'); //https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
@@ -242,7 +242,7 @@
 				}
 
 				$favourite_onclick = ( isset($row['is_favorited']) ? 'unfavourite_reply(this)' : 'favourite_reply(this)' );
-				$favourite_html = ( isset($row['is_favorited']) ? 'favourite<span class="glyphicon glyphicon-star"></span>' : 'favourite<span class="glyphicon glyphicon-star-empty"></span>' );
+				$favourite_html = ( isset($row['is_favorited']) ? 'favori<span class="glyphicon glyphicon-star"></span>' : 'favori<span class="glyphicon glyphicon-star-empty"></span>' );
 
 				$res.='<li>';
 
@@ -255,17 +255,17 @@
                         </style>
 
 						<div id='switch' style='margin-bottom:4px;color: #888;'>
-							<a class='hide_up login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
+							<a class='hide_up login-required' title='evet' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
 
-							<a style='color: gray;' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
+							<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-                            <a style='color: #369;font-weight: bold;' href='".base_url('user/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> points&nbsp;&nbsp;submitted ".$ago."
+                            <a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
                             &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
+								(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
 						</div>
 
 						<div class='hide_content' style='margin-bottom:6px;'>
-                            <a class='login-required' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
+                            <a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
                             <span style='display:inline-block;'>".markdown($row['content'])."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
@@ -274,8 +274,8 @@
 						<div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
 							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$row['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>report<span class='glyphicon glyphicon-flag'></span></a>
-								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>reply<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
 							</div>
 						</div>
 					</div>

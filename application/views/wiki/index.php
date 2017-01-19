@@ -19,8 +19,8 @@
 			<?php if ($this->uri->segment(1) == 't') { ?>
 				<h1><?php echo $wiki_topic['name'];?></h1>
 				<p><?php echo $wiki_topic['description'];?></p>
-				<p><b>Total number of subscribers:</b> <?php echo $wiki_topic['subscribers'];?></p>
-				<p style="opacity:.6;"><i>This community created <?php echo human_timing($wiki_topic['created']);?></i></p>
+				<p><b>Toplam abone sayısı:</b> <?php echo $wiki_topic['subscribers'];?></p>
+				<p style="opacity:.6;"><i>Bu konu <?php echo human_timing($wiki_topic['created']);?> oluşturuldu</i></p>
 			<?php } else { ?>
 		    <div id="md"><?php echo markdown($text);?></div>
 			<?php } ?>
