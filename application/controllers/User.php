@@ -95,11 +95,11 @@
 			$this->data['title'] = "Üye ol";
 
 			$reserved_usernames = 'regex_match[/^((?!admin).)*$/i]|regex_match[/^((?!moderator).)*$/i]|regex_match[/^((?!register).)*$/i]|regex_match[/^((?!login).)*$/i]|regex_match[/^((?!logout).)*$/i]|regex_match[/^((?!is_username_available).)*$/i]|regex_match[/^((?!captcha).)*$/i]|regex_match[/^((?!is_user_logged_in).)*$/i]|regex_match[/^((?!allah).)*$/i]';
-			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
-			$this->form_validation->set_rules('email','email','required|valid_email|is_unique[user.email]|xss_clean');
-			$this->form_validation->set_rules('password','password','trim|required|min_length[6]|matches[passconf]|xss_clean');
-			$this->form_validation->set_rules('passconf','confirm password','required|xss_clean');
-      		$this->form_validation->set_rules('captcha','verification code','trim|required|exact_length[4]|strtolower|xss_clean');
+			$this->form_validation->set_rules('username','<b>Kullanıcı adı</b>','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
+			$this->form_validation->set_rules('email','<b>E-posta</b>','required|valid_email|is_unique[user.email]|xss_clean');
+			$this->form_validation->set_rules('password','<b>Şifre</b>','trim|required|min_length[6]|matches[passconf]|xss_clean');
+			$this->form_validation->set_rules('passconf','<b>Şifrenizi doğrulayın</b>','required|xss_clean');
+      		$this->form_validation->set_rules('captcha','<b>Doğrulama kodu</b>','trim|required|exact_length[4]|strtolower|xss_clean');
 
 			if ($this->form_validation->run() === FALSE)
 			{
@@ -124,8 +124,8 @@
         {
 
 			$this->data['title'] = "Giriş yap";
-			$this->form_validation->set_rules('username','username','required|xss_clean');
-			$this->form_validation->set_rules('password','password','required|xss_clean');
+			$this->form_validation->set_rules('username','<b>Kullanıcı adı</b>','required|xss_clean');
+			$this->form_validation->set_rules('password','<b>Şifre</b>','required|xss_clean');
 
 			if ($this->form_validation->run() == FALSE){
 

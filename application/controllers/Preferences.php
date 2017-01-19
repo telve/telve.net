@@ -16,7 +16,7 @@ class Preferences extends MY_Controller {
         $this->load->view('templates/side');
 		$this->load->view('templates/footer');
 
-		$this->form_validation->set_rules('username','username','trim|required|max_length[255]|xss_clean');
+		$this->form_validation->set_rules('username','<b>Kullanıcı adı</b>','trim|required|max_length[255]|xss_clean');
 
 		if($this->form_validation->run() === FALSE){
 

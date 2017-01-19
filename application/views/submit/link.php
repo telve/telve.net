@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span5">
-        <?php echo validation_errors();?>
+
         <ul class="nav nav-tabs form-tabs" id="myTab">
           <?php if ($is_text_post) { ?>
               <li><a class="submit" href="#link">Bağlantı gönder</a></li>
