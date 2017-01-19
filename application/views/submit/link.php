@@ -4,10 +4,10 @@
         <?php echo validation_errors();?>
         <ul class="nav nav-tabs form-tabs" id="myTab">
           <?php if ($is_text_post) { ?>
-              <li><a class="submit" href="#link">Link gönder</a></li>
+              <li><a class="submit" href="#link">Bağlantı gönder</a></li>
               <li class="active"><a class="submit" href="#text">Metin gönder</a></li>
           <?php } else { ?>
-              <li class="active"><a class="submit" href="#link">Link gönder</a></li>
+              <li class="active"><a class="submit" href="#link">Bağlantı gönder</a></li>
               <li><a class="submit" href="#text">Metin gönder</a></li>
           <?php };?>
         </ul>
@@ -23,13 +23,13 @@
 
                     <table class="table table-bordered submit-form"><tr><td>
                     <label for="title">Başlık</label>
-                    <textarea rows="2" class="span12" id="title" name="title" value="<?php echo set_value('title');?>" placeholder="link'in başlığı..."/></textarea><br />
+                    <textarea rows="2" class="span12" id="title" name="title" value="<?php echo set_value('title');?>" placeholder="bağlantının başlığı..."/></textarea><br />
                     <div style="color:red"><?php echo form_error('title');?></div>
                     </td></tr></table>
 
                     <table class="table table-bordered submit-form"><tr><td>
                     <label for="url">URL (tam adresi)</label>
-                    <input type="text" class="span12" name="url" id="url" value="<?php echo set_value('url');?>" placeholder="link'in URL'si http://... ile başlayan"/><br />
+                    <input type="text" class="span12" name="url" id="url" value="<?php echo set_value('url');?>" placeholder="bağlantının URL'si http://... ile başlayan"/><br />
                     <div style="color:red"><?php echo form_error('url');?></div>
 
                     <a href="javascript:void(0)" class="btn btn-primary pull-right btn-blue" id="get_title">Başlık öner</a>
@@ -37,7 +37,7 @@
 
                     <table class="table table-bordered submit-form"><tr><td>
                     <label for="topic">Bir konu seçin</label>
-                    <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="link'in konusu..."/><br />
+                    <input type="text" class="span12 topic" id="topic" value="<?php echo set_value('topic');?>" name="topic" placeholder="bağlantının konusu..."/><br />
                     <div style="color:red"><?php echo form_error('topic');?></div>
                     <!--Show popular topics-->
                     <div class="popular-topics">

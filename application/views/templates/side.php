@@ -15,7 +15,7 @@
 
     <?php echo $login_form;?>
 
-    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder");?>">Yeni bir link gönder</a>
+    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder");?>">Yeni bir bağlantı gönder</a>
     <br>
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>">Yeni bir metin gönder</a>
 </div>

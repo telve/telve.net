@@ -109,8 +109,9 @@
                     </small>
                         <div>
                             <br>
-                            <textarea rows="4" class="span6" name="content" id="content" onfocus="first_of_all_login()"/></textarea><br />
-			                <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
+                            <textarea rows="4" class="span6" name="content" id="content" onfocus="first_of_all_login()" placeholder="yorumunuz... Markdown formatında"/></textarea><br />
+                            <input type="hidden" name="pid" id="pid" value="<?php echo $link_item['id']?>" />
+                            <div style="width:49%;"><a class="link-to-guide pull-right" href="https://vakademi.com.tr/home/category/yazilim/markdown-kullanim-rehberi/hosgeldiniz/">Markdown rehberi</a></div>
             				<!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                             <!--<div id="error_msg"></div>-->
                             <button type="submit" id="submit_reply" class="login-required">gönder</button>
