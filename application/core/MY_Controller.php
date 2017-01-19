@@ -98,7 +98,7 @@
 
 			$this->data['front_forbidden'] = array('t','domain','gonder','kullanici','sifremi-unuttum','konular','aboneliklerim','search','tercihler','giris','uye-ol');
 
-			$this->data['title'] = 'telve: the front page of the internet';
+			$this->data['title'] = 'telve: internetin ön sayfası';
 
 		}
 

@@ -53,19 +53,19 @@
 				$ranking = 'hot';
 			} else if ($segment == 'yeni') {
 				$ranking = 'new';
-				$this->data['title'] = 'newest submissions | '.$this->data['title'];
+				$this->data['title'] = 'en yeni paylaşımlar | '.$this->data['title'];
 			} else if ($segment == 'yukselen') {
 				$ranking = 'rising';
-				$this->data['title'] = 'rising submissions | '.$this->data['title'];
+				$this->data['title'] = 'yükselen gönderiler | '.$this->data['title'];
 			} else if ($segment == 'tartismali') {
 				$ranking = 'controversial';
-				$this->data['title'] = 'most controversial links | '.$this->data['title'];
+				$this->data['title'] = 'en tartışmalı paylaşımlar | '.$this->data['title'];
 			} else if ($segment == 'zirve') {
 				$ranking = 'top';
-				$this->data['title'] = 'top scoring links | '.$this->data['title'];
+				$this->data['title'] = 'zirvedeki gönderiler | '.$this->data['title'];
 			} else if ($segment == 'viki') {
 				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($this->uri->segment(2));
-				$this->data['title'] = 'wiki of '.$this->data['title'];
+				$this->data['title'] = $this->data['title'].' konusunun vikisi';
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('wiki/index',$this->data);
 				$this->load->view('templates/side');

@@ -9,7 +9,7 @@ class Password extends MY_Controller {
 
     public function index()
     {
-        $this->data['title'] = 'Reset your password';
+        $this->data['title'] = 'Şifrenizi sıfırlayın';
 
 		$this->load->view('templates/header',$this->data);
 		$this->load->view('submit/password');

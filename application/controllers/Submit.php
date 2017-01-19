@@ -14,7 +14,7 @@
 		{
 			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
 
-				$this->data['title'] = "Submit";
+				$this->data['title'] = "Gönder/Paylaş";
 				//$this->data['credit'] = $this->link_model->get_credit();
 				$this->data['is_text_post'] = $this->input->get("metin");
 

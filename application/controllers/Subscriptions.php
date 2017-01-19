@@ -32,7 +32,7 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'Subscriptions';
+            $this->data['title'] = 'Aboneliklerim';
 			$this->data['offset'] = $this->uri->segment(2);
 			$this->data['topics'] = $this->subscription_model->retrieve_subscriptions($config['per_page'],$this->data['offset']);
 

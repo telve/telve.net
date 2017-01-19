@@ -27,7 +27,7 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'top scoring links | telve.net';
+            $this->data['title'] = 'zirvedeki gönderiler | telve.net';
 			$this->data['offset'] = $this->uri->segment(2);
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],'top');
 

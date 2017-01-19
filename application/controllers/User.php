@@ -58,22 +58,22 @@
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],NULL);
-				$this->data['title'] = 'overview for '.$this->uri->segment(2);
+				$this->data['title'] = $this->uri->segment(2).' kullanıcısının özeti';
 			} else if ($this->uri->segment(3) == 'gonderileri') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
-				$this->data['title'] = 'submitted by '.$this->uri->segment(2);
+				$this->data['title'] = $this->uri->segment(2).' tarafından gönderilenler';
 			} else if ($this->uri->segment(3) == 'yorumlari') {
 				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
-				$this->data['title'] = 'comments by '.$this->uri->segment(2);
+				$this->data['title'] = $this->uri->segment(2).' tarafından yapılan yorumlar';
 			} else if ($this->uri->segment(3) == 'evetoylari') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'upvoted');
-				$this->data['title'] = 'upvoted by '.$this->uri->segment(2);
+				$this->data['title'] = $this->uri->segment(2).' kullanıcısının evet oyları';
 			} else if ($this->uri->segment(3) == 'hayiroylari') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'downvoted');
-				$this->data['title'] = 'downvoted by '.$this->uri->segment(2);
+				$this->data['title'] = $this->uri->segment(2).' kullanıcısının hayır oyları';
 			} else if ($this->uri->segment(3) == 'favorileri') {
 				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'favourites');
-				$this->data['title'] = $this->uri->segment(2)."'s favourites";
+				$this->data['title'] = $this->uri->segment(2).' kullanıcısının favorileri';
 			} else {
 				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
 			}
@@ -92,7 +92,7 @@
         public function register()
 		{
 
-			$this->data['title'] = "Register";
+			$this->data['title'] = "Üye ol";
 
 			$reserved_usernames = 'regex_match[/^((?!admin).)*$/i]|regex_match[/^((?!moderator).)*$/i]|regex_match[/^((?!register).)*$/i]|regex_match[/^((?!login).)*$/i]|regex_match[/^((?!logout).)*$/i]|regex_match[/^((?!is_username_available).)*$/i]|regex_match[/^((?!captcha).)*$/i]|regex_match[/^((?!is_user_logged_in).)*$/i]|regex_match[/^((?!allah).)*$/i]';
 			$this->form_validation->set_rules('username','username','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
@@ -123,7 +123,7 @@
         public function login()
         {
 
-			$this->data['title'] = "Log in";
+			$this->data['title'] = "Giriş yap";
 			$this->form_validation->set_rules('username','username','required|xss_clean');
 			$this->form_validation->set_rules('password','password','required|xss_clean');
 

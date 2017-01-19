@@ -27,7 +27,7 @@
             $this->pagination->initialize($config);
 			$this->data['per_page'] = $config['per_page'];
 
-            $this->data['title'] = 'Topics';
+            $this->data['title'] = 'Konular';
 			$this->data['offset'] = $this->uri->segment(2);
 			$this->data['topics'] = $this->link_model->retrieve_topics($config['per_page'],$this->data['offset']);
 

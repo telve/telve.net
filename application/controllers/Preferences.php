@@ -9,7 +9,7 @@ class Preferences extends MY_Controller {
 
     public function index()
     {
-        $this->data['title'] = 'Preferences';
+        $this->data['title'] = 'Tercihler';
 
 		$this->load->view('templates/header',$this->data);
 		$this->load->view('user/preferences');
