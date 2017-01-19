@@ -1,32 +1,32 @@
-# Welcome to telve.net!
+# telve.net'e hoşgeldiniz!
 
-Here you can browse and submit links to content on the Internet or post your own originals. Other people can vote on the links or text you post, highlighting the links will be placed on the home page. You can also comment on the links or text you post and reply to other reviewers.
+Bu platformda başka web sitelerinden bağlantıları veya kendi orijinal içeriklerinizi paylaşabilir ve var olanları görüntüleyebilirsiniz. Diğer kullanıcılar sizin gönderileriniz üzerinde oylama yapabilir, evet oyları gönderileri ön sayfaya taşıyacaktır. Ayrıca gönderilere yorum yapabilir veya yorum yapanlara yanıt yazabilirsiniz.
 
-Each individual topics (URLs starts with `/t` like `/t/NEWS`) has its own concepts, formats, restrictions etc. and when you do not comply with these rules while posting your content to the topic, your content can be deleted or be hidden if somebody report it.
+Her bir konunun (`/t` ile başlayan `/t/NEWS` gibi bağlantılar) kendine has konsepti, formatı, kısıtlamaları vb. vardır ve gönderilerinizi/yorumlarınızı paylaşırken bu kurallara uymazsanız ve eğer gönderiniz/yorumunuz şikayet de almışsa, silinme veya gizlenme riskiyle karşı karşıya kalır.
 
-Popular topics are always listed at the top of the site. By clicking **MORE<span class="glyphicon glyphicon-chevron-right" style="font-size:12px"></span>** you get the page where you can edit your subscriptions. Subscriptions will affect the rankings under **hot<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** tab. Sidebar(**<span class="glyphicon glyphicon-indent-left" style="font-size:12px"></span>**) at your left will provide you a quick access to your subscriptions.
+Popüler konular daima sitenin en üst kısmında belirecektir. **DEVAMI<span class="glyphicon glyphicon-chevron-right" style="font-size:12px"></span>** yazan yere tıklayarak aboneliklerinizi yönetebileceğiniz sayfaya ulaşırsınız. Abonelikleriniz **sıcak<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** sekmesi altındaki sıralamaları etkileyecektir. Solunuzdaki kenar çubuğu(**<span class="glyphicon glyphicon-indent-left" style="font-size:12px"></span>**) aboneliklerinize hızlı erişim olanağı sağlar.
 
-**new<span class="glyphicon glyphicon-gift" style="font-size:12px"></span>** tab will give you the latest posts.
+**yeni<span class="glyphicon glyphicon-gift" style="font-size:12px"></span>** sekmesi en son, en yeni gönderileri listeler.
 
-**controversial<span class="glyphicon glyphicon-comment" style="font-size:12px"></span>** tab will give you the posts which gets most comments.
+**tartışmalı<span class="glyphicon glyphicon-comment" style="font-size:12px"></span>** sekmesi en çok yorum alan gönderileri gösterir.
 
-**top<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:12px"></span>** tab will give you the posts which gets most upvotes.
+**zirve<span class="glyphicon glyphicon-circle-arrow-up" style="font-size:12px"></span>** sekmesi en çok evet oyu alan gönderileri verir.
 
-**rising<span class="glyphicon glyphicon-signal" style="font-size:12px"></span>** tab is some sort of combination of these three.
+**yükselen<span class="glyphicon glyphicon-signal" style="font-size:12px"></span>** sekmesi bu üçünün bir kombinasyonudur. Popülerleşme eğiliminde olan gönderileri listeler.
 
-**hot<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** tab is the combination of these four plus your subscriptions.
+**sıcak<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** sekmesi bu dördünün ve aboneliklerinizin bir kombinasyonudur. Size şu anki en popüler içerikleri görüntüleyecektir.
 
-When you submit a new link [telve.net](http://telve.net) automatically detects the best image from the given URL. It means you do not interfere with this job.
+Yeni bir bağlantı gönderdiğinizde [telve.net](http://telve.net) otomatik olarak en iyi resimi, verdiğiniz URL'den (tam adresten) algılar. Yani bu işle sizin ilgilenmenize gerek yoktur.
 
-So what do you waiting for? **[Share a link now](/submit)** with thousands of community members.
+Ee, ne bekliyorsun? Binlerce topluluk üyesiyle **[hemen bir bağlantı paylaş](/gonder)**.
 
-### Notes for Developers
+### Geliştiriciler için Notlar
 
-Requires a LAMP stack with PHP version 7.0.8 (Ubuntu 16.04) and it's using CodeIgniter version 3.1.2 web framework.
+PHP versiyon 7.0.8 (Ubuntu 16.04) ile LAMP sunucusu gerektirir. Web framework: CodeIgniter versiyon 3.1.2.
 
-Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
+`application/config/database.php` dosyası içindeki veritabanı bağlantı bilgilerini kendininkilerle değiştirmeyi unutma ve `db/` dizini altındaki SQL yedeğini içe aktar.
 
-### Requirements
+### Gereksinimler
 
 * [Vesta CP](https://vestacp.com/#install)
-* Install PHP BC Math library: `sudo apt-get install php-bcmath`
+* PHP BC Math kütüphanesini kur: `sudo apt-get install php-bcmath`

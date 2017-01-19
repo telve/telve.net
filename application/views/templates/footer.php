@@ -112,38 +112,38 @@
 		<div class="span12" style="margin-left: 15%;">
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em;">
 				<ul class="unstyled">
-					<li>about<li>
+					<li style="font-size:16px;">hakkında<li>
 					<li><a href="#">blog</a></li>
-					<li><a href="#">about</a></li>
-					<li><a href="#">source code</a></li>
-					<li><a href="#">advertise</a></li>
-					<li><a href="#">jobs</a></li>
+					<li><a href="#">hakkında</a></li>
+					<li><a href="#">kaynak kod</a></li>
+					<li><a href="#">reklam ver</a></li>
+					<li><a href="#">kariyer</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
-					<li>help<li>
-					<li><a href="#">site rules</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">wiki</a></li>
-					<li><a href="#">transparency</a></li>
-                    <li><a href="#">contact us</a></li>
+					<li style="font-size:16px;">yardım<li>
+					<li><a href="#">site kuralları</a></li>
+					<li><a href="#">SSS</a></li>
+					<li><a href="#">viki</a></li>
+					<li><a href="#">şeffaflık</a></li>
+                    <li><a href="#">bize ulaşın</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
-					<li>apps & tools<li>
-					<li><a href="#">Telve for iPhone</a></li>
-					<li><a href="#">Telve for Android</a></li>
-					<li><a href="#">mobile website</a></li>
-					<li><a href="#">buttons</a></li>
+					<li style="font-size:16px;">mobil<li>
+					<li><a href="#">iPhone için Telve</a></li>
+					<li><a href="#">Android için Telve</a></li>
+					<li><a href="#">mobil site</a></li>
+					<li><a href="#">butonlar</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
-					<li><3<li>
-					<li><a href="#" style="color:#9A7D2E;">telvegold</a></li>
-					<li><a href="#">telvegifts</a></li>
+					<li style="font-size:16px;"><3<li>
+					<li><a href="#" style="color:#9A7D2E;">telvealtın</a></li>
+					<li><a href="#">telvehediyeler</a></li>
 				</ul>
 			</div>
 		</div>
@@ -152,12 +152,12 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="span6">
-				<a href="#">User Agreement</a>
-                 and
-				<a href="#" style="color:green;">Privacy Policy (updated)</a>
+				<a href="#">Kullanıcı Sözleşmesi</a>
+                 ve
+				<a href="#" style="color:green;">Gizlilik Politikası (güncellendi)</a>
 			</div>
 			<div class="span6">
-				<p class="muted pull-right">Copyright &copy; 2016&nbsp;&nbsp;<a href="http://dragon.computer/">dragon.computer</a>&nbsp;&nbsp;All Rights Reserved.</p>
+				<p class="muted pull-right">Telif hakkı &copy; 2017&nbsp;&nbsp;<a href="http://dragon.computer/">dragon.computer</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
 			</div>
 		</div>
 	</div>
