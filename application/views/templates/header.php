@@ -56,7 +56,7 @@
             <!-- <li><img src="/assets/img/logo/<?php //echo rand(1,5);?>.png"/><img src="/assets/img/logo/telve.png"/></li> -->
             <li><img src="/assets/img/logo/turkish-coffee.png" id="turkish-coffee"/><img src="/assets/img/logo/telve.png" id="site-logo"/></li>
 
-            <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'domain') || ( ($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) ) { ?>
+            <?php if ( ($this->uri->segment(1) == 't') || ($this->uri->segment(1) == 'alan-adi') || ( ($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) != 'register') && ($this->uri->segment(2) != 'login') ) ) { ?>
                 <li class="topic-title"><?php echo urldecode($this->uri->segment(2));?></li>
             <?php } ?>
 

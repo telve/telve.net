@@ -24,8 +24,8 @@
             $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, NULL,$this->uri->segment(2)));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
-            $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Previous page</span>';
-            $config['next_link'] = '<span class="pagination">Next page</span> <span class="glyphicon glyphicon-arrow-right"></span>';
+            $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Önceki sayfa</span>';
+            $config['next_link'] = '<span class="pagination">Sonraki sayfa</span> <span class="glyphicon glyphicon-arrow-right"></span>';
             $config['full_tag_close'] = '</p>';
             $config['display_pages'] = FALSE; //The "number" link is not displayed
             $config['first_link'] = FALSE; //The start link is not displayed

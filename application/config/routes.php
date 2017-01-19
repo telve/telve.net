@@ -52,8 +52,8 @@ $route['tercihler'] = 'preferences';
 $route['sifremi-unuttum'] = 'password';
 $route['gonder'] = 'submit';
 
-$route['t/(:any)/comments/(:any)'] = 'comments/view';
-$route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';
+$route['t/(:any)/yorumlar/(:any)'] = 'comments/view';
+$route['t/(:any)/yorumlar/(:any)/(:any)'] = 'comments/view';
 $route['t/(:any)'] = 'topic';
 $route['t/(:any)/(:any)'] = 'topic';
 $route['t/(:any)/(:any)/(:any)'] = 'topic';
@@ -67,9 +67,9 @@ $route['aboneliklerim/:num'] = 'subscriptions';
 $route['konular/:num'] = 'topics';
 $route['search/:num'] = 'search';
 
-$route['domain/(:any)'] = 'domain';
-$route['domain/(:any)/(:any)'] = 'domain';
-$route['domain/(:any)/(:any)/(:any)'] = 'domain';
+$route['alan-adi/(:any)'] = 'domain';
+$route['alan-adi/(:any)/(:any)'] = 'domain';
+$route['alan-adi/(:any)/(:any)/(:any)'] = 'domain';
 
 $route['uye-ol'] = 'user/register';
 $route['giris'] = 'user/login';

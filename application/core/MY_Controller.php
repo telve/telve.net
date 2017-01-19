@@ -52,7 +52,7 @@
 				$this->data['is_user_logged_in'] = 1;
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
 					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="kapat"><span class="glyphicon glyphicon-indent-right"></span></a>
-					<a class="show-sidebar" href="javascript:void(0)" title="Abonelikleriniz"><span class="glyphicon glyphicon-indent-left"></span></a>
+					<a class="show-sidebar" href="javascript:void(0)" title="abonelikleriniz"><span class="glyphicon glyphicon-indent-left"></span></a>
 				</div>';
 				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
 				  <ul style="list-style-type:none; margin:0;">';
