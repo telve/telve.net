@@ -50,6 +50,7 @@ $route['konular'] = 'topics';
 $route['aboneliklerim'] = 'subscriptions';
 $route['tercihler'] = 'preferences';
 $route['sifremi-unuttum'] = 'password';
+$route['gonder'] = 'submit';
 
 $route['t/(:any)/comments/(:any)'] = 'comments/view';
 $route['t/(:any)/comments/(:any)/(:any)'] = 'comments/view';

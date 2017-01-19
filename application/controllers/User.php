@@ -21,7 +21,7 @@
 				$this->data['activity_tab'] = NULL;
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/';
 			} else {
-				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'submitted') && ($this->uri->segment(3) != 'comments') ) redirect( base_url('user/').$this->uri->segment(2).'/' );
+				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'gonderiler') && ($this->uri->segment(3) != 'yorumlar') ) redirect( base_url('kullanici/').$this->uri->segment(2).'/' );
 				$this->data['offset'] = $this->uri->segment(4);
 				$this->data['activity_tab'] = $this->uri->segment(3);
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/'.$this->uri->segment(3);

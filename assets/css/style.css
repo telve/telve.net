@@ -176,3 +176,8 @@ div.popular-topics {
 .a2a_svg, .a2a_count {
     border-radius: 0 !important;
 }
+
+a.link-to-guide {
+    font-size:12px;
+    font-style:italic;
+}

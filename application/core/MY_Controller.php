@@ -51,8 +51,8 @@
 				$this->data['login_form'] = ""; //The login form is not displayed
 				$this->data['is_user_logged_in'] = 1;
 				$this->data['toggle_sidebar'] = '<div id="toggle-sidebar">
-					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="close"><span class="glyphicon glyphicon-indent-right"></span></a>
-					<a class="show-sidebar" href="javascript:void(0)" title="Your subscriptions"><span class="glyphicon glyphicon-indent-left"></span></a>
+					<a style="display: none;" class="close-sidebar" href="javascript:void(0)" title="kapat"><span class="glyphicon glyphicon-indent-right"></span></a>
+					<a class="show-sidebar" href="javascript:void(0)" title="Abonelikleriniz"><span class="glyphicon glyphicon-indent-left"></span></a>
 				</div>';
 				$this->data['sidebar'] = '<div id="sidebar" class="span1"><!-- background-color:#cbb;-->
 				  <ul style="list-style-type:none; margin:0;">';
@@ -70,16 +70,16 @@
 				$this->data['login_form'] = "
 					<table class='table table-bordered'>
 						<tr><td>
-							".form_open('user/login')."
-							<input type='text' class='span6' name='username' placeholder='username'>
-							<input type='password' class='span6 pull-right' name='password' placeholder='password'>
+							".form_open('giris')."
+							<input type='text' class='span6' name='username' placeholder='kullanıcı adı'>
+							<input type='password' class='span6 pull-right' name='password' placeholder='şifre'>
 							<br><br>
-							<label class='checkbox span4'>
-							<input type='checkbox'>remember me
+							<label class='checkbox span6'>
+							<input type='checkbox'>beni hatırla
 							</label>
 
-							<a class='checkbox' href='/password'>forgot password?</a>
-							<button type='submit' class='btn pull-right' style='margin-top:10px;'>log in</button>
+							<a class='checkbox' href='".base_url("sifremi-unuttum")."'>şifremi unuttum?</a>
+							<button type='submit' class='btn pull-right' style='margin-top:10px;'>giriş yap</button>
 							</form>
 						</tr></td>
 					</table>
@@ -96,7 +96,7 @@
 			$this->data['base_url'] = base_url("");
 			$this->data['sn'] = 1;
 
-			$this->data['front_forbidden'] = array('t','domain','submit','user','password','topics','subscriptions','search','preferences');
+			$this->data['front_forbidden'] = array('t','domain','gonder','kullanici','sifremi-unuttum','konular','aboneliklerim','search','tercihler','giris','uye-ol');
 
 			$this->data['title'] = 'telve: the front page of the internet';
 
