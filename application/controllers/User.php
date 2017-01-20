@@ -28,7 +28,7 @@
 			}
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,NULL));
+				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'overview'));
 			} else if ($this->uri->segment(3) == 'gonderileri') {
 				$config['total_rows'] = count($this->user_model->user_submitted($this->uri->segment(2),NULL,NULL));
 			} else if ($this->uri->segment(3) == 'yorumlari') {
@@ -57,7 +57,7 @@
 			$this->data['per_page'] = $config['per_page'];
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],NULL);
+				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'overview');
 				$this->data['title'] = $this->uri->segment(2).' kullanıcısının özeti';
 			} else if ($this->uri->segment(3) == 'gonderileri') {
 				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);

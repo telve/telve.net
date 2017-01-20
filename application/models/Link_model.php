@@ -83,7 +83,7 @@
 	            $this->db->from('link');
 	            $this->db->join('user', 'link.uid = user.id');
 				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
-				$this->db->join('favourite_link', 'favourite_link.uid = user.id AND link.id = favourite_link.link_id','left');
+				$this->db->join('favourite_link', $user['id'].' = favourite_link.uid AND link.id = favourite_link.link_id','left');
 			} else {
 				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
 	            $this->db->from('link');
@@ -260,7 +260,7 @@
 
 							<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-                            <a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='show-".$row['id']."'>".$row['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
+                            <a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='reply-score-".$row['id']."'>".$row['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
                             &nbsp;<span style='color: gray;'>
 								(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
 						</div>

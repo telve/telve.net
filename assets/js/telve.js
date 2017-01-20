@@ -46,7 +46,7 @@ function up(id){
                data: {'id' : id },
                success: function(data) {
                    if (data == 1) {
-                       $("#show-"+id).html(parseInt($("#show-"+id).html())+1);
+                       $("#link-score-"+id).html(parseInt($("#link-score-"+id).html())+1);
                        var parent = $('#up-'+id)[0];
                        $('i', parent).css('color', 'green');
                    } else {
@@ -64,7 +64,7 @@ function down(id){
                data: {'id' : id },
                success: function(data) {
                    if (data == 1) {
-                       $("#show-"+id).html(parseInt($("#show-"+id).html())-1);
+                       $("#link-score-"+id).html(parseInt($("#link-score-"+id).html())-1);
                        var parent = $('#down-'+id)[0];
                        $('i', parent).css('color', 'red');
                    } else {
@@ -150,7 +150,7 @@ function up_on_view(obj){
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+                       $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())+1);
                        $('i', obj).css('color', 'green');
                    } else {
                        alert(data);
@@ -167,7 +167,7 @@ function down_on_view(obj){
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                       $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())-1);
                        $('i', obj).css('color', 'red');
                    } else {
                        alert(data);
@@ -188,7 +188,7 @@ function rply_up(obj){
                },
                success:function(data){
                   if (data == 1) {
-                      $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())+1);
+                      $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())+1);
                       $('i', obj).css('color', 'green');
                   } else {
                       alert(data);
@@ -208,7 +208,7 @@ function rply_down(obj){
                },
                success:function(data){
                   if (data == 1) {
-                      $("#show-"+obj.id).html(parseInt($("#show-"+obj.id).html())-1);
+                      $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())-1);
                       $('i', obj).css('color', 'red');
                   } else {
                       alert(data);
@@ -252,7 +252,7 @@ $(document).ready(function(){
         \
         							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
+                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
                                     &nbsp;<span style='color: gray;'>\
         								(<a style='color: gray;' class='hide_rply' href=''> senin yorumun </a>)</small></span>\
         						</div>\
@@ -329,7 +329,7 @@ function submit_comment_reply(obj){
         \
         							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
         \
-                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='show-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
+                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
                                     &nbsp;<span style='color: gray;'>\
         								(<a style='color: gray;' class='hide_rply' href=''> senin yanıtın </a>)</small></span>\
         						</div>\
@@ -525,7 +525,7 @@ function favourite_link(obj) {
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $(obj).html('favourite<span class="glyphicon glyphicon-star" style="font-size:13px;"></span>');
+                       $(obj).html('favori<span class="glyphicon glyphicon-star" style="font-size:13px;"></span>');
                        $(obj).attr('onclick', 'unfavourite_link(this);');
                    } else {
                        alert(data);
@@ -542,7 +542,7 @@ function unfavourite_link(obj) {
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $(obj).html('favourite<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span>');
+                       $(obj).html('favori<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span>');
                        $(obj).attr('onclick', 'favourite_link(this);');
                    } else {
                        alert(data);
@@ -559,7 +559,7 @@ function favourite_reply(obj) {
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $(obj).html('favourite<span class="glyphicon glyphicon-star"></span>');
+                       $(obj).html('favori<span class="glyphicon glyphicon-star"></span>');
                        $(obj).attr('onclick', 'unfavourite_reply(this);');
                    } else {
                        alert(data);
@@ -576,7 +576,7 @@ function unfavourite_reply(obj) {
                data: { 'id' : obj.id },
                success: function(data) {
                    if (data == 1) {
-                       $(obj).html('favourite<span class="glyphicon glyphicon-star-empty"></span>');
+                       $(obj).html('favori<span class="glyphicon glyphicon-star-empty"></span>');
                        $(obj).attr('onclick', 'favourite_reply(this);');
                    } else {
                        alert(data);

@@ -37,7 +37,7 @@
 
                                 <div class="digg">
 									<div><a href="javascript:void(0)" title="evet" id="up-<?php echo $link_item['id'];?>" class="login-required" onclick="up('<?php echo $link_item['id'];?>')"><i class="glyphicon glyphicon-arrow-up" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ($link_item['up_down'] == 1 ? 'color:green;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
-									<strong><div class="text-center score" id="show-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
+									<strong><div class="text-center score" id="link-score-<?php echo $link_item['id'];?>"><?php echo $link_item['score'];?></div></strong>
 									<div><a href="javascript:void(0)" title="hayır" id="down-<?php echo $link_item['id'];?>" class="login-required" onclick="down('<?php echo $link_item['id'];?>')"><i class="glyphicon glyphicon-arrow-down" style="<?php if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) echo ( (!($link_item['up_down'] == '') && ($link_item['up_down'] == 0)) ? 'color:red;' : 'color:black;'); else echo 'color:black;' ?>"></i></a></div>
 								</div>
                             </div>
@@ -105,7 +105,7 @@
 
 						<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
 
-						<a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$link_item['username'].'/'."'>".$link_item['username']."</a>&nbsp;&nbsp;<span id='show-".$link_item['id']."'>".$link_item['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
+						<a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$link_item['username'].'/'."'>".$link_item['username']."</a>&nbsp;&nbsp;<span id='reply-score-".$link_item['id']."'>".$link_item['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
 						&nbsp;<span style='color: gray;'>
 							(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$link_item['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)
 							&nbsp;
