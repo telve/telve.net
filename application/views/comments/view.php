@@ -25,9 +25,9 @@
 
 						<div class="middle">
                             <?php if (empty($link_item['url'])) { ?>
-                            	<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><img class="media-object link-thumbnail" src="<?php echo base_url('assets/img/icons/17837.png');?>"/></a>
+                            	<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><div class="link-thumbnail" style="background-image: url('<?php echo base_url('assets/img/icons/17837.png');?>');"></div></a>
     						<?php } else { ?>
-    							<a href="<?php echo $link_item['url'];?>"><img class="media-object link-thumbnail" src="<?php echo $link_item['picurl'];?>" onError="this.src='<?php echo base_url('assets/img/icons/1715.png');?>';"/></a>
+    							<a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715.png'); else echo $link_item['picurl'];?>');"></div></a>
     						<?php }?>
 						</div>
 

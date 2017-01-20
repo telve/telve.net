@@ -192,9 +192,12 @@ div.digg .score {
     margin-left: 1.2px;
 }
 
-img.link-thumbnail {
+div.link-thumbnail {
     width: 70px;
-    max-height: 70px;
+    height: 70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 a.link-title {
