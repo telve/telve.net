@@ -10,6 +10,7 @@
 			$this->load->helper('markdown');
 			$this->load->library('hashids');
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
+			$this->load->helper('tr_lang');
 		}
 
 		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL) //By default, all states are returned
@@ -301,7 +302,7 @@
 			$parse = parse_url($url);
 
 			$topic = str_replace(' ', '', $this->input->post('topic'));
-			$topic = preg_replace('/[^a-zA-Z0-9]+/', '', $topic);
+			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
 
             $data = array(
 				'title' => $this->input->post('title'),
@@ -309,7 +310,7 @@
 				'text' => $this->input->post('text'),
 				'picurl' => $this->find_largest_image($url),
                 'domain' => $parse['host'],
-                'topic' => strtoupper($topic),
+                'topic' => tr_strtoupper($topic),
                 'uid' => $row['id'], //User's ID
 				'score' => 0,
 				'comments' => 0
@@ -396,6 +397,29 @@
 
 		private function find_largest_image($url)
 		{
+			$url_headers = get_headers($url, 1);
+		    if(isset($url_headers['Content-Type'])){
+
+		        $type = strtolower($url_headers['Content-Type']);
+
+		        $valid_image_type = array();
+		        $valid_image_type['image/png'] = '';
+		        $valid_image_type['image/jpg'] = '';
+		        $valid_image_type['image/jpeg'] = '';
+		        $valid_image_type['image/jpe'] = '';
+		        $valid_image_type['image/gif'] = '';
+		        $valid_image_type['image/tif'] = '';
+		        $valid_image_type['image/tiff'] = '';
+		        $valid_image_type['image/svg'] = '';
+		        $valid_image_type['image/ico'] = '';
+		        $valid_image_type['image/icon'] = '';
+		        $valid_image_type['image/x-icon'] = '';
+
+		        if(isset($valid_image_type[$type])){
+					return $url;
+		        }
+		    }
+
 			$this->load->library("simple_html_dom");
 			$html = new Simple_html_dom();
 			$html->load_file($url);

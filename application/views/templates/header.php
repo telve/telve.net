@@ -80,7 +80,7 @@
                     <li<?php if ($this->uri->segment($sn) == 'viki') echo ' class="active"' ?>><a <?php if ($this->uri->segment($sn) == 'viki') echo 'style="color:red;"' ?> href="<?php echo $base_url.'viki/';?>">viki<span class="glyphicon glyphicon-education" style="font-size:14px;"></span></a></li>
                 <?php } ?>
                 <?php if ($this->uri->segment(3) == 'comments') { ?>
-                    <li class="active"><a style="color:red;" href="<?php echo base_url("")."t/".$link_item['topic']."/comments/".$link_item['id']."/".$link_item['seo_segment']."/";?>">comments</a></li>
+                    <li class="active"><a style="color:red;" href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>">comments</a></li>
                 <?php } ?>
 
             <?php } ?>

@@ -19,14 +19,3 @@ Popüler konular daima sitenin en üst kısmında belirecektir. **DEVAMI<span cl
 Yeni bir bağlantı gönderdiğinizde [telve.net](http://telve.net) otomatik olarak en iyi resimi, verdiğiniz URL'den (tam adresten) algılar. Yani bu işle sizin ilgilenmenize gerek yoktur.
 
 Ee, ne bekliyorsun? Binlerce topluluk üyesiyle **[hemen bir bağlantı paylaş](/gonder)**.
-
-### Geliştiriciler için Notlar
-
-PHP versiyon 7.0.8 (Ubuntu 16.04) ile LAMP sunucusu gerektirir. Web framework: CodeIgniter versiyon 3.1.2.
-
-`application/config/database.php` dosyası içindeki veritabanı bağlantı bilgilerini kendininkilerle değiştirmeyi unutma ve `db/` dizini altındaki SQL yedeğini içe aktar.
-
-### Gereksinimler
-
-* [Vesta CP](https://vestacp.com/#install)
-* PHP BC Math kütüphanesini kur: `sudo apt-get install php-bcmath`

@@ -18,7 +18,7 @@
         <?php
 		$item_counter = 0;
 		if (count($link) == 0) {
-			echo '<br><br><h2 style="margin-left: 50px;">Hiç gönderi bulunamadı</h2>';
+			echo '<br><br><h2 style="margin-left: 50px;">Hiçbir şey bulunamadı</h2>';
 		}
 		foreach($link as $link_item):
 		$item_counter += 1;

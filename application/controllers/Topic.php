@@ -26,8 +26,8 @@
 
 			$this->data['base_url'] = base_url('t/'.$this->uri->segment(2).'/');
 
-			$topic = $this->uri->segment(2);
-			if (urldecode($topic) == 'TÜMÜ') {
+			$topic = urldecode($this->uri->segment(2));
+			if ($topic == 'TÜMÜ') {
 				$topic = NULL;
 			}
 
@@ -64,7 +64,7 @@
 				$ranking = 'top';
 				$this->data['title'] = 'zirvedeki gönderiler | '.$this->data['title'];
 			} else if ($segment == 'viki') {
-				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($this->uri->segment(2));
+				$this->data['wiki_topic'] = $this->topic_model->retrieve_topic($topic);
 				$this->data['title'] = $this->data['title'].' konusunun vikisi';
 				$this->load->view('templates/header',$this->data);
 				$this->load->view('wiki/index',$this->data);
@@ -80,7 +80,7 @@
             $this->data['link'] = $this->link_model->retrieve_link($id = FALSE,$config['per_page'],$this->data['offset'],$ranking,$topic);
 
 			foreach ($this->data['link'] as &$link_item) {
-				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
+				$link_item['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı\s]+/', '', $link_item['title']) ), 0, 6) ) ) );
 			}
 			unset($link_item);
 

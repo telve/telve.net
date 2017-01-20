@@ -25,9 +25,9 @@
 				show_404(); //The page does not exist
 			}
 
-			$this->data['link_item']['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9\s]+/', '', $this->data['link_item']['title']) ), 0, 6) ) ) );
-			if (empty($this->uri->segment(5)) || $this->uri->segment(5) != $this->data['link_item']['seo_segment']) {
-				redirect('t/'.$this->data['link_item']['topic'].'/comments/'.$id.'/'.$this->data['link_item']['seo_segment'].'/');
+			$this->data['link_item']['seo_segment'] = str_replace(" ","-", strtolower( implode(' ', array_slice( preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı\s]+/', '', $this->data['link_item']['title']) ), 0, 6) ) ) );
+			if (empty($this->uri->segment(5)) || urldecode($this->uri->segment(5)) != $this->data['link_item']['seo_segment']) {
+				redirect('t/'.$this->data['link_item']['topic'].'/yorumlar/'.$id.'/'.$this->data['link_item']['seo_segment'].'/');
 			}
 
 			$this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];

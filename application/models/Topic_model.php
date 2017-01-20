@@ -4,13 +4,14 @@
 		public function __construct()
 		{
 			$this->load->database();
+			$this->load->helper('tr_lang');
 		}
 
 		public function insert_topic()
         {
 			$topic = str_replace(' ', '', $this->input->post('topic'));
-			$topic = preg_replace('/[^a-zA-Z0-9]+/', '', $topic);
-			$topic = strtoupper($topic);
+			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+			$topic = tr_strtoupper($topic);
 
 			if (!$this->right_to_insert_topic($topic)) {
 				$data = array(

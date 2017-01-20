@@ -7,7 +7,7 @@
 			parent::__construct();
 			$this->load->model('link_model');
 			$this->load->model('topic_model');
-			//$this->load->model('link_model');
+			$this->load->helper('tr_lang');
 		}
 
 		public function index()
@@ -36,8 +36,8 @@
 	                $insert_id = $this->link_model->insert_link();
 					$this->topic_model->insert_topic();
 					$topic = str_replace(' ', '', $this->input->post('topic'));
-					$topic = preg_replace('/[^a-zA-Z0-9]+/', '', $topic);
-					redirect('t/'.strtoupper($topic).'/comments/'.$insert_id.'/');
+					$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+					redirect('t/'.tr_strtoupper($topic).'/yorumlar/'.$insert_id.'/');
 
 				}
 
