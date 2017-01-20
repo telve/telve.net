@@ -424,6 +424,10 @@
 			$html = new Simple_html_dom();
 			$html->load_file($url);
 
+			if ( (substr($url, 0, strlen('https://www.youtube.com')) === 'https://www.youtube.com') || (substr($url, 0, strlen('https://youtu.be')) === 'https://youtu.be') ) {
+				return $html->find('link[itemprop=thumbnailUrl]',0)->href;
+			}
+
 			$biggestImage = ''; // Is returned when no images are found.
 			$maxSize = 0;
 			$visited = array();

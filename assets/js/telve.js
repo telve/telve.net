@@ -390,10 +390,10 @@ $(document).ready(function(){
             type: "POST",
             url: base_url + 'submit/get_title',
             data:{'url':url},
-            error:function(){
-                alert("error");
+            error: function(xhr, status, error) {
+                alert('HATA OLUŞTU: ' + xhr.responseText);
             },
-            success:function(data){
+            success: function(data){
                 //alert(data);
                 $("#title").val(data);
             }
