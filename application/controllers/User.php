@@ -12,7 +12,7 @@
 		public function index()
 		{
             $this->load->library('pagination');
-			if (!$this->user_model->check_username_by_param($this->uri->segment(2))) {
+			if (!$this->user_model->check_username_by_param(urldecode($this->uri->segment(2)))) {
 				redirect('');
 			}
 
@@ -28,17 +28,17 @@
 			}
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'overview'));
+				$config['total_rows'] = count($this->user_model->user_overview(urldecode($this->uri->segment(2)),NULL,NULL,'overview'));
 			} else if ($this->uri->segment(3) == 'gonderileri') {
-				$config['total_rows'] = count($this->user_model->user_submitted($this->uri->segment(2),NULL,NULL));
+				$config['total_rows'] = count($this->user_model->user_submitted(urldecode($this->uri->segment(2)),NULL,NULL));
 			} else if ($this->uri->segment(3) == 'yorumlari') {
-				$config['total_rows'] = count($this->user_model->user_comments($this->uri->segment(2),NULL,NULL));
+				$config['total_rows'] = count($this->user_model->user_comments(urldecode($this->uri->segment(2)),NULL,NULL));
 			} else if ($this->uri->segment(3) == 'evetoylari') {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'upvoted'));
+				$config['total_rows'] = count($this->user_model->user_overview(urldecode($this->uri->segment(2)),NULL,NULL,'upvoted'));
 			} else if ($this->uri->segment(3) == 'hayiroylari') {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'downvoted'));
+				$config['total_rows'] = count($this->user_model->user_overview(urldecode($this->uri->segment(2)),NULL,NULL,'downvoted'));
 			} else if ($this->uri->segment(3) == 'favorileri') {
-				$config['total_rows'] = count($this->user_model->user_overview($this->uri->segment(2),NULL,NULL,'favourites'));
+				$config['total_rows'] = count($this->user_model->user_overview(urldecode($this->uri->segment(2)),NULL,NULL,'favourites'));
 			} else {
 				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
 			}
@@ -57,23 +57,23 @@
 			$this->data['per_page'] = $config['per_page'];
 
 			if ( ($this->uri->segment(3) == '') || is_numeric($this->uri->segment(3)) ) {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'overview');
-				$this->data['title'] = $this->uri->segment(2).' kullanıcısının özeti';
+				$this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset'],'overview');
+				$this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının özeti';
 			} else if ($this->uri->segment(3) == 'gonderileri') {
-				$this->data['link'] = $this->user_model->user_submitted($this->uri->segment(2),$config['per_page'],$this->data['offset']);
-				$this->data['title'] = $this->uri->segment(2).' tarafından gönderilenler';
+				$this->data['link'] = $this->user_model->user_submitted(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset']);
+				$this->data['title'] = urldecode($this->uri->segment(2)).' tarafından gönderilenler';
 			} else if ($this->uri->segment(3) == 'yorumlari') {
-				$this->data['link'] = $this->user_model->user_comments($this->uri->segment(2),$config['per_page'],$this->data['offset']);
-				$this->data['title'] = $this->uri->segment(2).' tarafından yapılan yorumlar';
+				$this->data['link'] = $this->user_model->user_comments(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset']);
+				$this->data['title'] = urldecode($this->uri->segment(2)).' tarafından yapılan yorumlar';
 			} else if ($this->uri->segment(3) == 'evetoylari') {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'upvoted');
-				$this->data['title'] = $this->uri->segment(2).' kullanıcısının evet oyları';
+				$this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset'],'upvoted');
+				$this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının evet oyları';
 			} else if ($this->uri->segment(3) == 'hayiroylari') {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'downvoted');
-				$this->data['title'] = $this->uri->segment(2).' kullanıcısının hayır oyları';
+				$this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset'],'downvoted');
+				$this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının hayır oyları';
 			} else if ($this->uri->segment(3) == 'favorileri') {
-				$this->data['link'] = $this->user_model->user_overview($this->uri->segment(2),$config['per_page'],$this->data['offset'],'favourites');
-				$this->data['title'] = $this->uri->segment(2).' kullanıcısının favorileri';
+				$this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)),$config['per_page'],$this->data['offset'],'favourites');
+				$this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının favorileri';
 			} else {
 				redirect(base_url('kullanici/').$this->uri->segment(2).'/');
 			}
