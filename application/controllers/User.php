@@ -21,7 +21,7 @@
 				$this->data['activity_tab'] = NULL;
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/';
 			} else {
-				if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'gonderileri') && ($this->uri->segment(3) != 'yorumlari') ) redirect( base_url('kullanici/').$this->uri->segment(2).'/' );
+				//if ( (!$this->data['is_user_logged_in']) && ($this->uri->segment(3) != 'gonderileri') && ($this->uri->segment(3) != 'yorumlari') ) redirect( base_url('kullanici/').$this->uri->segment(2).'/' );
 				$this->data['offset'] = $this->uri->segment(4);
 				$this->data['activity_tab'] = $this->uri->segment(3);
 				$config['base_url'] = base_url('kullanici/').$this->uri->segment(2).'/'.$this->uri->segment(3);
@@ -95,7 +95,7 @@
 			$this->data['title'] = "Üye ol";
 
 			$reserved_usernames = 'regex_match[/^((?!admin).)*$/i]|regex_match[/^((?!moderator).)*$/i]|regex_match[/^((?!register).)*$/i]|regex_match[/^((?!login).)*$/i]|regex_match[/^((?!logout).)*$/i]|regex_match[/^((?!is_username_available).)*$/i]|regex_match[/^((?!captcha).)*$/i]|regex_match[/^((?!is_user_logged_in).)*$/i]|regex_match[/^((?!allah).)*$/i]';
-			$this->form_validation->set_rules('username','<b>Kullanıcı adı</b>','trim|required|min_length[5]|max_length[12]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
+			$this->form_validation->set_rules('username','<b>Kullanıcı adı</b>','trim|required|min_length[3]|max_length[19]|is_unique[user.username]|'.$reserved_usernames.'|xss_clean');
 			$this->form_validation->set_rules('email','<b>E-posta</b>','required|valid_email|is_unique[user.email]|xss_clean');
 			$this->form_validation->set_rules('password','<b>Şifre</b>','trim|required|min_length[6]|matches[passconf]|xss_clean');
 			$this->form_validation->set_rules('passconf','<b>Şifrenizi doğrulayın</b>','required|xss_clean');
@@ -163,9 +163,10 @@
         public function is_username_available()
         {
 
-            if(strlen($this->input->post('username')) < 3)
-            {
+            if(strlen($this->input->post('username')) < 3) {
                 echo "<span style='color:red'>Kullanıcı adınız en az 3 karakter olmalıdır!</span>";
+            } else if(strlen($this->input->post('username')) > 19) {
+                echo "<span style='color:red'>Kullanıcı adınız 20 karakterden az olmalıdır!</span>";
             } else {
                 if($this->user_model->check_username()){
                     echo "<span style='color:red'>Üzgünüz, bu kullanıcı adı zaten alınmış</span>";

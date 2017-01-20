@@ -188,7 +188,7 @@ function rply_up(obj){
                },
                success:function(data){
                   if (data == 1) {
-                      $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())+1);
+                      $("#reply-score-"+obj.id).html(parseInt($("#reply-score-"+obj.id).html())+1);
                       $('i', obj).css('color', 'green');
                   } else {
                       alert(data);
@@ -208,7 +208,7 @@ function rply_down(obj){
                },
                success:function(data){
                   if (data == 1) {
-                      $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())-1);
+                      $("#reply-score-"+obj.id).html(parseInt($("#reply-score-"+obj.id).html())-1);
                       $('i', obj).css('color', 'red');
                   } else {
                       alert(data);
@@ -410,8 +410,8 @@ $(document).ready(function(){
             type: "POST",
             url: base_url + 'user/is_username_available',
             data: { 'username': username },
-            error: function() {
-                alert("error");
+            error: function(xhr, status, error) {
+                alert('HATA OLUŞTU: ' + xhr.responseText);
             },
             success: function(msg) {
                 $("#chk_msg").html(msg);
@@ -475,7 +475,7 @@ function report_topic(topic_name) {
                data: { 'name' : topic_name },
                success: function(data) {
                    if (data == 1) {
-                       alert('Topic ' + topic_name + ' reported.')
+                       alert(topic_name + ' konusuyla ilgili şikayetiniz alındı.')
                    } else {
                        alert(data);
                    }
@@ -491,7 +491,7 @@ function report_link(link_id) {
                data: { 'id' : link_id },
                success: function(data) {
                    if (data[0] == '1') {
-                       alert('Post with title "' + data.substring(2) + '" reported.')
+                       alert('"' + data.substring(2) + '" başlıklı paylaşımla ilgili şikayetiniz alındı.')
                    } else {
                        alert(data);
                    }
@@ -507,7 +507,7 @@ function report_reply(reply_id) {
                data: { 'id' : reply_id },
                success: function(data) {
                    if (data[0] == '1') {
-                       alert('Comment of user "' + data.substring(2) + '" reported.')
+                       alert('"' + data.substring(2) + '" isimli kullanıcının yorumu/yanıtı ile ilgili şikayetiniz alındı.')
                    } else {
                        alert(data);
                    }
