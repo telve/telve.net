@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2017 at 01:39 AM
+-- Generation Time: Jan 20, 2017 at 12:09 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -38,7 +38,8 @@ CREATE TABLE `favourite_link` (
 --
 
 INSERT INTO `favourite_link` (`id`, `uid`, `link_id`, `created`) VALUES
-(4, 1, 39, '2017-01-16 02:31:13');
+(1, 2, 1, '2017-01-20 07:21:48'),
+(2, 1, 1, '2017-01-20 07:26:24');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,8 @@ CREATE TABLE `favourite_reply` (
 --
 
 INSERT INTO `favourite_reply` (`id`, `uid`, `reply_id`, `created`) VALUES
-(3, 1, 27, '2017-01-16 02:59:23');
+(1, 1, 1, '2017-01-20 07:47:20'),
+(2, 2, 2, '2017-01-20 08:22:33');
 
 -- --------------------------------------------------------
 
@@ -88,45 +90,22 @@ CREATE TABLE `link` (
 --
 
 INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `picurl`, `domain`, `topic`, `created`, `score`, `comments`, `reported`, `favorited`, `is_link_for_union`) VALUES
-(1, 1, 'Celebrate Diablo&#039;s 20th Anniv With Diablo 3 Goodies, Events', 'http://www.playstationlifestyle.net/2017/01/01/diablo-3-event-goodies-20th-anniv/', NULL, 'http://cdn2-www.playstationlifestyle.net/wp-content/themes/playstationlifestyle/images/pslslogoWhite.jpg', 'www.playstationlifestyle.net', 'GAMING', '2017-01-02 03:12:47', 0, 0, 0, 0, 1),
-(2, 1, 'Apple Loop: New iPhone 8 Leaks, Apple AirPods Latest Issue, Major MacBook Pro Problems', 'http://www.forbes.com/sites/ewanspence/2016/12/30/apple-news-headlines-iphone-leak-rumor-airpods-macbook-pro/#3466cf09ccb4', NULL, 'http://blogs-images.forbes.com/ewanspence/files/2016/09/apple_iphone7_review24_15-300x169.jpg?width=960', 'www.forbes.com', 'NEWS', '2017-01-02 03:14:47', 0, 0, 0, 0, 1),
-(3, 1, 'Tech Q&A: Which is better, Netflix or Amazon? | Fox News', 'http://www.foxnews.com/tech/2017/01/01/tech-q-which-is-better-netflix-or-amazon.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/01/tech-q-which-is-better-netflix-or-amazon/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483118943281.jpg?ve=1&tl=1', 'www.foxnews.com', 'SCIENCE', '2017-01-02 03:20:02', 0, 8, 0, 0, 1),
-(4, 1, 'Protect your phone from secret spyware', NULL, 'The smartphone has become one of the most important tools in millions of Americans’ lives. It tracks your movements, displays emails and text messages, and notifies you of every birthday and appointment. Every second, information floods your smartphone. Unless you switch them off, your apps work round-the-clock, obeying your every setting and preference.\r\n\r\nYour phone churns private data through its circuitry all day long, and if criminals can break into it, they can steal all kinds of things, from banking details to compromising photos and videos. And they don’t actually have to steal your phone. They may not even be located in your country.\r\n\r\nHow do they do it? Spyware.', NULL, NULL, 'SCIENCE', '2017-01-02 03:29:29', 0, 2, 0, 0, 1),
-(5, 1, 'Twitter considering tweet editing feature | Fox News', 'http://www.foxnews.com/tech/2016/12/30/twitter-considering-tweet-editing-feature.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2016/12/30/twitter-considering-tweet-editing-feature/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483123815085.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:30:49', 0, 0, 0, 0, 1),
-(6, 1, 'Trump expresses doubts about online security | Fox News', 'http://www.foxnews.com/politics/2017/01/01/trump-expresses-doubts-about-online-security.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/politics/2017/01/01/trump-expresses-doubts-about-online-security/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483266263108.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:31:21', 0, 0, 0, 0, 1),
-(7, 1, 'Re-Energized Dollar Looms Over the Rest of the World | Fox Business', 'http://www.foxbusiness.com/markets/2017/01/01/re-energized-dollar-looms-over-rest-world.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-business/markets/2017/01/01/re-energized-dollar-looms-over-rest-world/_jcr_content/par/featured-media/media-0.img.jpg/932/470/1483287646794.jpg?ve=1&tl=1', 'www.foxbusiness.com', 'WORLDNEWS', '2017-01-02 03:32:39', 0, 0, 0, 0, 1),
-(8, 1, 'The 10 biggest spaceflight stories of 2016  | Fox News', 'http://www.foxnews.com/science/2016/12/28/10-biggest-spaceflight-stories-2016.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2016/12/28/10-biggest-spaceflight-stories-2016/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1482923965139.jpg?ve=1&tl=1', 'www.foxnews.com', 'SCIENCE', '2017-01-02 03:33:19', 1, 0, 0, 0, 1),
-(9, 1, 'The final minute of 2016 will have one extra second -- here\'s why', NULL, 'It might feel like 2016 has already overstayed its welcome, but if you\'re counting down the seconds until 2017 shows up, you better add one more. 2016\'s final minute will be exactly one second longer than every other minute of the year, and it\'s all due to the speed of Earth\'s rotation not lining up perfectly with the ridiculously accurate atomic clocks that timekeepers use to tally every passing second.\r\n\r\nIt\'s called a "leap second" and it\'s not an uncommon occurrence. These extra seconds are added either at the stroke of midnight on June 30th or December 31st of any given year, depending on whether or not the adjustment is needed. The most recent leap second took place in June of 2015, and the most recent before that was June of 2012.', NULL, NULL, 'WORLDNEWS', '2017-01-02 03:34:20', 0, 1, 0, 0, 1),
-(10, 1, 'NASA scientists reveal how \'spiders\' grow on Mars | Fox News', 'http://www.foxnews.com/science/2016/12/21/nasa-scientists-reveal-how-spiders-grow-on-mars.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2016/12/21/nasa-scientists-reveal-how-spiders-grow-on-mars/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1482350204248.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:35:17', 0, 0, 0, 0, 1),
-(11, 1, 'Study: This practice, lost to time, likely made a Stradivarius sing | Fox News', 'http://www.foxnews.com/science/2016/12/23/study-this-practice-lost-to-time-likely-made-stradivarius-sing.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2016/12/23/study-this-practice-lost-to-time-likely-made-stradivarius-sing/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1482522009476.jpg?ve=1&tl=1', 'www.foxnews.com', 'PICS', '2017-01-02 03:35:55', 0, 0, 0, 0, 1),
-(12, 1, 'Put your phone away: An addict\'s guide to unplugging | Fox News', 'http://www.foxnews.com/health/2016/12/31/put-your-phone-away-addicts-guide-to-unplugging.html', NULL, 'https://www.fix.com/assets/content/19833/tech-addiction-fox.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:37:23', 0, 0, 0, 0, 1),
-(13, 1, 'Dogs provide therapy in a Brazilian hospital | Fox News', 'http://www.foxnews.com/health/2016/12/30/dogs-provide-therapy-in-brazilian-hospital.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/health/2016/12/30/dogs-provide-therapy-in-brazilian-hospital/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483119722108.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:41:55', 0, 0, 0, 0, 1),
-(14, 1, 'Device can detect 17 diseases by our breath, study says', NULL, 'What if detecting cancer was as easy as breathing in and out? According to a study published last week in American Chemical Society Nano, it pretty much is.\r\n\r\nScientist Hossam Haick has been working on his "electronic nose" for years, the Outline reports, and this new study shows the impressive things it can do.\r\n\r\nAccording to Smithsonian Magazine, scientists used the device to sample the breaths of more than 1,400 people and found it could diagnose 17 different diseases—Parkinson\'s, lung cancer, kidney failure, MS, Crohn\'s disease, ovarian cancer, and prostate cancer, just to name a few—with 86% accuracy.\r\n\r\nHaick\'s device works by using artificially intelligent nanoarrays to "smell" a person\'s breath and identify volatile organic compounds at a molecular level. Thirteen of these compounds, in various amounts and combinations, create a unique "breathprint" for diseases.', NULL, NULL, 'SCIENCE', '2017-01-02 03:42:59', 0, 0, 0, 0, 1),
-(15, 1, '9 wacky ways to see Santa Claus this year | Fox News', 'http://www.foxnews.com/travel/2016/12/07/9-wacky-ways-to-see-santa-claus-this-year.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/07/10-wacky-ways-to-see-santa-claus-this-year/_jcr_content/article-text/article-par-5/images/image.img.jpg/880/558/1481143647860.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:43:51', 0, 0, 0, 0, 1),
-(16, 1, 'Flight attendants can\'t \'think straight\' after \'toxic fumes\' leak | Fox News', 'http://www.foxnews.com/world/2017/01/01/flight-attendants-cant-think-straight-after-toxic-fumes-leak.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/world/2017/01/01/flight-attendants-cant-think-straight-after-toxic-fumes-leak/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483274469597.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:44:13', 0, 0, 0, 0, 1),
-(17, 1, 'The best concept yachts of 2016 | Fox News', 'http://www.foxnews.com/travel/2016/12/29/best-concept-yachts-2016.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/29/best-concept-yachts-2016/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1481818559947.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:45:34', 0, 0, 0, 0, 1),
-(18, 1, 'The best concept yachts of 2016 | Fox News', 'http://www.foxnews.com/travel/2016/12/29/best-concept-yachts-2016.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/29/best-concept-yachts-2016/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1481818559947.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:46:17', 0, 0, 0, 0, 1),
-(19, 1, 'Korean airline will allow crew members to use stun guns | Fox News', 'http://www.foxnews.com/travel/2016/12/27/korean-airline-will-allow-crew-members-to-use-stun-guns.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/12/27/korean-airline-will-allow-crew-members-to-use-stun-guns/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1482845922160.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:46:35', 0, 0, 0, 0, 1),
-(20, 1, 'Vandal changes iconic LA sign to \'Hollyweed\' | Fox News', 'http://www.foxnews.com/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/us/2017/01/01/vandal-changes-iconic-la-sign-to-hollyweed/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483297451886.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 03:47:52', 1, 3, 0, 0, 1),
-(21, 1, '10 Unusual Places to Hang Christmas Stockings | Fox News', 'http://www.foxnews.com/leisure/2016/12/23/10-unusual-places-to-hang-christmas-stockings/', NULL, 'http://global.fncstatic.com/static/managed/img/share/source/houzz.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:48:51', -1, 0, 0, 0, 1),
-(22, 1, 'New Groove: Vinyl Floors Are Back! | Fox News', 'http://www.foxnews.com/leisure/2016/12/23/new-groove-vinyl-floors-are-back/', NULL, 'http://global.fncstatic.com/static/managed/img/share/source/houzz.png', 'www.foxnews.com', 'NEWS', '2017-01-02 03:49:58', -1, 0, 0, 0, 1),
-(23, 1, 'Obama\'s full-blown, year-end temper tantrum | Fox News', 'http://www.foxnews.com/opinion/2016/12/30/obamas-full-blown-year-end-temper-tantrum.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/opinion/2016/12/30/obamas-full-blown-year-end-temper-tantrum/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483122077360.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-02 03:51:32', 0, 0, 0, 0, 1),
-(31, 1, 'Billie Lourd speaks out on deaths of mother Carrie Fisher, grandmother | Fox News', 'http://www.foxnews.com/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/02/billie-lourd-speaks-out-on-deaths-mother-carrie-fisher-grandmother/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483399145585.jpg?ve=1&tl=1', 'www.foxnews.com', 'WORLDNEWS', '2017-01-03 02:41:09', 1, 0, 0, 0, 1),
-(24, 1, '6 surprising facts about french fries | Fox News', 'http://www.foxnews.com/food-drink/2017/01/02/6-surprising-facts-about-french-fries.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/food-drink/2017/01/02/6-surprising-facts-about-french-fries/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483107684238.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-02 17:27:45', 0, 0, 0, 0, 1),
-(25, 1, 'Annoyed Picard · Memeful', 'http://memeful.com/edit/Annoyed-Picard', NULL, NULL, 'memeful.com', 'FUNNY', '2017-01-02 21:37:27', 0, 0, 0, 0, 1),
-(26, 1, 'Dota 2 Best WTF Moments 2016 - YouTube', 'https://www.youtube.com/watch?v=SgiPK9uDrI8', NULL, 'http://yt3.ggpht.com/4KHLzth-MIVTyf1FDECMK2ZWB6spVdRGBrXXdmK7Ur1FP8dur8naTNtRiw_l1PDN7s-835OFsZ0bobZt-0s=w40-nd', 'www.youtube.com', 'VIDEOS', '2017-01-02 21:39:05', 0, 0, 0, 0, 1),
-(27, 1, 'Rogue One (2016) - IMDb', 'http://www.imdb.com/title/tt3748528/', NULL, 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjc5Njc4NDc1MV5BMl5BanBnXkFtZTgwNzA3NzU3OTE@._V1_SY525_CR45,0,700,525_AL_.jpg', 'www.imdb.com', 'MOVIES', '2017-01-02 21:42:48', 0, 0, 0, 0, 1),
-(28, 1, 'Caravan Palace - Wonderland - YouTube', 'https://youtu.be/vCXsRoyFRQE', NULL, 'https://i.ytimg.com/vi/vCXsRoyFRQE/hqdefault.jpg?custom=true&w=336&h=188&stc=true&jpg444=true&jpgq=90&sp=68&sigh=5iFr-e6JQWJDIpP0U1bQ_vxpzdY', 'youtu.be', 'MUSIC', '2017-01-02 21:44:01', 0, 0, 0, 0, 1),
-(29, 1, 'Game of Thrones - Wikipedia', 'https://en.wikipedia.org/wiki/Game_of_Thrones', NULL, 'https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg', 'en.wikipedia.org', 'TELEVISION', '2017-01-02 21:53:30', 1, 2, 0, 0, 1),
-(30, 1, 'Coding for Kids | Tynker', 'https://www.tynker.com/', NULL, 'https://www.tynker.com//image/homepage-update/ourmission-1200.jpg', 'www.tynker.com', 'CODING', '2017-01-02 21:56:40', 0, 0, 0, 0, 1),
-(32, 1, 'IBM working on bot to help elderly age at home | Fox News', 'http://www.foxnews.com/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/ibm-working-on-bot-to-help-elderly-age-at-home/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483480244101.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:31:24', 0, 1, 0, 0, 1),
-(33, 1, 'Jenny McCarthy: Mariah Carey should stop blaming everyone else for NYE | Fox News', 'http://www.foxnews.com/entertainment/2017/01/03/jenny-mccarthy-mariah-carey-should-stop-blaming-everyone-else-for-nye.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2017/01/03/jenny-mccarthy-says-mariah-carey-should-stop-blaming-others-for-nye-performance/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483472892039.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 04:34:55', -1, 0, 0, 0, 1),
-(34, 1, 'First details surrounding Samsung\'s Galaxy Note 8 just leaked | Fox News', 'http://www.foxnews.com/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/03/first-details-surrounding-samsungs-galaxy-note-8-just-leaked/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1483455163501.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-04 08:28:49', 0, 4, 0, 0, 1),
-(35, 1, 'New Republican Congress reverses ethics move after outcry - BBC News', 'http://www.bbc.com/news/world-us-canada-38499284', NULL, 'http://ichef-1.bbci.co.uk/news/320/cpsprodpb/4CCE/production/_93226691_comp_976.jpg', 'www.bbc.com', 'NEWS', '2017-01-04 23:35:51', 0, 0, 0, 0, 1),
-(36, 1, 'Surprise! Monster burst of radio waves arose in tiny galaxy   | Fox News', 'http://www.foxnews.com/science/2017/01/05/surprise-monster-burst-radio-waves-arose-in-tiny-galaxy.html', NULL, 'http://a57.foxnews.com/media2.foxnews.com/2017/01/05/876/493/010517_galaxy_1280.jpg?ve=1&tl=1', 'www.foxnews.com', 'SCIENCE', '2017-01-06 09:18:42', 1, 0, 0, 0, 1),
-(37, 1, 'Inside Disney\'s new \'Avatar\' theme park | Fox News', 'http://www.foxnews.com/travel/2016/11/23/inside-disneys-new-avatar-theme-park.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2016/11/23/inside-disneys-new-avatar-theme-park/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1479923409969.jpg?ve=1&tl=1', 'www.foxnews.com', 'TRAVEL', '2017-01-07 07:50:28', 0, 0, 1, 0, 1),
-(38, 1, 'Pile of skeletons found inside 2,400-year-old tomb in Iraq  | Fox News', 'http://www.foxnews.com/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/2017/01/12/pile-skeletons-found-inside-2400-year-old-tomb-in-iraq/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484215996769.jpg?ve=1&tl=1', 'www.foxnews.com', 'ARCHEOLOGY', '2017-01-13 15:48:14', 0, 0, 1, 0, 1),
-(39, 1, 'YouTube removes influential conservative website\'s channel | Fox News', 'http://www.foxnews.com/tech/2017/01/13/youtube-removes-influential-conservative-websites-channel.html', NULL, 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/tech/2017/01/13/youtube-removes-influential-conservative-websites-channel/_jcr_content/par/featured-media/media-0.img.jpg/876/493/1484320422698.jpg?ve=1&tl=1', 'www.foxnews.com', 'NEWS', '2017-01-15 23:27:40', 0, 2, 0, 1, 1);
+(1, 1, 'Sevimli kedicik', 'http://funnycats.blogin.com.au/wp-content/uploads/2015/01/aww-too-cute-cat.jpg', NULL, 'http://funnycats.blogin.com.au/wp-content/uploads/2015/01/aww-too-cute-cat.jpg', 'funnycats.blogin.com.au', 'RESİM', '2017-01-20 03:09:34', 0, 1, 0, 2, 1),
+(2, 1, 'En pahalı yemin töreni - Dünya Haberleri', 'http://www.hurriyet.com.tr/en-pahali-yemin-toreni-40340912', NULL, 'http://i.hurimg.com/i/hurriyet/90/590x332/58812be467b0a92e545b3867.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-20 03:17:49', 0, 0, 0, 0, 1),
+(3, 1, 'Baklava', NULL, 'Baklava, Türk, Orta Doğu, Balkan ve Güney Asya mutfaklarında yer etmiş önemli bir hamur tatlısıdır. İnce yufkaların arasına yöreye göre ceviz, antep fıstığı, badem veya fındık konarak yapılır. Genel olarak şeker şerbeti ile tatlandırılır. Ayrıca bal şerbeti de kullanılabilir. Bazı ticari firmalar kendi özel şerbetlerini kullanırlar.\r\n\r\nAB Komisyonu tarafından 8 Ağustos 2013 Tarihinde baklavanın Türk tatlısı olduğu tescil edilmiştir.', NULL, NULL, 'YEMEK', '2017-01-20 03:33:25', 0, 0, 0, 0, 1),
+(4, 1, 'Afilli Filtrelerden Vazgeçemeyen Selfie Tutkunlarını Ele Geçiren Yeni Çılgınlık: Meitu - onedio.com', 'https://onedio.com/haber/afilli-filtrelerden-vazgecemeyen-selfie-tutkunlarini-ele-geciren-yeni-cilginlik-meitu-752027', NULL, 'https://onedio.com//images/logo/onedio-new2x-new.png', 'onedio.com', 'KOMİK', '2017-01-20 03:50:13', 0, 0, 0, 0, 1),
+(5, 1, 'iPhone 10 yaşında: Apple’ın en önemli ürününün görsel tarihi', 'http://www.teknoblog.com/iphone-10-yasinda-140170/', NULL, NULL, 'www.teknoblog.com', 'TEKNOLOJİ', '2017-01-20 03:53:31', -1, 0, 1, 0, 1),
+(6, 1, 'Çin, Saniyede Milyarlarca İşlem Yapabilen Dünyanın İlk Süper Bilgisayarını Yapıyor!', 'http://www.webtekno.com/cin-dunyanin-ilk-saniyede-milyarlarca-islem-yapabilen-super-bilgisayarini-yapiyor-h24317.html', NULL, 'http://www.webtekno.com//images/editor/default/0001/09/b226776d500d71c0c2fa775d5922672b59812b4c.jpeg', 'www.webtekno.com', 'TEKNOLOJİ', '2017-01-20 03:55:47', 0, 0, 0, 0, 1),
+(7, 1, 'Türk Hava Yolları\'nın Yeni Reklam Yüzü Dünya Yıldızı Morgan Freeman Oldu!', 'http://www.webtekno.com/turk-hava-yollari-nin-yeni-reklam-yuzu-dunya-yildizi-morgan-freeman-oldu-h24330.html', NULL, NULL, 'www.webtekno.com', 'HABER', '2017-01-20 03:57:08', 0, 0, 0, 0, 1),
+(8, 1, 'CIA, UFO Kayıtları ve Psişik Deneylerin Bulunduğu Dosyaları Yayınladı!', 'http://www.webtekno.com/cia-ufo-kayitlari-ve-psisik-deneylerin-bulundugu-dosyalari-yayinladi-h24331.html', NULL, 'http://www.webtekno.com//images/editor/default/0001/09/9f77c3347ae303b3ebd7c2241be29b7ebf1aadc6.jpeg', 'www.webtekno.com', 'HABER', '2017-01-20 03:57:51', 0, 1, 0, 0, 1),
+(9, 1, 'Logan Filminden Vizyon Öncesi Son Fragman Geldi! - Haberler - Beyazperde', 'http://www.beyazperde.com/haberler/filmler/haberler-77177/', NULL, 'http://tr.web.img3.acsta.net/newsv7/17/01/19/22/02/031987.jpg', 'www.beyazperde.com', 'SİNEMA', '2017-01-20 04:00:29', 1, 0, 0, 0, 1),
+(10, 1, 'Simge\'nin \'Prens ve Prenses\'i  - Müzik Haber - PowerTürk', 'http://www.powerturk.com/muzik/muzik-haber/simge-nin-prens-ve-prenses-i.html', NULL, 'http://www.powerturk.com//i/logo.png', 'www.powerturk.com', 'MÜZİK', '2017-01-20 05:46:20', 0, 0, 0, 0, 1),
+(11, 1, 'AYDİLGE / KİRALIK AŞK -  Sen misin İlacım? KLİP - YouTube', 'https://www.youtube.com/watch?v=qBBIKdD2fo8', NULL, 'https://i.ytimg.com/vi/qBBIKdD2fo8/maxresdefault.jpg', 'www.youtube.com', 'MÜZİK', '2017-01-20 05:52:31', 0, 0, 0, 0, 1),
+(12, 1, 'Kedi Efsanelerini Test Ettik - Hıyardan Korkuyorlar Mı? - YouTube', 'https://www.youtube.com/watch?v=ebL_YWNN570', NULL, 'https://i.ytimg.com/vi/ebL_YWNN570/maxresdefault.jpg', 'www.youtube.com', 'VİDEO', '2017-01-20 06:06:42', 0, 0, 0, 0, 1),
+(13, 1, 'Aleyna Tilki ft. Emrah Karaduman - Cevapsız Çınlama Rap Parodi (#OrkunaMeydanOkuyorum) - YouTube', 'https://youtu.be/MBVX26xPyR4', NULL, 'https://i.ytimg.com/vi/MBVX26xPyR4/maxresdefault.jpg', 'youtu.be', 'VİDEO', '2017-01-20 06:11:04', 0, 0, 0, 0, 1),
+(14, 2, 'Çavuşoğlu, Trump\'ın kabine adayları ile görüştü - Dünya Haberleri', 'http://www.hurriyet.com.tr/cavusoglu-trumpin-kabine-adaylari-ile-gorustu-40341022', NULL, 'http://i.hurimg.com/i/hurriyet/90/590x332/5881b2fdc03c0e069c7b5022.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-20 11:39:17', 0, 0, 0, 0, 1),
+(15, 2, 'Futbol mutasyona uğruyor! - Spor Haberleri', 'http://www.milliyet.com.tr/futbol-mutasyona-ugruyor----2381830-skorergaleri/', NULL, 'http://www.milliyet.com.tr/d/i/skorer/fbskorer.jpg', 'www.milliyet.com.tr', 'HABER', '2017-01-20 11:43:48', 0, 0, 0, 0, 1),
+(16, 2, 'Son dakika... Tüm gözler Washington\'da! Trump koltuğa oturuyor - Dünya Haberleri', 'http://www.milliyet.com.tr/son-dakika-tum-gozler-dunya-2381897/', NULL, 'http://icube.milliyet.com.tr/YeniAnaResim/2017/01/20/son-dakika-tum-gozler-washington-da-trump-koltuga-oturuyor-8392999.Jpeg', 'www.milliyet.com.tr', 'HABER', '2017-01-20 11:49:55', 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -154,38 +133,11 @@ CREATE TABLE `reply` (
 --
 
 INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comments`, `is_parent_link`, `link_id`, `reported`, `favorited`, `is_link_for_union`) VALUES
-(1, 'sample comment', 9, 1, '2017-01-02 03:53:17', 1, 0, 1, 9, 0, 0, 0),
-(2, 'sample comment1', 4, 1, '2017-01-02 03:53:37', -1, 0, 1, 4, 0, 0, 0),
-(3, 'sample comment2', 4, 1, '2017-01-02 03:53:48', 0, 0, 1, 4, 0, 0, 0),
-(4, 'sample comment1', 3, 1, '2017-01-02 03:55:27', 0, 0, 1, 3, 0, 0, 0),
-(5, 'sample comment2', 3, 1, '2017-01-02 03:55:36', 1, 0, 1, 3, 0, 0, 0),
-(6, 'sample comment3', 3, 1, '2017-01-02 03:55:44', 0, 0, 1, 3, 0, 0, 0),
-(7, 'sample comment4', 3, 1, '2017-01-02 03:55:54', 0, 1, 1, 3, 0, 0, 0),
-(8, 'sample comment5', 3, 1, '2017-01-02 03:56:04', 0, 0, 1, 3, 0, 0, 0),
-(9, 'sample comment level1', 7, 1, '2017-01-02 03:56:28', 0, 2, 0, 3, 0, 0, 0),
-(10, 'sample comment level2', 9, 1, '2017-01-02 03:56:38', 0, 0, 0, 3, 0, 0, 0),
-(11, 'sample comment', 29, 1, '2017-01-04 04:35:25', 0, 1, 1, 29, 0, 0, 0),
-(12, 'sample comment level1', 11, 1, '2017-01-04 04:35:34', -1, 0, 0, 29, 0, 0, 0),
-(13, 'sample comment', 32, 1, '2017-01-04 04:35:47', 0, 0, 1, 32, 0, 0, 0),
-(14, 'sample comment1', 34, 1, '2017-01-04 08:29:40', 0, 0, 1, 34, 0, 0, 0),
-(15, 'sample comment2', 34, 1, '2017-01-04 08:29:52', 0, 1, 1, 34, 0, 0, 0),
-(16, 'sample comment3', 34, 1, '2017-01-04 08:29:57', 1, 0, 1, 34, 1, 0, 0),
-(17, 'sample comment4', 34, 1, '2017-01-04 08:30:02', 0, 0, 1, 34, 0, 0, 0),
-(18, 'sample comment level1', 15, 1, '2017-01-04 08:30:43', 0, 1, 0, 34, 0, 0, 0),
-(19, 'sample comment level2', 18, 1, '2017-01-04 08:30:52', 0, 0, 0, 34, 0, 0, 0),
-(20, 'sample comment1', 20, 1, '2017-01-06 07:00:57', -1, 0, 1, 20, 0, 0, 0),
-(21, 'sample comment2', 20, 1, '2017-01-06 07:02:03', 1, 0, 1, 20, 0, 0, 0),
-(22, 'sample comment3', 20, 1, '2017-01-06 07:02:38', -1, 0, 1, 20, 0, 0, 0),
-(23, 'sample comment2 level2', 9, 1, '2017-01-07 05:01:49', 0, 0, 0, 3, 0, 0, 0),
-(24, 'sample comment6', 3, 1, '2017-01-07 05:19:02', 0, 0, 1, 3, 1, 0, 0),
-(25, 'sample comment2', 29, 1, '2017-01-09 07:06:11', 1, 1, 1, 29, 0, 0, 0),
-(26, 'sample comment2 level1', 25, 1, '2017-01-09 07:06:33', 1, 0, 0, 29, 0, 0, 0),
-(27, 'sample comment1', 39, 1, '2017-01-15 23:32:17', 0, 0, 1, 39, 0, 1, 0),
-(28, 'sample comment2', 39, 1, '2017-01-18 02:13:36', 0, 1, 1, 39, 0, 0, 0),
-(29, 'sample comment level1', 28, 1, '2017-01-18 02:14:16', 0, 0, 0, 39, 0, 0, 0),
-(30, 'sample comment7', 3, 1, '2017-01-18 02:26:03', 0, 1, 1, 3, 0, 0, 0),
-(31, 'sample comment8', 3, 1, '2017-01-18 02:32:23', 0, 0, 1, 3, 0, 0, 0),
-(32, 'sample comment7 level1', 30, 1, '2017-01-18 02:32:45', 0, 0, 0, 3, 0, 0, 0);
+(1, 'haha gerçekten de sevimli bir kedicik', 1, 2, '2017-01-20 07:33:26', 1, 1, 1, 1, 0, 1, 0),
+(2, 'aynen :)', 1, 1, '2017-01-20 07:34:30', 1, 0, 0, 1, 0, 1, 0),
+(3, 'en büyük pşişik Yuri bir kere!', 8, 2, '2017-01-20 11:07:31', 1, 2, 1, 8, 0, 0, 0),
+(4, 'Red Alert 2 fanı tespit edildi', 3, 1, '2017-01-20 11:09:01', 1, 0, 0, 8, 0, 0, 0),
+(5, 'biri bana mı seslendi?', 3, 3, '2017-01-20 11:29:32', 1, 0, 0, 8, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -205,8 +157,7 @@ CREATE TABLE `report_link` (
 --
 
 INSERT INTO `report_link` (`id`, `uid`, `link_id`, `created`) VALUES
-(1, 1, 38, '2017-01-15 20:17:42'),
-(2, 1, 37, '2017-01-15 20:21:00');
+(1, 2, 5, '2017-01-20 11:12:19');
 
 -- --------------------------------------------------------
 
@@ -226,8 +177,7 @@ CREATE TABLE `report_reply` (
 --
 
 INSERT INTO `report_reply` (`id`, `uid`, `reply_id`, `created`) VALUES
-(1, 1, 24, '2017-01-15 21:01:17'),
-(2, 1, 16, '2017-01-15 21:02:02');
+(1, 2, 5, '2017-01-20 11:30:37');
 
 -- --------------------------------------------------------
 
@@ -247,7 +197,7 @@ CREATE TABLE `report_topic` (
 --
 
 INSERT INTO `report_topic` (`id`, `uid`, `topic_name`, `created`) VALUES
-(1, 1, 'NEWS', '2017-01-15 18:51:39');
+(1, 2, 'YEMEK', '2017-01-20 11:16:55');
 
 -- --------------------------------------------------------
 
@@ -267,9 +217,10 @@ CREATE TABLE `subscription` (
 --
 
 INSERT INTO `subscription` (`id`, `uid`, `topic`, `created`) VALUES
-(1, 1, 'NEWS', '2017-01-13 15:01:06'),
-(3, 1, 'FUNNY', '2017-01-13 15:01:18'),
-(5, 1, 'WORLDNEWS', '2017-01-13 17:20:33');
+(1, 3, 'HABER', '2017-01-20 11:31:18'),
+(2, 3, 'TEKNOLOJİ', '2017-01-20 11:31:57'),
+(3, 3, 'VİDEO', '2017-01-20 11:31:59'),
+(4, 3, 'KOMİK', '2017-01-20 11:32:03');
 
 -- --------------------------------------------------------
 
@@ -291,19 +242,14 @@ CREATE TABLE `topic` (
 --
 
 INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `reported`, `created`) VALUES
-('NEWS', 'News of all kind', 1, NULL, 1, '2017-01-12 21:22:52'),
-('WORLDNEWS', 'World wide news like serious shit', 1, NULL, 0, '2017-01-12 21:33:56'),
-('SCIENCE', 'Nerds, this is your topic come over here!', 0, NULL, 0, '2017-01-12 21:34:31'),
-('MOVIES', 'All kinds of movies', 0, NULL, 0, '2017-01-13 15:05:23'),
-('TELEVISION', 'Your favorite TV Shows', 0, NULL, 0, '2017-01-13 15:06:20'),
-('PICS', 'Your nudes are leaking', 0, NULL, 0, '2017-01-13 15:06:56'),
-('MUSIC', 'No Justin Bieber allowed', 0, NULL, 0, '2017-01-13 15:07:28'),
-('FUNNY', '9GAG but different', 0, NULL, 0, '2017-01-13 15:07:58'),
-('CODING', 'Your programming base', 0, NULL, 0, '2017-01-13 15:08:34'),
-('GAMING', 'PC Master Race vs Console Peasents', 0, NULL, 0, '2017-01-13 15:08:54'),
-('VIDEOS', '+98 Videos', 0, NULL, 0, '2017-01-13 15:09:13'),
-('TRAVEL', 'From Prague to Beijing', 0, NULL, 0, '2017-01-13 15:09:53'),
-('ARCHEOLOGY', NULL, 0, NULL, 0, '2017-01-13 15:48:14');
+('RESİM', NULL, 0, NULL, 0, '2017-01-20 03:09:34'),
+('HABER', NULL, 1, NULL, 0, '2017-01-20 03:17:49'),
+('YEMEK', NULL, 0, NULL, 1, '2017-01-20 03:33:25'),
+('KOMİK', NULL, 1, NULL, 0, '2017-01-20 03:50:13'),
+('TEKNOLOJİ', NULL, 1, NULL, 0, '2017-01-20 03:53:31'),
+('SİNEMA', NULL, 0, NULL, 0, '2017-01-20 04:00:29'),
+('MÜZİK', NULL, 0, NULL, 0, '2017-01-20 05:46:20'),
+('VİDEO', NULL, 1, NULL, 0, '2017-01-20 06:06:42');
 
 -- --------------------------------------------------------
 
@@ -325,7 +271,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `karma`, `created`) VALUES
-(1, 'exampleuser', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'example@gmail.com', 0, '2017-01-02 03:09:03');
+(1, 'admin', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'admin@telve.net', 0, '2017-01-20 01:58:01'),
+(2, 'moderator', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'moderator@telve.net', 0, '2017-01-20 07:17:32'),
+(3, 'yuri', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'yuri@telve.net', 0, '2017-01-20 11:28:40');
 
 -- --------------------------------------------------------
 
@@ -346,14 +294,8 @@ CREATE TABLE `vote_link` (
 --
 
 INSERT INTO `vote_link` (`id`, `uid`, `link_id`, `up_down`, `created`) VALUES
-(1, 1, 8, 1, '2017-01-09 07:09:47'),
-(2, 1, 33, 0, '2017-01-09 07:09:47'),
-(3, 1, 31, 1, '2017-01-09 07:09:47'),
-(4, 1, 22, 0, '2017-01-09 07:09:47'),
-(5, 1, 20, 1, '2017-01-09 07:09:47'),
-(6, 1, 29, 1, '2017-01-09 07:09:47'),
-(7, 1, 36, 1, '2017-01-09 07:11:24'),
-(8, 1, 21, 0, '2017-01-09 07:11:43');
+(1, 2, 9, 1, '2017-01-20 07:20:11'),
+(2, 2, 5, 0, '2017-01-20 07:21:04');
 
 -- --------------------------------------------------------
 
@@ -374,16 +316,11 @@ CREATE TABLE `vote_reply` (
 --
 
 INSERT INTO `vote_reply` (`id`, `uid`, `reply_id`, `up_down`, `created`) VALUES
-(1, 1, 5, 1, '2017-01-09 07:10:36'),
-(2, 1, 1, 1, '2017-01-09 07:10:36'),
-(3, 1, 16, 1, '2017-01-09 07:10:36'),
-(4, 1, 12, 0, '2017-01-09 07:10:36'),
-(5, 1, 2, 0, '2017-01-09 07:10:36'),
-(6, 1, 20, 0, '2017-01-09 07:10:36'),
-(7, 1, 21, 1, '2017-01-09 07:10:36'),
-(8, 1, 22, 0, '2017-01-09 07:10:36'),
-(9, 1, 25, 1, '2017-01-09 07:10:36'),
-(10, 1, 26, 1, '2017-01-09 07:17:53');
+(1, 1, 1, 1, '2017-01-20 07:34:59'),
+(2, 2, 2, 1, '2017-01-20 11:03:19'),
+(3, 1, 3, 1, '2017-01-20 11:07:45'),
+(4, 2, 4, 1, '2017-01-20 11:09:19'),
+(5, 3, 5, 1, '2017-01-20 11:29:52');
 
 --
 -- Indexes for dumped tables
@@ -453,7 +390,8 @@ ALTER TABLE `topic`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `vote_link`
@@ -475,32 +413,32 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `favourite_link`
 --
 ALTER TABLE `favourite_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `favourite_reply`
 --
 ALTER TABLE `favourite_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `report_link`
 --
 ALTER TABLE `report_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `report_reply`
 --
 ALTER TABLE `report_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `report_topic`
 --
@@ -510,22 +448,22 @@ ALTER TABLE `report_topic`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `vote_link`
 --
 ALTER TABLE `vote_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `vote_reply`
 --
 ALTER TABLE `vote_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
