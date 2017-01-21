@@ -3,7 +3,7 @@
 function find_largest_image($url) {
 
     $url_headers = get_headers($url, 1);
-    if(isset($url_headers['Content-Type'])){
+    if( isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type']) ){
 
         $type = strtolower($url_headers['Content-Type']);
 
@@ -39,6 +39,7 @@ function find_largest_image($url) {
     $visited = array();
     $getimagesize_counter = 0;
     foreach($html->find('img') as $element) {
+        //echo "\nNEW IMAGE:\n";
         $src = $element->src;
         if($src=='')continue;// it happens on your test url
         if (strpos($src, '://') !== false) {
@@ -56,7 +57,9 @@ function find_largest_image($url) {
 
         // get original size of first image occurrence without a width or a height attribute
         if ( ( empty($element->width) || empty($element->height) ) && !($getimagesize_counter > 0) ) {
+            //echo "Running getimagesize without looking to DOM."."\n";
             $image = @getimagesize($imageurl); // get the rest images width and height
+            //echo print_r($image)."\n";
             $getimagesize_counter++;
             if ( ($image[0] >= 70) && ($image[1] >= 70) ) {
                 if ($image[0] > $maxSize) {
@@ -66,20 +69,39 @@ function find_largest_image($url) {
                     $maxSize = $image[1];
                     $biggestImage = $imageurl;
                 }
+                //echo "Found by DIRECTLY getimagesize."."\n";
             } else {
                 $getimagesize_counter--;
             }
         }
 
+        //echo $element->width."\n";
+        //echo $element->height."\n";
         if ( ($element->width >= 70) && ($element->height >= 70) ) {
-            if ($element->width > $maxSize) {
-                $maxSize = $element->width;  //compare sizes
-                $biggestImage = $imageurl;
-            } else if ($element->height > $maxSize) {
-                $maxSize = $element->height;  //compare sizes
-                $biggestImage = $imageurl;
+            if ( ($element->width > $maxSize) || ($element->height > $maxSize) ) {
+                //echo "Found by DOM. Checking by getimagesize..."."\n";
+                if ( ($element->width > $maxSize) || ($element->height > $maxSize) ) {
+                    $image = @getimagesize($imageurl); // get the rest images width and height
+                    //echo print_r($image)."\n";
+                    if ( ($image[0] >= 70) && ($image[1] >= 70) ) {
+                        if ($image[0] > $maxSize) {
+                            $maxSize = $element->width;
+                            $biggestImage = $imageurl;
+                        } else if ($image[1] > $maxSize) {
+                            $maxSize = $element->height;
+                            $biggestImage = $imageurl;
+                        }
+                        $getimagesize_counter++;
+                        //echo "DOM properties were correct."."\n";
+                    } else {
+                        //echo "DOM properties were wrong."."\n";
+                    }
+                }
             }
         }
+        //echo "STATE: ".$biggestImage."\n";
+        //echo "MAXSIZE: ".$maxSize."\n";
+        //echo "COUNTER: ".$getimagesize_counter."\n";
     }
     return $biggestImage; //return the biggest found image
     //return implode(" | ", $visited);
