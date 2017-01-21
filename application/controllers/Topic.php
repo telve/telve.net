@@ -31,6 +31,8 @@
 				$topic = NULL;
 			}
 
+			$this->data['header_image'] = $this->topic_model->retrieve_topic($topic)['header_image'];
+
             $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, $topic));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"

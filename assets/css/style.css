@@ -181,3 +181,34 @@ a.link-to-guide {
     font-size:12px;
     font-style:italic;
 }
+
+@keyframes whiteGlowAnim {
+    from {
+        -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        -moz-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        -o-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+    }
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+        -moz-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+        -o-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+        filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+    }
+    to {
+        -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        -moz-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        -o-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+        filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+    }
+}
+
+.whiteGlow {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    animation-name: whiteGlowAnim;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}

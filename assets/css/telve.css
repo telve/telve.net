@@ -37,6 +37,9 @@ div.navbar-inverse a#more span.glyphicon-chevron-right {
 
 ul.nav-tabs#header {
     background: #CEE3F8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 img#turkish-coffee {

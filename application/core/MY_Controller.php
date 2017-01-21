@@ -100,6 +100,8 @@
 
 			$this->data['title'] = 'telve: internetin ön sayfası';
 
+			$this->data['header_image'] = '';
+
 		}
 
 	}

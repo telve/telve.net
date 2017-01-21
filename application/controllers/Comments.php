@@ -9,6 +9,7 @@
 			$this->load->model('vote_model');
 			$this->load->model('report_model');
 			$this->load->model('favourite_model');
+			$this->load->model('topic_model');
 		}
 
 		public function view()
@@ -31,6 +32,8 @@
 			}
 
 			$this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];
+
+			$this->data['header_image'] = $this->topic_model->retrieve_topic(urldecode($this->uri->segment(2)))['header_image'];
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('comments/view',$this->data);

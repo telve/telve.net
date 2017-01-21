@@ -103,8 +103,8 @@
         }
 
 		public function find_largest_image_test() {
-			//$url = $this->input->post('url');
-			//echo find_largest_image($url);
+			$url = $this->input->post('url');
+			echo find_largest_image($url);
 		}
 	}
 
