@@ -585,3 +585,17 @@ function unfavourite_reply(obj) {
         });
     }
 }
+
+// Function for testing find_largest_image function
+function find_largest_image_test(url){
+    if (is_user_logged_in) {
+        $.ajax({
+               type: "POST",
+               url: base_url + 'submit/find_largest_image_test',
+               data: {'url' : url },
+               success: function(data) {
+                   console.log(data);
+               }
+        });
+    }
+}

@@ -8,6 +8,7 @@
 			$this->load->model('link_model');
 			$this->load->model('topic_model');
 			$this->load->helper('tr_lang');
+			$this->load->helper('find_largest_image');
 		}
 
 		public function index()
@@ -100,6 +101,11 @@
             else
                 return iconv($encoding,$outEncoding,$string);
         }
+
+		public function find_largest_image_test() {
+			$url = $this->input->post('url');
+			echo find_largest_image($url);
+		}
 	}
 
 ?>
