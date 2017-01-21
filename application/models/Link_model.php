@@ -424,14 +424,14 @@
 			$html = new Simple_html_dom();
 			$html->load_file($url);
 
-			if ( (substr($url, 0, strlen('https://www.youtube.com')) === 'https://www.youtube.com') || (substr($url, 0, strlen('https://youtu.be')) === 'https://youtu.be') ) {
+			if ( (substr($url, 0, strlen('https://www.youtube.com/watch')) === 'https://www.youtube.com/watch') || (substr($url, 0, strlen('https://youtu.be/')) === 'https://youtu.be/') ) {
 				return $html->find('link[itemprop=thumbnailUrl]',0)->href;
 			}
 
 			$biggestImage = ''; // Is returned when no images are found.
 			$maxSize = 0;
 			$visited = array();
-			$forOnce = '';
+			$getimagesize_counter = 0;
 			foreach($html->find('img') as $element) {
 			    $src = $element->src;
 			    if($src=='')continue;// it happens on your test url
@@ -443,32 +443,39 @@
 					$parse = parse_url($url);
 			    	$imageurl = $parse['scheme'].'://'.$parse['host'].'/'.$src;//get image absolute url
 				}
+
 			    // ignore already seen images, add new images
 			    if(in_array($imageurl, $visited))continue;
-				$visited[]=$imageurl;
+				$visited[] = $imageurl;
 
-				// get original size of first image occurrence without any width and height attribute
-				if ( (empty($element->width) || $element->width == 0) && (empty($element->height) || $element->height == 0) && (empty($forOnce)) ) {
-				     $image=@getimagesize($imageurl); // get the rest images width and height
-					 $forOnce = $imageurl;
-					 if ($image[0] > $maxSize) {
-	 			        $maxSize = $image[0];
-	 			        $biggest_img = $imageurl;
-	 			    } else if ($image[1] > $maxSize) {
-	 			        $maxSize = $image[1];
-	 			        $biggest_img = $imageurl;
-	 			    }
+				// get original size of first image occurrence without a width or a height attribute
+				if ( ( empty($element->width) || empty($element->height) ) && !($getimagesize_counter > 0) ) {
+					$image = @getimagesize($imageurl); // get the rest images width and height
+					$getimagesize_counter++;
+					if ( ($image[0] >= 70) && ($image[1] >= 70) ) {
+						if ($image[0] > $maxSize) {
+							$maxSize = $image[0];
+							$biggestImage = $imageurl;
+						} else if ($image[1] > $maxSize) {
+							$maxSize = $image[1];
+							$biggestImage = $imageurl;
+						}
+					} else {
+						$getimagesize_counter--;
+					}
 				}
 
-			    if ($element->width > $maxSize) {
-			        $maxSize = $element->width;  //compare sizes
-			        $biggest_img = $imageurl;
-			    } else if ($element->height > $maxSize) {
-			        $maxSize = $element->height;  //compare sizes
-			        $biggest_img = $imageurl;
-			    }
+				if ( ($element->width >= 70) && ($element->height >= 70) ) {
+				    if ($element->width > $maxSize) {
+				        $maxSize = $element->width;  //compare sizes
+				        $biggestImage = $imageurl;
+				    } else if ($element->height > $maxSize) {
+				        $maxSize = $element->height;  //compare sizes
+				        $biggestImage = $imageurl;
+				    }
+				}
 			}
-			return $biggest_img; //return the biggest found image
+			return $biggestImage; //return the biggest found image
 			//return implode(" | ", $visited);
 		}
 
