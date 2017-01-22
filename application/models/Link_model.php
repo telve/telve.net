@@ -11,7 +11,7 @@
 			$this->load->library('hashids');
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 			$this->load->helper('tr_lang');
-			$this->load->helper('find_largest_image');
+			$this->load->helper('find_best_image');
 		}
 
 		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL) //By default, all states are returned
@@ -309,7 +309,7 @@
 				'title' => $this->input->post('title'),
                 'url' => $url,
 				'text' => $this->input->post('text'),
-				'picurl' => find_largest_image($url),
+				'picurl' => find_best_image($url),
                 'domain' => $parse['host'],
                 'topic' => tr_strtoupper($topic),
                 'uid' => $row['id'], //User's ID

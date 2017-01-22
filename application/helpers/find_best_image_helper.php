@@ -1,6 +1,6 @@
 <?php
 
-function find_largest_image($url) {
+function find_best_image($url) {
 
     $url_headers = get_headers($url, 1);
     if( isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type']) ){

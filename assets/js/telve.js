@@ -586,11 +586,11 @@ function unfavourite_reply(obj) {
     }
 }
 
-// Function for testing find_largest_image function
-function find_largest_image_test(url){
+// Function for testing find_best_image function
+function find_best_image_test(url){
     $.ajax({
            type: "POST",
-           url: base_url + 'submit/find_largest_image_test',
+           url: base_url + 'submit/find_best_image_test',
            data: {'url' : url },
            success: function(data) {
                console.log(data);
