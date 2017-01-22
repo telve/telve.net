@@ -9,6 +9,7 @@
 			$this->load->model('topic_model');
 			$this->load->helper('tr_lang');
 			$this->load->helper('link_submission');
+			$this->load->library('simple_html_dom');
 		}
 
 		public function index()
@@ -43,20 +44,17 @@
 				}
 
 			} else {
-				redirect('');
+				redirect('giris');
 			}
 		}
 
         public function get_title(){
-
-            //Here also need to determine whether the string over the post URL or empty
-
-            $html = file_get_contents($this->input->post("url"));
-            $preg = "/<title>(.*?)<\/title>/si";
-            preg_match($preg, $html, $arr);
-            //echo trim(mb_convert_encoding($arr[1], "UTF-8", "GBK")); //GBK To UTF-8 Encoding conversion
-            echo trim(str_replace(array('&#039;','&#39;'),"'",$arr[1])); //UTF-8
-            //echo $this->safeEncoding($arr[1]); //The character set is automatically recognized and transcoded
+			$html = new Simple_html_dom();
+		    $html->load_file($this->input->post("url"));
+			$result = $html->find('title',0)->innertext;
+			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
+			$result = trim(str_replace(array('&quot;'),'"',$result));
+			echo $result;
         }
 
         private function safeEncoding($string,$outEncoding ='UTF-8')
@@ -103,8 +101,8 @@
         }
 
 		public function analyze_url_test() {
-			$url = $this->input->post('url');
-			echo print_r(analyze_url($url));
+			//$url = $this->input->post('url');
+			//echo print_r(analyze_url($url));
 		}
 	}
 

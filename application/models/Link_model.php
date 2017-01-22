@@ -52,7 +52,7 @@
 				} else if ($sort == 'top') {
 					$this->db->order_by("score", "desc");
 				} else if ($sort == 'hot') {
-					$this->db->order_by("(400 * score) + (.1 * link.created) + (120 * comments) DESC");
+					$this->db->order_by("(100 * score) + (.001 * link.created) + (1000 * comments) DESC");
 				}
 				if ($topic) {
 					$this->db->where('topic',$topic);

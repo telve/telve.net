@@ -12,7 +12,7 @@
 		public function index()
 		{
 			if (!$this->data['is_user_logged_in']) {
-				redirect('');
+				redirect('giris');
 			}
             $this->load->library('pagination');
 

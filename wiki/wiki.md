@@ -16,6 +16,6 @@ Popüler konular daima sitenin en üst kısmında belirecektir. **DEVAMI<span cl
 
 **sıcak<span class="glyphicon glyphicon-fire" style="font-size:12px"></span>** sekmesi bu dördünün ve aboneliklerinizin bir kombinasyonudur. Size şu anki en popüler içerikleri görüntüleyecektir.
 
-Yeni bir bağlantı gönderdiğinizde [telve.net](http://telve.net) otomatik olarak en iyi resimi, verdiğiniz URL'den (tam adresten) algılar. Yani bu işle sizin ilgilenmenize gerek yoktur.
+Yeni bir bağlantı gönderdiğinizde [telve.net](http://telve.net) otomatik olarak en iyi resimi, verdiğiniz URL'den (tam adresten) algılar. Yani bu işle sizin ilgilenmenize gerek yoktur. Benzer şekilde direk resim veya YouTube, Twitter, Facebook gibi platformlardan içerikler paylaştığınız zaman da içerik kendiliğinden buraya gömülecektir.
 
-Ee, ne bekliyorsun? Binlerce topluluk üyesiyle **[hemen bir bağlantı paylaş](/gonder)**.
+Ee, hadi ne duruyorsun? Binlerce topluluk üyesiyle **[hemen bir bağlantı paylaş](/gonder)**.
