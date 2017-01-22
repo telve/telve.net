@@ -3,6 +3,7 @@
 function analyze_url($url) {
 
     $description = NULL;
+    $embed = NULL;
 
     $url_headers = get_headers($url, 1);
     if( isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type']) ){
@@ -23,9 +24,11 @@ function analyze_url($url) {
         $valid_image_type['image/x-icon'] = '';
 
         if(isset($valid_image_type[$type])){
-            return [$url,NULL];
+            return [$url,$description,$embed];
         }
     }
+
+    $parsed = parse_url($url);
 
     $CI =& get_instance();
     $CI->load->library("simple_html_dom");
@@ -36,12 +39,16 @@ function analyze_url($url) {
         $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
     }
 
-    if ( (substr($url, 0, strlen('https://www.youtube.com/watch')) === 'https://www.youtube.com/watch') || (substr($url, 0, strlen('https://youtu.be/')) === 'https://youtu.be/') ) {
-        return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description];
+    if ( ($parsed['host'] == 'www.youtube.com') || ($parsed['host'] == 'youtube.com') || ($parsed['host'] == 'youtu.be') ) {
+
+        preg_match("/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/", $url, $id);
+        $embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
+
+        return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description,$embed];
     }
 
     if ($html->find('meta[property=og:image]')) {
-        return [$html->find('meta[property=og:image]',0)->content,$description];
+        return [$html->find('meta[property=og:image]',0)->content,$description,$embed];
     }
 
     $biggestImage = ''; // Is returned when no images are found.
@@ -58,8 +65,7 @@ function analyze_url($url) {
         } elseif (substr( $src, 0, 2 ) === "//") {
             $imageurl = 'http:'.$src;
         } else {
-            $parse = parse_url($url);
-            $imageurl = $parse['scheme'].'://'.$parse['host'].'/'.$src;//get image absolute url
+            $imageurl = $parsed['scheme'].'://'.$parsed['host'].'/'.$src;//get image absolute url
         }
 
         // ignore already seen images, add new images
@@ -114,7 +120,7 @@ function analyze_url($url) {
         //echo "MAXSIZE: ".$maxSize."\n";
         //echo "COUNTER: ".$getimagesize_counter."\n";
     }
-    return [$biggestImage,$description]; //return the biggest found image
+    return [$biggestImage,$description,$embed]; //return the biggest found image
     //return implode(" | ", $visited);
 }
 

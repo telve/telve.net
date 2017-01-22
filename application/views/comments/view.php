@@ -44,6 +44,9 @@
                                 <div>
                                     <?php echo markdown($link_item['text']);?>
                                 </div>
+                                <div>
+                                    <?php echo $link_item['embed'];?>
+                                </div>
         						<div>
         							<div class="link-actions"><strong>
         								<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>" class="comments"><?php echo $link_item['comments']?> yorum<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>

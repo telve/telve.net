@@ -80,13 +80,13 @@
 				$query_for_uid = $this->db->get('user');
 				$user = $query_for_uid->row_array();
 
-				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down,favourite_link.uid as is_favorited');
+				$this->db->select('score,link.id,title,url,text,embed,picurl,domain,link.created,username,topic,comments,up_down,favourite_link.uid as is_favorited');
 	            $this->db->from('link');
 	            $this->db->join('user', 'link.uid = user.id');
 				$this->db->join('vote_link', $user['id'].' = vote_link.uid AND link.id = vote_link.link_id','left');
 				$this->db->join('favourite_link', $user['id'].' = favourite_link.uid AND link.id = favourite_link.link_id','left');
 			} else {
-				$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments');
+				$this->db->select('score,link.id,title,url,text,embed,picurl,domain,link.created,username,topic,comments');
 	            $this->db->from('link');
 	            $this->db->join('user', 'link.uid = user.id');
 			}
@@ -300,12 +300,12 @@
 			$row = $query->row_array();
 
             $url = $this->input->post('url');
-			$parse = parse_url($url);
+			$parsed = parse_url($url);
 
 			$topic = str_replace(' ', '', $this->input->post('topic'));
 			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
 
-			list($picurl,$text) = analyze_url($url);
+			list($picurl,$text,$embed) = analyze_url($url);
 			if (!empty($this->input->post('text'))) {
 				$text = $this->input->post('text');
 			}
@@ -314,8 +314,9 @@
 				'title' => $this->input->post('title'),
                 'url' => $url,
 				'text' => $text,
+				'embed' => $embed,
 				'picurl' => $picurl,
-                'domain' => $parse['host'],
+                'domain' => $parsed['host'],
                 'topic' => tr_strtoupper($topic),
                 'uid' => $row['id'], //User's ID
 				'score' => 0,
