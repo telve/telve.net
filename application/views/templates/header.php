@@ -8,6 +8,13 @@
         <meta name="keywords" content="telve, sosyal, haber, bağlantı, yorum" />
         <link rel="shortcut icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link rel="icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
+
+        <meta property="og:title" content="<?php echo $title; ?>" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="<?php echo urldecode(base_url(uri_string())); ?>" />
+        <meta property="og:image" content="<?php echo $og_image; ?>" />
+        <meta property="og:site_name" content="telve.net" />
+
         <link href="<?php echo base_url("assets/css/bootstrap.css");?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url("assets/glyphicons/css/bootstrap.css");?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url("assets/css/telve.css");?>" rel="stylesheet" type="text/css">

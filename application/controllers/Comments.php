@@ -34,6 +34,11 @@
 			$this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];
 
 			$this->data['header_image'] = $this->topic_model->retrieve_topic(urldecode($this->uri->segment(2)))['header_image'];
+			if (!empty($this->data['link_item']['url'])) {
+				$this->data['og_image'] = $this->data['link_item']['picurl'];
+			} else {
+				$this->data['og_image'] = base_url('assets/img/icons/1715.png');
+			}
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('comments/view',$this->data);

@@ -99,6 +99,7 @@
 			$this->data['front_forbidden'] = array('t','alan-adi','gonder','kullanici','sifremi-unuttum','konular','aboneliklerim','arama','tercihler','giris','uye-ol');
 
 			$this->data['title'] = 'telve: internetin ön sayfası';
+			$this->data['og_image'] = base_url("assets/img/logo/telve.png");
 
 			$this->data['header_image'] = '';
 
