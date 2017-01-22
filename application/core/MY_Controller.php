@@ -100,6 +100,7 @@
 
 			$this->data['title'] = 'telve: internetin ön sayfası';
 			$this->data['og_image'] = base_url("assets/img/logo/telve.png");
+			$this->data['description'] = 'Kullanıcılar tarafından paylaşılan bağlantılar. Oylamalar sonucunda paylaşımlar ön sayfaya çıkar.';
 
 			$this->data['header_image'] = '';
 

@@ -305,11 +305,16 @@
 			$topic = str_replace(' ', '', $this->input->post('topic'));
 			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
 
+			list($picurl,$text) = analyze_url($url);
+			if (!empty($this->input->post('text'))) {
+				$text = $this->input->post('text');
+			}
+
             $data = array(
 				'title' => $this->input->post('title'),
                 'url' => $url,
-				'text' => $this->input->post('text'),
-				'picurl' => analyze_url($url),
+				'text' => $text,
+				'picurl' => $picurl,
                 'domain' => $parse['host'],
                 'topic' => tr_strtoupper($topic),
                 'uid' => $row['id'], //User's ID

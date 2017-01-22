@@ -31,9 +31,14 @@
 				$topic = NULL;
 			}
 
-			$this->data['header_image'] = $this->topic_model->retrieve_topic($topic)['header_image'];
-			if (!empty($this->data['header_image'])) {
-				$this->data['og_image'] = $this->data['header_image'];
+			$topic_item = $this->topic_model->retrieve_topic($topic);
+			if (!empty($topic_item['header_image'])) {
+				$this->data['og_image'] = $topic_item['header_image'];
+			}
+			if (!empty($topic_item['description'])) {
+				$this->data['description'] = $topic_item['description'];
+			} else {
+				$this->data['description'] = $topic." konusuna hoş geldiniz. ".$topic." ile alâkalı en yeni, en tartışmalı ve en çok beğenilen paylaşımları burada bulabilirsiniz.";
 			}
 
             $config['total_rows'] = count($this->link_model->get_link_count(FALSE, NULL, NULL, $topic));

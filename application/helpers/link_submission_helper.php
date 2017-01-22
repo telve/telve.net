@@ -2,6 +2,8 @@
 
 function analyze_url($url) {
 
+    $description = NULL;
+
     $url_headers = get_headers($url, 1);
     if( isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type']) ){
 
@@ -21,7 +23,7 @@ function analyze_url($url) {
         $valid_image_type['image/x-icon'] = '';
 
         if(isset($valid_image_type[$type])){
-            return $url;
+            return [$url,NULL];
         }
     }
 
@@ -30,12 +32,16 @@ function analyze_url($url) {
     $html = new Simple_html_dom();
     $html->load_file($url);
 
+    if ($html->find('meta[property=og:description]')) {
+        $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
+    }
+
     if ( (substr($url, 0, strlen('https://www.youtube.com/watch')) === 'https://www.youtube.com/watch') || (substr($url, 0, strlen('https://youtu.be/')) === 'https://youtu.be/') ) {
-        return $html->find('link[itemprop=thumbnailUrl]',0)->href;
+        return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description];
     }
 
     if ($html->find('meta[property=og:image]')) {
-        return $html->find('meta[property=og:image]',0)->content;
+        return [$html->find('meta[property=og:image]',0)->content,$description];
     }
 
     $biggestImage = ''; // Is returned when no images are found.
@@ -108,7 +114,7 @@ function analyze_url($url) {
         //echo "MAXSIZE: ".$maxSize."\n";
         //echo "COUNTER: ".$getimagesize_counter."\n";
     }
-    return $biggestImage; //return the biggest found image
+    return [$biggestImage,$description]; //return the biggest found image
     //return implode(" | ", $visited);
 }
 

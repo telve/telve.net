@@ -39,6 +39,9 @@
 			} else {
 				$this->data['og_image'] = base_url('assets/img/icons/1715.png');
 			}
+			if (!empty($this->data['link_item']['text'])) {
+				$this->data['description'] = $this->data['link_item']['text'];
+			}
 
 			$this->load->view('templates/header',$this->data);
 			$this->load->view('comments/view',$this->data);

@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $title; ?></title>
-        <meta name="description" content="Kullanıcılar tarafından paylaşılan bağlantılar. Oylamalar sonucunda paylaşımlar ön sayfaya çıkar." />
+        <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="telve, sosyal, haber, bağlantı, yorum" />
         <link rel="shortcut icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
         <link rel="icon" href="<?php echo base_url("favicon.ico");?>" type="image/x-icon" >
@@ -14,6 +14,7 @@
         <meta property="og:url" content="<?php echo urldecode(base_url(uri_string())); ?>" />
         <meta property="og:image" content="<?php echo $og_image; ?>" />
         <meta property="og:site_name" content="telve.net" />
+        <meta property="og:description" content="<?php echo $description; ?>" />
 
         <link href="<?php echo base_url("assets/css/bootstrap.css");?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url("assets/glyphicons/css/bootstrap.css");?>" rel="stylesheet" media="screen">
