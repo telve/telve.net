@@ -26,6 +26,11 @@
             is_user_logged_in = parseInt(is_user_logged_in);
             var username = "<?php echo $this->session->userdata('username'); ?>";
         </script>
+
+        <?php if (!empty($header_image)) { ?>
+            <link rel="preload" as="image" href="<?php echo $header_image; ?>">
+        <?php } ?>
+
     </head>
 
     <body>
