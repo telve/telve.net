@@ -24,11 +24,13 @@ function analyze_url($url) {
         $valid_image_type['image/x-icon'] = '';
 
         if(isset($valid_image_type[$type])){
+            $embed = '<img src="'.$url.'" style="max-height:315px;"/>';
             return [$url,$description,$embed];
         }
     }
 
     $parsed = parse_url($url);
+    $segment = explode('/', $parsed['path']);
 
     $CI =& get_instance();
     $CI->load->library("simple_html_dom");
@@ -45,6 +47,12 @@ function analyze_url($url) {
         $embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
 
         return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description,$embed];
+    }
+
+    if ( (($parsed['host'] == 'www.twitter.com') || ($parsed['host'] == 'twitter.com')) && ($segment[2] == 'status') ) {
+        $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
+        $obj = json_decode($json);
+        $embed = $obj->html;
     }
 
     if ($html->find('meta[property=og:image]')) {
