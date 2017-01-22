@@ -31,11 +31,29 @@ function analyze_url($url) {
 
     $parsed = parse_url($url);
     $segment = explode('/', $parsed['path']);
+    if (!isset($segment[1])) {
+        $segment[1] = '';
+    }
+    if (!isset($segment[2])) {
+        $segment[2] = '';
+    }
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_REFERER, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+    $curl_result = curl_exec($curl);
+    curl_close($curl);
 
     $CI =& get_instance();
     $CI->load->library("simple_html_dom");
     $html = new Simple_html_dom();
-    $html->load_file($url);
+    //$html->load_file($url);
+    $html->load($curl_result);
 
     if ($html->find('meta[property=og:description]')) {
         $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
@@ -53,6 +71,42 @@ function analyze_url($url) {
         $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
         $obj = json_decode($json);
         $embed = $obj->html;
+    }
+
+    $fb_post_criteria = ['posts','activity','photo.php','photos','permalink.php','media','questions','notes'];
+    if ( (($parsed['host'] == 'www.facebook.com') || ($parsed['host'] == 'facebook.com')) && (!empty(array_intersect($segment, $fb_post_criteria))) ) {
+        $json_url = "https://www.facebook.com/plugins/post/oembed.json/?url=".$url;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_URL, $json_url);
+        curl_setopt($curl, CURLOPT_REFERER, $json_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+        $json = curl_exec($curl);
+        curl_close($curl);
+        $obj = json_decode($json);
+        $embed = $obj->html;
+        return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
+    }
+
+    $fb_video_criteria = ['videos','video.php'];
+    if ( (($parsed['host'] == 'www.facebook.com') || ($parsed['host'] == 'facebook.com')) && (!empty(array_intersect($segment, $fb_video_criteria))) ) {
+        $json_url = "https://www.facebook.com/plugins/video/oembed.json/?url=".$url;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_URL, $json_url);
+        curl_setopt($curl, CURLOPT_REFERER, $json_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+        $json = curl_exec($curl);
+        curl_close($curl);
+        $obj = json_decode($json);
+        $embed = $obj->html;
+        return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
     }
 
     if ($html->find('meta[property=og:image]')) {
