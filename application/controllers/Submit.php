@@ -8,7 +8,7 @@
 			$this->load->model('link_model');
 			$this->load->model('topic_model');
 			$this->load->helper('tr_lang');
-			$this->load->helper('find_best_image');
+			$this->load->helper('link_submission');
 		}
 
 		public function index()
@@ -102,9 +102,9 @@
                 return iconv($encoding,$outEncoding,$string);
         }
 
-		public function find_best_image_test() {
+		public function analyze_url_test() {
 			//$url = $this->input->post('url');
-			//echo find_best_image($url);
+			//echo analyze_url($url);
 		}
 	}
 

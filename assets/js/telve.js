@@ -586,11 +586,11 @@ function unfavourite_reply(obj) {
     }
 }
 
-// Function for testing find_best_image function
-function find_best_image_test(url){
+// Function for testing analyze_url function
+function analyze_url_test(url){
     $.ajax({
            type: "POST",
-           url: base_url + 'submit/find_best_image_test',
+           url: base_url + 'submit/analyze_url_test',
            data: {'url' : url },
            success: function(data) {
                console.log(data);
