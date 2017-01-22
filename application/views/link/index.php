@@ -43,7 +43,11 @@
 							<?php if (empty($link_item['url'])) { ?>
 	                        	<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><div class="link-thumbnail" style="background-image: url('<?php echo base_url('assets/img/icons/17837.png');?>');"></div></a>
 							<?php } else { ?>
-								<a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715.png'); else echo $link_item['picurl'];?>');"></div></a>
+								<?php if (!empty($link_item['embed'])) { ?>
+									<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715.png'); else echo $link_item['picurl'];?>');"></div></a>
+								<?php } else { ?>
+									<a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715.png'); else echo $link_item['picurl'];?>');"></div></a>
+								<?php }?>
 							<?php }?>
 						</div>
 
@@ -52,7 +56,11 @@
 								<?php if (empty($link_item['url'])) { ?>
 		                        	<div class="link-title"><strong><a class="link-title" href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(metin türünde)</span></div>
 								<?php } else { ?>
-									<div class="link-title"><strong><a class="link-title" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+									<?php if (!empty($link_item['embed'])) { ?>
+										<div class="link-title"><strong><a class="link-title" href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+									<?php } else { ?>
+										<div class="link-title"><strong><a class="link-title" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+									<?php }?>
 								<?php }?>
                                 <div style="line-height: 14px;">
                                     <small class="details"><?php echo human_timing($link_item['created']);?> gönderildi&nbsp;&nbsp;<a href="<?php echo base_url('').'kullanici/'.$link_item['username'].'/';?>"><?php echo $link_item['username']?></a> tarafından&nbsp;&nbsp;<a href="<?php echo base_url('').'t/'.$link_item['topic'].'/';?>"><?php echo $link_item['topic']?></a> konusuna</small>

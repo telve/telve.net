@@ -103,7 +103,7 @@
 			$query_for_this_user = $this->db->get('user');
 			$this_user_id = $query_for_this_user->row_array()['id'];
 
-			$this->db->select('link.id as id,title,url,score,link.created as created,vote_link.up_down as up_down,favourite_link.uid as is_favorited,picurl,domain,username,topic,comments,text,is_link_for_union');
+			$this->db->select('link.id as id,title,url,embed,score,link.created as created,vote_link.up_down as up_down,favourite_link.uid as is_favorited,picurl,domain,username,topic,comments,text,is_link_for_union');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
 			if ( ($activity_tab == 'upvoted') || ($activity_tab == 'downvoted') ) {
@@ -123,7 +123,7 @@
 			}
             $link_query = $this->db->get_compiled_select();
 
-			$this->db->select('reply.id as id,link.title as title,link.id as url,reply.score as score,reply.created as created,vote_reply.up_down as up_down,favourite_reply.uid as is_favorited,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
+			$this->db->select('reply.id as id,link.title as title,link.id as url,content as embed,reply.score as score,reply.created as created,vote_reply.up_down as up_down,favourite_reply.uid as is_favorited,link.picurl as picurl,link.domain as domain,user.username as username,link.topic as topic,reply.comments as comments,content as text,reply.is_link_for_union as is_link_for_union');
 			$this->db->from('reply');
 			$this->db->join('user', 'reply.uid = user.id');
 			$this->db->join('link', 'reply.link_id = link.id','left');
@@ -173,7 +173,7 @@
 			$query_for_this_user = $this->db->get('user');
 			$this_user_id = $query_for_this_user->row_array()['id'];
 
-			$this->db->select('score,link.id,title,url,text,picurl,domain,link.created,username,topic,comments,up_down,is_link_for_union');
+			$this->db->select('score,link.id,title,url,embed,picurl,domain,link.created,username,topic,comments,up_down,is_link_for_union');
             $this->db->from('link');
             $this->db->join('user', 'link.uid = user.id');
 			$this->db->join('vote_link', $this_user_id.' = vote_link.uid AND link.id = vote_link.link_id','left');
