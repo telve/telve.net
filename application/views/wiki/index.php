@@ -20,7 +20,7 @@
 				<h1><?php echo $wiki_topic['name'];?></h1>
 				<p><?php echo $wiki_topic['description'];?></p>
 				<p><b>Toplam abone sayısı:</b> <?php echo $wiki_topic['subscribers'];?></p>
-				<p style="opacity:.6;"><i>Bu konu <?php echo human_timing($wiki_topic['created']);?> oluşturuldu</i></p>
+				<p style="color:#888;">Bu konu <a href="<?php echo base_url('').'kullanici/'.$wiki_topic['username'].'/';?>"><?php echo $wiki_topic['username'];?></a> tarafından <?php echo human_timing($wiki_topic['created']);?> oluşturuldu</p>
 			<?php } else { ?>
 		    <div id="md"><?php echo markdown($text);?></div>
 			<?php } ?>

@@ -13,9 +13,16 @@
 			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
 			$topic = tr_strtoupper($topic);
 
+			$this->db->where('username',$this->session->userdata('username'));
+			$this->db->select('id');
+			$this->db->limit(1);
+			$query = $this->db->get('user');
+			$row = $query->row_array();
+
 			if (!$this->right_to_insert_topic($topic)) {
 				$data = array(
-	                'name' => $topic
+	                'name' => $topic,
+					'creator_uid' => $row['id']
 				);
 
 	            return $this->db->insert('topic',$data);
@@ -32,8 +39,9 @@
 		}
 
 		public function retrieve_topic($name) {
-			$this->db->select('*');
+			$this->db->select('name,description,subscribers,header_image,user.username,reported,topic.created');
 			$this->db->from('topic');
+			$this->db->join('user', 'topic.creator_uid = user.id');
 			$this->db->where('name',$name);
 
 			$query = $this->db->get();

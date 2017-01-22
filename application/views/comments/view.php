@@ -39,7 +39,7 @@
                                     <div class="link-title"><strong><a class="link-title" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                                 <?php }?>
         						<div style="line-height: 14px;">
-        							<small class="details"><?php echo human_timing($link_item['created']);?> gönderildi&nbsp;&nbsp;<a href="<?php echo base_url('').'kullanici/'.$link_item['username'].'/';?>"><?php echo $link_item['username']?></a> tarafından&nbsp;&nbsp;<a href="<?php echo base_url('').'t/'.$link_item['topic'].'/';?>"><?php echo $link_item['topic']?></a> konusuna</small>
+        							<small class="details"><a href="<?php echo base_url('').'kullanici/'.$link_item['username'].'/';?>"><?php echo $link_item['username']?></a> tarafından&nbsp;&nbsp;<a href="<?php echo base_url('').'t/'.$link_item['topic'].'/';?>"><?php echo $link_item['topic']?></a> konusuna&nbsp;&nbsp;<?php echo human_timing($link_item['created']);?> gönderildi</small>
         						</div>
                                 <div>
                                     <?php echo markdown($link_item['text']);?>

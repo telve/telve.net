@@ -33,6 +33,7 @@
 
 			$topic_item = $this->topic_model->retrieve_topic($topic);
 			if (!empty($topic_item['header_image'])) {
+				$this->data['header_image'] = $topic_item['header_image'];
 				$this->data['og_image'] = $topic_item['header_image'];
 			}
 			if (!empty($topic_item['description'])) {
