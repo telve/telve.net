@@ -34,6 +34,10 @@ function find_largest_image($url) {
         return $html->find('link[itemprop=thumbnailUrl]',0)->href;
     }
 
+    if ($html->find('meta[property=og:image]')) {
+        return $html->find('meta[property=og:image]',0)->content;
+    }
+
     $biggestImage = ''; // Is returned when no images are found.
     $maxSize = 0;
     $visited = array();
