@@ -204,6 +204,7 @@ a.link-to-guide {
 }
 
 .whiteGlow {
+    /*
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -211,4 +212,25 @@ a.link-to-guide {
     animation-name: whiteGlowAnim;
     animation-duration: 8s;
     animation-iteration-count: infinite;
+    */
+
+    -webkit-filter: drop-shadow(1px 1px 0 white)
+		            drop-shadow(-1px 1px 0 white)
+		            drop-shadow(1px -1px 0 white)
+      		        drop-shadow(-1px -1px 0 white);
+
+    -moz-filter: drop-shadow(1px 1px 0 white)
+                 drop-shadow(-1px 1px 0 white)
+                 drop-shadow(1px -1px 0 white)
+                 drop-shadow(-1px -1px 0 white);
+
+    -o-filter: drop-shadow(1px 1px 0 white)
+		       drop-shadow(-1px 1px 0 white)
+		       drop-shadow(1px -1px 0 white)
+      		   drop-shadow(-1px -1px 0 white);
+
+	filter: drop-shadow(1px 1px 0 white)
+		    drop-shadow(-1px 1px 0 white)
+		    drop-shadow(1px -1px 0 white)
+      		drop-shadow(-1px -1px 0 white);
 }

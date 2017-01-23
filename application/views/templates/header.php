@@ -51,7 +51,7 @@
                    <a <?php if ('TÜMÜ' == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/TÜMÜ/';?>">Tümü</a> -
                    <a href="<?php echo base_url('').'t/RASTGELE/';?>">Rastgele</a> &nbsp;|&nbsp;
                    <?php foreach($topics_for_header as $topic): ?>
-                       <a <?php if ($topic['topic'] == $this->uri->segment(2)) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
+                       <a <?php if ($topic['topic'] == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
                    <?php endforeach ?>
 
                </div>
