@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2017 at 11:04 PM
--- Server version: 5.7.16-0ubuntu0.16.04.1
--- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- Generation Time: Jan 23, 2017 at 01:46 AM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -286,7 +286,7 @@ INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `crea
 ('MÜZİK', 'Karışık MP3 CD 2016', 0, 'http://az616578.vo.msecnd.net/files/2016/07/31/6360553665687961831595419134_concertsfandom.jpg', 1, 0, '2017-01-20 05:46:20'),
 ('VİDEO', '%90!ı YouTube\'tan ibaret olan konu.', 1, 'http://jimroyal.com/wp-content/uploads/2016/08/Videos.jpg', 1, 0, '2017-01-20 06:06:42'),
 ('GİF', 'Animasyonlu mu animasyonlu içerikler.', 0, 'https://media.giphy.com/media/6quIvmJFMH7Wg/giphy.gif', 1, 0, '2017-01-21 10:21:04'),
-('OYUN', 'PC Gamers vs Console Peasants', 0, NULL, 1, 0, '2017-01-21 10:24:17'),
+('OYUN', 'PC Gamers vs Console Peasants', 0, 'http://wallpapercave.com/wp/xS571ba.jpg', 1, 0, '2017-01-21 10:24:17'),
 ('SORU', 'Bu konu altında aklınıza gelen her türlü soruyu sorabilirsiniz.', 0, 'https://static.vecteezy.com/system/resources/previews/000/092/726/original/question-mark-background-vector.jpg', 1, 0, '2017-01-21 10:33:44'),
 ('ÜNİVERSİTE', 'Üniversite öğrencileri, şenlikler, konserler, eğlence gırgır şamata sonra vize, final, büt vs 8 sene', 0, 'http://bestpopular.biz/uploads/images/bwe0bl20160225113501.jpg', 1, 0, '2017-01-22 12:26:27'),
 ('FUTBOL', 'Ofsaytı bilmeyenlerin giremeyeği ortam', 0, 'https://targetcareers.co.uk/sites/targetcareers.co.uk/files/public/field/image/football.jpg', 1, 0, '2017-01-22 12:33:31'),
