@@ -65,7 +65,11 @@
 						<li>Gizli bilgileriniz kesinlikle açığa vurulmayacaktır.</li>
 						<li>Kanuni durumlar dışında, gizli bilgileriniz asla kimseyle paylaşılmayacaktır.</li>
 					</ul>
-					<p>Daha fazla bilgi edinmek için <a href="#">Gizlilik Politikası</a> sayfamızı ziyaret ediniz.</p>
+					<p>Üye olan kullanıcılar
+                        <a href="<?php echo base_url('sayfalar/kullanici_sozlesmesi');?>">Kullanıcı Sözleşmesi</a>
+                        ve
+                        <a href="<?php echo base_url('sayfalar/gizlilik_politikasi');?>" style="color:green;">Gizlilik Politikası</a>'nı
+                        kabul etmiş sayılırlar.</p>
 				</div>
 				<div class="span1"><!--Draw a vertical dividing line-->
 					<table style="border-right:2px solid #ddd; height:530px; margin-left:20px;">
@@ -113,37 +117,33 @@
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em;">
 				<ul class="unstyled">
 					<li style="font-size:16px;">hakkında<li>
-					<li><a href="#">blog</a></li>
-					<li><a href="#">hakkında</a></li>
-					<li><a href="#">kaynak kod</a></li>
-					<li><a href="#">reklam ver</a></li>
-					<li><a href="#">kariyer</a></li>
+					<li><a href="<?php echo base_url('sayfalar/blog');?>">blog</a></li>
+					<li><a href="https://github.com/DragonComputer/telve.net">kaynak kod</a></li>
+					<li><a href="<?php echo base_url('sayfalar/reklam_ver');?>">reklam ver</a></li>
+					<li><a href="<?php echo base_url('sayfalar/kariyer');?>">kariyer</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;">yardım<li>
-					<li><a href="#">site kuralları</a></li>
-					<li><a href="#">SSS</a></li>
-					<li><a href="#">viki</a></li>
-					<li><a href="#">şeffaflık</a></li>
-                    <li><a href="#">bize ulaşın</a></li>
+					<li><a href="<?php echo base_url('sayfalar/site_kurallari');?>">site kuralları</a></li>
+					<li><a href="<?php echo base_url('sayfalar/sss');?>">SSS</a></li>
+					<li><a href="<?php echo base_url('viki');?>">viki</a></li>
+                    <li><a href="<?php echo base_url('sayfalar/bize_ulasin');?>">bize ulaşın</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;">mobil<li>
-					<li><a href="#">iPhone için Telve</a></li>
-					<li><a href="#">Android için Telve</a></li>
-					<li><a href="#">mobil site</a></li>
-					<li><a href="#">butonlar</a></li>
+					<li><a href="<?php echo base_url('sayfalar/iphone');?>">iPhone için Telve</a></li>
+					<li><a href="<?php echo base_url('sayfalar/android');?>">Android için Telve</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;"><3<li>
-					<li><a href="#" style="color:#9A7D2E;">telvealtın</a></li>
-					<li><a href="#">telvehediyeler</a></li>
+					<li><a href="<?php echo base_url('sayfalar/altin');?>" style="color:#9A7D2E;">telvealtın</a></li>
+					<li><a href="<?php echo base_url('sayfalar/sponsor');?>">telvehediyeler</a></li>
 				</ul>
 			</div>
 		</div>
@@ -152,9 +152,9 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="span6">
-				<a href="#">Kullanıcı Sözleşmesi</a>
+				<a href="<?php echo base_url('sayfalar/kullanici_sozlesmesi');?>">Kullanıcı Sözleşmesi</a>
                  ve
-				<a href="#" style="color:green;">Gizlilik Politikası (güncellendi)</a>
+				<a href="<?php echo base_url('sayfalar/gizlilik_politikasi');?>" style="color:green;">Gizlilik Politikası (güncellendi)</a>
 			</div>
 			<div class="span6">
 				<p class="muted pull-right">Telif hakkı &copy; 2017&nbsp;&nbsp;<a href="http://dragon.computer/">dragon.computer</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
