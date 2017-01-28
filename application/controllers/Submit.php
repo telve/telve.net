@@ -106,8 +106,8 @@
         }
 
 		public function analyze_url_test() {
-			//$url = $this->input->post('url');
-			//echo print_r(analyze_url($url));
+			$url = $this->input->post('url');
+			echo print_r(analyze_url($url));
 		}
 	}
 

@@ -125,6 +125,12 @@ function analyze_url($url) {
         return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
     }
 
+    if ( ( endsWith($parsed['host'],'instagram.com') || ($parsed['host'] == 'instagr.am') ) && ($segment[1] == 'p') ) {
+        $json = file_get_contents("https://api.instagram.com/oembed?url=".$url);
+        $obj = json_decode($json);
+        $embed = $obj->html;
+    }
+
     if ($html->find('meta[property=og:image]')) {
         return [$html->find('meta[property=og:image]',0)->content,$description,$embed];
     }
