@@ -1,5 +1,21 @@
 <?php
 
+function startsWith($haystack, $needle)
+{
+     $length = strlen($needle);
+     return (substr($haystack, 0, $length) === $needle);
+}
+
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+}
+
 function analyze_url($url) {
 
     $description = NULL;
@@ -59,7 +75,7 @@ function analyze_url($url) {
         $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
     }
 
-    if ( ($parsed['host'] == 'www.youtube.com') || ($parsed['host'] == 'youtube.com') || ($parsed['host'] == 'youtu.be') ) {
+    if ( endsWith($parsed['host'],'youtube.com') || ($parsed['host'] == 'youtu.be') ) {
 
         preg_match("/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/", $url, $id);
         $embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
@@ -67,14 +83,14 @@ function analyze_url($url) {
         return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description,$embed];
     }
 
-    if ( (($parsed['host'] == 'www.twitter.com') || ($parsed['host'] == 'twitter.com')) && ($segment[2] == 'status') ) {
+    if ( endsWith($parsed['host'],'twitter.com') && ($segment[2] == 'status') ) {
         $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
         $obj = json_decode($json);
         $embed = $obj->html;
     }
 
     $fb_post_criteria = ['posts','activity','photo.php','photos','permalink.php','media','questions','notes'];
-    if ( (($parsed['host'] == 'www.facebook.com') || ($parsed['host'] == 'facebook.com')) && (!empty(array_intersect($segment, $fb_post_criteria))) ) {
+    if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_post_criteria))) ) {
         $json_url = "https://www.facebook.com/plugins/post/oembed.json/?url=".$url;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -92,7 +108,7 @@ function analyze_url($url) {
     }
 
     $fb_video_criteria = ['videos','video.php'];
-    if ( (($parsed['host'] == 'www.facebook.com') || ($parsed['host'] == 'facebook.com')) && (!empty(array_intersect($segment, $fb_video_criteria))) ) {
+    if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_video_criteria))) ) {
         $json_url = "https://www.facebook.com/plugins/video/oembed.json/?url=".$url;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
