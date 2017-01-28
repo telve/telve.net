@@ -597,3 +597,7 @@ function analyze_url_test(url){
            }
     });
 }
+
+$('form').submit(function(){
+    $(this).find(':submit').attr('disabled','disabled');
+});

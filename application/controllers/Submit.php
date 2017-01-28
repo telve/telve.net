@@ -21,7 +21,7 @@
 				$this->data['is_text_post'] = $this->input->get("metin");
 
 				$this->form_validation->set_rules('title','<b>Başlık</b>','trim|required|max_length[255]|xss_clean');
-	            $this->form_validation->set_rules('url','<b>URL</b>','trim|max_length[255]|xss_clean');
+	            $this->form_validation->set_rules('url','<b>URL</b>','trim|valid_url|max_length[255]|xss_clean');
 				$this->form_validation->set_rules('text','<b>Metin</b>','trim|max_length[10000]|xss_clean');
 	            $this->form_validation->set_rules('topic','<b>Bir konu seçin</b>','trim|required|max_length[255]|xss_clean');
 	            $this->form_validation->set_rules('captcha','<b>Doğrulama kodu</b>','trim|required|exact_length[4]|strtolower|xss_clean');
@@ -54,6 +54,11 @@
 			$result = $html->find('title',0)->innertext;
 			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
 			$result = trim(str_replace(array('&quot;'),'"',$result));
+			$result = trim(str_replace(array('&#10;'),' ',$result));
+			#$result = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result);
+			#$result = preg_replace('/[^\r\n\t\x20-\x7E\xA0-\xFF]/', '', $result);
+			#$result = html_entity_decode($result);
+			#$result = utf8_encode($result);
 			echo $result;
         }
 
