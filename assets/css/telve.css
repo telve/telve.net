@@ -90,7 +90,7 @@ ul.nav-tabs#header .glyphicon {
     float: left;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 415px 3px;
+    padding: 424px 3px;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -102,10 +102,10 @@ ul.nav-tabs#header .glyphicon {
     color: #808080;
     cursor: pointer;
     float: left;
-    margin-left:120px;
+    margin-left: 8.77vw;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 415px 3px;
+    padding: 424px 3px;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -119,7 +119,7 @@ ul.nav-tabs#header .glyphicon {
     float: left;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 415px 3px;
+    padding: 424px 3px;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -131,7 +131,8 @@ ul.nav-tabs#header .glyphicon {
     border-top:0;
     border-top:left;
     box-shadow: 0 0 1px #CCCCCC;
-    height: 837px;
+    height: 866px;
+    margin-top: -10px;
 }
 #sidebar ul li {
     text-decoration:none;
