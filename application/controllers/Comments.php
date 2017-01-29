@@ -37,7 +37,7 @@
 			if (!empty($this->data['link_item']['url'])) {
 				$this->data['og_image'] = $this->data['link_item']['picurl'];
 			} else {
-				$this->data['og_image'] = base_url('assets/img/icons/1715.png');
+				$this->data['og_image'] = base_url('assets/img/icons/1715-rect.png');
 			}
 			if (!empty($this->data['link_item']['text'])) {
 				$this->data['description'] = $this->data['link_item']['text'];
