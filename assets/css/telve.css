@@ -26,7 +26,7 @@ div.navbar-inverse div#no-more div#bullhorn-announcement div.scroll-left {
 
 div.navbar-inverse a#more {
     float: right;
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 10px;
 }
