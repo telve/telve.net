@@ -111,7 +111,7 @@
 </div>
 
 <br><br><br><br>
-<div class="container">
+<div class="container" id="footer-container">
 <div class="row-fluid">
 		<div class="span12" style="margin-left: 15%;">
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em;">
