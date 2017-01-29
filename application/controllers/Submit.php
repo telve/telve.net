@@ -49,8 +49,16 @@
 		}
 
         public function get_title(){
+			$url = $this->input->post("url");
+			$parsed = parse_url($url);
+		    $segment = explode('/', $parsed['path']);
+
+			if ($parsed['host'] == 'mobile.twitter.com') {
+				$url = 'https://twitter.com/'.$parsed['path'];
+			}
+
 			$html = new Simple_html_dom();
-		    $html->load_file($this->input->post("url"));
+		    $html->load_file($url);
 			$result = $html->find('title',0)->innertext;
 			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
 			$result = trim(str_replace(array('&quot;'),'"',$result));
@@ -106,8 +114,8 @@
         }
 
 		public function analyze_url_test() {
-			$url = $this->input->post('url');
-			echo print_r(analyze_url($url));
+			//$url = $this->input->post('url');
+			//echo print_r(analyze_url($url));
 		}
 	}
 

@@ -84,7 +84,11 @@ function analyze_url($url) {
     }
 
     if ( endsWith($parsed['host'],'twitter.com') && ($segment[2] == 'status') ) {
-        $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
+        if (startsWith($parsed['host'],'mobile')) {
+            $json = file_get_contents("https://publish.twitter.com/oembed?url=".'https://twitter.com/'.$segment[1].'/'.$segment[2].'/'.$segment[3]);
+        } else {
+            $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
+        }
         $obj = json_decode($json);
         $embed = $obj->html;
     }
