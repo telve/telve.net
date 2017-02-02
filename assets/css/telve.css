@@ -266,6 +266,7 @@ table.submit-form {
     background-position: 50% 50%;
     border: 1px solid #5F99CF;
     width: 100%;
+    width: calc(100% - 2px);
     height: 80px;
     margin-top: 5px;
     margin-bottom: 5px;
