@@ -68,7 +68,7 @@
 			} else {
 				$this->data['login_info'] = "<li style='float:right;margin-right:15px;'><a href='#myModal' data-toggle='modal'><span style='color:gray;'>Hâlâ üye değil misin?</span> Giriş yap veya üye ol <span class='glyphicon glyphicon-log-in'></span></a></li>";
 				$this->data['login_form'] = "
-					<table class='table table-bordered'>
+					<table class='table table-bordered' style='margin-bottom:0px;'>
 						<tr><td>
 							".form_open('giris')."
 							<input type='text' class='span6' name='username' placeholder='kullanıcı adı'>
@@ -103,6 +103,8 @@
 			$this->data['description'] = 'Kullanıcılar tarafından paylaşılan bağlantılar. Oylamalar sonucunda paylaşımlar ön sayfaya çıkar.';
 
 			$this->data['header_image'] = '';
+
+			$this->data['all_topics'] = $this->link_model->retrieve_all_topics();
 
 		}
 

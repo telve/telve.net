@@ -3,20 +3,35 @@
         <form action="<?php echo base_url("arama");?>" method="get" accept-charset="utf-8" style="margin:0;">
             <?php if ( isset($search_query) ) { ?>
                 <?php if ($search_total_rows > 0) { ?>
-                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;color:green;" value="<?php echo $search_query; ?>">
+                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:5px;color:green;" value="<?php echo $search_query; ?>">
                 <?php } else { ?>
-                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;color:red;" value="<?php echo $search_query; ?>">
+                    <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:5px;color:red;" value="<?php echo $search_query; ?>">
                 <?php } ?>
             <?php } else { ?>
-                <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:20px;">
+                <input name="q" type="text" class="span12" placeholder="Ara" style="margin-bottom:5px;">
             <?php } ?>
         </form>
     </div>
 
     <?php echo $login_form;?>
 
+    <?php
+    if ($this->uri->segment(1) == 't') {
+        do {
+            $chosen_topic = $all_topics[array_rand($all_topics)];
+        } while ( $chosen_topic == $this->uri->segment(2) );
+    } else {
+        $chosen_topic = $all_topics[array_rand($all_topics)];
+    }
+    ?>
+    <a href="<?php echo base_url('').'t/'.$chosen_topic['topic'].'/';?>">
+        <div class="topic-suggestion" style="background-image: url('<?php echo $chosen_topic['header_image'];?>')">
+            <span class="topic-title whiteGlow">/t/<?php echo $chosen_topic['topic'];?></span>
+        </div>
+    </a>
+
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder");?>">Yeni bir bağlantı gönder</a>
-    <br>
+
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>">Yeni bir metin gönder</a>
 </div>
 </div>

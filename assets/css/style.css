@@ -149,7 +149,7 @@ li > a.submit {
 @font-face { font-family: Play-Bold; src: url('/assets/img/logo/Play-Bold.ttf'); }
 @font-face { font-family: Play-Regular; src: url('/assets/img/logo/Play-Regular.ttf'); }
 
-li.topic-title {
+.topic-title {
     font-family: Play-Bold;
     font-size: 20px;
     margin-top: 56px;

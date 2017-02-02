@@ -432,6 +432,15 @@
 			return $query->result_array();
 		}
 
+		public function retrieve_all_topics() {
+			$this->db->select('link.topic as topic,topic.header_image as header_image');
+			$this->db->from('link');
+			$this->db->group_by('link.topic');
+			$this->db->join('topic', 'link.topic = topic.name');
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
 		public function increase_topic_reported()
 		{
             $this->db->where('name',$this->input->post('name'));
