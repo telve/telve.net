@@ -41,7 +41,7 @@
     <body>
 	       <div class="navbar-inverse"><!--navbar navbar-fixed-top-->
                <div id="no-more">
-                   <a href="#">
+                   <a href="<?php echo $base_url.'viki/';?>">
                        <div id="bullhorn-announcement">
                            <div class="scroll-left">
                                <span>İNTERNETİN ÖN SAYFASINA HOŞ GELDİNİZ</span>

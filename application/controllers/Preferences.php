@@ -24,7 +24,7 @@ class Preferences extends MY_Controller {
 			//$this->load->view('submit/password');
 			//$this->load->view('templates/footer');
 
-		}else{
+		} else {
 
 			$this->link_model->get_email();
 

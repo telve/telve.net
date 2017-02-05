@@ -28,6 +28,8 @@ Don't forget to replace database credentials under `application/config/database.
 
 This project was developed fully in English language until commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` (129. commit). Later on it translated to Turkish language (language of target client) rather than being multilingual because the complexity of handling the support for multiple languages was huge. If you are a global visitor/cloner, I suggest you to revert back to commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` or contact me mert.yildiran@bil.omu.edu.tr for my help to translate it back to English language.
 
+*Select Tab Length as 4 in your editor.*
+
 ### Requirements
 
 * [Vesta CP](https://vestacp.com/#install)

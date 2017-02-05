@@ -18,8 +18,8 @@
 			$this->data['base_url'] = base_url('t/'.$this->uri->segment(2).'/');
 
 			$this->data['link_item'] = $this->link_model->retrieve_link($id);
-            $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
-            $this->data['tree'] = $this->link_model->retrieve_reply_tree_by_id($id); //$pid
+      		$this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
+      		$this->data['tree'] = $this->link_model->retrieve_reply_tree_by_id($id); //$pid
 
 			if(empty($this->data['link_item']))
 			{
