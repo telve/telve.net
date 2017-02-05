@@ -1,8 +1,14 @@
 <br>
 
+### 200. paylaşım!
+
+5 Şubat 2017 itibariyle sitemizdeki toplam paylaşım sayısı 200 gönderiyi aşmıştır. Tüm kullanıcılarımıza teşekkür ederiz.
+
+---
+
 ### 50. paylaşım!
 
-23 Ocak itibariyle sitemizdeki toplam paylaşım sayısı 50 gönderiyi aşmıştır. Tüm kullanıcılarımza teşekkür ederiz.
+23 Ocak 2017 itibariyle sitemizdeki toplam paylaşım sayısı 50 gönderiyi aşmıştır. Tüm kullanıcılarımıza teşekkür ederiz.
 
 ---
 

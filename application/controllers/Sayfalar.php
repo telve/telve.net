@@ -4,6 +4,8 @@
 		public function __construct()
 		{
 			parent::__construct();
+			$this->data['toggle_sidebar'] = '';
+			$this->data['sidebar'] = '';
 		}
 
 		public function blog()
