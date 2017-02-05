@@ -367,3 +367,9 @@ div#footer-container {
     margin-right: auto;
     margin-left: auto;
 }
+
+@media only screen and (max-width: 1080px) {
+    .topic-title {
+        max-width: 1em;
+    }
+}
