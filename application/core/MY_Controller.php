@@ -75,7 +75,7 @@
 							<input type='password' class='span6 pull-right' name='password' placeholder='şifre'>
 							<br><br>
 							<label class='checkbox span6'>
-							<input type='checkbox'>beni hatırla
+							<input type='checkbox'  name='remember'>beni hatırla
 							</label>
 
 							<a class='checkbox' href='".base_url("sifremi-unuttum")."'>şifremi unuttum?</a>

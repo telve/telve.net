@@ -42,24 +42,24 @@
             $captcha = $this->input->post('captcha');
             $remember = $this->input->post('remember');
 
-            if($captcha <> $this->session->userdata('captcha'))
-            {
-                return '<p>Doğrulama kodu hatası</p>';
-            }else
-            {
-                $data =array(
-                    'username' => $username,
-                    'email' => $this->input->post('email'),
-                    'password' => md5($password),
-                    'karma' => 0
-                );
+            $data =array(
+                'username' => $username,
+                'email' => $this->input->post('email'),
+                'password' => md5($password),
+                'karma' => 0
+            );
 
-                $this->session->set_userdata('username',$username);
-                return $this->db->insert('user',$data);
-                //$this->add_user_session($username,$password,$remember);
-                return '<p>Hesabınız başarıyla oluşturuldu</p>';
-                //redirect('hot');
-            }
+            $this->session->set_userdata('username',$username);
+			if (!empty($this->input->post('remember'))) {
+				$this->load->helper('cookie');
+				$cookie = $this->input->cookie('ci_session'); // we get the cookie
+				$this->input->set_cookie('ci_session', $cookie, '2592000'); // and add 30 days to it's expiration
+			}
+            return $this->db->insert('user',$data);
+            //$this->add_user_session($username,$password,$remember);
+            return '<p>Hesabınız başarıyla oluşturuldu</p>';
+            //redirect('hot');
+
 		}
 		public function check_username()
 		{

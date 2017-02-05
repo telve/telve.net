@@ -99,7 +99,7 @@
 			$this->form_validation->set_rules('email','<b>E-posta</b>','required|valid_email|is_unique[user.email]|xss_clean');
 			$this->form_validation->set_rules('password','<b>Şifre</b>','trim|required|min_length[6]|matches[passconf]|xss_clean');
 			$this->form_validation->set_rules('passconf','<b>Şifrenizi doğrulayın</b>','required|xss_clean');
-      		$this->form_validation->set_rules('captcha','<b>Doğrulama kodu</b>','trim|required|exact_length[4]|strtolower|xss_clean');
+      		$this->form_validation->set_rules('captcha','<b>Doğrulama kodu</b>','trim|required|exact_length[4]|strtolower|xss_clean|regex_match[/'.$this->session->userdata('captcha').'/i]');
 
 			if ($this->form_validation->run() === FALSE)
 			{
@@ -140,6 +140,11 @@
 
 					$session['username'] = $this->input->post('username');
 					$this->session->set_userdata($session);
+					if (!empty($this->input->post('remember'))) {
+						$this->load->helper('cookie');
+            			$cookie = $this->input->cookie('ci_session'); // we get the cookie
+						$this->input->set_cookie('ci_session', $cookie, '2592000'); // and add 30 days to it's expiration
+					}
 					redirect(''); //default: hot/index
 
 				} else {
