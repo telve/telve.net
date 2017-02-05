@@ -32,6 +32,10 @@
             <link rel="preload" as="image" href="<?php echo $header_image; ?>">
         <?php } ?>
 
+        <?php if (!empty($chosen_topic['header_image'])) { ?>
+            <link rel="preload" as="image" href="<?php echo $chosen_topic['header_image']; ?>">
+        <?php } ?>
+
     </head>
 
     <body>

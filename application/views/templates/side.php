@@ -15,15 +15,6 @@
 
     <?php echo $login_form;?>
 
-    <?php
-    if ($this->uri->segment(1) == 't') {
-        do {
-            $chosen_topic = $all_topics[array_rand($all_topics)];
-        } while ( $chosen_topic == $this->uri->segment(2) );
-    } else {
-        $chosen_topic = $all_topics[array_rand($all_topics)];
-    }
-    ?>
     <a href="<?php echo base_url('').'t/'.$chosen_topic['topic'].'/';?>">
         <div class="topic-suggestion" style="background-image: url('<?php echo $chosen_topic['header_image'];?>')">
             <span class="topic-title whiteGlow">/t/<?php echo $chosen_topic['topic'];?></span>
