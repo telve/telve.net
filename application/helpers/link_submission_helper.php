@@ -133,6 +133,7 @@ function analyze_url($url) {
         $json = file_get_contents("https://api.instagram.com/oembed?url=".$url);
         $obj = json_decode($json);
         $embed = $obj->html;
+        $embed = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $embed);
     }
 
     if ($html->find('meta[property=og:image]')) {
