@@ -79,7 +79,7 @@ function share_link(obj){
     if($(obj).text()=='paylaş')
     {
         replyForm = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="display:none;">\
-                    <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + $(obj).parent().parent().find('.comments')[0].href + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
+                    <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl=' + decodeURIComponent($(obj).parent().parent().find('.short-link')[0].href) + '&amp;linkname=' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '"></a>\
                     <a class="a2a_button_facebook"></a>\
                     <a class="a2a_button_twitter"></a>\
                     <a class="a2a_button_google_plus"></a>\
@@ -91,7 +91,7 @@ function share_link(obj){
                     var a2a_config = a2a_config || {};\
                     a2a_config.locale = "tr";\
                     a2a_config.linkname = "' + $(obj).parent().parent().parent().parent().find('.link-title')[0].innerText + '";\
-                    a2a_config.linkurl = "' + $(obj).parent().parent().find('.comments')[0].href + '";\
+                    a2a_config.linkurl = "' + decodeURIComponent($(obj).parent().parent().find('.short-link')[0].href) + '";\
                     </script>\
                     <script async src="https://static.addtoany.com/menu/page.js"></script>';
 

@@ -72,6 +72,7 @@
                                 <div>
                                     <div class="link-actions"><strong>
                                         <a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>" class="comments"> <?php echo $link_item['comments'];?>&nbsp;yorum<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
+										<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/";?>" class="short-link"></a>
 										&nbsp;&nbsp;
                                         <a href="javascript:void(0)" onclick="report_link('<?php echo $link_item['id'];?>')" class="login-required">şikayet<span class="glyphicon glyphicon-flag" style="font-size:12px;"></span></a>
                                         &nbsp;&nbsp;

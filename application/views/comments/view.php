@@ -50,6 +50,7 @@
         						<div>
         							<div class="link-actions"><strong>
         								<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>" class="comments"><?php echo $link_item['comments']?> yorum<span class="glyphicon glyphicon-comment" style="font-size:11px;"></span></a>
+                                        <a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/";?>" class="short-link"></a>
                                         &nbsp;&nbsp;
                                         <?php if (isset($link_item['is_favorited'])) { ;?>
                                             <a id="<?php echo $link_item['id'];?>" href="javascript:void(0)" onclick="unfavourite_link(this)" class="login-required">favori<span class="glyphicon glyphicon-star" style="font-size:13px;"></span></a>
