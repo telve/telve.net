@@ -118,18 +118,18 @@
 				$to_email = $this->input->post('email');
 		        $email_subject = "Kaydınız tamamlandı";
 		        $email_msg = "Kaydınız başarıyla tamamlandı. Artık sitemizi her yönüyle kullanabilirsiniz.";
-				$config = Array(
-		            'protocol' => $config['smtp_protocol'],
-		            'smtp_host' => $config['smtp_host'],
-		            'smtp_port' => $config['smtp_port'],
-					'smtp_crypto' => $config['smtp_crypto'],
-		            'smtp_user' => $config['smtp_user'],
-		            'smtp_pass' => $config['smtp_pass'],
+				$smtp_config = Array(
+		            'protocol' => $this->config->item('smtp_protocol'),
+		            'smtp_host' => $this->config->item('smtp_host'),
+		            'smtp_port' => $this->config->item('smtp_port'),
+					'smtp_crypto' => $this->config->item('smtp_crypto'),
+		            'smtp_user' => $this->config->item('smtp_user'),
+		            'smtp_pass' => $this->config->item('smtp_pass'),
 		            'charset' => 'utf8',
 		            'mailtype' => 'html',
 		        );
-		        $this->load->library('email', $config);
-		        $this->email->from($config['smtp_user'], $config['smtp_from_name']);
+		        $this->load->library('email', $smtp_config);
+		        $this->email->from($this->config->item('smtp_user'), $this->config->item('smtp_from_name'));
 				$this->email->to($to_email);
 		        $this->email->subject($email_subject);
 		        $this->email->message($email_msg);
