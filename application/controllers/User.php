@@ -115,6 +115,7 @@
 				//$this->load->view('link/index',$this->data);
 				//$this->load->view('templates/footer');
 
+				$this->session->set_flashdata('register_is_successful',1);
         		redirect(''); //default: hot/index
 			}
 
@@ -145,6 +146,7 @@
             			$cookie = $this->input->cookie('ci_session'); // we get the cookie
 						$this->input->set_cookie('ci_session', $cookie, '2592000'); // and add 30 days to it's expiration
 					}
+					$this->session->set_flashdata('login_is_successful',1);
 					redirect(''); //default: hot/index
 
 				} else {

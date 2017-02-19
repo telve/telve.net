@@ -21,11 +21,27 @@
         <link href="<?php echo base_url("assets/css/telve.css");?>" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url("assets/css/style.css");?>" rel="stylesheet" type="text/css">
 
+        <script src="<?php echo base_url("assets/alertifyjs/alertify.min.js");?>"></script>
+        <link href="<?php echo base_url("assets/alertifyjs/css/alertify.min.css");?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url("assets/alertifyjs/css/themes/default.min.css");?>" rel="stylesheet" type="text/css">
+
         <script type="text/javascript">
             var base_url = "<?php echo base_url('');?>";
             var is_user_logged_in = "<?php echo $is_user_logged_in;?>";
             is_user_logged_in = parseInt(is_user_logged_in);
             var username = "<?php echo $this->session->userdata('username'); ?>";
+            <?php if ($this->session->flashdata('login_is_successful')) { ?>
+                //console.log("Login is successful!");
+                setTimeout(function(){
+                    alertify.success('Başarıyla giriş yaptınız.');
+                }, 1000);
+            <?php } ?>
+            <?php if ($this->session->flashdata('register_is_successful')) { ?>
+                //console.log("Register is successful!");
+                setTimeout(function(){
+                    alertify.success('Kaydınız başarıyla tamamlandı.');
+                }, 1000);
+            <?php } ?>
         </script>
 
         <?php if (!empty($header_image)) { ?>
