@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://telve.dragon.computer/';
+$config['base_url']	= 'http://telve.net/';
 
 /*
 |--------------------------------------------------------------------------
@@ -352,3 +352,13 @@ $config['hashids_salt'] = 'NGd5hZ2lRC';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+//SMTP Configuration
+
+$config['smtp_protocol'] = 'smtp';
+$config['smtp_host'] = 'SMTP_HOST';
+$config['smtp_port'] = 587;
+$config['smtp_crypto'] = 'tls';
+$config['smtp_user'] = 'noreply@telve.net';
+$config['smtp_pass'] = 'PASSWORD';
+$config['smtp_from_name'] = 'telve.net';
