@@ -116,17 +116,23 @@
 				//$this->load->view('templates/footer');
 
 				$to_email = $this->input->post('email');
-		        $email_subject = "Kaydınız tamamlandı";
-		        $email_msg = "Kaydınız başarıyla tamamlandı. Artık sitemizi her yönüyle kullanabilirsiniz.";
+		        $email_subject = "Kaydınız başarıyla tamamlandı";
+		        $email_msg = "Kaydınız başarıyla tamamlandı. Artık <a href='http://telve.net/'>telve.net</a>'i her yönüyle kullanabilirsiniz.
+				<br><br>
+				İnternetin ön sayfası: <a href='http://telve.net/'>telve.net</a>
+				<br><br>
+				<a href='http://telve.net/'><img width='200px' src='http://telve.net/assets/img/logo/twitter-logo.png'/></a>
+				<br><br>
+				<i>*Bu e-postaya cevap yazmanıza gerek yoktur.</i>";
 				$smtp_config = Array(
 		            'protocol' => $this->config->item('smtp_protocol'),
 		            'smtp_host' => $this->config->item('smtp_host'),
 		            'smtp_port' => $this->config->item('smtp_port'),
-					'smtp_crypto' => $this->config->item('smtp_crypto'),
 		            'smtp_user' => $this->config->item('smtp_user'),
 		            'smtp_pass' => $this->config->item('smtp_pass'),
 		            'charset' => 'utf8',
 		            'mailtype' => 'html',
+					'newline' => "\r\n",
 		        );
 		        $this->load->library('email', $smtp_config);
 		        $this->email->from($this->config->item('smtp_user'), $this->config->item('smtp_from_name'));

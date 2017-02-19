@@ -357,8 +357,7 @@ $config['hashids_salt'] = 'NGd5hZ2lRC';
 
 $config['smtp_protocol'] = 'smtp';
 $config['smtp_host'] = 'SMTP_HOST';
-$config['smtp_port'] = 587;
-$config['smtp_crypto'] = 'tls';
+$config['smtp_port'] = 465;
 $config['smtp_user'] = 'noreply@telve.net';
 $config['smtp_pass'] = 'PASSWORD';
 $config['smtp_from_name'] = 'telve.net';
