@@ -32,7 +32,7 @@
 				<input type="checkbox" name="remember"/> beni hatırla
             </label>
 
-			<button class="btn btn-primary btn-blue" type="submit" name="submit" >Gönder</button>
+			<button class="btn btn-primary btn-blue" type="submit" name="submit">Gönder</button>
 
             <!--Error message<span id="msg"></span>-->
 

@@ -42,6 +42,16 @@
                     alertify.success('Kaydınız başarıyla tamamlandı.');
                 }, 1000);
             <?php } ?>
+            <?php if ($this->session->flashdata('password_reset_is_successful')) { ?>
+                setTimeout(function(){
+                    alertify.success('Şifre sıfırlama e-postası başarıyla gönderildi.');
+                }, 1000);
+            <?php } ?>
+            <?php if ($this->session->flashdata('password_reset_is_complete')) { ?>
+                setTimeout(function(){
+                    alertify.success('Şifreniz başarıyla değiştirildi.');
+                }, 1000);
+            <?php } ?>
         </script>
 
         <?php if (!empty($header_image)) {

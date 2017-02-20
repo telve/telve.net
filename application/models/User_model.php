@@ -42,7 +42,7 @@
             $captcha = $this->input->post('captcha');
             $remember = $this->input->post('remember');
 
-            $data =array(
+            $data = array(
                 'username' => $username,
                 'email' => $this->input->post('email'),
                 'password' => md5($password),
@@ -61,6 +61,7 @@
             //redirect('hot');
 
 		}
+
 		public function check_username()
 		{
 			$this->db->where('username',$this->input->post('username'));
@@ -75,6 +76,28 @@
 		public function check_username_by_param($username)
 		{
 			$this->db->where('username',$username);
+			$query = $this->db->get('user');
+			if(count($query->result_array()) > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public function check_email()
+		{
+			$this->db->where('email',$this->input->post('email'));
+			$query = $this->db->get('user');
+			if(count($query->result_array()) > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public function check_email_by_param($email)
+		{
+			$this->db->where('email',$email);
 			$query = $this->db->get('user');
 			if(count($query->result_array()) > 0) {
 				return true;
@@ -211,6 +234,39 @@
             $query = $this->db->get();
 
             return $this->hash_multirow($query->result_array());
+		}
+
+		public function insert_password_reset($token)
+		{
+            $data = array(
+                'email' => $this->input->post('email'),
+                'token' => md5($token),
+            );
+
+			$this->db->where('email',$this->input->post('email'));
+			$query = $this->db->get('password_reset');
+			if(count($query->result_array()) > 0) {
+				return $this->db->update('password_reset',$data);
+			} else {
+				return $this->db->insert('password_reset',$data);
+			}
+		}
+
+		public function retrieve_password_reset($token)
+		{
+			$this->db->select('email');
+			$this->db->where('token',md5($token));
+			$query = $this->db->get('password_reset');
+			return $query->row_array();
+		}
+
+		public function password_reset_update_user($email)
+		{
+			$this->db->where('email',$email);
+			$data = array(
+                'password' => md5($this->input->post('password'))
+            );
+			return $this->db->update('user',$data);
 		}
 
 		private function hash_multirow($multirow) {

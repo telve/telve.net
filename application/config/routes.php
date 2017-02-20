@@ -50,6 +50,7 @@ $route['konular'] = 'topics';
 $route['aboneliklerim'] = 'subscriptions';
 $route['tercihler'] = 'preferences';
 $route['sifremi-unuttum'] = 'password';
+$route['sifre-sifirla'] = 'password/reset';
 $route['gonder'] = 'submit';
 $route['arama'] = 'search';
 
