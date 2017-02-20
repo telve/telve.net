@@ -12,6 +12,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 			$this->load->helper('tr_lang');
 			$this->load->helper('link_submission');
+			$this->load->library('image_lib');
 		}
 
 		public function retrieve_link($id = FALSE, $rows = NULL, $offset = NULL, $sort = NULL, $topic = NULL, $domain = NULL, $search_query = NULL) //By default, all states are returned
@@ -324,7 +325,23 @@
 			);
 
 			$this->db->insert('link',$data);
-			return $this->hashids->encode($this->db->insert_id());
+			$id = $this->hashids->encode($this->db->insert_id());
+
+			$ext = pathinfo(parse_url($picurl, PHP_URL_PATH), PATHINFO_EXTENSION);
+			$target_path = 'assets/img/link_thumbnails/'.$id.'.'.$ext;
+			copy($picurl, $target_path);
+
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $target_path;
+			$config['create_thumb'] = TRUE;
+			$config['maintain_ratio'] = TRUE;
+			$config['width']         = 248;
+
+			$this->image_lib->initialize($config);
+			$this->image_lib->resize();
+			$this->image_lib->clear();
+
+			return $id;
 		}
 
         public function insert_reply()

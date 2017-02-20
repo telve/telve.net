@@ -32,7 +32,7 @@
 		{
 			if (($this->config->item('utilities_enabled'))) {
 	            $links_array = $this->link_model->retrieve_all_links();
-	            foreach (array_slice($links_array, 0, 3) as &$link) {
+	            foreach ($links_array as &$link) {
 					echo $link['title'];
 					echo "<br>\n";
 	                echo $link['picurl'];
