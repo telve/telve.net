@@ -18,11 +18,10 @@
 					echo "<br>";
 	                echo $topic['header_image'];
 	                echo "<br>";
-					$ext = pathinfo($topic['header_image'], PATHINFO_EXTENSION);
+					$ext = pathinfo(parse_url($topic['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
 					//echo $ext;
-					copy($topic['header_image'], 'assets/img/topics/'.urlencode($topic['topic']).'.'.$ext);
+					copy($topic['header_image'], 'assets/img/topics/'.$topic['topic'].'.'.$ext);
 					//file_put_contents('assets/img/topics/'.$topic['topic'].'.'.$ext, file_get_contents($topic['header_image']));
-
 	            }
 			} else {
 				echo "Utilities are not enabled!";
@@ -39,11 +38,10 @@
 					echo "<br>";
 	                echo $link['picurl'];
 	                echo "<br>";
-					$ext = pathinfo($link['picurl'], PATHINFO_EXTENSION);
+					$ext = pathinfo(parse_url($link['picurl'], PHP_URL_PATH), PATHINFO_EXTENSION);
 					//echo $ext;
 					copy($link['picurl'], 'assets/img/link_thumbnails/'.$this->hashids->encode($link['id']).'.'.$ext);
 					//file_put_contents('assets/img/topics/'.$topic['topic'].'.'.$ext, file_get_contents($topic['header_image']));
-
 	            }
 			} else {
 				echo "Utilities are not enabled!";
