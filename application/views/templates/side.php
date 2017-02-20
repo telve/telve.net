@@ -1,4 +1,4 @@
-<div class="span3" style="float:right;margin-top:11px;">
+<div class="span3" style="float:right;margin-top:11px;width:300px;">
     <div>
         <form action="<?php echo base_url("arama");?>" method="get" accept-charset="utf-8" style="margin:0;">
             <?php if ( isset($search_query) ) { ?>
@@ -24,7 +24,7 @@
 
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder");?>">Yeni bir bağlantı gönder</a>
 
-    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>">Yeni bir metin gönder</a>
+    <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>" style="margin-bottom:5px;">Yeni bir metin gönder</a>
 </div>
 </div>
 </div>
