@@ -35,7 +35,8 @@
 
 			$this->data['header_image'] = $this->topic_model->retrieve_topic(urldecode($this->uri->segment(2)))['header_image'];
 			if (!empty($this->data['link_item']['url'])) {
-				$this->data['og_image'] = $this->data['link_item']['picurl'];
+				$ext = pathinfo(parse_url($this->data['link_item']['picurl'], PHP_URL_PATH), PATHINFO_EXTENSION);
+				$this->data['og_image'] = base_url('assets/img/link_thumbnails/'.$id.'_thumb.'.$ext);
 			} else {
 				$this->data['og_image'] = base_url('assets/img/icons/1715-rect.png');
 			}

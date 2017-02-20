@@ -26,8 +26,10 @@
 						<div class="middle">
                             <?php if (empty($link_item['url'])) { ?>
                             	<a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><div class="link-thumbnail" style="background-image: url('<?php echo base_url('assets/img/icons/17837-rect.png');?>');"></div></a>
-    						<?php } else { ?>
-    							<a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715-rect.png'); else echo $link_item['picurl'];?>');"></div></a>
+    						<?php } else {
+                                $ext = pathinfo(parse_url($link_item['picurl'], PHP_URL_PATH), PATHINFO_EXTENSION);
+                                ?>
+    							<a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715-rect.png'); else echo base_url('assets/img/link_thumbnails/'.$link_item['id'].'_thumb.'.$ext);?>');"></div></a>
     						<?php }?>
 						</div>
 
