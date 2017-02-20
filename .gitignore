@@ -3,3 +3,7 @@
 */logs/!index.html
 */cache/*
 */cache/!index.html
+/assets/img/topics/*
+!/assets/img/topics/.gitkeep
+/assets/img/link_thumbnails/*
+!/assets/img/link_thumbnails/.gitkeep

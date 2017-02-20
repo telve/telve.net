@@ -441,6 +441,13 @@
 			return $query->result_array();
 		}
 
+		public function retrieve_all_links() {
+			$this->db->select('id,uid,title,url,text,embed,picurl,domain,topic,created,score,comments,reported,favorited,is_link_for_union');
+			$this->db->from('link');
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
 		public function increase_topic_reported()
 		{
             $this->db->where('name',$this->input->post('name'));
