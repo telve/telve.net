@@ -272,3 +272,7 @@ table.submit-form {
     margin-bottom: 5px;
     text-align: center;
 }
+
+.span8 {
+    width: 64% !important;
+}
