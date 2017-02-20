@@ -33,8 +33,9 @@
 
 			$topic_item = $this->topic_model->retrieve_topic($topic);
 			if (!empty($topic_item['header_image'])) {
-				$this->data['header_image'] = $topic_item['header_image'];
-				$this->data['og_image'] = $topic_item['header_image'];
+				$ext = pathinfo(parse_url($topic_item['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
+				$this->data['header_image'] = base_url('assets/img/topics/'.$topic.'.'.$ext);
+				$this->data['og_image'] = $this->data['header_image'];
 			}
 			if (!empty($topic_item['description'])) {
 				$this->data['description'] = $topic_item['description'];

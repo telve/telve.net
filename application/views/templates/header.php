@@ -44,12 +44,16 @@
             <?php } ?>
         </script>
 
-        <?php if (!empty($header_image)) { ?>
-            <link rel="preload" as="image" href="<?php echo $header_image; ?>">
+        <?php if (!empty($header_image)) {
+            $ext = pathinfo(parse_url($header_image, PHP_URL_PATH), PATHINFO_EXTENSION);
+             ?>
+            <link rel="preload" as="image" href="<?php echo base_url('assets/img/topics/'.urldecode($this->uri->segment(2)).'.'.$ext); ?>">
         <?php } ?>
 
-        <?php if (!empty($chosen_topic['header_image'])) { ?>
-            <link rel="preload" as="image" href="<?php echo $chosen_topic['header_image']; ?>">
+        <?php if (!empty($chosen_topic['header_image'])) {
+            $ext = pathinfo(parse_url($chosen_topic['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
+            ?>
+            <link rel="preload" as="image" href="<?php echo base_url('assets/img/topics/'.urldecode($chosen_topic['topic']).'.'.$ext); ?>">
         <?php } ?>
 
     </head>

@@ -16,7 +16,8 @@
     <?php echo $login_form;?>
 
     <a href="<?php echo base_url('').'t/'.$chosen_topic['topic'].'/';?>">
-        <div class="topic-suggestion" style="background-image: url('<?php echo $chosen_topic['header_image'];?>')">
+        <?php $ext = pathinfo(parse_url($chosen_topic['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION); ?>
+        <div class="topic-suggestion" style="background-image: url('<?php echo base_url('assets/img/topics/'.urldecode($chosen_topic['topic']).'.'.$ext); ?>')">
             <span class="topic-title whiteGlow">/t/<?php echo $chosen_topic['topic'];?></span>
         </div>
     </a>
