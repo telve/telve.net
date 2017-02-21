@@ -276,3 +276,27 @@ table.submit-form {
 .span8 {
     width: 64% !important;
 }
+
+div.live-preview {
+    float: left;
+    margin-top: 158px;
+    margin-left: 5px;
+    max-width: 24%;
+}
+
+div.live-preview2 {
+    display: inline-block;;
+    vertical-align: top;
+    max-width: 50%;
+}
+
+div.live-preview3 {
+    display: inline-block;;
+    vertical-align: top;
+    margin-left: 5px;
+    max-width: 35%;
+}
+
+textarea {
+    resize: vertical;
+}

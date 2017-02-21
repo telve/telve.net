@@ -285,12 +285,20 @@ function set_reply(obj){
     if($(obj).nextAll().is("div")) {
 		$(obj).nextAll("div").children("#content").focus();
 	} else { //This can not be used directly reply_item['id']
-		replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;' placeholder='yanıtınız... Markdown formatında' /></textarea><br />"+
+		replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6 reply-textarea' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;' placeholder='yanıtınız... Markdown formatında' /></textarea><div class='live-preview3'></div><br />"+
 			"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
             '<div style="width:51%;"><a class="link-to-guide pull-right" style="font-weight:normal;" href="https://vakademi.com.tr/home/category/yazilim/markdown-kullanim-rehberi/hosgeldiniz/">Markdown rehberi</a></div>'+
             "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>gönder</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>iptal</button></div>";
 		$(obj).after(replyForm);
 		$(obj).nextAll("div").children("#content").focus();
+
+        $(document).ready(function () {
+            var md = window.markdownit(); // get a markdown instance
+            $('textarea.reply-textarea').keyup(function () {
+                var html = md.render($(this).val()); // parse the markdown into html
+                $('.live-preview3').html(html);
+            });
+        });
 	}
 }
 
@@ -600,4 +608,20 @@ function analyze_url_test(url){
 
 $('form').submit(function(){
     $(this).find(':submit').attr('disabled','disabled');
+});
+
+$(document).ready(function () {
+    var md = window.markdownit(); // get a markdown instance
+    $('textarea#text').keyup(function () {
+        var html = md.render($(this).val()); // parse the markdown into html
+        $('.live-preview').html(html);
+    });
+});
+
+$(document).ready(function () {
+    var md = window.markdownit(); // get a markdown instance
+    $('textarea#content').keyup(function () {
+        var html = md.render($(this).val()); // parse the markdown into html
+        $('.live-preview2').html(html);
+    });
 });
