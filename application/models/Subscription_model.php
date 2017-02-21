@@ -66,7 +66,8 @@
 			$this->db->update('topic');
 		}
 
-		public function retrieve_subscriptions($rows,$offset) {
+		public function retrieve_subscriptions($rows,$offset)
+		{
 			$this->db->where('username',$this->session->userdata('username'));
             $this->db->select('id');
             $this->db->limit(1);
@@ -84,7 +85,8 @@
 			return $query->result_array();
 		}
 
-		public function retrieve_only_subscribed() {
+		public function retrieve_only_subscribed()
+		{
 			$this->db->where('username',$this->session->userdata('username'));
             $this->db->select('id');
             $this->db->limit(1);

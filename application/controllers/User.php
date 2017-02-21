@@ -188,7 +188,6 @@
 
         public function logout()
         {
-
             $this->session->sess_destroy();
 			redirect(''); //default: hot/index
         }
