@@ -238,10 +238,11 @@ $(document).ready(function(){
                 success: function(data){
 
                     if (data == 1) {
+                        var md = window.markdownit(); // get a markdown instance
                         $("#content").val('');
                         update_reply = "<!--One reply from the reply tree of this post-->\
                         <div>\
-        				<div class='row-fluid' style='font-weight: bold;'>\
+        				<div class='row-fluid'>\
         \
         					<div class='span12'>\
         						<style>\
@@ -259,7 +260,7 @@ $(document).ready(function(){
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\
         \
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + content + "</span>\
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + md.render(content) + "</span>\
                                     <!--<input type='hidden' class='show' value='0'/>-->\
         						</div>\
         \
@@ -270,6 +271,10 @@ $(document).ready(function(){
         				</div>\
         				<!--One reply from the reply tree of this post-->";
                         $("#update_reply").html(update_reply);
+                        alertify.success('Yorumunuz başarıyla gönderildi.');
+                        setTimeout(function(){
+                            location.reload();
+                        }, 2000);
                     } else {
                         alertify.error(data);
                     }
@@ -322,7 +327,7 @@ function submit_comment_reply(obj){
                 success:function(data){
 
                     if (data == 1) {
-
+                        var md = window.markdownit(); // get a markdown instance
                         update_reply = "<!--One reply from the reply tree of this post-->\
                         <ul style='list-style-type:none'><li><!--Draw a dividing line-->\
 				            <div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'> </div>\
@@ -343,8 +348,7 @@ function submit_comment_reply(obj){
         						</div>\
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\
-        \
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + content + "</span>\
+                                    <span>" + md.render(content) + "</span>\
                                     <!--<input type='hidden' class='show' value='0'/>-->\
         						</div>\
         \
@@ -354,8 +358,12 @@ function submit_comment_reply(obj){
         \
         				</div></li></ul>\
         				<!--One reply from the reply tree of this post-->";
-                        $(obj).parent().after(update_reply);
+                        $(obj).parent().parent().after(update_reply);
                         $(obj).parent().hide();
+                        alertify.success('Yanıtınız başarıyla gönderildi.');
+                        setTimeout(function(){
+                            location.reload();
+                        }, 2000);
                     } else {
                         alertify.error(data);
                     }

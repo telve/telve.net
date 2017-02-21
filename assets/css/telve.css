@@ -295,8 +295,14 @@ div.live-preview3 {
     vertical-align: top;
     margin-left: 5px;
     max-width: 35%;
+    font-weight: normal;
+    color: #000;
 }
 
 textarea {
     resize: vertical;
+}
+
+div.hide_content {
+    display: inline-flex;
 }

@@ -267,8 +267,8 @@
 								(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
 						</div>
 
+						<a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 						<div class='hide_content' style='margin-bottom:6px;'>
-                            <a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
                             <span style='display:inline-block;'>".markdown($row['content'])."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
