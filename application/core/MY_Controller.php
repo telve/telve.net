@@ -116,7 +116,7 @@
 				if ($this->uri->segment(1) == 't') {
 						do {
 								$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
-						} while ( $this->data['chosen_topic'] == $this->uri->segment(2) );
+						} while ( $this->data['chosen_topic'] == urldecode($this->uri->segment(2)) );
 				} else {
 						$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
 				}

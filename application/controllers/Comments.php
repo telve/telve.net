@@ -33,7 +33,8 @@
 
 			$this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];
 
-			$this->data['header_image'] = $this->topic_model->retrieve_topic(urldecode($this->uri->segment(2)))['header_image'];
+			$ext = pathinfo(parse_url($this->topic_model->retrieve_topic(urldecode($this->uri->segment(2)))['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
+			$this->data['header_image'] = base_url('assets/img/topics/'.urldecode($this->uri->segment(2)).'.'.$ext);
 			if (!empty($this->data['link_item']['url'])) {
 				$ext = pathinfo(parse_url($this->data['link_item']['picurl'], PHP_URL_PATH), PATHINFO_EXTENSION);
 				$this->data['og_image'] = base_url('assets/img/link_thumbnails/'.$id.'_thumb.'.$ext);
