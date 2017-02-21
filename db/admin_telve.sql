@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 31, 2017 at 10:45 AM
--- Server version: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.13-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 21, 2017 at 05:07 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,6 +69,18 @@ CREATE TABLE `link` (
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset`
+--
+
+CREATE TABLE `password_reset` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -228,6 +240,12 @@ ALTER TABLE `link` ADD FULLTEXT KEY `text` (`text`);
 ALTER TABLE `link` ADD FULLTEXT KEY `domain` (`domain`);
 ALTER TABLE `link` ADD FULLTEXT KEY `url` (`url`);
 ALTER TABLE `link` ADD FULLTEXT KEY `topic` (`topic`);
+
+--
+-- Indexes for table `password_reset`
+--
+ALTER TABLE `password_reset`
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `reply`

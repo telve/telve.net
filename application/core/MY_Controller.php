@@ -112,12 +112,16 @@
 
 			$this->data['all_topics'] = $this->link_model->retrieve_all_topics();
 
-			if ($this->uri->segment(1) == 't') {
-					do {
-							$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
-					} while ( $this->data['chosen_topic'] == $this->uri->segment(2) );
+			if ($this->data['all_topics']) {
+				if ($this->uri->segment(1) == 't') {
+						do {
+								$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
+						} while ( $this->data['chosen_topic'] == $this->uri->segment(2) );
+				} else {
+						$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
+				}
 			} else {
-					$this->data['chosen_topic'] = $this->data['all_topics'][array_rand($this->data['all_topics'])];
+				$this->data['chosen_topic'] = null;
 			}
 
 		}

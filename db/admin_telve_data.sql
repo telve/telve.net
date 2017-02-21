@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 23, 2017 at 01:46 AM
--- Server version: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.13-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 21, 2017 at 05:05 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -98,7 +98,7 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (5, 1, 'iPhone 10 yaşında: Apple’ın en önemli ürününün görsel tarihi', 'http://www.teknoblog.com/iphone-10-yasinda-140170/', 'iPhone 10 yıl önce tanıtıldığında yeni bir dönemin kapılarını açmıştı. iPhone\'un 10 yıllık yolculuğunun adımlarını sizler için bir kez daha sıraladık.', NULL, 'http://static.teknoblog.com/wp-content/uploads/2017/01/steve-jobs-iphone-110117.jpg', 'www.teknoblog.com', 'TEKNOLOJİ', '2017-01-20 03:53:31', -1, 0, 1, 0, 1),
 (6, 1, 'Çin, Saniyede Milyarlarca İşlem Yapabilen Dünyanın İlk Süper Bilgisayarını Yapıyor!', 'http://www.webtekno.com/cin-dunyanin-ilk-saniyede-milyarlarca-islem-yapabilen-super-bilgisayarini-yapiyor-h24317.html', 'Çin, 2017 bitmeden saniyede milyarlarca işlem yapabilen dünyanın ilk exa ölçekli süper bilgisayar prototipini yapmayı planlıyor.', NULL, 'http://www.webtekno.com//images/editor/default/0001/09/b226776d500d71c0c2fa775d5922672b59812b4c.jpeg', 'www.webtekno.com', 'TEKNOLOJİ', '2017-01-20 03:55:47', 0, 0, 0, 0, 1),
 (7, 1, 'Türk Hava Yolları\'nın Yeni Reklam Yüzü Dünya Yıldızı Morgan Freeman Oldu!', 'http://www.webtekno.com/turk-hava-yollari-nin-yeni-reklam-yuzu-dunya-yildizi-morgan-freeman-oldu-h24330.html', 'Türk Hava Yolları, 800 milyon kişinin izlediği Super Bowl finalindeki reklamı için dünyaca ünlü oyuncu Morgan Freeman ile anlaştı.', NULL, 'http://cdn.webtekno.com/media/cache/content_detail_v2/article/24330/turk-hava-yollari-nin-yeni-reklam-yuzu-dunya-yildizi-morgan-freeman-oldu-1484853694.jpg', 'www.webtekno.com', 'HABER', '2017-01-20 03:57:08', 0, 0, 0, 0, 1),
-(8, 1, 'CIA, UFO Kayıtları ve Psişik Deneylerin Bulunduğu Dosyaları Yayınladı!', 'http://www.webtekno.com/cia-ufo-kayitlari-ve-psisik-deneylerin-bulundugu-dosyalari-yayinladi-h24331.html', 'CIA\'in bir süre önce yayınladığını 13 milyon sayfadan oluşan dosyalarda oldukça ilgi çekici şeyler mevcut.', NULL, 'http://www.webtekno.com//images/editor/default/0001/09/9f77c3347ae303b3ebd7c2241be29b7ebf1aadc6.jpeg', 'www.webtekno.com', 'HABER', '2017-01-20 03:57:51', 0, 1, 0, 0, 1),
+(8, 1, 'CIA, UFO Kayıtları ve Psişik Deneylerin Bulunduğu Dosyaları Yayınladı!', 'http://www.webtekno.com/cia-ufo-kayitlari-ve-psisik-deneylerin-bulundugu-dosyalari-yayinladi-h24331.html', 'CIA\'in bir süre önce yayınladığını 13 milyon sayfadan oluşan dosyalarda oldukça ilgi çekici şeyler mevcut.', NULL, 'http://www.webtekno.com//images/editor/default/0001/09/9f77c3347ae303b3ebd7c2241be29b7ebf1aadc6.jpeg', 'www.webtekno.com', 'HABER', '2017-01-20 03:57:51', 0, 1, 1, 0, 1),
 (9, 1, 'Logan Filminden Vizyon Öncesi Son Fragman Geldi! - Haberler - Beyazperde', 'http://www.beyazperde.com/haberler/filmler/haberler-77177/', 'Merakla beklenen X-Men spin-offu 3 Mart 2017 tarihinde ülkemize uğrayacak!', NULL, 'http://tr.web.img3.acsta.net/newsv7/17/01/19/22/02/031987.jpg', 'www.beyazperde.com', 'SİNEMA', '2017-01-20 04:00:29', 1, 0, 0, 0, 1),
 (10, 1, 'Simge\'nin \'Prens ve Prenses\'i  - Müzik Haber - PowerTürk', 'http://www.powerturk.com/muzik/muzik-haber/simge-nin-prens-ve-prenses-i.html', 'Müzikseverlerin \'Miş Miş\' ve \'Yankı\' ile beğenisini kazanan ve bu şarkılar ile birçok...', NULL, 'http://asset.powerturk.com/u/img/a/s/i/simge-17kucuk-1484036422.jpg', 'www.powerturk.com', 'MÜZİK', '2017-01-20 05:46:20', 0, 0, 0, 0, 1),
 (11, 1, 'AYDİLGE / KİRALIK AŞK -  Sen misin İlacım? KLİP - YouTube', 'https://www.youtube.com/watch?v=qBBIKdD2fo8', 'Yapım: Ortaks Yapım Söz-Müzik-Yorum: Aydilge Düzenleme: Alen Konakoğlu Yönetmen: Devrim Yalçın Sen misin İlacım? Yağmur dinmiyorsa Yollar bitmiyorsa Sen üzül...', '<iframe width="560" height="315" src="https://www.youtube.com/embed/qBBIKdD2fo8" frameborder="0" allowfullscreen></iframe>', 'https://i.ytimg.com/vi/qBBIKdD2fo8/maxresdefault.jpg', 'www.youtube.com', 'MÜZİK', '2017-01-20 05:52:31', 0, 0, 0, 0, 1),
@@ -134,11 +134,35 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (41, 2, 'Cem Yılmaz kar yağarken iş başında', 'https://www.facebook.com/CMYLMZ/photos/pb.96803912019.-2207520000.1485098706./10154890471522020/?type=3&theater', NULL, '<div id="fb-root"></div>\n<script>(function(d, s, id) {\n  var js, fjs = d.getElementsByTagName(s)[0];\n  if (d.getElementById(id)) return;\n  js = d.createElement(s); js.id = id;\n  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.3";\n  fjs.parentNode.insertBefore(js, fjs);\n}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-post" data-href="https://www.facebook.com/CMYLMZ/photos/pb.96803912019.-2207520000.1485098706./10154890471522020/?type=3" data-width="552"><blockquote cite="https://www.facebook.com/CMYLMZ/posts/10154890471522020:0" class="fb-xfbml-parse-ignore"><p>http://instagram.com/cmylmz/</p><a href="https://www.facebook.com/CMYLMZ/">Cem Yılmaz</a> paylaştı:&nbsp;<a href="https://www.facebook.com/CMYLMZ/posts/10154890471522020:0">9 Ocak 2017 Pazartesi</a></blockquote></div>', 'https://www.facebook.com/images/fb_icon_325x325.png', 'www.facebook.com', 'RESİM', '2017-01-22 18:27:02', 0, 0, 0, 0, 1),
 (42, 2, 'Köpekle turta surat oyunu oynuyor xD', 'https://www.facebook.com/FunnyVideosbyDiply/videos/1849327055117902/', NULL, '<div id="fb-root"></div>\n<script>(function(d, s, id) {\n  var js, fjs = d.getElementsByTagName(s)[0];\n  if (d.getElementById(id)) return;\n  js = d.createElement(s); js.id = id;\n  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.3";\n  fjs.parentNode.insertBefore(js, fjs);\n}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-video" data-href="https://www.facebook.com/FunnyVideosbyDiply/videos/1849327055117902/"><blockquote cite="https://www.facebook.com/FunnyVideosbyDiply/videos/1849327055117902/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/FunnyVideosbyDiply/videos/1849327055117902/"></a><p>Dog is def not even mad about it\n#diplymix</p><a href="https://www.facebook.com/FunnyVideosbyDiply/">Funny Videos by Diply</a> paylaştı: 13 Ocak 2017 Cuma</blockquote></div>', 'https://www.facebook.com/images/fb_icon_325x325.png', 'www.facebook.com', 'VİDEO', '2017-01-22 18:38:09', 0, 0, 0, 0, 1),
 (43, 2, 'İstanbul\'da Gezilecek Yerler (Detaylı) | Gezilecek Yerler', 'http://www.gezilesiyer.com/istanbulda-gezip-gorulecek-yerler.html', 'Öncelikle Merhaba Arkadaşlar,  İstanbul\'da gezilecek yerler denince aklımıza yüzlerce yer gelebilir. Daha önce hiç İstanbul\'a gitmemiş iseniz bu sayfayı sonuna kadar izlemenizi önerebilirim. Eğer gitmiş, akrabanızın evinde kös kös oturuyor, &quot;İstanbul\'un neresini gezebilirim&quot; diyor iseniz en doğru', NULL, 'http://www.gezilesiyer.com/wp-content/uploads/2015/06/galata-kulesi-2.jpg', 'www.gezilesiyer.com', 'İSTANBUL', '2017-01-22 20:40:49', 0, 0, 0, 0, 1),
-(44, 2, '20 TL’ye Ankara\'da Yapılacak 40 Güzel Şey - Geziko', 'http://www.geziko.com/blog/20-tlye-ankarada-yapilacak-40-guzel-sey/', NULL, NULL, 'http://www.geziko.com/blog/wp-content/uploads/2016/01/02-Hamamo%E2%95%A0%C3%AAnu%E2%95%A0%C3%AA-1200x797.jpg', 'www.geziko.com', 'ANKARA', '2017-01-22 20:52:31', 0, 0, 0, 0, 1),
+(44, 2, '20 TL’ye Ankara\'da Yapılacak 40 Güzel Şey - Geziko', 'http://www.geziko.com/blog/20-tlye-ankarada-yapilacak-40-guzel-sey/', NULL, NULL, 'http://www.geziko.com/blog/wp-content/uploads/2016/01/02-Hamamo%E2%95%A0%C3%AAnu%E2%95%A0%C3%AA-1200x797.jpg', 'www.geziko.com', 'ANKARA', '2017-01-22 20:52:31', -1, 0, 0, 0, 1),
 (45, 2, 'Bir Ege Rüyası İzmir', 'http://www.alobilethatti.com/blog/bir-ege-ruyasi-izmir/', NULL, NULL, 'http://www.alobilethatti.com/blog/wp-content/uploads/2015/02/kemeralti-izmir.jpg', 'www.alobilethatti.com', 'İZMİR', '2017-01-22 21:13:12', 0, 0, 0, 0, 1),
 (46, 2, 'Vakıfbank liderliğini korudu | NTVSpor.net', 'http://www.ntvspor.net/voleybol/vakifbank-liderligini-korudu-58834d30f7022736e481f66c', NULL, NULL, 'http://cdn.ntvspor.net/805655b74e76481c8d23fc425630d45b.jpg?crop=0,0,941,529', 'www.ntvspor.net', 'VOLEYBOL', '2017-01-22 21:38:36', 0, 0, 0, 0, 1),
 (47, 2, 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde - İstanbul Haberleri', 'http://www.hurriyet.com.tr/fazil-say-mozart-eserleriyle-iku-sahnesinde-40320696', 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5864bc12eb10bb19dcd70048.jpg', 'www.hurriyet.com.tr', 'SANAT', '2017-01-22 21:47:25', 0, 0, 0, 0, 1),
-(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 0, 0, 0, 1);
+(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 0, 0, 0, 1),
+(49, 2, 'Spiegel’in kapağı ortalığı karıştırdı - Dünya Haberleri', 'http://www.hurriyet.com.tr/spiegelin-kapagi-ortaligi-karistirdi-40355912', 'ALMAN Der Spiegel dergisinin son sayısının kapağında ABD Başkanı Donald Trump’ı Özgürlük Heykeli’nin başını keserken gösteren görseli ortalığı karıştırdı.', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58961711c03c0e27c87d4544.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 03:31:15', 1, 0, 0, 0, 1),
+(50, 2, 'Instagram', 'https://www.instagram.com/p/BP2Imoeh5Le/', 'See this Instagram video by @5.min.crafts • 27.4k likes', '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BP2Imoeh5Le/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Unusual and brilliant ways to use straws! #5minutecrafts #lifehacks #straws</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A video posted by 5-Minute Crafts (@5.min.crafts) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-01-29T11:01:20+00:00">Jan 29, 2017 at 3:01am PST</time></p></div></blockquote><script async defer src="//platform.instagram.com/en_US/embeds.js"></script>', 'https://scontent-ams3-1.cdninstagram.com/t51.2885-15/s1080x1080/e15/fr/16124270_1349629781725096_4086208391943290880_n.jpg?ig_cache_key=MTQzODM3NDk3MDE2NTUzMTM1OA%3D%3D.2', 'www.instagram.com', 'HABER', '2017-02-05 03:38:40', 0, 0, 0, 0, 1),
+(51, 10, 'Lakabım ciğer sökücü! | Ayşe ARMAN', 'http://www.hurriyet.com.tr/yazarlar/ayse-arman/lakabim-ciger-sokucu-40355965', 'Nasıl yani? Bu, o mu? Erkeklerin korkulu rüyası... Tir tir titredikleri kadın...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5896b9bc18c7731ac4d21e62.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 07:53:29', 0, 0, 0, 0, 1),
+(52, 2, 'Cansu Dere mi Beren Saat mi - Magazin Haberleri', 'http://www.hurriyet.com.tr/cansu-dere-mi-beren-saat-mi-40370867', 'GQ ödül törenine kıyafetleriyle Beren Saat ve Cansu Dere damga vurdu. Sizce hangisi daha güzel? Stil notlarınızı alalım...Magazin Konseyi haftanın magazin olaylarını masaya yatırdı...', NULL, 'http://i.hurimg.com/i/hurriyet/75/0x0/58a9bf5618c7732f4c4e7488.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-20 07:02:47', 0, 0, 0, 0, 1),
+(53, 2, 'Markdown kod örneği', NULL, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\r\n\r\n    if (isAwesome){\r\n      return true\r\n    }\r\n\r\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\r\n\r\n```\r\nif (isAwesome){\r\n  return true\r\n}\r\n```\r\n\r\nAnd if you\'d like to use syntax highlighting, include the language:\r\n\r\n```javascript\r\nif (isAwesome){\r\n  return true\r\n}\r\n```', NULL, '', NULL, 'TEKNOLOJİ', '2017-02-21 05:25:23', 0, 6, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset`
+--
+
+CREATE TABLE `password_reset` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `password_reset`
+--
+
+INSERT INTO `password_reset` (`email`, `token`, `created`) VALUES
+('mehmetmertyildiran@gmail.com', '6377f38c527466f42ce21ce43c972e77', '2017-02-20 23:23:39');
 
 -- --------------------------------------------------------
 
@@ -168,10 +192,29 @@ CREATE TABLE `reply` (
 INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comments`, `is_parent_link`, `link_id`, `reported`, `favorited`, `is_link_for_union`) VALUES
 (1, 'haha gerçekten de sevimli bir kedicik', 1, 2, '2017-01-20 07:33:26', 1, 1, 1, 1, 0, 1, 0),
 (2, 'aynen :)', 1, 1, '2017-01-20 07:34:30', 1, 0, 0, 1, 0, 1, 0),
-(3, 'en büyük pşişik Yuri bir kere!', 8, 2, '2017-01-20 11:07:31', 1, 2, 1, 8, 0, 0, 0),
+(3, 'en büyük pşişik Yuri bir kere!', 8, 2, '2017-01-20 11:07:31', 1, 2, 1, 8, 1, 0, 0),
 (4, 'Red Alert 2 fanı tespit edildi', 3, 1, '2017-01-20 11:09:01', 1, 0, 0, 8, 0, 0, 0),
 (5, 'biri bana mı seslendi?', 3, 3, '2017-01-20 11:29:32', 1, 0, 0, 8, 1, 0, 0),
-(6, 'heralde Westeros\'u komple ele geçiriyor yeni sezon da :)', 24, 3, '2017-01-22 22:38:32', 0, 0, 1, 24, 0, 0, 0);
+(6, 'heralde Westeros\'u komple ele geçiriyor yeni sezon da :)', 24, 3, '2017-01-22 22:38:32', 0, 0, 1, 24, 0, 0, 0),
+(7, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\n\n    if (isAwesome){\n      return true\n    }\n\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\n\n```\nif (isAwesome){\n  return true\n}\n```\n\nAnd if you\'d like to use syntax highlighting, include the language:\n\n```javascript\nif (isAwesome){\n  return true\n}\n```', 53, 2, '2017-02-21 05:42:58', 0, 0, 1, 53, 0, 0, 0),
+(8, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\n\n    if (isAwesome){\n      return true\n    }\n\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\n\n```\nif (isAwesome){\n  return true\n}\n```\n\nAnd if you\'d like to use syntax highlighting, include the language:\n\n```javascript\nif (isAwesome){\n  return true\n}\n```', 53, 2, '2017-02-21 06:24:31', 0, 0, 1, 53, 0, 0, 0),
+(9, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\n\n    if (isAwesome){\n      return true\n    }\n\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\n\n```\nif (isAwesome){\n  return true\n}\n```\n\nAnd if you\'d like to use syntax highlighting, include the language:\n\n```javascript\nif (isAwesome){\n  return true\n}\n```', 53, 2, '2017-02-21 06:28:13', 0, 0, 1, 53, 0, 0, 0),
+(10, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\n\n    if (isAwesome){\n      return true\n    }\n\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\n\n```\nif (isAwesome){\n  return true\n}\n```\n\nAnd if you\'d like to use syntax highlighting, include the language:\n\n```javascript\nif (isAwesome){\n  return true\n}\n```', 53, 2, '2017-02-21 06:30:44', 0, 0, 1, 53, 0, 0, 0),
+(11, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\n\n    if (isAwesome){\n      return true\n    }\n\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\n\n```\nif (isAwesome){\n  return true\n}\n```\n\nAnd if you\'d like to use syntax highlighting, include the language:\n\n```javascript\nif (isAwesome){\n  return true\n}\n```', 53, 2, '2017-02-21 06:32:26', 0, 0, 1, 53, 0, 0, 0),
+(12, 'If you want to embed images, this is how you do it:\n\n![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)', 53, 2, '2017-02-21 06:35:36', 0, 5, 1, 53, 0, 0, 0),
+(13, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - And this', 12, 2, '2017-02-21 06:38:19', 0, 0, 0, 53, 0, 0, 0),
+(14, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - **And this**', 12, 2, '2017-02-21 06:41:39', 0, 1, 0, 53, 0, 0, 0),
+(15, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - And this', 12, 2, '2017-02-21 06:42:20', 0, 0, 0, 53, 0, 0, 0),
+(16, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - And this', 12, 2, '2017-02-21 06:46:22', 0, 0, 0, 53, 0, 0, 0),
+(17, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - And this', 12, 2, '2017-02-21 06:47:08', 0, 0, 0, 53, 0, 0, 0),
+(18, 'Sometimes you want numbered lists:\n\n1. One\n2. Two\n3. Three\n\nSometimes you want bullet points:\n\n* Start a line with a star\n* Profit!\n\nAlternatively,\n\n- Dashes work just as well\n- And if you have sub points, put two spaces before the dash or star:\n  - Like this\n  - And this', 14, 2, '2017-02-21 06:47:21', 0, 1, 0, 53, 0, 0, 0),
+(19, 'http://github.com - automatic!\n[GitHub](http://github.com)', 18, 2, '2017-02-21 06:48:27', 0, 1, 0, 53, 0, 0, 0),
+(20, 'http://github.com - automatic!\n[GitHub](http://github.com)', 19, 2, '2017-02-21 06:49:09', 0, 1, 0, 53, 0, 0, 0),
+(21, 'http://github.com - automatic!\n[GitHub](http://github.com)', 20, 2, '2017-02-21 06:51:11', 0, 2, 0, 53, 0, 0, 0),
+(22, 'As Kanye West said:\n\n> We\'re living the future so\n> the present is our past.', 21, 2, '2017-02-21 06:51:45', 0, 1, 0, 53, 0, 0, 0),
+(23, 'http://github.com - automatic!\n[GitHub](http://github.com)', 21, 2, '2017-02-21 06:52:04', 0, 1, 0, 53, 0, 0, 0),
+(24, 'http://github.com - automatic!\n[GitHub](http://github.com)', 23, 2, '2017-02-21 06:52:22', 0, 0, 0, 53, 0, 0, 0),
+(25, 'I think you should use an\n`<addr>` element here instead.', 22, 2, '2017-02-21 07:01:57', 0, 0, 0, 53, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -191,7 +234,8 @@ CREATE TABLE `report_link` (
 --
 
 INSERT INTO `report_link` (`id`, `uid`, `link_id`, `created`) VALUES
-(1, 2, 5, '2017-01-20 11:12:19');
+(1, 2, 5, '2017-01-20 11:12:19'),
+(2, 2, 8, '2017-02-21 02:45:29');
 
 -- --------------------------------------------------------
 
@@ -211,7 +255,8 @@ CREATE TABLE `report_reply` (
 --
 
 INSERT INTO `report_reply` (`id`, `uid`, `reply_id`, `created`) VALUES
-(1, 2, 5, '2017-01-20 11:30:37');
+(1, 2, 5, '2017-01-20 11:30:37'),
+(2, 2, 3, '2017-02-21 02:45:09');
 
 -- --------------------------------------------------------
 
@@ -254,7 +299,10 @@ INSERT INTO `subscription` (`id`, `uid`, `topic`, `created`) VALUES
 (1, 3, 'HABER', '2017-01-20 11:31:18'),
 (2, 3, 'TEKNOLOJİ', '2017-01-20 11:31:57'),
 (3, 3, 'VİDEO', '2017-01-20 11:31:59'),
-(4, 3, 'KOMİK', '2017-01-20 11:32:03');
+(4, 3, 'KOMİK', '2017-01-20 11:32:03'),
+(6, 2, 'HABER', '2017-02-21 02:44:49'),
+(7, 2, 'SORU', '2017-02-21 02:44:50'),
+(8, 2, 'VİDEO', '2017-02-21 02:44:51');
 
 -- --------------------------------------------------------
 
@@ -278,16 +326,16 @@ CREATE TABLE `topic` (
 
 INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `creator_uid`, `reported`, `created`) VALUES
 ('RESİM', 'Bu konu altında direk resim linkleri paylaşılır. Örneğin bir kedi fotoğrafı :D', 0, 'https://3b0ad08da0832cf37cf5-435f6e4c96078b01f281ebf62986b022.ssl.cf3.rackcdn.com/articles/content/Catteries-and-Cat%20Sitting-Services.jpg', 1, 0, '2017-01-20 03:09:34'),
-('HABER', 'Bu konu altında en güncel haberleri bulabilirsiniz.', 1, 'http://farm9.staticflickr.com/8228/8434207887_1eb86f546e_o.jpg', 1, 0, '2017-01-20 03:17:49'),
+('HABER', 'Bu konu altında en güncel haberleri bulabilirsiniz.', 2, 'http://farm9.staticflickr.com/8228/8434207887_1eb86f546e_o.jpg', 1, 0, '2017-01-20 03:17:49'),
 ('YEMEK', 'En güzel yemek tariflerini ve en özel restoranları bulabilirsiniz.', 0, 'https://www.westindiessoul.com/wp-content/uploads/2014/06/banner03.jpg', 1, 1, '2017-01-20 03:33:25'),
 ('KOMİK', 'Her türlü komik içeriğin paylaşılması şiddetle şiddetle tavsiye edilir.', 1, 'https://lh4.googleusercontent.com/-4DUyyZvKaKA/UsCOHaIufFI/AAAAAAAAAEU/xRMrY0AAAmQ/s0-d/meme_collage.jpg', 1, 0, '2017-01-20 03:50:13'),
 ('TEKNOLOJİ', 'Yarının teknolojiisinden haberiniz olsun.', 1, 'http://www.fixxit.co.ke/fix/fixiit/images/nootheme/vidavo_slider/technology_2560-x-720.jpg', 1, 0, '2017-01-20 03:53:31'),
 ('SİNEMA', 'Vizyondaki filmler, eleştiriler, yorumlar ve daha fazlası...', 0, 'http://www.smarto.com.tr/wp-content/uploads/2015/04/sinema-cinema-istanbul.jpg', 1, 0, '2017-01-20 04:00:29'),
 ('MÜZİK', 'Karışık MP3 CD 2016', 0, 'http://az616578.vo.msecnd.net/files/2016/07/31/6360553665687961831595419134_concertsfandom.jpg', 1, 0, '2017-01-20 05:46:20'),
-('VİDEO', '%90!ı YouTube\'tan ibaret olan konu.', 1, 'http://jimroyal.com/wp-content/uploads/2016/08/Videos.jpg', 1, 0, '2017-01-20 06:06:42'),
+('VİDEO', '%90!ı YouTube\'tan ibaret olan konu.', 2, 'http://jimroyal.com/wp-content/uploads/2016/08/Videos.jpg', 1, 0, '2017-01-20 06:06:42'),
 ('GİF', 'Animasyonlu mu animasyonlu içerikler.', 0, 'https://media.giphy.com/media/6quIvmJFMH7Wg/giphy.gif', 1, 0, '2017-01-21 10:21:04'),
 ('OYUN', 'PC Gamers vs Console Peasants', 0, 'http://wallpapercave.com/wp/xS571ba.jpg', 1, 0, '2017-01-21 10:24:17'),
-('SORU', 'Bu konu altında aklınıza gelen her türlü soruyu sorabilirsiniz.', 0, 'https://static.vecteezy.com/system/resources/previews/000/092/726/original/question-mark-background-vector.jpg', 1, 0, '2017-01-21 10:33:44'),
+('SORU', 'Bu konu altında aklınıza gelen her türlü soruyu sorabilirsiniz.', 1, 'https://static.vecteezy.com/system/resources/previews/000/092/726/original/question-mark-background-vector.jpg', 1, 0, '2017-01-21 10:33:44'),
 ('ÜNİVERSİTE', 'Üniversite öğrencileri, şenlikler, konserler, eğlence gırgır şamata sonra vize, final, büt vs 8 sene', 0, 'http://bestpopular.biz/uploads/images/bwe0bl20160225113501.jpg', 1, 0, '2017-01-22 12:26:27'),
 ('FUTBOL', 'Ofsaytı bilmeyenlerin giremeyeği ortam', 0, 'https://targetcareers.co.uk/sites/targetcareers.co.uk/files/public/field/image/football.jpg', 1, 0, '2017-01-22 12:33:31'),
 ('BASKETBOL', 'NBA All Stars', 0, 'https://www.spaldingequipment.com/filesimages/image-header/basketball-freethrow.jpg', 1, 0, '2017-01-22 12:34:48'),
@@ -319,7 +367,17 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `karma`, `created`) VALUES
 (1, 'admin', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'admin@telve.net', 0, '2017-01-20 01:58:01'),
 (2, 'moderator', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'moderator@telve.net', 0, '2017-01-20 07:17:32'),
-(3, 'yuri', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'yuri@telve.net', 0, '2017-01-20 11:28:40');
+(3, 'yuri', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'yuri@telve.net', 0, '2017-01-20 11:28:40'),
+(4, 'testuser1', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser1@gmail.com', 0, '2017-02-05 07:25:06'),
+(5, 'testuser2', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser2@gmail.com', 0, '2017-02-05 07:25:55'),
+(6, 'testuser3', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser3@gmail.com', 0, '2017-02-05 07:28:41'),
+(7, 'testuser4', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser4@gmail.com', 0, '2017-02-05 07:29:05'),
+(8, 'testuser5', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser5@gmail.com', 0, '2017-02-05 07:47:15'),
+(9, 'testuser6', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser6@gmail.com', 0, '2017-02-05 07:47:49'),
+(10, 'testuser7', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser7@gmail.com', 0, '2017-02-05 07:48:31'),
+(11, 'testuser8', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'testuser8@gmail.com', 0, '2017-02-05 07:51:16'),
+(12, 'exampleuser2', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'exampleuser2@gmail.com', 0, '2017-02-19 16:50:23'),
+(29, 'mertyildiran', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', 'mehmetmertyildiran@gmail.com', 0, '2017-02-20 00:41:02');
 
 -- --------------------------------------------------------
 
@@ -344,7 +402,9 @@ INSERT INTO `vote_link` (`id`, `uid`, `link_id`, `up_down`, `created`) VALUES
 (2, 2, 5, 0, '2017-01-20 07:21:04'),
 (3, 2, 24, 1, '2017-01-22 22:28:31'),
 (4, 1, 24, 1, '2017-01-22 22:28:51'),
-(5, 3, 24, 1, '2017-01-22 22:29:18');
+(5, 3, 24, 1, '2017-01-22 22:29:18'),
+(6, 2, 49, 1, '2017-02-21 02:38:18'),
+(7, 2, 44, 0, '2017-02-21 02:38:51');
 
 -- --------------------------------------------------------
 
@@ -397,6 +457,12 @@ ALTER TABLE `link` ADD FULLTEXT KEY `text` (`text`);
 ALTER TABLE `link` ADD FULLTEXT KEY `domain` (`domain`);
 ALTER TABLE `link` ADD FULLTEXT KEY `url` (`url`);
 ALTER TABLE `link` ADD FULLTEXT KEY `topic` (`topic`);
+
+--
+-- Indexes for table `password_reset`
+--
+ALTER TABLE `password_reset`
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `reply`
@@ -467,27 +533,27 @@ ALTER TABLE `favourite_link`
 -- AUTO_INCREMENT for table `favourite_reply`
 --
 ALTER TABLE `favourite_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `report_link`
 --
 ALTER TABLE `report_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `report_reply`
 --
 ALTER TABLE `report_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `report_topic`
 --
@@ -497,17 +563,17 @@ ALTER TABLE `report_topic`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `vote_link`
 --
 ALTER TABLE `vote_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `vote_reply`
 --
