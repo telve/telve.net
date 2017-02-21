@@ -37,7 +37,7 @@
                     <td>
                         <label for="passconf">Şifrenizi doğrulayın</label>
             			<input type="password" name="passconf" value="<?php echo set_value('passconf');?>" placeholder="belirlediğiniz şifreyi tekrar girin"/><br />
-            			<div style="color:red;"><?php echo form_error('passconf');?></div>
+            			<div style="color:red;"><?php echo form_error('passconf');?></div><br />
                     </td>
                 </tr>
                 </table>

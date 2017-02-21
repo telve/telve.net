@@ -50,7 +50,7 @@ function up(id){
                        var parent = $('#up-'+id)[0];
                        $('i', parent).css('color', 'green');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -68,7 +68,7 @@ function down(id){
                        var parent = $('#down-'+id)[0];
                        $('i', parent).css('color', 'red');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -153,7 +153,7 @@ function up_on_view(obj){
                        $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())+1);
                        $('i', obj).css('color', 'green');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -170,7 +170,7 @@ function down_on_view(obj){
                        $("#link-score-"+obj.id).html(parseInt($("#link-score-"+obj.id).html())-1);
                        $('i', obj).css('color', 'red');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -191,7 +191,7 @@ function rply_up(obj){
                       $("#reply-score-"+obj.id).html(parseInt($("#reply-score-"+obj.id).html())+1);
                       $('i', obj).css('color', 'green');
                   } else {
-                      alert(data);
+                      alertify.warning(data);
                   }
                }
         });
@@ -211,7 +211,7 @@ function rply_down(obj){
                       $("#reply-score-"+obj.id).html(parseInt($("#reply-score-"+obj.id).html())-1);
                       $('i', obj).css('color', 'red');
                   } else {
-                      alert(data);
+                      alertify.warning(data);
                   }
                }
         });
@@ -271,7 +271,7 @@ $(document).ready(function(){
         				<!--One reply from the reply tree of this post-->";
                         $("#update_reply").html(update_reply);
                     } else {
-                        alert(data);
+                        alertify.error(data);
                     }
                 }
             });
@@ -349,7 +349,7 @@ function submit_comment_reply(obj){
                         $(obj).parent().after(update_reply);
                         $(obj).parent().hide();
                     } else {
-                        alert(data);
+                        alertify.error(data);
                     }
                 }
         });
@@ -391,7 +391,7 @@ $(document).ready(function(){
             url: base_url + 'submit/get_title',
             data:{'url':url},
             error: function(xhr, status, error) {
-                alert('HATA OLUŞTU: ' + xhr.responseText);
+                alertify.error('HATA OLUŞTU: ' + xhr.responseText);
             },
             success: function(data){
                 //alert(data);
@@ -411,7 +411,7 @@ $(document).ready(function(){
             url: base_url + 'user/is_username_available',
             data: { 'username': username },
             error: function(xhr, status, error) {
-                alert('HATA OLUŞTU: ' + xhr.responseText);
+                alertify.error('HATA OLUŞTU: ' + xhr.responseText);
             },
             success: function(msg) {
                 $("#chk_msg").html(msg);
@@ -441,7 +441,7 @@ function subscribe(obj){
                        $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-danger');
                        $('a.btn#'+obj.id).attr('onclick', 'unsubscribe(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -459,7 +459,7 @@ function unsubscribe(obj){
                        $('a.btn#'+obj.id).attr('class', 'btn btn-small btn-success');
                        $('a.btn#'+obj.id).attr('onclick', 'subscribe(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -475,9 +475,9 @@ function report_topic(topic_name) {
                data: { 'name' : topic_name },
                success: function(data) {
                    if (data == 1) {
-                       alert(topic_name + ' konusuyla ilgili şikayetiniz alındı.')
+                       alertify.warning(topic_name + ' konusuyla ilgili şikayetiniz alındı.')
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -491,9 +491,9 @@ function report_link(link_id) {
                data: { 'id' : link_id },
                success: function(data) {
                    if (data[0] == '1') {
-                       alert('"' + data.substring(2) + '" başlıklı paylaşımla ilgili şikayetiniz alındı.')
+                       alertify.warning('"' + data.substring(2) + '" başlıklı paylaşımla ilgili şikayetiniz alındı.')
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -507,9 +507,9 @@ function report_reply(reply_id) {
                data: { 'id' : reply_id },
                success: function(data) {
                    if (data[0] == '1') {
-                       alert('"' + data.substring(2) + '" isimli kullanıcının yorumu/yanıtı ile ilgili şikayetiniz alındı.')
+                       alertify.warning('"' + data.substring(2) + '" isimli kullanıcının yorumu/yanıtı ile ilgili şikayetiniz alındı.')
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -528,7 +528,7 @@ function favourite_link(obj) {
                        $(obj).html('favori<span class="glyphicon glyphicon-star" style="font-size:13px;"></span>');
                        $(obj).attr('onclick', 'unfavourite_link(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -545,7 +545,7 @@ function unfavourite_link(obj) {
                        $(obj).html('favori<span class="glyphicon glyphicon-star-empty" style="font-size:13px;"></span>');
                        $(obj).attr('onclick', 'favourite_link(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -562,7 +562,7 @@ function favourite_reply(obj) {
                        $(obj).html('favori<span class="glyphicon glyphicon-star"></span>');
                        $(obj).attr('onclick', 'unfavourite_reply(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
@@ -579,7 +579,7 @@ function unfavourite_reply(obj) {
                        $(obj).html('favori<span class="glyphicon glyphicon-star-empty"></span>');
                        $(obj).attr('onclick', 'favourite_reply(this);');
                    } else {
-                       alert(data);
+                       alertify.warning(data);
                    }
                }
         });
