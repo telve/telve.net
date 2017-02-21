@@ -269,6 +269,23 @@
 			return $this->db->update('user',$data);
 		}
 
+		public function change_password()
+		{
+			$this->db->where('username',$this->session->userdata('username'));
+			$data = array(
+                'password' => md5($this->input->post('password'))
+            );
+			return $this->db->update('user',$data);
+		}
+
+		public function retrieve_username($email)
+		{
+			$this->db->select('username');
+			$this->db->where('email',$email);
+			$query = $this->db->get('user');
+			return $query->row_array()['username'];
+		}
+
 		private function hash_multirow($multirow) {
 			foreach ($multirow as &$row) {
 				$row['id'] = $this->hashids->encode($row['id']);

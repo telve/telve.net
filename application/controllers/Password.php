@@ -38,6 +38,8 @@ class Password extends MY_Controller {
 				<br><br>
 				<a href='http://telve.net/sifre-sifirla?token=".$token."'>http://telve.net/sifre-sifirla?token=".$token."</a>
 				<br><br>
+                Kullanıcı adınız: ".$this->user_model->retrieve_username($this->input->post('email'))."
+                <br><br>
 				<a href='http://telve.net/sifre-sifirla?token=".$token."'><img width='200px' src='http://telve.net/assets/img/logo/twitter-logo.png'/></a>
 				<br><br>
 				<i>*Bu e-postaya cevap yazmanıza gerek yoktur.</i>";
