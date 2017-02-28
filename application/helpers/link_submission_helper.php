@@ -136,6 +136,31 @@ function analyze_url($url) {
         $embed = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $embed);
     }
 
+    if ( endsWith($parsed['host'],'9gag.com') && ($segment[1] == 'gag') ) {
+
+        $handle = curl_init("http://img-9gag-fun.9cache.com/photo/".$segment[2]."_460sv.mp4");
+        curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+
+        /* Get the HTML or whatever is linked in $url. */
+        $response = curl_exec($handle);
+
+        /* Check for 404 (file not found). */
+        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+        if($httpCode == 404) {
+            /* Handle 404 here. */
+            $embed = '<img src="'.'http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460s.jpg'.'"/>';
+            return [$html->find('meta[property=og:image]',0)->content,'',$embed];
+        }
+
+        curl_close($handle);
+
+        /* Handle $response here. */
+        $embed = '<video width="500" loop autoplay="autoplay">
+                    <source src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460sv.mp4" type="video/mp4" />
+                </video>';
+        return [$html->find('meta[property=og:image]',0)->content,'',$embed];
+    }
+
     if ($html->find('meta[property=og:image]')) {
         return [$html->find('meta[property=og:image]',0)->content,$description,$embed];
     }
