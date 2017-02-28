@@ -633,3 +633,15 @@ $(document).ready(function () {
         $('.live-preview2').html(html);
     });
 });
+
+$(document).ready(function() {
+    $('.video-wrapper').click(function () {
+        if($(this).children("video").get(0).paused){
+            $(this).children("video").get(0).play();
+            $(this).children(".playpause").fadeOut();
+        }else{
+           $(this).children("video").get(0).pause();
+            $(this).children(".playpause").fadeIn();
+        }
+    });
+});

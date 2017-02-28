@@ -306,3 +306,31 @@ textarea {
 div.hide_content {
     display: inline-flex;
 }
+
+.video {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.video-wrapper{
+    display:table;
+    width:auto;
+    position:relative;
+    width:50%;
+}
+
+.playpause {
+    background-image:url(/assets/img/icons/2873-200.png);
+    background-repeat:no-repeat;
+    width:50%;
+    height:50%;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size:contain;
+    background-position: center;
+    opacity: 0.75;
+}

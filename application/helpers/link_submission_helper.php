@@ -155,9 +155,12 @@ function analyze_url($url) {
         curl_close($handle);
 
         /* Handle $response here. */
-        $embed = '<video width="500" loop autoplay="autoplay">
-                    <source src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460sv.mp4" type="video/mp4" />
-                </video>';
+        $embed = '<div class="video-wrapper">
+                    <video loop muted>
+                        <source src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460sv.mp4" type="video/mp4" />
+                    </video>
+                    <div class="playpause"></div>
+                </div>';
         return [$html->find('meta[property=og:image]',0)->content,'',$embed];
     }
 
