@@ -1,4 +1,4 @@
-<div class="span3" style="float:right;margin-top:11px;width:300px;">
+<div class="span3" style="float:right;margin-top:11px;width:300px;margin-left:0px;">
     <div>
         <form action="<?php echo base_url("arama");?>" method="get" accept-charset="utf-8" style="margin:0;">
             <?php if ( isset($search_query) ) { ?>
