@@ -148,7 +148,7 @@ function analyze_url($url) {
         $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
         if($httpCode == 404) {
             /* Handle 404 here. */
-            $embed = '<img src="'.'http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460s.jpg'.'"/>';
+            $embed = '<img src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460s.jpg"/>';
             return [$html->find('meta[property=og:image]',0)->content,'',$embed];
         }
 
@@ -156,7 +156,7 @@ function analyze_url($url) {
 
         /* Handle $response here. */
         $embed = '<div class="video-wrapper">
-                    <video loop muted>
+                    <video poster="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460s.jpg" loop muted>
                         <source src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460sv.mp4" type="video/mp4" />
                     </video>
                     <div class="playpause"></div>
