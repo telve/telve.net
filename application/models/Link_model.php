@@ -352,8 +352,15 @@
 			$query = $this->db->get('user');
 			$row = $query->row_array();
 
+			$content = xss_clean($this->input->post('content'));
+			$content = trim($content);
+			if (substr($content, 0, 2) == "![") {
+				$content = "GİF/Resim:\n".$content;
+			}
+			$content = str_replace("![","\n\n![",$content);
+
             $data = array(
-				'content' => xss_clean($this->input->post('content')),
+				'content' => $content,
 				'pid' => $this->hashids->decode($this->input->post('pid'))[0],
                 'uid' => $row['id'],
 				'score' => 0,
