@@ -42,7 +42,11 @@
                 </tr>
                 </table>
 
+                <br><br>
                 <button class="btn btn-primary btn-blue  pull-left" type="submit" name="submit" >Kaydet</button>
+
+                <br><br><br>
+                <a href="<?php echo base_url('aboneliklerim'); ?>">Aboneliklerimi yönet</a>
             </div>
         </div>
 

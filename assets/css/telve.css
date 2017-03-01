@@ -31,6 +31,15 @@ div.navbar-inverse a#more {
     right: 10px;
 }
 
+@media screen and (max-width:1023px) {
+    div.navbar-inverse a#more {
+        visibility: hidden;
+    }
+    div.navbar-inverse div#no-more {
+        width: 100%;
+    }
+}
+
 div.navbar-inverse a#more span.glyphicon-chevron-right {
     font-size: 13px;
 }
@@ -67,7 +76,7 @@ ul.nav-tabs#header .glyphicon {
     color: black;
     float: left;
     padding-bottom: 10px;
-    width: 66%;
+    width: calc(100% - 340px) !important;
 }
 #sidebar {
     display: none;
