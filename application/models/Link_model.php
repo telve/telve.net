@@ -354,8 +354,11 @@
 
 			$content = xss_clean($this->input->post('content'));
 			$content = trim($content);
-			if (substr($content, 0, 2) == "![") {
-				$content = "GİF/Resim:\n".$content;
+			if ( (substr($content, 0, 2) == "![") || (substr($content, 0, 1) == "#") ) {
+				$content = "&nbsp;\n".$content;
+			}
+			if (substr($content, 0, 1) == "<") {
+				$content = "&nbsp;\n\n".$content;
 			}
 			$content = str_replace("![","\n\n![",$content);
 

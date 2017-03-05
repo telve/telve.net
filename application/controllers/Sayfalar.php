@@ -116,5 +116,14 @@
 			$this->load->view('templates/footer');
 		}
 
+		public function markdown_rehberi()
+		{
+			$this->data['title'] = 'Markdown Rehberi';
+			$this->load->view('templates/header',$this->data);
+			$this->load->view('sayfalar/markdown_rehberi',$this->data);
+			$this->load->view('templates/side');
+			$this->load->view('templates/footer');
+		}
+
 	}
 ?>

@@ -3,7 +3,7 @@ div.navbar-inverse {
     text-transform: uppercase;
     border-bottom: 1px solid gray;
     height: 20px;
-    line-height: 18px;
+    /* line-height: 18px; */
     overflow: hidden;
     white-space: nowrap;
 }

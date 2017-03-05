@@ -79,7 +79,7 @@
                     <table class="table table-bordered submit-form"><tr><td>
                     <label for="text">Metin (isteğe bağlı)</label>
                     <textarea rows="5" class="span12" id="text" name="text" value="<?php echo set_value('text');?>" placeholder="gönderinin içeriği... Markdown formatında"/></textarea><br />
-                    <a class="link-to-guide pull-right" href="https://vakademi.com.tr/home/category/yazilim/markdown-kullanim-rehberi/hosgeldiniz/">Markdown rehberi</a>
+                    <a class="link-to-guide pull-right" href="<?php echo base_url('sayfalar/markdown_rehberi');?>">Markdown rehberi</a>
                     <div style="color:red"><?php echo form_error('title');?></div>
                     </td></tr></table>
 

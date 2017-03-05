@@ -126,6 +126,7 @@
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;">yardım<li>
+                    <li><a href="<?php echo base_url('sayfalar/markdown_rehberi');?>">markdown rehberi</a></li>
 					<li><a href="<?php echo base_url('sayfalar/site_kurallari');?>">site kuralları</a></li>
 					<li><a href="<?php echo base_url('sayfalar/sss');?>">SSS</a></li>
 					<li><a href="<?php echo base_url('viki');?>">viki</a></li>

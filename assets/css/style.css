@@ -373,3 +373,15 @@ div#footer-container {
         max-width: 1em;
     }
 }
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #dfe2e5;
+}
+
+th, td {
+    padding: 8px 16px;
+    border: 1px solid #dfe2e5;
+}
+
+tr:nth-child(even){background-color: #f6f8fa}

@@ -292,7 +292,7 @@ function set_reply(obj){
 	} else { //This can not be used directly reply_item['id']
 		replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6 reply-textarea' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;' placeholder='yanıtınız... Markdown formatında' /></textarea><div class='live-preview3'></div><br />"+
 			"<input type='hidden' name='pid' id='pid' value='"+obj.id+"' />"+
-            '<div style="width:51%;"><a class="link-to-guide pull-right" style="font-weight:normal;" href="https://vakademi.com.tr/home/category/yazilim/markdown-kullanim-rehberi/hosgeldiniz/">Markdown rehberi</a></div>'+
+            '<div style="width:51%;"><a class="link-to-guide pull-right" style="font-weight:normal;" href="' + base_url + 'sayfalar/markdown_rehberi' + '">Markdown rehberi</a></div>'+
             "&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>gönder</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>iptal</button></div>";
 		$(obj).after(replyForm);
 		$(obj).nextAll("div").children("#content").focus();
