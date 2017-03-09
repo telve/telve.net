@@ -76,12 +76,12 @@ ul.nav-tabs#header .glyphicon {
     color: black;
     float: left;
     padding-bottom: 10px;
-    width: calc(100% - 340px) !important;
+    width: calc(100vw - 400px);
 }
 #sidebar {
     display: none;
     float: left;
-    width: 8%;
+    width: 8vw;
     position:relative;
     overflow:hidden;
 }
@@ -99,7 +99,7 @@ ul.nav-tabs#header .glyphicon {
     float: left;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 424px 3px;
+    padding: 424px 0.2vw;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -111,10 +111,10 @@ ul.nav-tabs#header .glyphicon {
     color: #808080;
     cursor: pointer;
     float: left;
-    margin-left: 8.77vw;
+    margin-left: 9.5vw;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 424px 3px;
+    padding: 424px 0.2vw;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -128,7 +128,7 @@ ul.nav-tabs#header .glyphicon {
     float: left;
     font-family: Consolas,monospace;
     font-size: 12px;
-    padding: 424px 3px;
+    padding: 424px 0.2vw;
     text-shadow: 0 -1px #333333, 0 1px #FFFFFF;
     text-decoration:none;
 }
@@ -283,7 +283,7 @@ table.submit-form {
 }
 
 .span8 {
-    width: 64% !important;
+    width: 64%;
 }
 
 div.live-preview {

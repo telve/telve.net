@@ -24,16 +24,17 @@ function first_of_all_login() {
 
 // Sidebar (left)
 $(document).ready(function(){
+    var rightContentWidth = $('#right-content').width()
     $('.close-sidebar').click(function() {
        $('.close-sidebar').hide();
        $('.show-sidebar').show();
-       $('#right-content').animate({width: "72%"},'fast').prev().hide('fast');
+       $('#right-content').animate({width: $(window).width() - 400},'fast').prev().hide('fast');
     });
 
     $('.show-sidebar').click(function() {
        $('.show-sidebar').hide();
        $('.close-sidebar').show();
-       $('#right-content').animate({width: "64%"}, 'fast').prev().show('fast');
+       $('#right-content').animate({width: $(window).width() * 92/100 - 400}, 'fast').prev().show('fast');
     });
 });
 
