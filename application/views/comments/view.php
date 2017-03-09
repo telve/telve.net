@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row-fluid"><!-- style="background-color:#9bb;"-->
-        <div class="span8">
+        <div id="right-content" class="span8">
 
 			<!-- row-fluid > link -->
             <div class="row-fluid">

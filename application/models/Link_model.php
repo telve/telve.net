@@ -252,7 +252,7 @@
                 $res.="<!--One reply from the reply tree of this post-->
 				<div class='row-fluid'>
 
-					<div class='span12'>
+					<div class='span8'>
 						<style>
 
                         </style>

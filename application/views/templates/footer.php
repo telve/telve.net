@@ -138,6 +138,7 @@
 					<li style="font-size:16px;">mobil<li>
 					<li><a href="<?php echo base_url('sayfalar/iphone');?>">iPhone için Telve</a></li>
 					<li><a href="<?php echo base_url('sayfalar/android');?>">Android için Telve</a></li>
+          <li><a href="<?php if ($is_user_logged_in) echo base_url('aboneliklerim'); else echo base_url('konular'); ?>">tüm konular</a></li>
 				</ul>
 			</div>
 			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
