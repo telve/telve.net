@@ -38,6 +38,13 @@ div.navbar-inverse a#more {
     div.navbar-inverse div#no-more {
         width: 100%;
     }
+    #right-content {
+        width: calc(100% - 300px) !important;
+        margin-left: 0px;
+    }
+    #toggle-sidebar {
+        visibility: hidden;
+    }
 }
 
 div.navbar-inverse a#more span.glyphicon-chevron-right {
@@ -342,4 +349,12 @@ div.hide_content {
     background-size:contain;
     background-position: center;
     opacity: 0.75;
+}
+
+.footer_col {
+    min-width: 100px;
+}
+
+#footer-container {
+    min-width: 800px !important;
 }

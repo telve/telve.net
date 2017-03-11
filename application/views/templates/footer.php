@@ -114,7 +114,7 @@
 <div class="container" id="footer-container">
 <div class="row-fluid">
 		<div class="span12" style="margin-left: 15%;">
-			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em;">
+			<div class="span2 footer_col" style="width: 15%; height: 142px; padding-left:1.5em;">
 				<ul class="unstyled">
 					<li style="font-size:16px;">hakkında<li>
 					<li><a href="<?php echo base_url('sayfalar/blog');?>">blog</a></li>
@@ -123,7 +123,7 @@
 					<li><a href="<?php echo base_url('sayfalar/kariyer');?>">kariyer</a></li>
 				</ul>
 			</div>
-			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+			<div class="span2 footer_col" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;">yardım<li>
                     <li><a href="<?php echo base_url('sayfalar/markdown_rehberi');?>">markdown rehberi</a></li>
@@ -133,7 +133,7 @@
                     <li><a href="<?php echo base_url('sayfalar/bize_ulasin');?>">bize ulaşın</a></li>
 				</ul>
 			</div>
-			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+			<div class="span2 footer_col" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;">mobil<li>
 					<li><a href="<?php echo base_url('sayfalar/iphone');?>">iPhone için Telve</a></li>
@@ -141,7 +141,7 @@
           <li><a href="<?php if ($is_user_logged_in) echo base_url('aboneliklerim'); else echo base_url('konular'); ?>">tüm konular</a></li>
 				</ul>
 			</div>
-			<div class="span2" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
+			<div class="span2 footer_col" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
 				<ul class="unstyled">
 					<li style="font-size:16px;"><3<li>
 					<li><a href="<?php echo base_url('sayfalar/altin');?>" style="color:#9A7D2E;">telvealtın</a></li>
