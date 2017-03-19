@@ -72,9 +72,7 @@
                         kabul etmiş sayılırlar.</p>
 				</div>
 				<div class="span1"><!--Draw a vertical dividing line-->
-					<table style="border-right:2px solid #ddd; height:530px; margin-left:20px;">
-						<tr><td >&nbsp;</td></tr>
-					</table>
+					<div style="border-right:1px solid #ddd; height:530px; margin-left:20px;"></div>
 				</div>
 			</div>
 		</div>
