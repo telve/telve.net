@@ -73,6 +73,7 @@ function analyze_url($url) {
 
     if ($html->find('meta[property=og:description]')) {
         $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
+        $description = preg_replace('/[[:^print:]]/', '', $description);
     }
 
     if ( endsWith($parsed['host'],'youtube.com') || ($parsed['host'] == 'youtu.be') ) {
