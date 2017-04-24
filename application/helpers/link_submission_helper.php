@@ -166,7 +166,18 @@ function analyze_url($url) {
     }
 
     if ($html->find('meta[property=og:image]')) {
-        return [$html->find('meta[property=og:image]',0)->content,$description,$embed];
+        $src = $html->find('meta[property=og:image]',0)->content;
+        if ($src == '') {
+        } else {
+            if (strpos($src, '://') !== false) {
+                $imageurl = $src;
+            } elseif (substr( $src, 0, 2 ) === "//") {
+                $imageurl = 'http:'.$src;
+            } else {
+                $imageurl = $parsed['scheme'].'://'.$parsed['host'].'/'.$src;//get image absolute url
+            }
+            return [$imageurl,$description,$embed];
+        }
     }
 
     $biggestImage = ''; // Is returned when no images are found.
