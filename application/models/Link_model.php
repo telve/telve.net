@@ -344,6 +344,54 @@
 			return $id;
 		}
 
+		public function insert_link_cli($url,$topic)
+		{
+			$this->db->where('username','moderator');
+			$this->db->select('id');
+			$this->db->limit(1);
+			$query = $this->db->get('user');
+			$row = $query->row_array();
+
+			$parsed = parse_url($url);
+
+			$topic = str_replace(' ', '', $topic);
+			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+
+			list($picurl,$text,$embed) = analyze_url($url);
+
+            $data = array(
+				'title' => $this->input->post('title'),
+                'url' => $url,
+				'text' => NULL,
+				'embed' => $embed,
+				'picurl' => $picurl,
+                'domain' => $parsed['host'],
+                'topic' => tr_strtoupper($topic),
+                'uid' => $row['id'], //User's ID
+				'score' => 0,
+				'comments' => 0
+			);
+
+			$this->db->insert('link',$data);
+			$id = $this->hashids->encode($this->db->insert_id());
+
+			$ext = pathinfo(parse_url($picurl, PHP_URL_PATH), PATHINFO_EXTENSION);
+			$target_path = 'assets/img/link_thumbnails/'.$id.'.'.$ext;
+			copy($picurl, $target_path);
+
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $target_path;
+			$config['create_thumb'] = TRUE;
+			$config['maintain_ratio'] = TRUE;
+			$config['width']         = 248;
+
+			$this->image_lib->initialize($config);
+			$this->image_lib->resize();
+			$this->image_lib->clear();
+
+			return $id;
+		}
+
         public function insert_reply()
 		{
             $this->db->where('username',$this->session->userdata('username'));

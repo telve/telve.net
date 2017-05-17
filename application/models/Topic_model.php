@@ -29,6 +29,28 @@
 			}
         }
 
+		public function insert_topic_cli($topic)
+        {
+			$topic = str_replace(' ', '', $topic);
+			$topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+			$topic = tr_strtoupper($topic);
+
+			$this->db->where('username','moderator');
+			$this->db->select('id');
+			$this->db->limit(1);
+			$query = $this->db->get('user');
+			$row = $query->row_array();
+
+			if (!$this->right_to_insert_topic($topic)) {
+				$data = array(
+	                'name' => $topic,
+					'creator_uid' => $row['id']
+				);
+
+	            return $this->db->insert('topic',$data);
+			}
+        }
+
 		public function right_to_insert_topic($topic)
 		{
 			$this->db->from('topic');
