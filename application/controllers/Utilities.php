@@ -8,6 +8,7 @@
 			$this->load->library('hashids');
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 			$this->load->library('image_lib');
+			$this->load->library('simple_html_dom');
 		}
 
 		public function download_all_topic_images()
@@ -52,6 +53,33 @@
 			}
 
         }
+
+		public function spider()
+		{
+			if ($this->input->is_cli_request()) {
+
+				$url = "https://www.youtube.com/feed/trending";
+
+				$curl = curl_init();
+			    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+			    curl_setopt($curl, CURLOPT_HEADER, false);
+			    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+			    curl_setopt($curl, CURLOPT_URL, $url);
+			    curl_setopt($curl, CURLOPT_REFERER, $url);
+			    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+			    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+			    $curl_result = curl_exec($curl);
+			    curl_close($curl);
+
+				$html = new Simple_html_dom();
+				$html->load($curl_result);
+
+				foreach($html->find('a.yt-uix-tile-link') as $element) {
+       				echo "https://www.youtube.com".$element->href."\n";
+				}
+
+			}
+		}
 
 	}
 ?>
