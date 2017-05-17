@@ -344,7 +344,7 @@
 			return $id;
 		}
 
-		public function insert_link_cli($url,$topic)
+		public function insert_link_cli($title,$url,$topic)
 		{
 			$this->db->where('username','moderator');
 			$this->db->select('id');
@@ -360,7 +360,7 @@
 			list($picurl,$text,$embed) = analyze_url($url);
 
             $data = array(
-				'title' => $this->input->post('title'),
+				'title' => $title,
                 'url' => $url,
 				'text' => NULL,
 				'embed' => $embed,

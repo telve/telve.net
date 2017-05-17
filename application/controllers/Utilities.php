@@ -5,6 +5,7 @@
 		{
 			parent::__construct();
             $this->load->model('link_model');
+			$this->load->model('topic_model');
 			$this->load->library('hashids');
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 			$this->load->library('image_lib');
@@ -57,6 +58,7 @@
 		public function spider()
 		{
 			if ($this->input->is_cli_request()) {
+				echo "\n";
 
 				$url = "https://www.youtube.com/feed/trending";
 
@@ -74,12 +76,44 @@
 				$html = new Simple_html_dom();
 				$html->load($curl_result);
 
-				foreach($html->find('a.yt-uix-tile-link') as $element) {
-       				echo "https://www.youtube.com".$element->href."\n";
-				}
+				$items = $html->find('a.yt-uix-tile-link');
+				$submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
+				$submit_title = $this->get_title($submit_url);
+				$submit_topic = "VİDEO";
+
+				echo "Title:\t".$submit_title."\n";
+				echo "URL:\t".$submit_url."\n";
+				echo "Topic:\t".$submit_topic."\n";
+
+				$insert_id = $this->link_model->insert_link_cli($submit_title,$submit_url,$submit_topic);
+				$this->topic_model->insert_topic_cli($submit_topic);
+
+				echo "Record inserted with ID: ".$insert_id."\n\n";
+
 
 			}
 		}
+
+		public function get_title($url){
+			$parsed = parse_url($url);
+		    $segment = explode('/', $parsed['path']);
+
+			if ($parsed['host'] == 'mobile.twitter.com') {
+				$url = 'https://twitter.com/'.$parsed['path'];
+			}
+
+			$html = new Simple_html_dom();
+		    $html->load_file($url);
+			$result = $html->find('title',0)->innertext;
+			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
+			$result = trim(str_replace(array('&quot;'),'"',$result));
+			$result = trim(str_replace(array('&#10;'),' ',$result));
+			#$result = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result);
+			#$result = preg_replace('/[^\r\n\t\x20-\x7E\xA0-\xFF]/', '', $result);
+			#$result = html_entity_decode($result);
+			#$result = utf8_encode($result);
+			return $result;
+        }
 
 	}
 ?>
