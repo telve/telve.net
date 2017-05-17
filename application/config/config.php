@@ -18,8 +18,6 @@ $config['base_url']	= 'http://telve.net/';
 
 $config['https_enabled'] = FALSE;
 
-$config['utilities_enabled'] = FALSE;
-
 /*
 |--------------------------------------------------------------------------
 | Index File
