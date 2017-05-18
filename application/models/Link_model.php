@@ -346,6 +346,8 @@
 
 		public function insert_link_cli($title,$url,$topic)
 		{
+			$this->db->reconnect();
+			
 			$this->db->where('username','moderator');
 			$this->db->select('id');
 			$this->db->limit(1);
