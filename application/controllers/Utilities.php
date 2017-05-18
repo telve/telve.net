@@ -60,10 +60,10 @@
 			if ($this->input->is_cli_request()) {
 				echo "\n";
 
-				$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com"];
+				$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com"];
 				$selected_domain = $domains[array_rand($domains)];
 
-				#$selected_domain = "haber7.com";
+				#$selected_domain = "ensonhaber.com";
 				echo $selected_domain."\n";
 
 				switch ($selected_domain) {
@@ -78,6 +78,9 @@
 						break;
 					case "haber7.com":
 						$url = "http://sondakika.haber7.com/sondakika.rss";
+						break;
+					case "ensonhaber.com":
+						$url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
 						break;
 				}
 
@@ -114,6 +117,11 @@
 						if ($submit_topic == "Gündem") $submit_topic = "Haber";
 						break;
 					case "haber7.com":
+						$xml = simplexml_load_string($html);
+						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+						$submit_topic = "HABER";
+						break;
+					case "ensonhaber.com":
 						$xml = simplexml_load_string($html);
 						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
 						$submit_topic = "HABER";
