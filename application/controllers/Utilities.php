@@ -70,7 +70,7 @@
 
 					switch ($selected_domain) {
 						case "youtube.com":
-							$url = "https://www.youtube.com/feed/trending";
+							$url = "https://www.youtube.com/feed/trending?gl=TR";
 							break;
 						case "sabah.com.tr":
 							$url = "http://www.sabah.com.tr/rss/anasayfa.xml";
