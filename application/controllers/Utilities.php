@@ -60,7 +60,19 @@
 			if ($this->input->is_cli_request()) {
 				echo "\n";
 
-				$url = "https://www.youtube.com/feed/trending";
+				$domains = ["youtube.com","sabah.com.tr"];
+				$selected_domain = $domains[array_rand($domains)];
+
+				echo $selected_domain."\n";
+
+				switch ($selected_domain) {
+					case "youtube.com":
+						$url = "https://www.youtube.com/feed/trending";
+						break;
+					case "sabah.com.tr":
+						$url = "http://www.sabah.com.tr/rss/anasayfa.xml";
+						break;
+				}
 
 				$curl = curl_init();
 			    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -76,10 +88,20 @@
 				$html = new Simple_html_dom();
 				$html->load($curl_result);
 
-				$items = $html->find('a.yt-uix-tile-link');
-				$submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
+				switch ($selected_domain) {
+					case "youtube.com":
+						$items = $html->find('a.yt-uix-tile-link');
+						$submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
+						$submit_topic = "VİDEO";
+						break;
+					case "sabah.com.tr":
+						$xml = simplexml_load_string($html);
+						$submit_url = $xml->channel->item[rand(1,30)]->link;
+						$submit_topic = "HABER";
+						break;
+				}
+
 				$submit_title = $this->get_title($submit_url);
-				$submit_topic = "VİDEO";
 
 				echo "Title:\t".$submit_title."\n";
 				echo "URL:\t".$submit_url."\n";
