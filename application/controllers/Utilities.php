@@ -62,10 +62,10 @@
 
 				while (true) {
 
-					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr"];
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					#$selected_domain = "milliyet.com.tr";
+					#$selected_domain = "yenisafak.com";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -86,6 +86,9 @@
 							break;
 						case "milliyet.com.tr":
 							$url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
+							break;
+						case "yenisafak.com":
+							$url = "http://www.yenisafak.com/Rss";
 							break;
 					}
 
@@ -123,8 +126,9 @@
 							break;
 						case "haber7.com":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
-							$submit_topic = "HABER";
+							$selected_item = rand(1,count($xml->channel->item));
+							$submit_url = $xml->channel->item[$selected_item]->link;
+							$submit_topic = $xml->channel->item[$selected_item]->category;
 							break;
 						case "ensonhaber.com":
 							$xml = simplexml_load_string($html);
@@ -138,6 +142,12 @@
 							$submit_url = urldecode($submit_url);
 							$submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss","",$submit_url);
 							$submit_topic = "HABER";
+							break;
+						case "yenisafak.com":
+							$xml = simplexml_load_string($html);
+							$selected_item = rand(1,count($xml->channel->item));
+							$submit_url = $xml->channel->item[$selected_item]->link;
+							$submit_topic = $xml->channel->item[$selected_item]->category;
 							break;
 					}
 
