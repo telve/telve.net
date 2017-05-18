@@ -60,96 +60,101 @@
 			if ($this->input->is_cli_request()) {
 				echo "\n";
 
-				$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr"];
-				$selected_domain = $domains[array_rand($domains)];
+				while (true) {
 
-				#$selected_domain = "milliyet.com.tr";
-				echo $selected_domain."\n";
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr"];
+					$selected_domain = $domains[array_rand($domains)];
 
-				switch ($selected_domain) {
-					case "youtube.com":
-						$url = "https://www.youtube.com/feed/trending";
-						break;
-					case "sabah.com.tr":
-						$url = "http://www.sabah.com.tr/rss/anasayfa.xml";
-						break;
-					case "onedio.com":
-						$url = "https://onedio.com/support/rss.xml";
-						break;
-					case "haber7.com":
-						$url = "http://sondakika.haber7.com/sondakika.rss";
-						break;
-					case "ensonhaber.com":
-						$url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
-						break;
-					case "milliyet.com.tr":
-						$url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
-						break;
+					#$selected_domain = "milliyet.com.tr";
+					echo $selected_domain."\n";
+
+					switch ($selected_domain) {
+						case "youtube.com":
+							$url = "https://www.youtube.com/feed/trending";
+							break;
+						case "sabah.com.tr":
+							$url = "http://www.sabah.com.tr/rss/anasayfa.xml";
+							break;
+						case "onedio.com":
+							$url = "https://onedio.com/support/rss.xml";
+							break;
+						case "haber7.com":
+							$url = "http://sondakika.haber7.com/sondakika.rss";
+							break;
+						case "ensonhaber.com":
+							$url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
+							break;
+						case "milliyet.com.tr":
+							$url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
+							break;
+					}
+
+					$curl = curl_init();
+				    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+				    curl_setopt($curl, CURLOPT_HEADER, false);
+				    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+				    curl_setopt($curl, CURLOPT_URL, $url);
+				    curl_setopt($curl, CURLOPT_REFERER, $url);
+				    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+				    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+				    $curl_result = curl_exec($curl);
+				    curl_close($curl);
+
+					$html = new Simple_html_dom();
+					$html->load($curl_result);
+
+					switch ($selected_domain) {
+						case "youtube.com":
+							$items = $html->find('a.yt-uix-tile-link');
+							$submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
+							$submit_topic = "VİDEO";
+							break;
+						case "sabah.com.tr":
+							$xml = simplexml_load_string($html);
+							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_topic = "HABER";
+							break;
+						case "onedio.com":
+							$xml = simplexml_load_string($html);
+							$selected_item = rand(1,count($xml->channel->item));
+							$submit_url = $xml->channel->item[$selected_item]->link;
+							$submit_topic = $xml->channel->item[$selected_item]->category[1];
+							if ($submit_topic == "Gündem") $submit_topic = "Haber";
+							break;
+						case "haber7.com":
+							$xml = simplexml_load_string($html);
+							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_topic = "HABER";
+							break;
+						case "ensonhaber.com":
+							$xml = simplexml_load_string($html);
+							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_topic = "HABER";
+							break;
+						case "milliyet.com.tr":
+							$xml = simplexml_load_string($html);
+							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=","",$submit_url);
+							$submit_url = urldecode($submit_url);
+							$submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss","",$submit_url);
+							$submit_topic = "HABER";
+							break;
+					}
+
+					$submit_title = $this->get_title($submit_url);
+
+					echo "Title:\t".$submit_title."\n";
+					echo "URL:\t".$submit_url."\n";
+					echo "Topic:\t".$submit_topic."\n";
+
+					$insert_id = $this->link_model->insert_link_cli($submit_title,$submit_url,$submit_topic);
+					$this->topic_model->insert_topic_cli($submit_topic);
+
+					echo "Record inserted with ID: ".$insert_id."\n\n";
+
+					sleep(300); // Wait 5 minutes
+
 				}
-
-				$curl = curl_init();
-			    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-			    curl_setopt($curl, CURLOPT_HEADER, false);
-			    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-			    curl_setopt($curl, CURLOPT_URL, $url);
-			    curl_setopt($curl, CURLOPT_REFERER, $url);
-			    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-			    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-			    $curl_result = curl_exec($curl);
-			    curl_close($curl);
-
-				$html = new Simple_html_dom();
-				$html->load($curl_result);
-
-				switch ($selected_domain) {
-					case "youtube.com":
-						$items = $html->find('a.yt-uix-tile-link');
-						$submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
-						$submit_topic = "VİDEO";
-						break;
-					case "sabah.com.tr":
-						$xml = simplexml_load_string($html);
-						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
-						$submit_topic = "HABER";
-						break;
-					case "onedio.com":
-						$xml = simplexml_load_string($html);
-						$selected_item = rand(1,count($xml->channel->item));
-						$submit_url = $xml->channel->item[$selected_item]->link;
-						$submit_topic = $xml->channel->item[$selected_item]->category[1];
-						if ($submit_topic == "Gündem") $submit_topic = "Haber";
-						break;
-					case "haber7.com":
-						$xml = simplexml_load_string($html);
-						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
-						$submit_topic = "HABER";
-						break;
-					case "ensonhaber.com":
-						$xml = simplexml_load_string($html);
-						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
-						$submit_topic = "HABER";
-						break;
-					case "milliyet.com.tr":
-						$xml = simplexml_load_string($html);
-						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
-						$submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=","",$submit_url);
-						$submit_url = urldecode($submit_url);
-						$submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss","",$submit_url);
-						$submit_topic = "HABER";
-						break;
-				}
-
-				$submit_title = $this->get_title($submit_url);
-
-				echo "Title:\t".$submit_title."\n";
-				echo "URL:\t".$submit_url."\n";
-				echo "Topic:\t".$submit_topic."\n";
-
-				$insert_id = $this->link_model->insert_link_cli($submit_title,$submit_url,$submit_topic);
-				$this->topic_model->insert_topic_cli($submit_topic);
-
-				echo "Record inserted with ID: ".$insert_id."\n\n";
-
 
 			}
 		}
