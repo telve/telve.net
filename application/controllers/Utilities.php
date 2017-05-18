@@ -62,10 +62,10 @@
 
 				while (true) {
 
-					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com"];
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					#$selected_domain = "yenisafak.com";
+					$selected_domain = "hurriyet.com.tr";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -89,6 +89,9 @@
 							break;
 						case "yenisafak.com":
 							$url = "http://www.yenisafak.com/Rss";
+							break;
+						case "hurriyet.com.tr":
+							$url = "http://www.hurriyet.com.tr/rss/anasayfa";
 							break;
 					}
 
@@ -148,6 +151,13 @@
 							$selected_item = rand(1,count($xml->channel->item));
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category;
+							break;
+						case "hurriyet.com.tr":
+							$xml = simplexml_load_string($html);
+							$selected_item = rand(1,count($xml->channel->item));
+							$submit_url = $xml->channel->item[$selected_item]->link;
+							$submit_topic = $xml->channel->item[$selected_item]->category;
+							if ($submit_topic == "Gündem") $submit_topic = "Haber";
 							break;
 					}
 
