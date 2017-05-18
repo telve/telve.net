@@ -140,6 +140,7 @@
 							$selected_item = rand(1,count($xml->channel->item));
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category;
+							if ($submit_topic == "ADVERTORIAL") continue;
 							break;
 						case "ensonhaber.com":
 							$xml = simplexml_load_string($html);
