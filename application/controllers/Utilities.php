@@ -60,10 +60,10 @@
 			if ($this->input->is_cli_request()) {
 				echo "\n";
 
-				$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com"];
+				$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr"];
 				$selected_domain = $domains[array_rand($domains)];
 
-				#$selected_domain = "ensonhaber.com";
+				#$selected_domain = "milliyet.com.tr";
 				echo $selected_domain."\n";
 
 				switch ($selected_domain) {
@@ -81,6 +81,9 @@
 						break;
 					case "ensonhaber.com":
 						$url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
+						break;
+					case "milliyet.com.tr":
+						$url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
 						break;
 				}
 
@@ -124,6 +127,14 @@
 					case "ensonhaber.com":
 						$xml = simplexml_load_string($html);
 						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+						$submit_topic = "HABER";
+						break;
+					case "milliyet.com.tr":
+						$xml = simplexml_load_string($html);
+						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+						$submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=","",$submit_url);
+						$submit_url = urldecode($submit_url);
+						$submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss","",$submit_url);
 						$submit_topic = "HABER";
 						break;
 				}
