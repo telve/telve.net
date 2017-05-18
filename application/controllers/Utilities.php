@@ -60,9 +60,10 @@
 			if ($this->input->is_cli_request()) {
 				echo "\n";
 
-				$domains = ["youtube.com","sabah.com.tr"];
+				$domains = ["youtube.com","sabah.com.tr","onedio.com"];
 				$selected_domain = $domains[array_rand($domains)];
 
+				#$selected_domain = "onedio.com";
 				echo $selected_domain."\n";
 
 				switch ($selected_domain) {
@@ -71,6 +72,9 @@
 						break;
 					case "sabah.com.tr":
 						$url = "http://www.sabah.com.tr/rss/anasayfa.xml";
+						break;
+					case "onedio.com":
+						$url = "https://onedio.com/support/rss.xml";
 						break;
 				}
 
@@ -96,8 +100,15 @@
 						break;
 					case "sabah.com.tr":
 						$xml = simplexml_load_string($html);
-						$submit_url = $xml->channel->item[rand(1,30)]->link;
+						$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
 						$submit_topic = "HABER";
+						break;
+					case "onedio.com":
+						$xml = simplexml_load_string($html);
+						$selected_item = rand(1,count($xml->channel->item));
+						$submit_url = $xml->channel->item[$selected_item]->link;
+						$submit_topic = $xml->channel->item[$selected_item]->category[1];
+						if ($submit_topic == "Gündem") $submit_topic = "Haber";
 						break;
 				}
 
@@ -116,7 +127,8 @@
 			}
 		}
 
-		public function get_title($url){
+		public function get_title($url)
+		{
 			$parsed = parse_url($url);
 		    $segment = explode('/', $parsed['path']);
 

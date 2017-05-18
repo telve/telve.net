@@ -48,7 +48,8 @@
 			}
 		}
 
-        public function get_title(){
+        public function get_title()
+		{
 			$url = $this->input->post("url");
 			$parsed = parse_url($url);
 		    $segment = explode('/', $parsed['path']);
