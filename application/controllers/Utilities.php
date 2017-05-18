@@ -62,10 +62,10 @@
 
 				while (true) {
 
-					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com"];
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					#$selected_domain = "internethaber.com";
+					#$selected_domain = "mynet.com";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -98,6 +98,9 @@
 							break;
 						case "internethaber.com":
 							$url = "http://www.internethaber.com/rss";
+							break;
+						case "mynet.com":
+							$url = "http://www.mynet.com/haber/rss/son-dakika";
 							break;
 					}
 
@@ -173,6 +176,12 @@
 							$xml = simplexml_load_string($html);
 							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
 							$submit_topic = "HABER";
+							break;
+						case "mynet.com":
+							$xml = simplexml_load_string($html);
+							$selected_item = rand(1,count($xml->channel->item));
+							$submit_url = $xml->channel->item[$selected_item]->link;
+							$submit_topic = $xml->channel->item[$selected_item]->subcategory;
 							break;
 					}
 					if ($submit_topic == "Gündem") $submit_topic = "Haber";
