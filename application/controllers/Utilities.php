@@ -143,6 +143,10 @@
 
 					$submit_title = $this->get_title($submit_url);
 
+					if ( (strlen($submit_url) == 0) || (strlen($submit_title) == 0) ) {
+						continue;
+					}
+
 					echo "Title:\t".$submit_title."\n";
 					echo "URL:\t".$submit_url."\n";
 					echo "Topic:\t".$submit_topic."\n";
