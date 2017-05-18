@@ -6,11 +6,13 @@
 		{
 			parent::__construct();
 
-			if ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") && ($this->config->item('https_enabled')) ) {
-		        $url = "https://". $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-		        redirect($url);
-		        exit;
-		    }
+			if (!$this->input->is_cli_request()) {
+				if ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") && ($this->config->item('https_enabled')) ) {
+			        $url = "https://". $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+			        redirect($url);
+			        exit;
+			    }
+			}
 
 			if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
 
