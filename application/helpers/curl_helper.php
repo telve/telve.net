@@ -9,7 +9,7 @@ function using_curl($url)
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_REFERER, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; U; Linux x86_64; tr-TR) AppleWebKit/531.2+ (KHTML, like Gecko) Version/5.0 Safari/531.2+");
     $curl_result = curl_exec($curl);
     curl_close($curl);
     return $curl_result;
@@ -26,7 +26,17 @@ function get_title($url)
 
     $html = new Simple_html_dom();
     $html->load(using_curl($url));
-    $result = $html->find('title',0)->innertext;
+
+    if ($html->find('meta[property=og:title]')) {
+        $result = $html->find('meta[property=og:title]',0)->content;
+    } else {
+        $result = $html->find('title',0)->plaintext;
+    }
+
+    if (trim($result) == "Twitter") {
+        $result = $html->find('div.dir-ltr',0)->plaintext;
+    }
+
     $result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
     $result = trim(str_replace(array('&quot;'),'"',$result));
     $result = trim(str_replace(array('&#10;'),' ',$result));

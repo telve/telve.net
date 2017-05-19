@@ -11,6 +11,7 @@
 			$this->load->library('image_lib');
 			$this->load->library('simple_html_dom');
 			$this->load->helper('curl');
+			$this->load->helper('link_submission');
 		}
 
 		public function download_all_topic_images()
@@ -63,10 +64,10 @@
 
 				while (true) {
 
-					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com"];
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com","instagram.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					#$selected_domain = "twitter.com";
+					#$selected_domain = "instagram.com";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -105,10 +106,17 @@
 							break;
 						case "twitter.com":
 							$html = new Simple_html_dom();
-							$html->load(using_curl("http://twitturk.com/twituser/trends/topic"));
+							$html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
 							$topics = $html->find('li.topic > a');
 							$random_topic = $topics[rand(0,count($topics)-1)]->innertext;
 							$url = "https://queryfeed.net/twitter?q=".$random_topic."&title-type=user-name-both&geocode=39.116424%2C35.288086%2C813km&omit-direct=on&omit-retweets=on";
+							break;
+						case "instagram.com":
+							$html = new Simple_html_dom();
+							$html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
+							$topics = $html->find('li.topic > a');
+							$random_topic = $topics[rand(0,count($topics)-1)]->innertext;
+							$url = "https://www.instagram.com/explore/tags/".$random_topic."/";
 							break;
 					}
 
@@ -186,10 +194,32 @@
 							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
 							$submit_topic = "SOSYAL";
 							break;
+						case "instagram.com":
+							$script_tags = $html->find('script[type="text/javascript"]');
+							foreach ($script_tags as $script_tag) {
+								if (startsWith($script_tag->innertext,"window._sharedData = ")) {
+									$json = substr($script_tag->innertext, 21);
+									$json = rtrim($json, ';');
+									$obj = json_decode($json);
+									$nodes = $obj->entry_data->TagPage[0]->tag->media->nodes;
+									$random_node = rand(1,count($nodes));
+									$instagram_id = $nodes[$random_node]->code;
+									if (strlen($instagram_id) == 0) continue;
+									$submit_url = "https://www.instagram.com/p/".$nodes[$random_node]->code."/";
+									$submit_title = $nodes[$random_node]->caption;
+									if (strlen($submit_title) > 100) {
+										$submit_title = substr($submit_title, 0, 120)."...";
+									}
+								}
+							}
+							$submit_topic = "RESİM";
+							break;
 					}
 					if ($submit_topic == "Gündem") $submit_topic = "Haber";
 
-					$submit_title = get_title($submit_url);
+					if (strlen($submit_title) == 0) {
+						$submit_title = get_title($submit_url);
+					}
 
 					if ( (strlen($submit_url) == 0) || (strlen($submit_title) == 0) ) {
 						continue;

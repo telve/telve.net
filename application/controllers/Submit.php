@@ -61,7 +61,17 @@
 
 			$html = new Simple_html_dom();
 		    $html->load(using_curl($url));
-			$result = $html->find('title',0)->innertext;
+
+			if ($html->find('meta[property=og:title]')) {
+		        $result = $html->find('meta[property=og:title]',0)->content;
+		    } else {
+		        $result = $html->find('title',0)->plaintext;
+		    }
+
+		    if (trim($result) == "Twitter") {
+		        $result = $html->find('div.dir-ltr',0)->plaintext;
+		    }
+
 			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
 			$result = trim(str_replace(array('&quot;'),'"',$result));
 			$result = trim(str_replace(array('&#10;'),' ',$result));
