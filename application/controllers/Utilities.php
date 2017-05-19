@@ -64,6 +64,10 @@
 
 				while (true) {
 
+					$submit_title = NULL;
+					$submit_url = NULL;
+					$submit_topic = NULL;
+
 					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com","instagram.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
@@ -131,30 +135,30 @@
 							break;
 						case "sabah.com.tr":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = $xml->channel->item[rand(0,count($xml->channel->item)-1)]->link;
 							$submit_topic = "HABER";
 							break;
 						case "onedio.com":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category[1];
 							break;
 						case "haber7.com":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category;
 							if ($submit_topic == "ADVERTORIAL") continue;
 							break;
 						case "ensonhaber.com":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = $xml->channel->item[rand(0,count($xml->channel->item)-1)]->link;
 							$submit_topic = "HABER";
 							break;
 						case "milliyet.com.tr":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = $xml->channel->item[rand(0,count($xml->channel->item)-1)]->link;
 							$submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=","",$submit_url);
 							$submit_url = urldecode($submit_url);
 							$submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss","",$submit_url);
@@ -162,36 +166,36 @@
 							break;
 						case "yenisafak.com":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category;
 							break;
 						case "hurriyet.com.tr":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->category;
 							break;
 						case "kizlarsoruyor.com":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = explode(' ',trim($xml->channel->item[$selected_item]->category))[0];
 							break;
 						case "internethaber.com":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = $xml->channel->item[rand(0,count($xml->channel->item)-1)]->link;
 							$submit_topic = "HABER";
 							break;
 						case "mynet.com":
 							$xml = simplexml_load_string($html);
-							$selected_item = rand(1,count($xml->channel->item));
+							$selected_item = rand(0,count($xml->channel->item)-1);
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->subcategory;
 							break;
 						case "twitter.com":
 							$xml = simplexml_load_string($html);
-							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_url = $xml->channel->item[rand(0,count($xml->channel->item)-1)]->link;
 							$submit_topic = "SOSYAL";
 							break;
 						case "instagram.com":
