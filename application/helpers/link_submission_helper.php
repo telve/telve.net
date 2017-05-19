@@ -92,6 +92,7 @@ function analyze_url($url) {
         }
         $obj = json_decode($json);
         $embed = $obj->html;
+        return ['https://pbs.twimg.com/profile_images/531381005165158401/bUJYaSO9.png',$description,$embed];
     }
 
     $fb_post_criteria = ['posts','activity','photo.php','photos','permalink.php','media','questions','notes'];

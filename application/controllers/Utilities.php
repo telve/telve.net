@@ -62,10 +62,10 @@
 
 				while (true) {
 
-					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com"];
+					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					#$selected_domain = "mynet.com";
+					$selected_domain = "twitter.com";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -101,6 +101,13 @@
 							break;
 						case "mynet.com":
 							$url = "http://www.mynet.com/haber/rss/son-dakika";
+							break;
+						case "twitter.com":
+							$html = new Simple_html_dom();
+							$html->load($this->using_curl("http://twitturk.com/twituser/trends/topic"));
+							$topics = $html->find('li.topic > a');
+							$random_topic = $topics[rand(0,count($topics)-1)]->innertext;
+							$url = "https://queryfeed.net/twitter?q=".$random_topic."&title-type=user-name-both&geocode=39.116424%2C35.288086%2C813km&omit-direct=on&omit-retweets=on";
 							break;
 					}
 
@@ -184,6 +191,11 @@
 							$submit_url = $xml->channel->item[$selected_item]->link;
 							$submit_topic = $xml->channel->item[$selected_item]->subcategory;
 							break;
+						case "twitter.com":
+							$xml = simplexml_load_string($html);
+							$submit_url = $xml->channel->item[rand(1,count($xml->channel->item))]->link;
+							$submit_topic = "SOSYAL";
+							break;
 					}
 					if ($submit_topic == "Gündem") $submit_topic = "Haber";
 
@@ -209,7 +221,7 @@
 			}
 		}
 
-		public function get_title($url)
+		private function get_title($url)
 		{
 			$parsed = parse_url($url);
 		    $segment = explode('/', $parsed['path']);
@@ -230,6 +242,21 @@
 			#$result = utf8_encode($result);
 			return $result;
         }
+
+		private function using_curl($url)
+		{
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($curl, CURLOPT_HEADER, false);
+			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($curl, CURLOPT_URL, $url);
+			curl_setopt($curl, CURLOPT_REFERER, $url);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
+			$curl_result = curl_exec($curl);
+			curl_close($curl);
+			return $curl_result;
+		}
 
 	}
 ?>
