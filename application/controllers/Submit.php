@@ -10,6 +10,7 @@
 			$this->load->helper('tr_lang');
 			$this->load->helper('link_submission');
 			$this->load->library('simple_html_dom');
+			$this->load->helper('curl');
 		}
 
 		public function index()
@@ -59,7 +60,7 @@
 			}
 
 			$html = new Simple_html_dom();
-		    $html->load_file($url);
+		    $html->load(using_curl($url));
 			$result = $html->find('title',0)->innertext;
 			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
 			$result = trim(str_replace(array('&quot;'),'"',$result));

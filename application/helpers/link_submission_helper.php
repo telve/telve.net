@@ -54,22 +54,10 @@ function analyze_url($url) {
         $segment[2] = '';
     }
 
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($curl, CURLOPT_HEADER, false);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_REFERER, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-    $curl_result = curl_exec($curl);
-    curl_close($curl);
-
     $CI =& get_instance();
     $CI->load->library("simple_html_dom");
     $html = new Simple_html_dom();
-    //$html->load_file($url);
-    $html->load($curl_result);
+    $html->load(using_curl($url));
 
     if ($html->find('meta[property=og:description]')) {
         $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
@@ -86,9 +74,9 @@ function analyze_url($url) {
 
     if ( endsWith($parsed['host'],'twitter.com') && ($segment[2] == 'status') ) {
         if (startsWith($parsed['host'],'mobile')) {
-            $json = file_get_contents("https://publish.twitter.com/oembed?url=".'https://twitter.com/'.$segment[1].'/'.$segment[2].'/'.$segment[3]);
+            $json = using_curl("https://publish.twitter.com/oembed?url=".'https://twitter.com/'.$segment[1].'/'.$segment[2].'/'.$segment[3]);
         } else {
-            $json = file_get_contents("https://publish.twitter.com/oembed?url=".$url);
+            $json = using_curl("https://publish.twitter.com/oembed?url=".$url);
         }
         $obj = json_decode($json);
         $embed = $obj->html;
@@ -98,17 +86,7 @@ function analyze_url($url) {
     $fb_post_criteria = ['posts','activity','photo.php','photos','permalink.php','media','questions','notes'];
     if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_post_criteria))) ) {
         $json_url = "https://www.facebook.com/plugins/post/oembed.json/?url=".$url;
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_URL, $json_url);
-        curl_setopt($curl, CURLOPT_REFERER, $json_url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-        $json = curl_exec($curl);
-        curl_close($curl);
-        $obj = json_decode($json);
+        $obj = json_decode(using_curl($json_url));
         $embed = $obj->html;
         return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
     }
@@ -116,23 +94,13 @@ function analyze_url($url) {
     $fb_video_criteria = ['videos','video.php'];
     if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_video_criteria))) ) {
         $json_url = "https://www.facebook.com/plugins/video/oembed.json/?url=".$url;
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_URL, $json_url);
-        curl_setopt($curl, CURLOPT_REFERER, $json_url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-        $json = curl_exec($curl);
-        curl_close($curl);
-        $obj = json_decode($json);
+        $obj = json_decode(using_curl($json_url));
         $embed = $obj->html;
         return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
     }
 
     if ( ( endsWith($parsed['host'],'instagram.com') || ($parsed['host'] == 'instagr.am') ) && ($segment[1] == 'p') ) {
-        $json = file_get_contents("https://api.instagram.com/oembed?url=".$url);
+        $json = using_curl("https://api.instagram.com/oembed?url=".$url);
         $obj = json_decode($json);
         $embed = $obj->html;
         $embed = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $embed);

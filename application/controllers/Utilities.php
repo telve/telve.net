@@ -10,6 +10,7 @@
 			$this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 			$this->load->library('image_lib');
 			$this->load->library('simple_html_dom');
+			$this->load->helper('curl');
 		}
 
 		public function download_all_topic_images()
@@ -65,7 +66,7 @@
 					$domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com"];
 					$selected_domain = $domains[array_rand($domains)];
 
-					$selected_domain = "twitter.com";
+					#$selected_domain = "twitter.com";
 					echo $selected_domain."\n";
 
 					switch ($selected_domain) {
@@ -104,26 +105,15 @@
 							break;
 						case "twitter.com":
 							$html = new Simple_html_dom();
-							$html->load($this->using_curl("http://twitturk.com/twituser/trends/topic"));
+							$html->load(using_curl("http://twitturk.com/twituser/trends/topic"));
 							$topics = $html->find('li.topic > a');
 							$random_topic = $topics[rand(0,count($topics)-1)]->innertext;
 							$url = "https://queryfeed.net/twitter?q=".$random_topic."&title-type=user-name-both&geocode=39.116424%2C35.288086%2C813km&omit-direct=on&omit-retweets=on";
 							break;
 					}
 
-					$curl = curl_init();
-				    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-				    curl_setopt($curl, CURLOPT_HEADER, false);
-				    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-				    curl_setopt($curl, CURLOPT_URL, $url);
-				    curl_setopt($curl, CURLOPT_REFERER, $url);
-				    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-				    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-				    $curl_result = curl_exec($curl);
-				    curl_close($curl);
-
 					$html = new Simple_html_dom();
-					$html->load($curl_result);
+					$html->load(using_curl($url));
 
 					switch ($selected_domain) {
 						case "youtube.com":
@@ -199,7 +189,7 @@
 					}
 					if ($submit_topic == "Gündem") $submit_topic = "Haber";
 
-					$submit_title = $this->get_title($submit_url);
+					$submit_title = get_title($submit_url);
 
 					if ( (strlen($submit_url) == 0) || (strlen($submit_title) == 0) ) {
 						continue;
@@ -219,43 +209,6 @@
 				}
 
 			}
-		}
-
-		private function get_title($url)
-		{
-			$parsed = parse_url($url);
-		    $segment = explode('/', $parsed['path']);
-
-			if ($parsed['host'] == 'mobile.twitter.com') {
-				$url = 'https://twitter.com/'.$parsed['path'];
-			}
-
-			$html = new Simple_html_dom();
-		    $html->load_file($url);
-			$result = $html->find('title',0)->innertext;
-			$result = trim(str_replace(array('&#039;','&#39;'),"'",$result));
-			$result = trim(str_replace(array('&quot;'),'"',$result));
-			$result = trim(str_replace(array('&#10;'),' ',$result));
-			#$result = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result);
-			#$result = preg_replace('/[^\r\n\t\x20-\x7E\xA0-\xFF]/', '', $result);
-			#$result = html_entity_decode($result);
-			#$result = utf8_encode($result);
-			return $result;
-        }
-
-		private function using_curl($url)
-		{
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($curl, CURLOPT_HEADER, false);
-			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-			curl_setopt($curl, CURLOPT_URL, $url);
-			curl_setopt($curl, CURLOPT_REFERER, $url);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-			curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4");
-			$curl_result = curl_exec($curl);
-			curl_close($curl);
-			return $curl_result;
 		}
 
 	}
