@@ -1,4 +1,8 @@
-<?php if ( ! defined('BASEPATH')) exit('No Access');
+<?php 
+
+if (! defined('BASEPATH')) {
+    exit('No Access');
+}
 class Captcha
 {
     private $width;
@@ -7,7 +11,7 @@ class Captcha
     private $codeNum;
     private $im;
 
-    function __construct($width=80, $height=20, $code='')
+    public function __construct($width=80, $height=20, $code='')
     {
         $this->width = $width;
         $this->height = $height;
@@ -15,7 +19,7 @@ class Captcha
         $this->codeNum = strlen($code);
     }
 
-    function showImg()
+    public function showImg()
     {
         //创建图片
         $this->createImg();
@@ -61,7 +65,7 @@ class Captcha
         for ($i = 0; $i < $this->codeNum; $i++) {
             $color = imagecolorallocate($this->im, rand(50, 250), rand(100, 250), rand(128, 250));
             $size = rand(floor($this->height / 3), floor($this->height / 2));
-            $angle = rand(-30,30);
+            $angle = rand(-30, 30);
             $x = floor($this->width / $this->codeNum) * $i + 5;
             $y = rand(40, $this->height-10);
             imagettftext($this->im, $size, $angle, $x, $y, $color, $randomFont, $this->code{$i});
@@ -83,5 +87,4 @@ class Captcha
             die("Don't support image type!");
         }
     }
-
 }

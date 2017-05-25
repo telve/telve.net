@@ -2,8 +2,8 @@
 
 function startsWith($haystack, $needle)
 {
-     $length = strlen($needle);
-     return (substr($haystack, 0, $length) === $needle);
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
 }
 
 function endsWith($haystack, $needle)
@@ -16,14 +16,13 @@ function endsWith($haystack, $needle)
     return (substr($haystack, -$length) === $needle);
 }
 
-function analyze_url($url) {
-
-    $description = NULL;
-    $embed = NULL;
+function analyze_url($url)
+{
+    $description = null;
+    $embed = null;
 
     $url_headers = get_headers($url, 1);
-    if( isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type']) ){
-
+    if (isset($url_headers['Content-Type']) && !is_array($url_headers['Content-Type'])) {
         $type = strtolower($url_headers['Content-Type']);
 
         $valid_image_type = array();
@@ -39,7 +38,7 @@ function analyze_url($url) {
         $valid_image_type['image/icon'] = '';
         $valid_image_type['image/x-icon'] = '';
 
-        if(isset($valid_image_type[$type])){
+        if (isset($valid_image_type[$type])) {
             $embed = '<img src="'.$url.'" style="max-height:315px;"/>';
             return [$url,$description,$embed];
         }
@@ -60,20 +59,19 @@ function analyze_url($url) {
     $html->load(using_curl($url));
 
     if ($html->find('meta[property=og:description]')) {
-        $description = trim(str_replace(array('&#039;','&#39;'),"'",$html->find('meta[property=og:description]',0)->content));
+        $description = trim(str_replace(array('&#039;','&#39;'), "'", $html->find('meta[property=og:description]', 0)->content));
         $description = preg_replace('/[[:^print:]]/', '', $description);
     }
 
-    if ( endsWith($parsed['host'],'youtube.com') || ($parsed['host'] == 'youtu.be') ) {
-
+    if (endsWith($parsed['host'], 'youtube.com') || ($parsed['host'] == 'youtu.be')) {
         preg_match("/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/", $url, $id);
         $embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
 
-        return [$html->find('link[itemprop=thumbnailUrl]',0)->href,$description,$embed];
+        return [$html->find('link[itemprop=thumbnailUrl]', 0)->href,$description,$embed];
     }
 
-    if ( endsWith($parsed['host'],'twitter.com') && ($segment[2] == 'status') ) {
-        if (startsWith($parsed['host'],'mobile')) {
+    if (endsWith($parsed['host'], 'twitter.com') && ($segment[2] == 'status')) {
+        if (startsWith($parsed['host'], 'mobile')) {
             $json = using_curl("https://publish.twitter.com/oembed?url=".'https://twitter.com/'.$segment[1].'/'.$segment[2].'/'.$segment[3]);
         } else {
             $json = using_curl("https://publish.twitter.com/oembed?url=".$url);
@@ -84,7 +82,7 @@ function analyze_url($url) {
     }
 
     $fb_post_criteria = ['posts','activity','photo.php','photos','permalink.php','media','questions','notes'];
-    if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_post_criteria))) ) {
+    if (endsWith($parsed['host'], 'facebook.com') && (!empty(array_intersect($segment, $fb_post_criteria)))) {
         $json_url = "https://www.facebook.com/plugins/post/oembed.json/?url=".$url;
         $obj = json_decode(using_curl($json_url));
         $embed = $obj->html;
@@ -92,34 +90,33 @@ function analyze_url($url) {
     }
 
     $fb_video_criteria = ['videos','video.php'];
-    if ( endsWith($parsed['host'],'facebook.com') && (!empty(array_intersect($segment, $fb_video_criteria))) ) {
+    if (endsWith($parsed['host'], 'facebook.com') && (!empty(array_intersect($segment, $fb_video_criteria)))) {
         $json_url = "https://www.facebook.com/plugins/video/oembed.json/?url=".$url;
         $obj = json_decode(using_curl($json_url));
         $embed = $obj->html;
         return ['https://www.facebook.com/images/fb_icon_325x325.png',$description,$embed];
     }
 
-    if ( ( endsWith($parsed['host'],'instagram.com') || ($parsed['host'] == 'instagr.am') ) && ($segment[1] == 'p') ) {
+    if ((endsWith($parsed['host'], 'instagram.com') || ($parsed['host'] == 'instagr.am')) && ($segment[1] == 'p')) {
         $json = using_curl("https://api.instagram.com/oembed?url=".$url);
         $obj = json_decode($json);
         $embed = $obj->html;
         $embed = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $embed);
     }
 
-    if ( endsWith($parsed['host'],'9gag.com') && ($segment[1] == 'gag') ) {
-
+    if (endsWith($parsed['host'], '9gag.com') && ($segment[1] == 'gag')) {
         $handle = curl_init("http://img-9gag-fun.9cache.com/photo/".$segment[2]."_460sv.mp4");
-        curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 
         /* Get the HTML or whatever is linked in $url. */
         $response = curl_exec($handle);
 
         /* Check for 404 (file not found). */
         $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-        if($httpCode == 404) {
+        if ($httpCode == 404) {
             /* Handle 404 here. */
             $embed = '<img src="http://img-9gag-fun.9cache.com/photo/'.$segment[2].'_460s.jpg"/>';
-            return [$html->find('meta[property=og:image]',0)->content,'',$embed];
+            return [$html->find('meta[property=og:image]', 0)->content,'',$embed];
         }
 
         curl_close($handle);
@@ -131,16 +128,16 @@ function analyze_url($url) {
                     </video>
                     <div class="playpause"></div>
                 </div>';
-        return [$html->find('meta[property=og:image]',0)->content,'',$embed];
+        return [$html->find('meta[property=og:image]', 0)->content,'',$embed];
     }
 
     if ($html->find('meta[property=og:image]')) {
-        $src = $html->find('meta[property=og:image]',0)->content;
+        $src = $html->find('meta[property=og:image]', 0)->content;
         if ($src == '') {
         } else {
             if (strpos($src, '://') !== false) {
                 $imageurl = $src;
-            } elseif (substr( $src, 0, 2 ) === "//") {
+            } elseif (substr($src, 0, 2) === "//") {
                 $imageurl = 'http:'.$src;
             } else {
                 $imageurl = $parsed['scheme'].'://'.$parsed['host'].'/'.$src;//get image absolute url
@@ -154,33 +151,37 @@ function analyze_url($url) {
     $visited = array();
     $getimagesize_counter = 0;
     $min_edge_length = 200;
-    foreach($html->find('img') as $element) {
+    foreach ($html->find('img') as $element) {
         //echo "\nNEW IMAGE:\n";
         $src = $element->src;
-        if($src=='')continue;// it happens on your test url
+        if ($src=='') {
+            continue;
+        }// it happens on your test url
         if (strpos($src, '://') !== false) {
             $imageurl = $src;
-        } elseif (substr( $src, 0, 2 ) === "//") {
+        } elseif (substr($src, 0, 2) === "//") {
             $imageurl = 'http:'.$src;
         } else {
             $imageurl = $parsed['scheme'].'://'.$parsed['host'].'/'.$src;//get image absolute url
         }
 
         // ignore already seen images, add new images
-        if(in_array($imageurl, $visited))continue;
+        if (in_array($imageurl, $visited)) {
+            continue;
+        }
         $visited[] = $imageurl;
 
         // get original size of first image occurrence without a width or a height attribute
-        if ( ( empty($element->width) || empty($element->height) ) && !($getimagesize_counter > 0) ) {
+        if ((empty($element->width) || empty($element->height)) && !($getimagesize_counter > 0)) {
             //echo "Running getimagesize without looking to DOM."."\n";
             $image = @getimagesize($imageurl); // get the rest images width and height
             //echo print_r($image)."\n";
             $getimagesize_counter++;
-            if ( ($image[0] >= $min_edge_length) && ($image[1] >= $min_edge_length) ) {
+            if (($image[0] >= $min_edge_length) && ($image[1] >= $min_edge_length)) {
                 if ($image[0] > $maxSize) {
                     $maxSize = $image[0];
                     $biggestImage = $imageurl;
-                } else if ($image[1] > $maxSize) {
+                } elseif ($image[1] > $maxSize) {
                     $maxSize = $image[1];
                     $biggestImage = $imageurl;
                 }
@@ -192,17 +193,17 @@ function analyze_url($url) {
 
         //echo $element->width."\n";
         //echo $element->height."\n";
-        if ( ($element->width >= $min_edge_length) && ($element->height >= $min_edge_length) ) {
-            if ( ($element->width > $maxSize) || ($element->height > $maxSize) ) {
+        if (($element->width >= $min_edge_length) && ($element->height >= $min_edge_length)) {
+            if (($element->width > $maxSize) || ($element->height > $maxSize)) {
                 //echo "Found by DOM. Checking by getimagesize..."."\n";
-                if ( ($element->width > $maxSize) || ($element->height > $maxSize) ) {
+                if (($element->width > $maxSize) || ($element->height > $maxSize)) {
                     $image = @getimagesize($imageurl); // get the rest images width and height
                     //echo print_r($image)."\n";
-                    if ( ($image[0] >= $min_edge_length) && ($image[1] >= $min_edge_length) ) {
+                    if (($image[0] >= $min_edge_length) && ($image[1] >= $min_edge_length)) {
                         if ($image[0] > $maxSize) {
                             $maxSize = $element->width;
                             $biggestImage = $imageurl;
-                        } else if ($image[1] > $maxSize) {
+                        } elseif ($image[1] > $maxSize) {
                             $maxSize = $element->height;
                             $biggestImage = $imageurl;
                         }
@@ -221,5 +222,3 @@ function analyze_url($url) {
     return [$biggestImage,$description,$embed]; //return the biggest found image
     //return implode(" | ", $visited);
 }
-
-?>

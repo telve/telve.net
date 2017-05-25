@@ -1,9 +1,9 @@
 <?php
-	$this->load->helper('markdown');
+    $this->load->helper('markdown');
 
     $url = "./wiki/sponsor.md";
-    $read = fopen($url,'r') or die('Failed to open the file!');
-    $text = fread($read,4096);
+    $read = fopen($url, 'r') or die('Failed to open the file!');
+    $text = fread($read, 4096);
     fclose($read);
 ?>
 

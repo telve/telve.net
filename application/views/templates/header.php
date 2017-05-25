@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $title; ?></title>
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="telve, sosyal, haber, bağlantı, yorum" />
@@ -71,32 +71,32 @@
     </head>
 
     <body>
-	       <div class="navbar-inverse"><!--navbar navbar-fixed-top-->
-               <div id="no-more">
-                   <a href="<?php echo $base_url.'viki/';?>">
-                       <div id="bullhorn-announcement">
-                           <div class="scroll-left">
-                               <span>İNTERNETİN ÖN SAYFASINA HOŞ GELDİNİZ</span>
-                           </div>
-                       </div>
-                       <span class="glyphicon glyphicon-bullhorn special-bullhorn-icon"></span>
-                   </a>
+	      <div class="navbar-inverse"><!--navbar navbar-fixed-top-->
+            <div id="no-more">
+                <a href="<?php echo $base_url.'viki/';?>">
+                    <div id="bullhorn-announcement">
+                        <div class="scroll-left">
+                           <span>İNTERNETİN ÖN SAYFASINA HOŞ GELDİNİZ</span>
+                        </div>
+                    </div>
+                    <span class="glyphicon glyphicon-bullhorn special-bullhorn-icon"></span>
+                </a>
 
-                   &nbsp;&nbsp;
-                   <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Ön</a> -
-                   <a <?php if ('TÜMÜ' == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/TÜMÜ/';?>">Tümü</a> -
-                   <a href="<?php echo base_url('').'t/RASTGELE/';?>">Rastgele</a> &nbsp;|&nbsp;
-                   <?php foreach($topics_for_header as $topic): ?>
-                       <a <?php if ($topic['topic'] == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
-                   <?php endforeach ?>
+                &nbsp;&nbsp;
+                <a <?php if(!in_array($this->uri->segment(1),$front_forbidden)) echo 'style="color:red;"'; ?> href="<?php echo base_url('');?>">Ön</a> -
+                <a <?php if ('TÜMÜ' == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/TÜMÜ/';?>">Tümü</a> -
+                <a href="<?php echo base_url('').'t/RASTGELE/';?>">Rastgele</a> &nbsp;|&nbsp;
+                <?php foreach($topics_for_header as $topic): ?>
+                    <a <?php if ($topic['topic'] == urldecode($this->uri->segment(2))) echo 'style="color:red;"'; ?> href="<?php echo base_url('').'t/'.$topic['topic'].'/';?>"><?php echo $topic['topic']; ?></a> -
+                <?php endforeach ?>
 
-               </div>
-               <a id="more" <?php if ( ($this->uri->segment(1) == 'konular') || ($this->uri->segment(1) == 'aboneliklerim') ) echo 'style="color:red;"'; ?> href="<?php
-               if ($is_user_logged_in)
-                    echo base_url('aboneliklerim');
-               else
-                    echo base_url('konular'); ?>">Devamı<span class="glyphicon glyphicon-chevron-right"></span></a>
-           </div>
+            </div>
+            <a id="more" <?php if ( ($this->uri->segment(1) == 'konular') || ($this->uri->segment(1) == 'aboneliklerim') ) echo 'style="color:red;"'; ?> href="<?php
+            if ($is_user_logged_in)
+                echo base_url('aboneliklerim');
+            else
+                echo base_url('konular'); ?>">Devamı<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
 
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
         <script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
@@ -132,4 +132,4 @@
 
             <?php } ?>
             <?php echo $login_info;?>
-       </ul>
+        </ul>

@@ -1,9 +1,9 @@
 <?php
-	$this->load->helper('markdown');
+    $this->load->helper('markdown');
 
     $url = "./wiki/kullanici_sozlesmesi.md";
-    $read = fopen($url,'r') or die('Failed to open the file!');
-    $text = fread($read,16384);
+    $read = fopen($url, 'r') or die('Failed to open the file!');
+    $text = fread($read, 16384);
     fclose($read);
 ?>
 
