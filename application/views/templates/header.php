@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $title; ?></title>
         <meta name="description" content="<?php echo $description; ?>" />
         <meta name="keywords" content="telve, sosyal, haber, bağlantı, yorum" />
@@ -71,7 +71,7 @@
     </head>
 
     <body>
-	      <div class="navbar-inverse"><!--navbar navbar-fixed-top-->
+        <div class="navbar-inverse"><!--navbar navbar-fixed-top-->
             <div id="no-more">
                 <a href="<?php echo $base_url.'viki/';?>">
                     <div id="bullhorn-announcement">

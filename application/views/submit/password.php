@@ -2,7 +2,7 @@
     <div class="row-fluid">
         <div class="span5">
               <ul class="nav nav-tabs form-tabs" id="myTab">
-      		        <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Şifrenizi sıfırlayın</a></li>
+                  <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Şifrenizi sıfırlayın</a></li>
               </ul>
 
               <div class="tab-content">

@@ -10,10 +10,10 @@
 <?php echo $toggle_sidebar ?>
 
 <div class="container-fluid">
-	<div class="row-fluid">
+  <div class="row-fluid">
 
-		<div id="right-content" class="span8">
+    <div id="right-content" class="span8">
 
-		    <div id="md"><?php echo markdown($text);?></div>
+        <div id="md"><?php echo markdown($text);?></div>
 
-		</div>
+    </div>

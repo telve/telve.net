@@ -5,7 +5,7 @@
                 <fieldset>
 
                     <ul class="nav nav-tabs form-tabs" id="myTab">
-            		        <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Bildirimler</a></li>
+                        <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Bildirimler</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -20,7 +20,7 @@
                     </div>
 
                     <ul class="nav nav-tabs form-tabs" id="myTab">
-            		        <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Şifre değişikliği</a></li>
+                        <li class="active"><a style="background-color:#5f99cf;color:#fff" href="#link">Şifre değişikliği</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -29,16 +29,16 @@
                                 <tr>
                                     <td>
                                         <label for="password">Şifre</label>
-                                  			<input type="password" name="password" value="<?php echo set_value('password');?>" placeholder="bir şifre belirleyin"/><br />
-                                  			<div style="color:red;"><?php echo form_error('password');?></div>
+                                        <input type="password" name="password" value="<?php echo set_value('password');?>" placeholder="bir şifre belirleyin"/><br />
+                                        <div style="color:red;"><?php echo form_error('password');?></div>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <label for="passconf">Şifrenizi doğrulayın</label>
-                                  			<input type="password" name="passconf" value="<?php echo set_value('passconf');?>" placeholder="belirlediğiniz şifreyi tekrar girin"/><br />
-                                  			<div style="color:red;"><?php echo form_error('passconf');?></div><br />
+                                        <input type="password" name="passconf" value="<?php echo set_value('passconf');?>" placeholder="belirlediğiniz şifreyi tekrar girin"/><br />
+                                        <div style="color:red;"><?php echo form_error('passconf');?></div><br />
                                     </td>
                                 </tr>
                             </table>
