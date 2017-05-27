@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2017 at 12:32 AM
+-- Generation Time: May 28, 2017 at 02:26 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -39,7 +39,8 @@ CREATE TABLE `favourite_link` (
 
 INSERT INTO `favourite_link` (`id`, `uid`, `link_id`, `created`) VALUES
 (1, 2, 1, '2017-01-20 07:21:48'),
-(2, 1, 1, '2017-01-20 07:26:24');
+(2, 1, 1, '2017-01-20 07:26:24'),
+(3, 5, 38, '2017-05-28 02:18:38');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,8 @@ CREATE TABLE `favourite_reply` (
 
 INSERT INTO `favourite_reply` (`id`, `uid`, `reply_id`, `created`) VALUES
 (1, 1, 1, '2017-01-20 07:47:20'),
-(2, 2, 2, '2017-01-20 08:22:33');
+(2, 2, 2, '2017-01-20 08:22:33'),
+(4, 5, 27, '2017-05-28 02:19:53');
 
 -- --------------------------------------------------------
 
@@ -114,13 +116,13 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (21, 2, 'Washington\'daki Trump karşıtı gösterilerde şiddet artıyor', 'http://www.ensonhaber.com/washingtondaki-trump-karsiti-gosteriler-2017-01-21.html', 'Başkentteki protestolarda 200\'ü aşkın gösterici gözaltına alındı, 6 polisin de aralarında bulunduğu çok sayıda kişi yaralandı.', NULL, 'http://i.cdn.ensonhaber.com/resimler/diger/trump-limuzin_872.jpg', 'www.ensonhaber.com', 'HABER', '2017-01-21 09:57:44', 0, 0, 0, 0, 1),
 (22, 2, 'Trump konuştu, dolar d&uuml;şt&uuml;! - Ekonomi Haberleri', 'http://ekonomi.haber7.com/ekonomi/haber/2248440-trump-konustu-dolar-dustu', 'ABD\'nin 45. Başkanı Donald Trump\'ın, ABD Kongresi\'ndeki t&ouml;rende yemin ederek yaptığı ilk resmi konuşmanın ardından New York borsasında kayıplar, ABD dolarında d&uuml;ş&uuml;ş g&ouml;r&uuml;ld&uuml;.', NULL, 'http://image.cdn.haber7.com//haber/haber7/thumbs/2017/03/trumpin_yillik_buyume_hedefi_yuzde_4_1484980285_9418.jpg', 'ekonomi.haber7.com', 'HABER', '2017-01-21 09:58:26', 0, 0, 0, 0, 1),
 (23, 2, 'HDP\'li vekilin s&ouml;zleri Bah&ccedil;eli\'yi g&uuml;ld&uuml;rd&uuml;! - SİYASET Haberleri', 'http://www.haber7.com/siyaset/haber/2248509-hdpli-vekilin-sozleri-bahceliyi-guldurdu', 'Anayasa değişikliği teklifinin kabul edildiği gece HDP\'li Sırrı S&uuml;reyya &Ouml;nder\'in k&uuml;rs&uuml; konuşması sırasında s&ouml;ylediği s&ouml;zler, MHP Genel Başkanı Devlet Bah&ccedil;eli\'yi g&uuml;ld&uuml;rd&uuml;.', NULL, 'http://image.cdn.haber7.com//haber/haber7/photos/2017/03/hdpli_vekilin_sozleri_bahceliyi_guldurdu_1484981623_6483.jpg', 'www.haber7.com', 'HABER', '2017-01-21 10:00:22', 0, 0, 0, 0, 1),
-(24, 1, 'Kalisi ne gulüyon?', 'https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif', NULL, '<img src="https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif" style="max-height:315px;"/>', 'https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif', 'media.giphy.com', 'GİF', '2017-01-21 10:21:04', 3, 1, 0, 0, 1),
+(24, 1, 'Kalisi ne gulüyon?', 'https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif', NULL, '<img src="https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif" style="max-height:315px;"/>', 'https://media.giphy.com/media/Ts6KGvz9qETM4/giphy.gif', 'media.giphy.com', 'GİF', '2017-01-21 10:21:04', 4, 1, 0, 0, 1),
 (25, 1, 'Horizon: Zero Dawn - Turuncu Levye', 'http://www.turunculevye.com/oyunlar/goster/horizon-zero-dawn', 'Guerilla Games tarafından geliştirilmekte olan Horizon: Zero Dawn, PlayStation 4 platformuna özel yeni bir projedir. Horizon: Zero Dawn Oyun İncelemesi, Sistem Özellikleri, Ekran Görüntüleri, Videoları ve Horizon: Zero Dawn Haberleri', NULL, 'http://img.turunculevye.com/thumbnails/2015/06/horizon_slide_slide.jpg', 'www.turunculevye.com', 'OYUN', '2017-01-21 10:24:17', 0, 0, 0, 0, 1),
 (26, 2, '2017 yılında çıkacak oyunlar! - ShiftDelete.Net', 'http://shiftdelete.net/2017-yilinda-cikacak-oyunlar-77521', '2017 yılında çıkacak oyunlarla karşınızdayız. 2017 yılında bizleri yine harika oyunlar bekliyor. Hazırladığımız liste ile 2017\'nin en çok beklenen oyunlarını görebilirsiniz.', NULL, 'http://s01.shiftdelete.net/img/general_b/16-12/14/2017-yilinda-cikacak-tum-oyunlar-1.jpg', 'shiftdelete.net', 'OYUN', '2017-01-21 10:25:28', 0, 0, 0, 0, 1),
 (27, 1, 'Bu Ivana sert mi? Sertse yumuşatmak mümkün mü?', 'http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg', NULL, '<img src="http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg" style="max-height:315px;"/>', 'http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg', 'www.butarzbenim.net', 'SORU', '2017-01-21 10:33:44', 0, 0, 0, 0, 1),
 (28, 1, 'İstanbul\'a daha kar yağar mı? Okullar tatil olur mu?', 'http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg', NULL, '<img src="http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg" style="max-height:315px;"/>', 'http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg', 'img.haberler.com', 'SORU', '2017-01-21 10:35:34', 0, 0, 0, 0, 1),
 (29, 1, 'Hangi Linux dağıtımı en iyisi?', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', NULL, '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png" style="max-height:315px;"/>', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', 'upload.wikimedia.org', 'SORU', '2017-01-21 10:37:38', 0, 0, 0, 0, 1),
-(30, 1, 'Ünlü giyimcinin AVM isyanı: Herkes haddini bilecek - Ekonomi Haberleri', 'http://www.hurriyet.com.tr/unlu-giyimcinin-avm-isyani-herkes-haddini-bilecek-40342255', 'AVM Endeksi\'ne göre Türkiye\'de 377 AVM var. Sadece 20 kentte AVM bulunmuyor. Erkek giyim markası Kiğılı\'nın Yönetim Kurulu Başkanı Abdullah Kiğılı, Terörü hallettiğimiz takdirde yabancı AVM yatırımcılarıyla bu işi çözeceğiz.. O zaman daha hızlı büyüye...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58830db318c77310540d2ab8.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:46:30', 0, 0, 0, 0, 1),
+(30, 1, 'Ünlü giyimcinin AVM isyanı: Herkes haddini bilecek - Ekonomi Haberleri', 'http://www.hurriyet.com.tr/unlu-giyimcinin-avm-isyani-herkes-haddini-bilecek-40342255', 'AVM Endeksi\'ne göre Türkiye\'de 377 AVM var. Sadece 20 kentte AVM bulunmuyor. Erkek giyim markası Kiğılı\'nın Yönetim Kurulu Başkanı Abdullah Kiğılı, Terörü hallettiğimiz takdirde yabancı AVM yatırımcılarıyla bu işi çözeceğiz.. O zaman daha hızlı büyüye...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58830db318c77310540d2ab8.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:46:30', -1, 0, 0, 0, 1),
 (31, 1, 'Saffet Sancaklı: Bu olay çok ağır geldi, bir mucize bekliyoruz Allah\'tan - Son Dakika Gündem Haberleri', 'http://www.hurriyet.com.tr/saffet-sancakli-bu-olay-cok-agir-geldi-bir-mucize-bekliyoruz-allahtan-40342163', 'MHP Kocaeli Milletvekili Saffet Sancaklı, Meclis kürsüsünde yaptığı konuşmada  intihar girişiminde bulunan eşi Hülya Sancaklı için dua istedi.  Sancaklı, Bu olay çok ağır geldi bana. Allah kimseye vermesin. 6 günü geçtik, 7’nci güne girdik. Allah’ın d...', NULL, 'http://i.hurimg.com/i/hurriyet/90/590x332/5882d85818c77310540d2867.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:48:22', 0, 0, 0, 0, 1),
 (32, 1, 'Ocak ayı otomobil kampanyaları - Ekonomi Haberleri', 'http://www.hurriyet.com.tr/galeri-40341840', '2017 yılına girişle birlikte otomobil firmaları hem ÖTV bazında hem de döviz kurlarındaki sabitlemelerle kampanyalara başladı.', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5882fb6fc03c0e2c1c461f76.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:48:57', 0, 0, 0, 0, 1),
 (33, 2, 'Dijital dünyanın yeni yıldızı Sena Şener - Hayat Haberleri', 'http://www.hurriyet.com.tr/dijital-dunyanin-yeni-yildizi-sena-sener-40342613', 'Kocaman, kıvır kıvır saçları, ışıldayan gözleriyle bir masal kahramanını andırıyor. Daha 18 yaşında... Ama hayallerini gerçekleştirme yolunda önemli adımlar attı bile. Evde yaptığı kayıtları Soundcloud hesabına yükledikten kısa süre sonra dikkatleri üz...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/588369690f25440ff0ebbd9b.jpg', 'www.hurriyet.com.tr', 'MÜZİK', '2017-01-22 12:15:09', 0, 0, 0, 0, 1),
@@ -128,7 +130,7 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (35, 1, 'Napoli 9 dakikada bitirdi! | NTVSpor.net', 'http://www.ntvspor.net/futbol/napoli-9-dakikada-bitirdi-5883d63cf7022736e481f885', NULL, NULL, 'http://cdn.ntvspor.net/6deb0c055bd44456bdda1da47266f811.jpg?crop=0,29,940,558', 'www.ntvspor.net', 'FUTBOL', '2017-01-22 12:33:31', 0, 0, 0, 0, 1),
 (36, 1, 'Yasin&#39;in rekor sezonu! | NTVSpor.net', 'http://www.ntvspor.net/futbol/yasin-in-rekor-sezonu-58838ec9f7022736e481f74d', NULL, NULL, 'http://cdn.ntvspor.net/ae0335b57aab4644b47c236eb5439f53.jpg?crop=0,65,940,594', 'www.ntvspor.net', 'FUTBOL', '2017-01-22 12:34:08', 0, 0, 0, 0, 1),
 (37, 1, 'Kawhi Leonard şampiyonu devirdi | NTVSpor.net', 'http://www.ntvspor.net/basketbol/kawhi-leonard-sampiyonu-devirdi-588462a2f7022736e481f8dc', NULL, NULL, 'http://cdn.ntvspor.net/ff0fca959850445fb43b9c4c3918ec08.jpg?crop=0,0,941,529', 'www.ntvspor.net', 'BASKETBOL', '2017-01-22 12:34:48', 0, 0, 0, 0, 1),
-(38, 1, 'Gülşen - Bangır Bangır - YouTube', 'https://www.youtube.com/watch?v=icZ-OlVSvb4', 'Gülşen\'in, DMC etiketiyle yayınlanan &quot;Bangır Bangır&quot; albümünde yer alan &quot;Bangır Bangır&quot; isimli şarkısı, video klibiyle netd müzik\'te. netd müzik, Facebook\'ta...', '<iframe width="560" height="315" src="https://www.youtube.com/embed/icZ-OlVSvb4" frameborder="0" allowfullscreen></iframe>', 'https://i.ytimg.com/vi/icZ-OlVSvb4/maxresdefault.jpg', 'www.youtube.com', 'VİDEO', '2017-01-22 14:34:43', 0, 0, 0, 0, 1),
+(38, 1, 'Gülşen - Bangır Bangır - YouTube', 'https://www.youtube.com/watch?v=icZ-OlVSvb4', 'Gülşen\'in, DMC etiketiyle yayınlanan &quot;Bangır Bangır&quot; albümünde yer alan &quot;Bangır Bangır&quot; isimli şarkısı, video klibiyle netd müzik\'te. netd müzik, Facebook\'ta...', '<iframe width="560" height="315" src="https://www.youtube.com/embed/icZ-OlVSvb4" frameborder="0" allowfullscreen></iframe>', 'https://i.ytimg.com/vi/icZ-OlVSvb4/maxresdefault.jpg', 'www.youtube.com', 'VİDEO', '2017-01-22 14:34:43', 0, 1, 0, 1, 1),
 (39, 2, 'Bu ünlüyü tanıyor musunuz?', 'http://onamola.com/media/uploads/42/56a114663d4bb.jpg', NULL, '<img src="http://onamola.com/media/uploads/42/56a114663d4bb.jpg" style="max-height:315px;"/>', 'http://onamola.com/media/uploads/42/56a114663d4bb.jpg', 'onamola.com', 'SORU', '2017-01-22 16:04:37', 0, 0, 0, 0, 1),
 (40, 2, 'T24 Twitter\'da: &quot;Haluk Bilginer: Erkekler beş para etmez; bu dünya erkeklerden arındırılmalı!&quot;', 'https://twitter.com/t24comtr/status/823079889536434176', '“Haluk Bilginer: Erkekler beş para etmez; bu dünya erkeklerden arındırılmalı!&#10;https://t.co/ZibVBdG6kU”', '<blockquote class="twitter-tweet"><p lang="tr" dir="ltr">Haluk Bilginer: Erkekler beş para etmez; bu dünya erkeklerden arındırılmalı!<a href="https://t.co/ZibVBdG6kU">https://t.co/ZibVBdG6kU</a> <a href="https://t.co/1eRARZ9a2g">pic.twitter.com/1eRARZ9a2g</a></p>&mdash; T24 (@t24comtr) <a href="https://twitter.com/t24comtr/status/823079889536434176">January 22, 2017</a></blockquote>\n<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>', 'https://pbs.twimg.com/media/C2wqycNW8AAWm6y.jpg:large', 'twitter.com', 'HABER', '2017-01-22 16:22:01', 0, 0, 0, 0, 1),
 (41, 2, 'Cem Yılmaz kar yağarken iş başında', 'https://www.facebook.com/CMYLMZ/photos/pb.96803912019.-2207520000.1485098706./10154890471522020/?type=3&theater', NULL, '<div id="fb-root"></div>\n<script>(function(d, s, id) {\n  var js, fjs = d.getElementsByTagName(s)[0];\n  if (d.getElementById(id)) return;\n  js = d.createElement(s); js.id = id;\n  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.3";\n  fjs.parentNode.insertBefore(js, fjs);\n}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-post" data-href="https://www.facebook.com/CMYLMZ/photos/pb.96803912019.-2207520000.1485098706./10154890471522020/?type=3" data-width="552"><blockquote cite="https://www.facebook.com/CMYLMZ/posts/10154890471522020:0" class="fb-xfbml-parse-ignore"><p>http://instagram.com/cmylmz/</p><a href="https://www.facebook.com/CMYLMZ/">Cem Yılmaz</a> paylaştı:&nbsp;<a href="https://www.facebook.com/CMYLMZ/posts/10154890471522020:0">9 Ocak 2017 Pazartesi</a></blockquote></div>', 'https://www.facebook.com/images/fb_icon_325x325.png', 'www.facebook.com', 'RESİM', '2017-01-22 18:27:02', 0, 0, 0, 0, 1),
@@ -138,12 +140,42 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (45, 2, 'Bir Ege Rüyası İzmir', 'http://www.alobilethatti.com/blog/bir-ege-ruyasi-izmir/', NULL, NULL, 'http://www.alobilethatti.com/blog/wp-content/uploads/2015/02/kemeralti-izmir.jpg', 'www.alobilethatti.com', 'İZMİR', '2017-01-22 21:13:12', 0, 0, 0, 0, 1),
 (46, 2, 'Vakıfbank liderliğini korudu | NTVSpor.net', 'http://www.ntvspor.net/voleybol/vakifbank-liderligini-korudu-58834d30f7022736e481f66c', NULL, NULL, 'http://cdn.ntvspor.net/805655b74e76481c8d23fc425630d45b.jpg?crop=0,0,941,529', 'www.ntvspor.net', 'VOLEYBOL', '2017-01-22 21:38:36', 0, 0, 0, 0, 1),
 (47, 2, 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde - İstanbul Haberleri', 'http://www.hurriyet.com.tr/fazil-say-mozart-eserleriyle-iku-sahnesinde-40320696', 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5864bc12eb10bb19dcd70048.jpg', 'www.hurriyet.com.tr', 'SANAT', '2017-01-22 21:47:25', 0, 0, 0, 0, 1),
-(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 0, 0, 0, 1),
+(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 1, 0, 0, 1),
 (49, 2, 'Spiegel’in kapağı ortalığı karıştırdı - Dünya Haberleri', 'http://www.hurriyet.com.tr/spiegelin-kapagi-ortaligi-karistirdi-40355912', 'ALMAN Der Spiegel dergisinin son sayısının kapağında ABD Başkanı Donald Trump’ı Özgürlük Heykeli’nin başını keserken gösteren görseli ortalığı karıştırdı.', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58961711c03c0e27c87d4544.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 03:31:15', 1, 0, 0, 0, 1),
 (50, 2, 'Instagram', 'https://www.instagram.com/p/BP2Imoeh5Le/', 'See this Instagram video by @5.min.crafts • 27.4k likes', '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BP2Imoeh5Le/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Unusual and brilliant ways to use straws! #5minutecrafts #lifehacks #straws</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A video posted by 5-Minute Crafts (@5.min.crafts) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-01-29T11:01:20+00:00">Jan 29, 2017 at 3:01am PST</time></p></div></blockquote><script async defer src="//platform.instagram.com/en_US/embeds.js"></script>', 'https://scontent-ams3-1.cdninstagram.com/t51.2885-15/s1080x1080/e15/fr/16124270_1349629781725096_4086208391943290880_n.jpg?ig_cache_key=MTQzODM3NDk3MDE2NTUzMTM1OA%3D%3D.2', 'www.instagram.com', 'HABER', '2017-02-05 03:38:40', 0, 0, 0, 0, 1),
 (51, 10, 'Lakabım ciğer sökücü! | Ayşe ARMAN', 'http://www.hurriyet.com.tr/yazarlar/ayse-arman/lakabim-ciger-sokucu-40355965', 'Nasıl yani? Bu, o mu? Erkeklerin korkulu rüyası... Tir tir titredikleri kadın...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5896b9bc18c7731ac4d21e62.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 07:53:29', 0, 0, 0, 0, 1),
 (52, 2, 'Cansu Dere mi Beren Saat mi - Magazin Haberleri', 'http://www.hurriyet.com.tr/cansu-dere-mi-beren-saat-mi-40370867', 'GQ ödül törenine kıyafetleriyle Beren Saat ve Cansu Dere damga vurdu. Sizce hangisi daha güzel? Stil notlarınızı alalım...Magazin Konseyi haftanın magazin olaylarını masaya yatırdı...', NULL, 'http://i.hurimg.com/i/hurriyet/75/0x0/58a9bf5618c7732f4c4e7488.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-20 07:02:47', 0, 0, 0, 0, 1),
 (53, 2, 'Markdown kod örneği', NULL, 'There are many different ways to style code with GitHub\'s markdown. If you have inline code blocks, wrap them in backticks: `var example = true`.  If you\'ve got a longer block of code, you can indent with four spaces:\r\n\r\n    if (isAwesome){\r\n      return true\r\n    }\r\n\r\nGitHub also supports something called code fencing, which allows for multiple lines without indentation:\r\n\r\n```\r\nif (isAwesome){\r\n  return true\r\n}\r\n```\r\n\r\nAnd if you\'d like to use syntax highlighting, include the language:\r\n\r\n```javascript\r\nif (isAwesome){\r\n  return true\r\n}\r\n```', NULL, '', NULL, 'TEKNOLOJİ', '2017-02-21 05:25:23', 0, 6, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `item_type` tinyint(4) NOT NULL,
+  `action_type` tinyint(4) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `unread` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `uid`, `item_type`, `action_type`, `item_id`, `unread`, `created`) VALUES
+(1, 4, 0, 0, 24, 1, '2017-05-28 01:55:28'),
+(2, 4, 0, 1, 30, 1, '2017-05-28 02:00:04'),
+(3, 4, 0, 3, 38, 1, '2017-05-28 02:10:41'),
+(4, 5, 1, 3, 26, 1, '2017-05-28 02:13:47'),
+(5, 5, 1, 0, 27, 1, '2017-05-28 02:16:57'),
+(6, 5, 1, 1, 26, 1, '2017-05-28 02:17:25'),
+(7, 5, 0, 2, 38, 1, '2017-05-28 02:18:38'),
+(8, 5, 1, 2, 27, 1, '2017-05-28 02:19:53');
 
 -- --------------------------------------------------------
 
@@ -214,7 +246,10 @@ INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comment
 (22, 'As Kanye West said:\n\n> We\'re living the future so\n> the present is our past.', 21, 2, '2017-02-21 06:51:45', 0, 1, 0, 53, 0, 0, 0),
 (23, 'http://github.com - automatic!\n[GitHub](http://github.com)', 21, 2, '2017-02-21 06:52:04', 0, 1, 0, 53, 0, 0, 0),
 (24, 'http://github.com - automatic!\n[GitHub](http://github.com)', 23, 2, '2017-02-21 06:52:22', 0, 0, 0, 53, 0, 0, 0),
-(25, 'I think you should use an\n`<addr>` element here instead.', 22, 2, '2017-02-21 07:01:57', 0, 0, 0, 53, 0, 0, 0);
+(25, 'I think you should use an\n`<addr>` element here instead.', 22, 2, '2017-02-21 07:01:57', 0, 0, 0, 53, 0, 0, 0),
+(26, 'arabesk :/', 48, 4, '2017-05-28 02:05:46', -1, 1, 1, 48, 0, 0, 0),
+(27, 'yavrum kaldır kollarını...\n\natletini değiştirecem yavrum kaldırsana kollarını!', 38, 4, '2017-05-28 02:10:40', 1, 0, 1, 38, 0, 1, 0),
+(28, 'hayır, en güzeli satanic metallic black arabesk!', 26, 5, '2017-05-28 02:13:47', 0, 0, 0, 48, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -404,7 +439,9 @@ INSERT INTO `vote_link` (`id`, `uid`, `link_id`, `up_down`, `created`) VALUES
 (4, 1, 24, 1, '2017-01-22 22:28:51'),
 (5, 3, 24, 1, '2017-01-22 22:29:18'),
 (6, 2, 49, 1, '2017-02-21 02:38:18'),
-(7, 2, 44, 0, '2017-02-21 02:38:51');
+(7, 2, 44, 0, '2017-02-21 02:38:51'),
+(8, 4, 24, 1, '2017-05-28 01:55:28'),
+(9, 4, 30, 0, '2017-05-28 02:00:04');
 
 -- --------------------------------------------------------
 
@@ -429,7 +466,9 @@ INSERT INTO `vote_reply` (`id`, `uid`, `reply_id`, `up_down`, `created`) VALUES
 (2, 2, 2, 1, '2017-01-20 11:03:19'),
 (3, 1, 3, 1, '2017-01-20 11:07:45'),
 (4, 2, 4, 1, '2017-01-20 11:09:19'),
-(5, 3, 5, 1, '2017-01-20 11:29:52');
+(5, 3, 5, 1, '2017-01-20 11:29:52'),
+(6, 5, 27, 1, '2017-05-28 02:16:57'),
+(7, 5, 26, 0, '2017-05-28 02:17:25');
 
 --
 -- Indexes for dumped tables
@@ -457,6 +496,12 @@ ALTER TABLE `link` ADD FULLTEXT KEY `text` (`text`);
 ALTER TABLE `link` ADD FULLTEXT KEY `domain` (`domain`);
 ALTER TABLE `link` ADD FULLTEXT KEY `url` (`url`);
 ALTER TABLE `link` ADD FULLTEXT KEY `topic` (`topic`);
+
+--
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_reset`
@@ -528,22 +573,27 @@ ALTER TABLE `vote_reply`
 -- AUTO_INCREMENT for table `favourite_link`
 --
 ALTER TABLE `favourite_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `favourite_reply`
 --
 ALTER TABLE `favourite_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `report_link`
 --
@@ -573,12 +623,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vote_link`
 --
 ALTER TABLE `vote_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `vote_reply`
 --
 ALTER TABLE `vote_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

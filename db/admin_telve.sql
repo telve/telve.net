@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2017 at 12:34 AM
+-- Generation Time: May 28, 2017 at 02:27 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -69,6 +69,22 @@ CREATE TABLE `link` (
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `item_type` tinyint(4) NOT NULL,
+  `action_type` tinyint(4) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `unread` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -242,6 +258,12 @@ ALTER TABLE `link` ADD FULLTEXT KEY `url` (`url`);
 ALTER TABLE `link` ADD FULLTEXT KEY `topic` (`topic`);
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -321,6 +343,11 @@ ALTER TABLE `favourite_reply`
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reply`

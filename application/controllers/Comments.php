@@ -10,6 +10,7 @@
             $this->load->model('report_model');
             $this->load->model('favourite_model');
             $this->load->model('topic_model');
+            $this->load->model('notification_model');
         }
 
         public function view()
@@ -57,8 +58,10 @@
                     if ($this->link_model->insert_reply()) {
                         if ($this->input->post('is_parent_link') == 1) {
                             $this->link_model->increase_comments();
+                            $this->notification_model->insert_notification(0,3);
                         } elseif ($this->input->post('is_parent_link') == 0) {
                             $this->link_model->increase_rply_comments();
+                            $this->notification_model->insert_notification(1,3);
                         }
                         echo 1;
                     } else {
@@ -78,6 +81,7 @@
                 if (!$this->vote_model->right_to_vote()) {
                     $this->vote_model->insert_vote(1);
                     $this->link_model->up_score();
+                    $this->notification_model->insert_notification(0,0);
                     echo 1;
                 } else {
                     echo "Bu gönderi için oyunuzu zaten kullandınız.";
@@ -93,6 +97,7 @@
                 if (!$this->vote_model->right_to_vote()) {
                     $this->vote_model->insert_vote(0);
                     $this->link_model->down_score();
+                    $this->notification_model->insert_notification(0,1);
                     echo 1;
                 } else {
                     echo "Bu gönderi için oyunuzu zaten kullandınız.";
@@ -108,6 +113,7 @@
                 if (!$this->vote_model->right_to_rply_vote()) {
                     $this->vote_model->insert_rply_vote(1);
                     $this->link_model->rply_up_score();
+                    $this->notification_model->insert_notification(1,0);
                     echo 1;
                 } else {
                     echo "Bu yorum/yanıt için oyunuzu zaten kullandınız.";
@@ -123,6 +129,7 @@
                 if (!$this->vote_model->right_to_rply_vote()) {
                     $this->vote_model->insert_rply_vote(0);
                     $this->link_model->rply_down_score();
+                    $this->notification_model->insert_notification(1,1);
                     echo 1;
                 } else {
                     echo "Bu yorum/yanıt için oyunuzu zaten kullandınız.";
@@ -168,6 +175,7 @@
                 if (!$this->favourite_model->right_to_unfavourite_link()) {
                     $this->favourite_model->insert_favourite_link();
                     $this->favourite_model->increase_link_favorited();
+                    $this->notification_model->insert_notification(0,2);
                     echo 1;
                 } else {
                     echo "Bu gönderi zaten favorilerinizde.";
@@ -198,6 +206,7 @@
                 if (!$this->favourite_model->right_to_unfavourite_reply()) {
                     $this->favourite_model->insert_favourite_reply();
                     $this->favourite_model->increase_reply_favorited();
+                    $this->notification_model->insert_notification(1,2);
                     echo 1;
                 } else {
                     echo "Bu yorum/yanıt zaten favorilerinizde.";
