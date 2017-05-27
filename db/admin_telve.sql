@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 05:07 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost
+-- Generation Time: May 28, 2017 at 12:34 AM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE `favourite_link` (
   `uid` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,7 +44,7 @@ CREATE TABLE `favourite_reply` (
   `uid` int(11) NOT NULL,
   `reply_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `link` (
   `reported` int(7) NOT NULL DEFAULT '0',
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,7 @@ CREATE TABLE `password_reset` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `reply` (
   `reported` int(7) NOT NULL DEFAULT '0',
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,7 @@ CREATE TABLE `report_link` (
   `uid` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE `report_reply` (
   `uid` int(11) NOT NULL,
   `reply_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,7 @@ CREATE TABLE `report_topic` (
   `uid` int(11) NOT NULL,
   `topic_name` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -153,7 +153,7 @@ CREATE TABLE `subscription` (
   `uid` int(11) NOT NULL,
   `topic` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,7 @@ CREATE TABLE `topic` (
   `creator_uid` int(11) NOT NULL DEFAULT '1',
   `reported` int(7) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `user` (
   `email` varchar(33) NOT NULL,
   `karma` int(7) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -198,7 +198,7 @@ CREATE TABLE `vote_link` (
   `link_id` int(11) NOT NULL,
   `up_down` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -212,7 +212,7 @@ CREATE TABLE `vote_reply` (
   `reply_id` int(11) NOT NULL,
   `up_down` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Indexes for dumped tables

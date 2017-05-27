@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 05:05 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost
+-- Generation Time: May 28, 2017 at 12:32 AM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE `favourite_link` (
   `uid` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `favourite_link`
@@ -52,7 +52,7 @@ CREATE TABLE `favourite_reply` (
   `uid` int(11) NOT NULL,
   `reply_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `favourite_reply`
@@ -84,7 +84,7 @@ CREATE TABLE `link` (
   `reported` int(7) NOT NULL DEFAULT '0',
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `link`
@@ -155,7 +155,7 @@ CREATE TABLE `password_reset` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `password_reset`
@@ -183,7 +183,7 @@ CREATE TABLE `reply` (
   `reported` int(7) NOT NULL DEFAULT '0',
   `favorited` int(7) NOT NULL DEFAULT '0',
   `is_link_for_union` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `reply`
@@ -227,7 +227,7 @@ CREATE TABLE `report_link` (
   `uid` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `report_link`
@@ -248,7 +248,7 @@ CREATE TABLE `report_reply` (
   `uid` int(11) NOT NULL,
   `reply_id` int(11) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `report_reply`
@@ -269,7 +269,7 @@ CREATE TABLE `report_topic` (
   `uid` int(11) NOT NULL,
   `topic_name` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `report_topic`
@@ -289,7 +289,7 @@ CREATE TABLE `subscription` (
   `uid` int(11) NOT NULL,
   `topic` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subscription`
@@ -318,32 +318,32 @@ CREATE TABLE `topic` (
   `creator_uid` int(11) NOT NULL DEFAULT '1',
   `reported` int(7) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topic`
 --
 
 INSERT INTO `topic` (`name`, `description`, `subscribers`, `header_image`, `creator_uid`, `reported`, `created`) VALUES
-('RESİM', 'Bu konu altında direk resim linkleri paylaşılır. Örneğin bir kedi fotoğrafı :D', 0, 'https://3b0ad08da0832cf37cf5-435f6e4c96078b01f281ebf62986b022.ssl.cf3.rackcdn.com/articles/content/Catteries-and-Cat%20Sitting-Services.jpg', 1, 0, '2017-01-20 03:09:34'),
-('HABER', 'Bu konu altında en güncel haberleri bulabilirsiniz.', 2, 'http://farm9.staticflickr.com/8228/8434207887_1eb86f546e_o.jpg', 1, 0, '2017-01-20 03:17:49'),
-('YEMEK', 'En güzel yemek tariflerini ve en özel restoranları bulabilirsiniz.', 0, 'https://www.westindiessoul.com/wp-content/uploads/2014/06/banner03.jpg', 1, 1, '2017-01-20 03:33:25'),
-('KOMİK', 'Her türlü komik içeriğin paylaşılması şiddetle şiddetle tavsiye edilir.', 1, 'https://lh4.googleusercontent.com/-4DUyyZvKaKA/UsCOHaIufFI/AAAAAAAAAEU/xRMrY0AAAmQ/s0-d/meme_collage.jpg', 1, 0, '2017-01-20 03:50:13'),
-('TEKNOLOJİ', 'Yarının teknolojiisinden haberiniz olsun.', 1, 'http://www.fixxit.co.ke/fix/fixiit/images/nootheme/vidavo_slider/technology_2560-x-720.jpg', 1, 0, '2017-01-20 03:53:31'),
-('SİNEMA', 'Vizyondaki filmler, eleştiriler, yorumlar ve daha fazlası...', 0, 'http://www.smarto.com.tr/wp-content/uploads/2015/04/sinema-cinema-istanbul.jpg', 1, 0, '2017-01-20 04:00:29'),
-('MÜZİK', 'Karışık MP3 CD 2016', 0, 'http://az616578.vo.msecnd.net/files/2016/07/31/6360553665687961831595419134_concertsfandom.jpg', 1, 0, '2017-01-20 05:46:20'),
-('VİDEO', '%90!ı YouTube\'tan ibaret olan konu.', 2, 'http://jimroyal.com/wp-content/uploads/2016/08/Videos.jpg', 1, 0, '2017-01-20 06:06:42'),
-('GİF', 'Animasyonlu mu animasyonlu içerikler.', 0, 'https://media.giphy.com/media/6quIvmJFMH7Wg/giphy.gif', 1, 0, '2017-01-21 10:21:04'),
-('OYUN', 'PC Gamers vs Console Peasants', 0, 'http://wallpapercave.com/wp/xS571ba.jpg', 1, 0, '2017-01-21 10:24:17'),
-('SORU', 'Bu konu altında aklınıza gelen her türlü soruyu sorabilirsiniz.', 1, 'https://static.vecteezy.com/system/resources/previews/000/092/726/original/question-mark-background-vector.jpg', 1, 0, '2017-01-21 10:33:44'),
-('ÜNİVERSİTE', 'Üniversite öğrencileri, şenlikler, konserler, eğlence gırgır şamata sonra vize, final, büt vs 8 sene', 0, 'http://bestpopular.biz/uploads/images/bwe0bl20160225113501.jpg', 1, 0, '2017-01-22 12:26:27'),
-('FUTBOL', 'Ofsaytı bilmeyenlerin giremeyeği ortam', 0, 'https://targetcareers.co.uk/sites/targetcareers.co.uk/files/public/field/image/football.jpg', 1, 0, '2017-01-22 12:33:31'),
-('BASKETBOL', 'NBA All Stars', 0, 'https://www.spaldingequipment.com/filesimages/image-header/basketball-freethrow.jpg', 1, 0, '2017-01-22 12:34:48'),
-('İSTANBUL', 'http://www.istanbultourservice.com/images/istanbul.jpg', 0, 'http://www.istanbulbluerestaurant.com/wp-content/uploads/2015/03/slide2.jpg', 2, 0, '2017-01-22 20:40:49'),
 ('ANKARA', 'Türkiye\'nin başkenti hakkında herşey', 0, 'https://media.holidayme.com/images/Ankara-Turkey/Ankara-635762507071443324.jpg', 2, 0, '2017-01-22 20:52:31'),
+('BASKETBOL', 'NBA All Stars', 0, 'https://www.spaldingequipment.com/filesimages/image-header/basketball-freethrow.jpg', 1, 0, '2017-01-22 12:34:48'),
+('FUTBOL', 'Ofsaytı bilmeyenlerin giremeyeği ortam', 0, 'https://targetcareers.co.uk/sites/targetcareers.co.uk/files/public/field/image/football.jpg', 1, 0, '2017-01-22 12:33:31'),
+('GİF', 'Animasyonlu mu animasyonlu içerikler.', 0, 'https://media.giphy.com/media/6quIvmJFMH7Wg/giphy.gif', 1, 0, '2017-01-21 10:21:04'),
+('HABER', 'Bu konu altında en güncel haberleri bulabilirsiniz.', 2, 'http://farm9.staticflickr.com/8228/8434207887_1eb86f546e_o.jpg', 1, 0, '2017-01-20 03:17:49'),
+('İSTANBUL', 'http://www.istanbultourservice.com/images/istanbul.jpg', 0, 'http://www.istanbulbluerestaurant.com/wp-content/uploads/2015/03/slide2.jpg', 2, 0, '2017-01-22 20:40:49'),
 ('İZMİR', 'Ege\'nin İncisi', 0, 'http://www.gomedicaltrip.com/wp-content/uploads/2014/12/izmir-yeni.jpg', 2, 0, '2017-01-22 21:13:12'),
+('KOMİK', 'Her türlü komik içeriğin paylaşılması şiddetle şiddetle tavsiye edilir.', 1, 'https://lh4.googleusercontent.com/-4DUyyZvKaKA/UsCOHaIufFI/AAAAAAAAAEU/xRMrY0AAAmQ/s0-d/meme_collage.jpg', 1, 0, '2017-01-20 03:50:13'),
+('MÜZİK', 'Karışık MP3 CD 2016', 0, 'http://az616578.vo.msecnd.net/files/2016/07/31/6360553665687961831595419134_concertsfandom.jpg', 1, 0, '2017-01-20 05:46:20'),
+('OYUN', 'PC Gamers vs Console Peasants', 0, 'http://wallpapercave.com/wp/xS571ba.jpg', 1, 0, '2017-01-21 10:24:17'),
+('RESİM', 'Bu konu altında direk resim linkleri paylaşılır. Örneğin bir kedi fotoğrafı :D', 0, 'https://3b0ad08da0832cf37cf5-435f6e4c96078b01f281ebf62986b022.ssl.cf3.rackcdn.com/articles/content/Catteries-and-Cat%20Sitting-Services.jpg', 1, 0, '2017-01-20 03:09:34'),
+('SANAT', 'Sanata dair herşey', 0, 'http://shop.crayola.com/dw/image/v2/AALB_PRD/on/demandware.static/-/Sites-crayola-storefront/default/dw15654f54/images/category_headers/cat-header-art-edge_1920x716.jpg?sw=1920&sh=716', 2, 0, '2017-01-22 21:47:25'),
+('SİNEMA', 'Vizyondaki filmler, eleştiriler, yorumlar ve daha fazlası...', 0, 'http://www.smarto.com.tr/wp-content/uploads/2015/04/sinema-cinema-istanbul.jpg', 1, 0, '2017-01-20 04:00:29'),
+('SORU', 'Bu konu altında aklınıza gelen her türlü soruyu sorabilirsiniz.', 1, 'https://static.vecteezy.com/system/resources/previews/000/092/726/original/question-mark-background-vector.jpg', 1, 0, '2017-01-21 10:33:44'),
+('TEKNOLOJİ', 'Yarının teknolojiisinden haberiniz olsun.', 1, 'http://www.fixxit.co.ke/fix/fixiit/images/nootheme/vidavo_slider/technology_2560-x-720.jpg', 1, 0, '2017-01-20 03:53:31'),
+('ÜNİVERSİTE', 'Üniversite öğrencileri, şenlikler, konserler, eğlence gırgır şamata sonra vize, final, büt vs 8 sene', 0, 'http://bestpopular.biz/uploads/images/bwe0bl20160225113501.jpg', 1, 0, '2017-01-22 12:26:27'),
+('VİDEO', '%90!ı YouTube\'tan ibaret olan konu.', 2, 'http://jimroyal.com/wp-content/uploads/2016/08/Videos.jpg', 1, 0, '2017-01-20 06:06:42'),
 ('VOLEYBOL', 'Filenin Sultanları', 0, 'https://www.spaldingequipment.com/filesimages/image-header/volleyball-girl-back.jpg', 2, 0, '2017-01-22 21:38:36'),
-('SANAT', 'Sanata dair herşey', 0, 'http://shop.crayola.com/dw/image/v2/AALB_PRD/on/demandware.static/-/Sites-crayola-storefront/default/dw15654f54/images/category_headers/cat-header-art-edge_1920x716.jpg?sw=1920&sh=716', 2, 0, '2017-01-22 21:47:25');
+('YEMEK', 'En güzel yemek tariflerini ve en özel restoranları bulabilirsiniz.', 0, 'https://www.westindiessoul.com/wp-content/uploads/2014/06/banner03.jpg', 1, 1, '2017-01-20 03:33:25');
 
 -- --------------------------------------------------------
 
@@ -358,7 +358,7 @@ CREATE TABLE `user` (
   `email` varchar(33) NOT NULL,
   `karma` int(7) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `user`
@@ -391,7 +391,7 @@ CREATE TABLE `vote_link` (
   `link_id` int(11) NOT NULL,
   `up_down` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `vote_link`
@@ -418,7 +418,7 @@ CREATE TABLE `vote_reply` (
   `reply_id` int(11) NOT NULL,
   `up_down` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `vote_reply`
