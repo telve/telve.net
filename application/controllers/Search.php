@@ -27,6 +27,7 @@
             $config['last_link'] = false;
             $config['next_tag_open'] = '<span style="float:right;">';
             $config['next_tag_close'] = "</span>";
+            $config['reuse_query_string'] = true;
             $this->pagination->initialize($config);
             $this->data['per_page'] = $config['per_page'];
 
