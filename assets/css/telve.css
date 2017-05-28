@@ -186,6 +186,7 @@ div.rank {
 	width: 20px;
 	float: left;
 	text-align: center;
+	padding-top: 4px;
 }
 
 div.digg {
@@ -194,6 +195,7 @@ div.digg {
 	width: 40px;
 	float: left;
 	text-align: center;
+	padding-top: 3px;
 }
 
 div.middle {
