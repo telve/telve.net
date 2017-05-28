@@ -44,9 +44,60 @@
 						tercihler<span class='glyphicon glyphicon-cog'></span>
 					</a>
 				</li>
-				<li style='float:right;'>
-					<a href='#'>
-						<span class='glyphicon glyphicon-inbox'></span><sup>".$this->notification_model->get_unread_notification_count()."</sup>
+				<li style='float:right;' class='dropdown'>
+					<a href='#' class='dropdown-toggle' data-toggle='dropdown'>
+						<span class='glyphicon glyphicon-inbox'></span><sup>(<b>".$this->notification_model->get_unread_notification_count()."</b>)</sup>
+            <ul class='dropdown-menu notify-drop pull-right'>
+
+
+              <div class='notify-drop-title'>
+              	<div class='row'>
+              		<div class='col-md-6 col-sm-6 col-xs-6'>Bildirimler (<b>".$this->notification_model->get_unread_notification_count()."</b>)</div>
+              	</div>
+              </div>
+              <!-- end notify title -->
+              <!-- notify content -->
+              <div class='drop-content'>
+              	<li>
+              		<div class='notification'>
+                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinize</a> yorum yaptı.
+              		  <hr>
+              		  <p class='time'>3 saniye önce</p>
+              		</div>
+              	</li>
+              	<li>
+              		<div class='notification'>
+                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinize</a> evet oyu verdi.
+              		  <hr>
+              		  <p class='time'>5 dakika önce</p>
+              		</div>
+              	</li>
+              	<li>
+              		<div class='notification'>
+                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu yorumunuza</a> hayır oyu verdi.
+              		  <hr>
+              		  <p class='time'>2 saat önce</p>
+              		</div>
+              	</li>
+              	<li>
+              		<div class='notification'>
+                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu yorumunuza</a> yanıt yazdı.
+              		  <hr>
+              		  <p class='time'>3 ay önce</p>
+              		</div>
+              	</li>
+              	<li>
+              		<div class='notification'>
+                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinizi</a> favorilerine ekledi.
+              		  <hr>
+              		  <p class='time'>5 ay önce</p>
+              		</div>
+              	</li>
+              </div>
+
+
+
+            </ul>
 					</a>
 				</li>
 				<li style='float:right;' ".$user_tab_class.">

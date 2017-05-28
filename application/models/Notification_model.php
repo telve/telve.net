@@ -62,12 +62,7 @@
             $this->db->where('item_uid', $uid);
             $this->db->where('unread', 1);
             $query = $this->db->get('notification');
-            $result = count($query->result_array());
-            if ($result == 0) {
-                return "";
-            } else {
-                return $result;
-            }
+            return count($query->result_array());
         }
 
 		}
