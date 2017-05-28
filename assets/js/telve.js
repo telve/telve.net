@@ -702,3 +702,83 @@ $(document).ready(function() {
 		}
 	});
 });
+
+// Notifications
+$(document).ready(function() {
+	$('#notifications').click(function() {
+		if(!$(this).hasClass('open')) {
+			$(this).find('ul .drop-content').empty();
+			var notifications = this;
+			$.ajax({
+				type: "GET",
+				url: base_url + 'comments/notifications',
+				data: {},
+				success: function(data) {
+					if (data) {
+						var objective = "";
+						var objective_link = "";
+						var verb = "";
+						data = JSON.parse(data);
+						for (var i = 0; i < data.length; i++) {
+							switch (data[i]['item_type']) {
+								case "0":
+									objective = "şu gönderinize";
+									objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_0'];
+									switch (data[i]['action_type']) {
+										case "0":
+											verb = " evet oyu verdi.";
+											break;
+										case "1":
+											verb = " hayır oyu verdi.";
+											break;
+										case "2":
+											objective = "şu gönderinizi";
+											verb = " favorilerine ekledi.";
+											break;
+										case "3":
+											verb = " yorum yaptı.";
+											break;
+									}
+									break;
+								case "1":
+									objective = "şu yorumunuza";
+									objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_1'];
+									switch (data[i]['action_type']) {
+										case "0":
+											verb = " evet oyu verdi.";
+											break;
+										case "1":
+											verb = " hayır oyu verdi.";
+											break;
+										case "2":
+											objective = "şu yorumunuzu";
+											verb = " favorilerine ekledi.";
+											break;
+										case "3":
+											verb = " yanıt yazdı.";
+											break;
+									}
+									break;
+							}
+
+							var notification = " \
+							<li> \
+								<div class='notification'> \
+									<a href='" + base_url + "/kullanici/" + data[i]['username'] + "/" + "'>" + data[i]['username'] + "</a> kullanıcısı <a href='" + objective_link + "'>" + objective + "</a>" + verb + " \
+									<hr> \
+									<p class='time'>" + data[i]['created'] + "</p> \
+								</div> \
+							</li> \
+							";
+							$(notifications).find('ul .drop-content').append(notification);
+							$(notifications).find('ul .drop-content li:last-child').hide();
+							$(notifications).find('ul .drop-content li:last-child').delay(i*200).fadeIn("slow");
+						}
+					} else {
+						alertify.error("Dinamik bağlantı hatası.");
+					}
+				}
+			});
+		}
+	});
+});

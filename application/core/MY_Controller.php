@@ -44,7 +44,7 @@
 						tercihler<span class='glyphicon glyphicon-cog'></span>
 					</a>
 				</li>
-				<li style='float:right;' class='dropdown'>
+				<li style='float:right;' id='notifications' class='dropdown'>
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown'>
 						<span class='glyphicon glyphicon-inbox'></span><sup>(<b>".$this->notification_model->get_unread_notification_count()."</b>)</sup>
             <ul class='dropdown-menu notify-drop pull-right'>
@@ -60,37 +60,9 @@
               <div class='drop-content'>
               	<li>
               		<div class='notification'>
-                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinize</a> yorum yaptı.
+                    <a href='#'></a><a href='#'></a>
               		  <hr>
-              		  <p class='time'>3 saniye önce</p>
-              		</div>
-              	</li>
-              	<li>
-              		<div class='notification'>
-                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinize</a> evet oyu verdi.
-              		  <hr>
-              		  <p class='time'>5 dakika önce</p>
-              		</div>
-              	</li>
-              	<li>
-              		<div class='notification'>
-                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu yorumunuza</a> hayır oyu verdi.
-              		  <hr>
-              		  <p class='time'>2 saat önce</p>
-              		</div>
-              	</li>
-              	<li>
-              		<div class='notification'>
-                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu yorumunuza</a> yanıt yazdı.
-              		  <hr>
-              		  <p class='time'>3 ay önce</p>
-              		</div>
-              	</li>
-              	<li>
-              		<div class='notification'>
-                    <a href='#'>moderator</a> kullanıcısı <a href='#'>şu gönderinizi</a> favorilerine ekledi.
-              		  <hr>
-              		  <p class='time'>5 ay önce</p>
+              		  <p class='time'></p>
               		</div>
               	</li>
               </div>
