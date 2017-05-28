@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (! defined('BASEPATH')) {
     exit('No Access');
@@ -21,13 +21,13 @@ class Captcha
 
     public function showImg()
     {
-        //创建图片
+        // Create a picture
         $this->createImg();
-        //设置干扰元素
+        // Add some parasite
         //$this->setDisturb();
-        //设置验证码
+        // Set the verification code
         $this->setCaptcha();
-        //输出图片
+        // Output the picture
         $this->outputImg();
     }
 
@@ -42,14 +42,14 @@ class Captcha
     {
         $area = ($this->width * $this->height) / 20;
         $disturbNum = ($area > 250) ? 250 : $area;
-        //加入点干扰
+        // Add point parasite
         /*
         for ($i = 0; $i < $disturbNum; $i++) {
             $color = imagecolorallocate($this->im, rand(0, 255), rand(0, 255), rand(0, 255));
             imagesetpixel($this->im, rand(1, $this->width - 2), rand(1, $this->height - 2), $color);
         }
         */
-        //加入弧线
+        // Add arc parasite
         for ($i = 0; $i <= 5; $i++) {
             $color = imagecolorallocate($this->im, rand(128, 255), rand(125, 255), rand(100, 255));
             imagearc($this->im, rand(0, $this->width), rand(0, $this->height), rand(30, 300), rand(20, 200), 50, 30, $color);
