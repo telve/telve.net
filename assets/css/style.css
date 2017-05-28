@@ -548,4 +548,21 @@ tr:nth-child(even) {
 	padding-left: 20px;
 }
 
+/* Reveal animation */
+.dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+.dropdown.open .dropdown-menu {
+    opacity: 1;
+}
+
 /* DROPDOWN NOTIFICATION */
