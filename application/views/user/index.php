@@ -12,7 +12,6 @@
     <?php echo $sidebar ?>
 
         <div id="right-content" class="span8"><!-- style="background:#abb;"-->
-        <br>
 
         <?php
         $item_counter = 0;
@@ -91,7 +90,6 @@
                         </div><!--/left-->
                     </div>
                 </div><!--/row-fluid-->
-                <br>
 
                 <?php } else if ($link_item['is_link_for_union'] == 0) {
                           $ago = human_timing($link_item['created']);
@@ -107,7 +105,7 @@
                           $favourite_html = ( isset($link_item['is_favorited']) ? 'favori<span class="glyphicon glyphicon-star"></span>' : 'favori<span class="glyphicon glyphicon-star-empty"></span>' );
 
                           echo "<!--One reply from the reply tree of this post-->
-                          <div class='row-fluid'>
+                          <div class='row-fluid' style='margin-top:15px;'>
 
                               <div class='span12'>
                                   <style>
@@ -127,14 +125,14 @@
                                           </span></small>
                                   </div>
 
-                                  <div class='hide_content' style='margin-bottom:6px;'>
-                                      <a class='login-required' title='hayır' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
+                                  <a class='login-required' title='hayır' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
+                                  <div class='hide_content' style='margin-bottom:6px;'>
                                       <span style='display:inline-block;'>".markdown($link_item['text'])."</span>
                                       <!--<input type='hidden' class='show' value='".$link_item['id']."'/>-->
                                   </div>
 
-                                  <div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
+                                  <div class='hide_function' style='margin-bottom: 0px; margin-top: -15px;'>
                                       <div style='color: #888;font-weight: bold;padding: 0 1px;'>
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$link_item['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
                                           &nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$link_item['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
