@@ -230,4 +230,9 @@
                 echo "Lütfen öncelikle giriş yapın.";
             }
         }
+
+        public function notifications()
+        {
+            echo json_encode($this->notification_model->retrieve_notifications());
+        }
     }

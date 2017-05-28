@@ -63,4 +63,32 @@
             return count($query->result_array());
         }
 
+        public function retrieve_notifications()
+        {
+            $this->db->where('username', $this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $user = $query->row_array();
+
+            $this->db->where('item_uid', $user['id']);
+            $this->db->select('item_type,action_type,username,link.id as link_id_0, reply.link_id as link_id_1');
+            $this->db->from('notification');
+            $this->db->join('user', 'notification.uid = user.id');
+            $this->db->join('link', 'notification.item_id = link.id', 'left');
+            $this->db->join('reply', 'notification.item_id = reply.id', 'left');
+            $query = $this->db->get();
+            return $this->hash_multirow($query->result_array());
+        }
+
+        private function hash_multirow($multirow)
+        {
+            foreach ($multirow as &$row) {
+                $row['link_id_0'] = $this->hashids->encode($row['link_id_0']);
+                $row['link_id_1'] = $this->hashids->encode($row['link_id_1']);
+            }
+            unset($row);
+            return $multirow;
+        }
+
 		}
