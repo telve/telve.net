@@ -18,6 +18,7 @@
             $this->db->limit(1);
             $query = $this->db->get('user');
             $row = $query->row_array();
+            $uid = $row['id'];
 
             if ($action_type == 3) {
                 $id = $this->input->post('pid');
@@ -26,11 +27,23 @@
             }
             $id = $this->hashids->decode($id)[0];
 
+            $this->db->where('id', $id);
+            $this->db->select('uid');
+            $this->db->limit(1);
+            if ($item_type == 0) {
+                $query = $this->db->get('link');
+            } else {
+                $query = $this->db->get('reply');
+            }
+            $row = $query->row_array();
+            $item_uid = $row['uid'];
+
             $data = array(
-                'uid' => $row['id'],
+                'uid' => $uid,
                 'item_type' => $item_type,
                 'action_type' => $action_type,
                 'item_id' => $id,
+                'item_uid' => $item_uid,
                 'unread' => 1
             );
 

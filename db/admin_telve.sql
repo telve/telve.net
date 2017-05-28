@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2017 at 02:27 AM
+-- Generation Time: May 28, 2017 at 04:22 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -82,6 +82,7 @@ CREATE TABLE `notification` (
   `item_type` tinyint(4) NOT NULL,
   `action_type` tinyint(4) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `item_uid` int(11) NOT NULL,
   `unread` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

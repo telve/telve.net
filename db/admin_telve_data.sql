@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2017 at 02:26 AM
+-- Generation Time: May 28, 2017 at 04:21 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -121,7 +121,7 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (26, 2, '2017 yılında çıkacak oyunlar! - ShiftDelete.Net', 'http://shiftdelete.net/2017-yilinda-cikacak-oyunlar-77521', '2017 yılında çıkacak oyunlarla karşınızdayız. 2017 yılında bizleri yine harika oyunlar bekliyor. Hazırladığımız liste ile 2017\'nin en çok beklenen oyunlarını görebilirsiniz.', NULL, 'http://s01.shiftdelete.net/img/general_b/16-12/14/2017-yilinda-cikacak-tum-oyunlar-1.jpg', 'shiftdelete.net', 'OYUN', '2017-01-21 10:25:28', 0, 0, 0, 0, 1),
 (27, 1, 'Bu Ivana sert mi? Sertse yumuşatmak mümkün mü?', 'http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg', NULL, '<img src="http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg" style="max-height:315px;"/>', 'http://www.butarzbenim.net/wp-content/uploads/2014/09/bu-tarz-benim-8-bolum-23-eylul-21.jpg', 'www.butarzbenim.net', 'SORU', '2017-01-21 10:33:44', 0, 0, 0, 0, 1),
 (28, 1, 'İstanbul\'a daha kar yağar mı? Okullar tatil olur mu?', 'http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg', NULL, '<img src="http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg" style="max-height:315px;"/>', 'http://img.haberler.com/haber/579/istanbul-icin-beklenen-kar-yilbasinda-geliyor-8006579_x_8007_o.jpg', 'img.haberler.com', 'SORU', '2017-01-21 10:35:34', 0, 0, 0, 0, 1),
-(29, 1, 'Hangi Linux dağıtımı en iyisi?', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', NULL, '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png" style="max-height:315px;"/>', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', 'upload.wikimedia.org', 'SORU', '2017-01-21 10:37:38', 0, 0, 0, 0, 1),
+(29, 1, 'Hangi Linux dağıtımı en iyisi?', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', NULL, '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png" style="max-height:315px;"/>', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png', 'upload.wikimedia.org', 'SORU', '2017-01-21 10:37:38', 0, 1, 0, 0, 1),
 (30, 1, 'Ünlü giyimcinin AVM isyanı: Herkes haddini bilecek - Ekonomi Haberleri', 'http://www.hurriyet.com.tr/unlu-giyimcinin-avm-isyani-herkes-haddini-bilecek-40342255', 'AVM Endeksi\'ne göre Türkiye\'de 377 AVM var. Sadece 20 kentte AVM bulunmuyor. Erkek giyim markası Kiğılı\'nın Yönetim Kurulu Başkanı Abdullah Kiğılı, Terörü hallettiğimiz takdirde yabancı AVM yatırımcılarıyla bu işi çözeceğiz.. O zaman daha hızlı büyüye...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58830db318c77310540d2ab8.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:46:30', -1, 0, 0, 0, 1),
 (31, 1, 'Saffet Sancaklı: Bu olay çok ağır geldi, bir mucize bekliyoruz Allah\'tan - Son Dakika Gündem Haberleri', 'http://www.hurriyet.com.tr/saffet-sancakli-bu-olay-cok-agir-geldi-bir-mucize-bekliyoruz-allahtan-40342163', 'MHP Kocaeli Milletvekili Saffet Sancaklı, Meclis kürsüsünde yaptığı konuşmada  intihar girişiminde bulunan eşi Hülya Sancaklı için dua istedi.  Sancaklı, Bu olay çok ağır geldi bana. Allah kimseye vermesin. 6 günü geçtik, 7’nci güne girdik. Allah’ın d...', NULL, 'http://i.hurimg.com/i/hurriyet/90/590x332/5882d85818c77310540d2867.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:48:22', 0, 0, 0, 0, 1),
 (32, 1, 'Ocak ayı otomobil kampanyaları - Ekonomi Haberleri', 'http://www.hurriyet.com.tr/galeri-40341840', '2017 yılına girişle birlikte otomobil firmaları hem ÖTV bazında hem de döviz kurlarındaki sabitlemelerle kampanyalara başladı.', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5882fb6fc03c0e2c1c461f76.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-01-21 10:48:57', 0, 0, 0, 0, 1),
@@ -140,7 +140,7 @@ INSERT INTO `link` (`id`, `uid`, `title`, `url`, `text`, `embed`, `picurl`, `dom
 (45, 2, 'Bir Ege Rüyası İzmir', 'http://www.alobilethatti.com/blog/bir-ege-ruyasi-izmir/', NULL, NULL, 'http://www.alobilethatti.com/blog/wp-content/uploads/2015/02/kemeralti-izmir.jpg', 'www.alobilethatti.com', 'İZMİR', '2017-01-22 21:13:12', 0, 0, 0, 0, 1),
 (46, 2, 'Vakıfbank liderliğini korudu | NTVSpor.net', 'http://www.ntvspor.net/voleybol/vakifbank-liderligini-korudu-58834d30f7022736e481f66c', NULL, NULL, 'http://cdn.ntvspor.net/805655b74e76481c8d23fc425630d45b.jpg?crop=0,0,941,529', 'www.ntvspor.net', 'VOLEYBOL', '2017-01-22 21:38:36', 0, 0, 0, 0, 1),
 (47, 2, 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde - İstanbul Haberleri', 'http://www.hurriyet.com.tr/fazil-say-mozart-eserleriyle-iku-sahnesinde-40320696', 'Fazıl Say, Mozart eserleriyle İKÜ sahnesinde', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5864bc12eb10bb19dcd70048.jpg', 'www.hurriyet.com.tr', 'SANAT', '2017-01-22 21:47:25', 0, 0, 0, 0, 1),
-(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 1, 0, 0, 1),
+(48, 2, 'En sevdiğiniz müzik türü hangisidir?', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', NULL, '<img src="https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg" style="max-height:315px;"/>', 'https://rockmyrun.files.wordpress.com/2013/12/music-genres.jpg', 'rockmyrun.files.wordpress.com', 'SORU', '2017-01-22 22:21:51', 0, 2, 0, 0, 1),
 (49, 2, 'Spiegel’in kapağı ortalığı karıştırdı - Dünya Haberleri', 'http://www.hurriyet.com.tr/spiegelin-kapagi-ortaligi-karistirdi-40355912', 'ALMAN Der Spiegel dergisinin son sayısının kapağında ABD Başkanı Donald Trump’ı Özgürlük Heykeli’nin başını keserken gösteren görseli ortalığı karıştırdı.', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/58961711c03c0e27c87d4544.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 03:31:15', 1, 0, 0, 0, 1),
 (50, 2, 'Instagram', 'https://www.instagram.com/p/BP2Imoeh5Le/', 'See this Instagram video by @5.min.crafts • 27.4k likes', '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BP2Imoeh5Le/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Unusual and brilliant ways to use straws! #5minutecrafts #lifehacks #straws</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A video posted by 5-Minute Crafts (@5.min.crafts) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-01-29T11:01:20+00:00">Jan 29, 2017 at 3:01am PST</time></p></div></blockquote><script async defer src="//platform.instagram.com/en_US/embeds.js"></script>', 'https://scontent-ams3-1.cdninstagram.com/t51.2885-15/s1080x1080/e15/fr/16124270_1349629781725096_4086208391943290880_n.jpg?ig_cache_key=MTQzODM3NDk3MDE2NTUzMTM1OA%3D%3D.2', 'www.instagram.com', 'HABER', '2017-02-05 03:38:40', 0, 0, 0, 0, 1),
 (51, 10, 'Lakabım ciğer sökücü! | Ayşe ARMAN', 'http://www.hurriyet.com.tr/yazarlar/ayse-arman/lakabim-ciger-sokucu-40355965', 'Nasıl yani? Bu, o mu? Erkeklerin korkulu rüyası... Tir tir titredikleri kadın...', NULL, 'http://i.hurimg.com/i/hurriyet/90/0x0/5896b9bc18c7731ac4d21e62.jpg', 'www.hurriyet.com.tr', 'HABER', '2017-02-05 07:53:29', 0, 0, 0, 0, 1),
@@ -159,6 +159,7 @@ CREATE TABLE `notification` (
   `item_type` tinyint(4) NOT NULL,
   `action_type` tinyint(4) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `item_uid` int(11) NOT NULL,
   `unread` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -167,15 +168,18 @@ CREATE TABLE `notification` (
 -- Dumping data for table `notification`
 --
 
-INSERT INTO `notification` (`id`, `uid`, `item_type`, `action_type`, `item_id`, `unread`, `created`) VALUES
-(1, 4, 0, 0, 24, 1, '2017-05-28 01:55:28'),
-(2, 4, 0, 1, 30, 1, '2017-05-28 02:00:04'),
-(3, 4, 0, 3, 38, 1, '2017-05-28 02:10:41'),
-(4, 5, 1, 3, 26, 1, '2017-05-28 02:13:47'),
-(5, 5, 1, 0, 27, 1, '2017-05-28 02:16:57'),
-(6, 5, 1, 1, 26, 1, '2017-05-28 02:17:25'),
-(7, 5, 0, 2, 38, 1, '2017-05-28 02:18:38'),
-(8, 5, 1, 2, 27, 1, '2017-05-28 02:19:53');
+INSERT INTO `notification` (`id`, `uid`, `item_type`, `action_type`, `item_id`, `item_uid`, `unread`, `created`) VALUES
+(1, 4, 0, 0, 24, 1, 1, '2017-05-28 01:55:28'),
+(2, 4, 0, 1, 30, 1, 1, '2017-05-28 02:00:04'),
+(3, 4, 0, 3, 38, 1, 1, '2017-05-28 02:10:41'),
+(4, 5, 1, 3, 26, 4, 1, '2017-05-28 02:13:47'),
+(5, 5, 1, 0, 27, 4, 1, '2017-05-28 02:16:57'),
+(6, 5, 1, 1, 26, 4, 1, '2017-05-28 02:17:25'),
+(7, 5, 0, 2, 38, 1, 1, '2017-05-28 02:18:38'),
+(8, 5, 1, 2, 27, 4, 1, '2017-05-28 02:19:53'),
+(9, 6, 0, 3, 48, 2, 1, '2017-05-28 04:10:23'),
+(10, 6, 0, 3, 29, 1, 1, '2017-05-28 04:15:50'),
+(11, 7, 1, 3, 30, 6, 1, '2017-05-28 04:17:34');
 
 -- --------------------------------------------------------
 
@@ -249,7 +253,10 @@ INSERT INTO `reply` (`id`, `content`, `pid`, `uid`, `created`, `score`, `comment
 (25, 'I think you should use an\n`<addr>` element here instead.', 22, 2, '2017-02-21 07:01:57', 0, 0, 0, 53, 0, 0, 0),
 (26, 'arabesk :/', 48, 4, '2017-05-28 02:05:46', -1, 1, 1, 48, 0, 0, 0),
 (27, 'yavrum kaldır kollarını...\n\natletini değiştirecem yavrum kaldırsana kollarını!', 38, 4, '2017-05-28 02:10:40', 1, 0, 1, 38, 0, 1, 0),
-(28, 'hayır, en güzeli satanic metallic black arabesk!', 26, 5, '2017-05-28 02:13:47', 0, 0, 0, 48, 0, 0, 0);
+(28, 'hayır, en güzeli satanic metallic black arabesk!', 26, 5, '2017-05-28 02:13:47', 0, 0, 0, 48, 0, 0, 0),
+(29, 'pop müzik = bok müzik', 48, 6, '2017-05-28 04:10:23', 0, 0, 1, 48, 0, 0, 0),
+(30, 'https://neon.kde.org/', 29, 6, '2017-05-28 04:15:50', 0, 1, 1, 29, 0, 0, 0),
+(31, 'bence de en iyisi KDE neon', 30, 7, '2017-05-28 04:17:34', 0, 0, 0, 29, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -588,12 +595,12 @@ ALTER TABLE `link`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `report_link`
 --
