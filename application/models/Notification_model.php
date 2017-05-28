@@ -50,4 +50,24 @@
             return $this->db->insert('notification', $data);
         }
 
+        public function get_unread_notification_count()
+        {
+            $this->db->where('username', $this->session->userdata('username'));
+            $this->db->select('id');
+            $this->db->limit(1);
+            $query = $this->db->get('user');
+            $row = $query->row_array();
+            $uid = $row['id'];
+
+            $this->db->where('item_uid', $uid);
+            $this->db->where('unread', 1);
+            $query = $this->db->get('notification');
+            $result = count($query->result_array());
+            if ($result == 0) {
+                return "";
+            } else {
+                return $result;
+            }
+        }
+
 		}

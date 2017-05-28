@@ -16,6 +16,7 @@
 
             if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
                 $this->load->model('subscription_model');
+                $this->load->model('notification_model');
                 $this->data['subscriptions'] = $this->subscription_model->retrieve_only_subscribed();
 
                 if (($this->uri->segment(1) == 'kullanici') && ($this->uri->segment(2) == $this->session->userdata('username'))) {
@@ -45,7 +46,7 @@
 				</li>
 				<li style='float:right;'>
 					<a href='#'>
-						<span class='glyphicon glyphicon-inbox'></span>
+						<span class='glyphicon glyphicon-inbox'></span><sup>".$this->notification_model->get_unread_notification_count()."</sup>
 					</a>
 				</li>
 				<li style='float:right;' ".$user_tab_class.">
