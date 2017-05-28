@@ -21,7 +21,7 @@
 
             $this->data['base_url'] = base_url('alan-adi/'.$this->uri->segment(2).'/');
 
-            $config['total_rows'] = count($this->link_model->get_link_count(false, null, null, null, $this->uri->segment(2)));
+            $config['total_rows'] = $this->link_model->get_link_count(false, null, null, null, $this->uri->segment(2));
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Önceki sayfa</span>';

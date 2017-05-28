@@ -43,7 +43,7 @@
                 $this->data['description'] = $topic." konusuna hoş geldiniz. ".$topic." ile alâkalı en yeni, en tartışmalı ve en çok beğenilen paylaşımları burada bulabilirsiniz.";
             }
 
-            $config['total_rows'] = count($this->link_model->get_link_count(false, null, null, $topic));
+            $config['total_rows'] = $this->link_model->get_link_count(false, null, null, $topic);
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Önceki sayfa</span>';

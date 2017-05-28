@@ -111,7 +111,7 @@
                     $this->db->or_where('MATCH (link.topic) AGAINST ("'.$search_query.'")', null, false);
                 }
                 $query = $this->db->get('link', $rows, $offset);
-                return $this->hash_multirow($query->result_array());
+                return count($query->result_array());
             }
 
             $id = $this->hashids->decode($id)[0];

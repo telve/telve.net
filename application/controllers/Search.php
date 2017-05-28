@@ -15,7 +15,7 @@
 
             $this->data['search_query'] = $this->input->get("q");
 
-            $config['total_rows'] = count($this->link_model->get_link_count(false, null, null, null, null, $this->data['search_query']));
+            $config['total_rows'] = $this->link_model->get_link_count(false, null, null, null, null, $this->data['search_query']);
             $this->data['search_total_rows'] = $config['total_rows'];
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"

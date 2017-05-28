@@ -17,8 +17,7 @@
             $this->db->select('id');
             $this->db->limit(1);
             $query = $this->db->get('user');
-            $row = $query->row_array();
-            $uid = $row['id'];
+            $user = $query->row_array();
 
             if ($action_type == 3) {
                 $id = $this->input->post('pid');
@@ -39,7 +38,7 @@
             $item_uid = $row['uid'];
 
             $data = array(
-                'uid' => $uid,
+                'uid' => $user['id'],
                 'item_type' => $item_type,
                 'action_type' => $action_type,
                 'item_id' => $id,
@@ -56,10 +55,9 @@
             $this->db->select('id');
             $this->db->limit(1);
             $query = $this->db->get('user');
-            $row = $query->row_array();
-            $uid = $row['id'];
+            $user = $query->row_array();
 
-            $this->db->where('item_uid', $uid);
+            $this->db->where('item_uid', $user['id']);
             $this->db->where('unread', 1);
             $query = $this->db->get('notification');
             return count($query->result_array());

@@ -13,7 +13,7 @@
 
             $config['base_url'] = base_url('zirve');
 
-            $config['total_rows'] = count($this->link_model->get_link_count());
+            $config['total_rows'] = $this->link_model->get_link_count();
             $config['per_page'] = 10;
             $config['full_tag_open'] = '<p>'; //class = "btn"
             $config['prev_link'] = '<span class="glyphicon glyphicon-arrow-left"></span> <span class="pagination">Önceki sayfa</span>';
