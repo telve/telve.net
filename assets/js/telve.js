@@ -764,7 +764,7 @@ $(document).ready(function() {
 							var notification = " \
 							<li> \
 								<div class='notification'> \
-									<a href='" + base_url + "/kullanici/" + data[i]['username'] + "/" + "'>" + data[i]['username'] + "</a> kullanıcısı <a href='" + objective_link + "'>" + objective + "</a>" + verb + " \
+									<a href='" + base_url + "kullanici/" + data[i]['username'] + "/" + "'>" + data[i]['username'] + "</a> kullanıcısı <a href='" + objective_link + "'>" + objective + "</a>" + verb + " \
 									<hr> \
 									<p class='time'>" + data[i]['created'] + "</p> \
 								</div> \

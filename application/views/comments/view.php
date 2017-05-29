@@ -2,6 +2,7 @@
 <?php
     $this->load->helper('markdown');
     $Parsedown = new Parsedown();
+    $this->load->helper('emoji');
 ?>
 
 <div class="container-fluid">
@@ -47,7 +48,7 @@
                                     <small class="details"><a href="<?php echo base_url('').'kullanici/'.$link_item['username'].'/';?>"><?php echo $link_item['username']?></a> tarafından&nbsp;&nbsp;<a href="<?php echo base_url('').'t/'.$link_item['topic'].'/';?>"><?php echo $link_item['topic']?></a> konusuna&nbsp;&nbsp;<?php echo human_timing($link_item['created']);?> gönderildi</small>
                                 </div>
                                 <div>
-                                    <?php echo $Parsedown->text($link_item['text']);?>
+                                    <?php echo emoji($Parsedown->text($link_item['text']));?>
                                 </div>
                                 <div>
                                     <?php echo $link_item['embed'];?>
