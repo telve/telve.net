@@ -8,7 +8,7 @@
             $this->load->helper('security');
             $this->load->helper('human_timing');
             $this->load->helper('markdown');
-            $this->load->helper('emoji');
+            $this->load->helper('telveflavor');
             $this->load->library('hashids');
             $this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
             $this->load->helper('tr_lang');
@@ -269,7 +269,7 @@
 						<a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 						<div class='hide_content' style='margin-bottom:6px;'>
 
-                            <span style='display:inline-block;'>".emoji($Parsedown->text($row['content']))."</span>
+                            <span style='display:inline-block;'>".telveflavor($Parsedown->text($row['content']))."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
 						</div>
 

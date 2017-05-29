@@ -6,7 +6,7 @@
 <?php
     $this->load->helper('markdown');
     $Parsedown = new Parsedown();
-    $this->load->helper('emoji');
+    $this->load->helper('telveflavor');
 ?>
 
 <?php echo $toggle_sidebar ?>
@@ -133,7 +133,7 @@
                                   <a class='login-required' title='hayır' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
                                   <div class='hide_content' style='margin-bottom:6px;'>
-                                      <span style='display:inline-block;'>".emoji($Parsedown->text($link_item['text']))."</span>
+                                      <span style='display:inline-block;'>".telveflavor($Parsedown->text($link_item['text']))."</span>
                                       <!--<input type='hidden' class='show' value='".$link_item['id']."'/>-->
                                   </div>
 

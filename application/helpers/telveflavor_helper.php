@@ -1,6 +1,6 @@
 <?php
 
-function emoji($text)
+function telveflavor($text)
 {
 
 $emoji_dict = array(
