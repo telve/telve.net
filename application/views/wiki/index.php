@@ -1,5 +1,6 @@
 <?php
     $this->load->helper('markdown');
+    $Parsedown = new Parsedown();
 
     $url = "./wiki/wiki.md";
     $read = fopen($url,'r') or die('Failed to open the file!');
@@ -20,6 +21,6 @@
                 <p><b>Toplam abone sayısı:</b> <?php echo $wiki_topic['subscribers'];?></p>
                 <p style="color:#888;">Bu konu <a href="<?php echo base_url('').'kullanici/'.$wiki_topic['username'].'/';?>"><?php echo $wiki_topic['username'];?></a> tarafından <?php echo human_timing($wiki_topic['created']);?> oluşturuldu</p>
             <?php } else { ?>
-                <div id="md"><?php echo markdown($text);?></div>
+                <div id="md"><?php echo $Parsedown->text($text);?></div>
             <?php } ?>
         </div>

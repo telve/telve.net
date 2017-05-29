@@ -3,6 +3,10 @@
     $this->load->library('hashids');
     $this->hashids = new Hashids($this->config->item('hashids_salt'), 6);
 ?><!--Format the time-->
+<?php
+    $this->load->helper('markdown');
+    $Parsedown = new Parsedown();
+?>
 
 <?php echo $toggle_sidebar ?>
 
@@ -128,7 +132,7 @@
                                   <a class='login-required' title='hayır' href='javascript:void(0)' id='".$link_item['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 
                                   <div class='hide_content' style='margin-bottom:6px;'>
-                                      <span style='display:inline-block;'>".markdown($link_item['text'])."</span>
+                                      <span style='display:inline-block;'>".$Parsedown->text($link_item['text'])."</span>
                                       <!--<input type='hidden' class='show' value='".$link_item['id']."'/>-->
                                   </div>
 

@@ -172,6 +172,7 @@
 
         private function display_children($pid, $level, &$res)
         {
+            $Parsedown = new Parsedown();
             $pid = $this->hashids->decode($pid)[0];
 
             if (!empty($this->session->userdata['username']) && $this->session->userdata['username']) {
@@ -267,7 +268,7 @@
 						<a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
 						<div class='hide_content' style='margin-bottom:6px;'>
 
-                            <span style='display:inline-block;'>".markdown($row['content'])."</span>
+                            <span style='display:inline-block;'>".$Parsedown->text($row['content'])."</span>
                             <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
 						</div>
 
