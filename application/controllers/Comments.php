@@ -235,4 +235,9 @@
         {
             echo json_encode($this->notification_model->retrieve_notifications());
         }
+
+        public function get_unread_notification_count()
+        {
+            echo $this->notification_model->get_unread_notification_count();
+        }
     }

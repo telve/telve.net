@@ -46,13 +46,13 @@
 				</li>
 				<li style='float:right;' id='notifications' class='dropdown'>
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown'>
-						<span class='glyphicon glyphicon-inbox'></span><sup>(<b>".$this->notification_model->get_unread_notification_count()."</b>)</sup>
+						<span class='glyphicon glyphicon-inbox'></span><sup>(<b class='notification-count'>".$this->notification_model->get_unread_notification_count()."</b>)</sup>
             <ul class='dropdown-menu notify-drop pull-right'>
 
 
               <div class='notify-drop-title'>
               	<div class='row'>
-              		<div class='col-md-6 col-sm-6 col-xs-6'>Bildirimler (<b>".$this->notification_model->get_unread_notification_count()."</b>)</div>
+              		<div class='col-md-6 col-sm-6 col-xs-6'>Bildirimler (<b class='notification-count'>".$this->notification_model->get_unread_notification_count()."</b>)</div>
               	</div>
               </div>
               <!-- end notify title -->

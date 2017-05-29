@@ -774,6 +774,7 @@ $(document).ready(function() {
 							$(notifications).find('ul .drop-content li:last-child').hide();
 							$(notifications).find('ul .drop-content li:last-child').delay(i*200).fadeIn("slow");
 						}
+						$('b.notification-count').text('0');
 					} else {
 						alertify.error("Dinamik bağlantı hatası.");
 					}
@@ -782,3 +783,11 @@ $(document).ready(function() {
 		}
 	});
 });
+
+(function poll() {
+   setTimeout(function() {
+       $.ajax({ url: base_url + 'comments/get_unread_notification_count', success: function(data) {
+            $('b.notification-count').text(data);
+       }, dataType: "json", complete: poll });
+    }, 5000);
+})();

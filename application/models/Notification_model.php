@@ -81,6 +81,12 @@
             $this->db->limit(20);
             $this->db->order_by("created", "desc");
             $query = $this->db->get();
+
+            $this->db->where('item_uid', $user['id']);
+            $this->db->where('unread', 1);
+            $this->db->set('unread', 0);
+            $this->db->update('notification');
+
             return $this->prepare_multirow($query->result_array());
         }
 
