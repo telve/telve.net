@@ -125,7 +125,7 @@ function telveflavor($text)
     );
 
     foreach ($emoji_dict as $emoji => $file) {
-        $text = preg_replace('/'.$emoji.'/', '<img class="emoji" src="'.base_url("").'assets/img/emojis/'.$file.'" height="20" width="20" title="'.$emoji.'" alt="'.$emoji.'" align="absmiddle">', $text);
+        $text = preg_replace('/(?s)<(pre|code)[^<]*>.*?<\/(pre|code)>(*SKIP)(*F)|'.$emoji.'/', '<img class="emoji" src="'.base_url("").'assets/img/emojis/'.$file.'" height="20" width="20" title="'.$emoji.'" alt="'.$emoji.'" align="absmiddle">', $text);
     }
 
     return $text;
