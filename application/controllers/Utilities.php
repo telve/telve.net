@@ -61,185 +61,190 @@
                 echo "\n";
 
                 while (true) {
-                    $submit_title = null;
-                    $submit_url = null;
-                    $submit_topic = null;
+                    try {
+                        $submit_title = null;
+                        $submit_url = null;
+                        $submit_topic = null;
 
-                    $domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com","instagram.com"];
-                    $selected_domain = $domains[array_rand($domains)];
+                        $domains = ["youtube.com","sabah.com.tr","onedio.com","haber7.com","ensonhaber.com","milliyet.com.tr","yenisafak.com","hurriyet.com.tr","kizlarsoruyor.com","internethaber.com","mynet.com","twitter.com","instagram.com"];
+                        $selected_domain = $domains[array_rand($domains)];
 
-                    #$selected_domain = "instagram.com";
-                    echo $selected_domain."\n";
+                        #$selected_domain = "instagram.com";
+                        echo $selected_domain."\n";
 
-                    switch ($selected_domain) {
-                        case "youtube.com":
-                            $url = "https://www.youtube.com/feed/trending?gl=TR";
-                            break;
-                        case "sabah.com.tr":
-                            $url = "http://www.sabah.com.tr/rss/anasayfa.xml";
-                            break;
-                        case "onedio.com":
-                            $url = "https://onedio.com/support/rss.xml";
-                            break;
-                        case "haber7.com":
-                            $url = "http://sondakika.haber7.com/sondakika.rss";
-                            break;
-                        case "ensonhaber.com":
-                            $url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
-                            break;
-                        case "milliyet.com.tr":
-                            $url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
-                            break;
-                        case "yenisafak.com":
-                            $url = "http://www.yenisafak.com/Rss";
-                            break;
-                        case "hurriyet.com.tr":
-                            $url = "http://www.hurriyet.com.tr/rss/anasayfa";
-                            break;
-                        case "kizlarsoruyor.com":
-                            $url = "http://www.kizlarsoruyor.com/rss";
-                            break;
-                        case "internethaber.com":
-                            $url = "http://www.internethaber.com/rss";
-                            break;
-                        case "mynet.com":
-                            $url = "http://www.mynet.com/haber/rss/son-dakika";
-                            break;
-                        case "twitter.com":
-                            $html = new Simple_html_dom();
-                            $html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
-                            $topics = $html->find('li.topic > a');
-                            $random_topic = $topics[rand(0, count($topics)-1)]->innertext;
-                            $url = "https://queryfeed.net/twitter?q=".$random_topic."&title-type=user-name-both&geocode=39.116424%2C35.288086%2C813km&omit-direct=on&omit-retweets=on";
-                            break;
-                        case "instagram.com":
-                            $html = new Simple_html_dom();
-                            $html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
-                            $topics = $html->find('li.topic > a');
-                            $random_topic = $topics[rand(0, count($topics)-1)]->innertext;
-                            $url = "https://www.instagram.com/explore/tags/".$random_topic."/";
-                            break;
-                    }
+                        switch ($selected_domain) {
+                            case "youtube.com":
+                                $url = "https://www.youtube.com/feed/trending?gl=TR";
+                                break;
+                            case "sabah.com.tr":
+                                $url = "http://www.sabah.com.tr/rss/anasayfa.xml";
+                                break;
+                            case "onedio.com":
+                                $url = "https://onedio.com/support/rss.xml";
+                                break;
+                            case "haber7.com":
+                                $url = "http://sondakika.haber7.com/sondakika.rss";
+                                break;
+                            case "ensonhaber.com":
+                                $url = "http://www.ensonhaber.com/rss/ensonhaber.xml";
+                                break;
+                            case "milliyet.com.tr":
+                                $url = "http://www.milliyet.com.tr/rss/rssNew/gundemRss.xml";
+                                break;
+                            case "yenisafak.com":
+                                $url = "http://www.yenisafak.com/Rss";
+                                break;
+                            case "hurriyet.com.tr":
+                                $url = "http://www.hurriyet.com.tr/rss/anasayfa";
+                                break;
+                            case "kizlarsoruyor.com":
+                                $url = "http://www.kizlarsoruyor.com/rss";
+                                break;
+                            case "internethaber.com":
+                                $url = "http://www.internethaber.com/rss";
+                                break;
+                            case "mynet.com":
+                                $url = "http://www.mynet.com/haber/rss/son-dakika";
+                                break;
+                            case "twitter.com":
+                                $html = new Simple_html_dom();
+                                $html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
+                                $topics = $html->find('li.topic > a');
+                                $random_topic = $topics[rand(0, count($topics)-1)]->innertext;
+                                $url = "https://queryfeed.net/twitter?q=".$random_topic."&title-type=user-name-both&geocode=39.116424%2C35.288086%2C813km&omit-direct=on&omit-retweets=on";
+                                break;
+                            case "instagram.com":
+                                $html = new Simple_html_dom();
+                                $html->load(using_curl("http://twitturk.com/twituser/trends/topic/24"));
+                                $topics = $html->find('li.topic > a');
+                                $random_topic = $topics[rand(0, count($topics)-1)]->innertext;
+                                $url = "https://www.instagram.com/explore/tags/".$random_topic."/";
+                                break;
+                        }
 
-                    $html = new Simple_html_dom();
-                    $html->load(using_curl($url));
+                        $html = new Simple_html_dom();
+                        $html->load(using_curl($url));
 
-                    switch ($selected_domain) {
-                        case "youtube.com":
-                            $items = $html->find('a.yt-uix-tile-link');
-                            $submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
-                            $submit_topic = "VİDEO";
-                            break;
-                        case "sabah.com.tr":
-                            $xml = simplexml_load_string($html);
-                            $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
-                            $submit_topic = "HABER";
-                            break;
-                        case "onedio.com":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = $xml->channel->item[$selected_item]->category[1];
-                            break;
-                        case "haber7.com":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = $xml->channel->item[$selected_item]->category;
-                            if ($submit_topic == "ADVERTORIAL") {
-                                continue;
-                            }
-                            break;
-                        case "ensonhaber.com":
-                            $xml = simplexml_load_string($html);
-                            $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
-                            $submit_topic = "HABER";
-                            break;
-                        case "milliyet.com.tr":
-                            $xml = simplexml_load_string($html);
-                            $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
-                            $submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=", "", $submit_url);
-                            $submit_url = urldecode($submit_url);
-                            $submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss", "", $submit_url);
-                            $submit_topic = "HABER";
-                            break;
-                        case "yenisafak.com":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = $xml->channel->item[$selected_item]->category;
-                            break;
-                        case "hurriyet.com.tr":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = $xml->channel->item[$selected_item]->category;
-                            break;
-                        case "kizlarsoruyor.com":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = explode(' ', trim($xml->channel->item[$selected_item]->category))[0];
-                            break;
-                        case "internethaber.com":
-                            $xml = simplexml_load_string($html);
-                            $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
-                            $submit_topic = "HABER";
-                            break;
-                        case "mynet.com":
-                            $xml = simplexml_load_string($html);
-                            $selected_item = rand(0, count($xml->channel->item)-1);
-                            $submit_url = $xml->channel->item[$selected_item]->link;
-                            $submit_topic = $xml->channel->item[$selected_item]->subcategory;
-                            break;
-                        case "twitter.com":
-                            $xml = simplexml_load_string($html);
-                            $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
-                            $submit_topic = "SOSYAL";
-                            break;
-                        case "instagram.com":
-                            $script_tags = $html->find('script[type="text/javascript"]');
-                            foreach ($script_tags as $script_tag) {
-                                if (startsWith($script_tag->innertext, "window._sharedData = ")) {
-                                    $json = substr($script_tag->innertext, 21);
-                                    $json = rtrim($json, ';');
-                                    $obj = json_decode($json);
-                                    $nodes = $obj->entry_data->TagPage[0]->tag->media->nodes;
-                                    $random_node = rand(1, count($nodes));
-                                    $instagram_id = $nodes[$random_node]->code;
-                                    if (strlen($instagram_id) == 0) {
-                                        continue;
-                                    }
-                                    $submit_url = "https://www.instagram.com/p/".$nodes[$random_node]->code."/";
-                                    $submit_title = $nodes[$random_node]->caption;
-                                    if (strlen($submit_title) > 100) {
-                                        $submit_title = substr($submit_title, 0, 120)."...";
+                        switch ($selected_domain) {
+                            case "youtube.com":
+                                $items = $html->find('a.yt-uix-tile-link');
+                                $submit_url = "https://www.youtube.com".$items[array_rand($items)]->href;
+                                $submit_topic = "VİDEO";
+                                break;
+                            case "sabah.com.tr":
+                                $xml = simplexml_load_string($html);
+                                $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
+                                $submit_topic = "HABER";
+                                break;
+                            case "onedio.com":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = $xml->channel->item[$selected_item]->category[1];
+                                break;
+                            case "haber7.com":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = $xml->channel->item[$selected_item]->category;
+                                if ($submit_topic == "ADVERTORIAL") {
+                                    continue;
+                                }
+                                break;
+                            case "ensonhaber.com":
+                                $xml = simplexml_load_string($html);
+                                $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
+                                $submit_topic = "HABER";
+                                break;
+                            case "milliyet.com.tr":
+                                $xml = simplexml_load_string($html);
+                                $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
+                                $submit_url = str_replace("http://secure.milliyet.com.tr/redirect/Default.aspx?l=", "", $submit_url);
+                                $submit_url = urldecode($submit_url);
+                                $submit_url = str_replace("?utm_source=rss&amp;utm_medium=milliyetyasamoldrss", "", $submit_url);
+                                $submit_topic = "HABER";
+                                break;
+                            case "yenisafak.com":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = $xml->channel->item[$selected_item]->category;
+                                break;
+                            case "hurriyet.com.tr":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = $xml->channel->item[$selected_item]->category;
+                                break;
+                            case "kizlarsoruyor.com":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = explode(' ', trim($xml->channel->item[$selected_item]->category))[0];
+                                break;
+                            case "internethaber.com":
+                                $xml = simplexml_load_string($html);
+                                $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
+                                $submit_topic = "HABER";
+                                break;
+                            case "mynet.com":
+                                $xml = simplexml_load_string($html);
+                                $selected_item = rand(0, count($xml->channel->item)-1);
+                                $submit_url = $xml->channel->item[$selected_item]->link;
+                                $submit_topic = $xml->channel->item[$selected_item]->subcategory;
+                                break;
+                            case "twitter.com":
+                                $xml = simplexml_load_string($html);
+                                $submit_url = $xml->channel->item[rand(0, count($xml->channel->item)-1)]->link;
+                                $submit_topic = "SOSYAL";
+                                break;
+                            case "instagram.com":
+                                $script_tags = $html->find('script[type="text/javascript"]');
+                                foreach ($script_tags as $script_tag) {
+                                    if (startsWith($script_tag->innertext, "window._sharedData = ")) {
+                                        $json = substr($script_tag->innertext, 21);
+                                        $json = rtrim($json, ';');
+                                        $obj = json_decode($json);
+                                        $nodes = $obj->entry_data->TagPage[0]->tag->media->nodes;
+                                        $random_node = rand(1, count($nodes));
+                                        $instagram_id = $nodes[$random_node]->code;
+                                        if (strlen($instagram_id) == 0) {
+                                            continue;
+                                        }
+                                        $submit_url = "https://www.instagram.com/p/".$nodes[$random_node]->code."/";
+                                        $submit_title = $nodes[$random_node]->caption;
+                                        if (strlen($submit_title) > 100) {
+                                            $submit_title = substr($submit_title, 0, 120)."...";
+                                        }
                                     }
                                 }
-                            }
-                            $submit_topic = "RESİM";
-                            break;
+                                $submit_topic = "RESİM";
+                                break;
+                        }
+                        if ($submit_topic == "Gündem") {
+                            $submit_topic = "Haber";
+                        }
+
+                        if (strlen($submit_title) == 0) {
+                            $submit_title = get_title($submit_url);
+                        }
+
+                        if ((strlen($submit_url) == 0) || (strlen($submit_title) == 0)) {
+                            continue;
+                        }
+
+                        echo "Title:\t".$submit_title."\n";
+                        echo "URL:\t".$submit_url."\n";
+                        echo "Topic:\t".$submit_topic."\n";
+
+                        $insert_id = $this->link_model->insert_link_cli($submit_title, $submit_url, $submit_topic);
+                        $this->topic_model->insert_topic_cli($submit_topic);
+
+                        echo "Record inserted with ID: ".$insert_id."\n\n";
+
+                    } catch (Exception $e) {
+                        // echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
-                    if ($submit_topic == "Gündem") {
-                        $submit_topic = "Haber";
-                    }
-
-                    if (strlen($submit_title) == 0) {
-                        $submit_title = get_title($submit_url);
-                    }
-
-                    if ((strlen($submit_url) == 0) || (strlen($submit_title) == 0)) {
-                        continue;
-                    }
-
-                    echo "Title:\t".$submit_title."\n";
-                    echo "URL:\t".$submit_url."\n";
-                    echo "Topic:\t".$submit_topic."\n";
-
-                    $insert_id = $this->link_model->insert_link_cli($submit_title, $submit_url, $submit_topic);
-                    $this->topic_model->insert_topic_cli($submit_topic);
-
-                    echo "Record inserted with ID: ".$insert_id."\n\n";
 
                     sleep(300); // Wait 5 minutes
                 }
