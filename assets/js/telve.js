@@ -720,6 +720,16 @@ $(document).ready(function() {
 						var objective_link = "";
 						var verb = "";
 						data = JSON.parse(data);
+						if (data.length == 0) {
+								var no_notification = " \
+								<li> \
+									<div class='notification'> \
+										Henüz bir bildirim yok \
+									</div> \
+								</li> \
+								";
+								$(notifications).find('ul .drop-content').append(no_notification);
+						}
 						for (var i = 0; i < data.length; i++) {
 							switch (data[i]['item_type']) {
 								case "0":
