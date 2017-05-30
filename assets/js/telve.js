@@ -707,6 +707,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$('#notifications').click(function() {
 		if(!$(this).hasClass('open')) {
+			$(this).find('ul').css('visibility',"visible");
 			$(this).find('ul .drop-content').empty();
 			var notifications = this;
 			$.ajax({
@@ -780,6 +781,8 @@ $(document).ready(function() {
 					}
 				}
 			});
+		} else {
+			$(this).find('ul').css('visibility',"hidden");
 		}
 	});
 });

@@ -426,6 +426,7 @@ tr:nth-child(even) {
 	margin-top: 0px;
 	margin-right: 6px;
 	border-radius: 0 0 0 0;
+	visibility: hidden;
 }
 .dropdown-menu.notify-drop .notify-drop-title {
   border-bottom: 1px solid #e2e2e2;
