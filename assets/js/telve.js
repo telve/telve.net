@@ -799,8 +799,6 @@ $(document).ready(function() {
 					}
 				}
 			});
-		} else {
-			$(this).find('ul').css('visibility',"hidden");
 		}
 	});
 });
@@ -812,3 +810,35 @@ $(document).ready(function() {
        }, dataType: "json", complete: poll });
     }, 5000);
 })();
+
+var scroll_threshold = 450;
+$(document).ready(function() {
+	$('div.drop-content').scroll(function() {
+		if($('div.drop-content').scrollTop() > scroll_threshold) {
+			scroll_threshold += 450;
+			var notifications = $('#notifications');
+			$.ajax({
+				type: "GET",
+				url: base_url + 'comments/notifications?rows=' + notification_rows + '&offset=' + notification_offset,
+				data: {},
+				success: function(data) {
+					if (data) {
+						data = JSON.parse(data);
+						notification_loader(notifications, data);
+						notification_offset += 10;
+						$('b.notification-count').text('0');
+					} else {
+						alertify.error("Dinamik bağlantı hatası.");
+					}
+				}
+			});
+   	}
+	});
+});
+
+$('body').on('click', function (e) {
+	notification_offset = 0;
+	if (!$('#notifications *').is(e.target)) {
+		$('#notifications ul').css('visibility',"hidden");
+	}
+});
