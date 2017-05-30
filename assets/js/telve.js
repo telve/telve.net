@@ -712,24 +712,24 @@ $(document).ready(function() {
 			var notifications = this;
 			$.ajax({
 				type: "GET",
-				url: base_url + 'comments/notifications',
+				url: base_url + 'comments/notifications?rows=10&offset=0',
 				data: {},
 				success: function(data) {
 					if (data) {
+						data = JSON.parse(data);
+						if (data.length == 0) {
+							var no_notification = " \
+							<li> \
+								<div class='notification'> \
+									Henüz bir bildirim yok \
+								</div> \
+							</li> \
+							";
+							$(notifications).find('ul .drop-content').append(no_notification);
+						}
 						var objective = "";
 						var objective_link = "";
 						var verb = "";
-						data = JSON.parse(data);
-						if (data.length == 0) {
-								var no_notification = " \
-								<li> \
-									<div class='notification'> \
-										Henüz bir bildirim yok \
-									</div> \
-								</li> \
-								";
-								$(notifications).find('ul .drop-content').append(no_notification);
-						}
 						for (var i = 0; i < data.length; i++) {
 							switch (data[i]['item_type']) {
 								case "0":
@@ -800,7 +800,7 @@ $(document).ready(function() {
 (function poll() {
    setTimeout(function() {
        $.ajax({ url: base_url + 'comments/get_unread_notification_count', success: function(data) {
-            $('b.notification-count').text(data);
+           $('b.notification-count').text(data);
        }, dataType: "json", complete: poll });
     }, 5000);
 })();

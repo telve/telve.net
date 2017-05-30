@@ -78,7 +78,7 @@
             $this->db->join('user', 'notification.uid = user.id');
             $this->db->join('link', 'notification.item_id = link.id', 'left');
             $this->db->join('reply', 'notification.item_id = reply.id', 'left');
-            $this->db->limit(20);
+            $this->db->limit($this->input->get('rows'), $this->input->get('offset'));
             $this->db->order_by("created", "desc");
             $query = $this->db->get();
 
