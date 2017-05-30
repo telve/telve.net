@@ -704,6 +704,70 @@ $(document).ready(function() {
 });
 
 // Notifications
+var notification_rows = 10;
+var notification_offset = 0;
+
+function notification_loader(notifications, data) {
+	var objective = "";
+	var objective_link = "";
+	var verb = "";
+	for (var i = 0; i < data.length; i++) {
+		switch (data[i]['item_type']) {
+			case "0":
+				objective = "şu gönderinize";
+				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_0'];
+				switch (data[i]['action_type']) {
+					case "0":
+						verb = " evet oyu verdi.";
+						break;
+					case "1":
+						verb = " hayır oyu verdi.";
+						break;
+					case "2":
+						objective = "şu gönderinizi";
+						verb = " favorilerine ekledi.";
+						break;
+					case "3":
+						verb = " yorum yaptı.";
+						break;
+				}
+				break;
+			case "1":
+				objective = "şu yorumunuza";
+				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_1'];
+				switch (data[i]['action_type']) {
+					case "0":
+						verb = " evet oyu verdi.";
+						break;
+					case "1":
+						verb = " hayır oyu verdi.";
+						break;
+					case "2":
+						objective = "şu yorumunuzu";
+						verb = " favorilerine ekledi.";
+						break;
+					case "3":
+						verb = " yanıt yazdı.";
+						break;
+				}
+				break;
+		}
+
+		var notification = " \
+		<li> \
+			<div class='notification'> \
+				<a href='" + base_url + "kullanici/" + data[i]['username'] + "/" + "'>" + data[i]['username'] + "</a> kullanıcısı <a href='" + objective_link + "'>" + objective + "</a>" + verb + " \
+				<hr> \
+				<p class='time'>" + data[i]['created'] + "</p> \
+			</div> \
+		</li> \
+		";
+		$(notifications).find('ul .drop-content').append(notification);
+		$(notifications).find('ul .drop-content li:last-child').hide();
+		$(notifications).find('ul .drop-content li:last-child').delay(i*200).fadeIn("slow");
+	}
+}
+
 $(document).ready(function() {
 	$('#notifications').click(function() {
 		if(!$(this).hasClass('open')) {
@@ -712,7 +776,7 @@ $(document).ready(function() {
 			var notifications = this;
 			$.ajax({
 				type: "GET",
-				url: base_url + 'comments/notifications?rows=10&offset=0',
+				url: base_url + 'comments/notifications?rows=' + notification_rows + '&offset=' + notification_offset,
 				data: {},
 				success: function(data) {
 					if (data) {
@@ -727,64 +791,8 @@ $(document).ready(function() {
 							";
 							$(notifications).find('ul .drop-content').append(no_notification);
 						}
-						var objective = "";
-						var objective_link = "";
-						var verb = "";
-						for (var i = 0; i < data.length; i++) {
-							switch (data[i]['item_type']) {
-								case "0":
-									objective = "şu gönderinize";
-									objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_0'];
-									switch (data[i]['action_type']) {
-										case "0":
-											verb = " evet oyu verdi.";
-											break;
-										case "1":
-											verb = " hayır oyu verdi.";
-											break;
-										case "2":
-											objective = "şu gönderinizi";
-											verb = " favorilerine ekledi.";
-											break;
-										case "3":
-											verb = " yorum yaptı.";
-											break;
-									}
-									break;
-								case "1":
-									objective = "şu yorumunuza";
-									objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_1'];
-									switch (data[i]['action_type']) {
-										case "0":
-											verb = " evet oyu verdi.";
-											break;
-										case "1":
-											verb = " hayır oyu verdi.";
-											break;
-										case "2":
-											objective = "şu yorumunuzu";
-											verb = " favorilerine ekledi.";
-											break;
-										case "3":
-											verb = " yanıt yazdı.";
-											break;
-									}
-									break;
-							}
-
-							var notification = " \
-							<li> \
-								<div class='notification'> \
-									<a href='" + base_url + "kullanici/" + data[i]['username'] + "/" + "'>" + data[i]['username'] + "</a> kullanıcısı <a href='" + objective_link + "'>" + objective + "</a>" + verb + " \
-									<hr> \
-									<p class='time'>" + data[i]['created'] + "</p> \
-								</div> \
-							</li> \
-							";
-							$(notifications).find('ul .drop-content').append(notification);
-							$(notifications).find('ul .drop-content li:last-child').hide();
-							$(notifications).find('ul .drop-content li:last-child').delay(i*200).fadeIn("slow");
-						}
+						notification_loader(notifications, data);
+						notification_offset = 10;
 						$('b.notification-count').text('0');
 					} else {
 						alertify.error("Dinamik bağlantı hatası.");
