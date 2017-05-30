@@ -128,6 +128,25 @@ function telveflavor($text)
         $text = preg_replace('/(?s)<(pre|code)[^<]*>.*?<\/(pre|code)>(*SKIP)(*F)|'.$emoji.'/', '<img class="emoji" src="'.base_url("").'assets/img/emojis/'.$file.'" height="20" width="20" title="'.$emoji.'" alt="'.$emoji.'" align="absmiddle">', $text);
     }
 
+    $CI =& get_instance();
+    $CI->load->library("simple_html_dom");
+    $html = new Simple_html_dom();
+    $html->load($text);
+
+    foreach ($html->find('a') as $link) {
+        $parsed = parse_url($link->href);
+        if (isset($parsed['path'])) {
+            if (endsWith($parsed['path'], '.jpg') || endsWith($parsed['path'], '.jpeg') || endsWith($parsed['path'], '.png') || endsWith($parsed['path'], '.gif')) {
+                $text = preg_replace('`<a.*href="'.preg_quote($link->href).'".*<\/a>`', '<p><img src="'.$link->href.'" alt=""></p>', $text);
+            }
+            if (endsWith($parsed['host'], 'youtube.com') || ($parsed['host'] == 'youtu.be')) {
+                preg_match("/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/", $link->href, $id);
+                $embed = '<br><p><iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe></p>';
+                $text = preg_replace('`<a.*href="'.preg_quote($link->href).'".*<\/a>`', $embed, $text);
+            }
+        }
+    }
+
     return $text;
 }
 
