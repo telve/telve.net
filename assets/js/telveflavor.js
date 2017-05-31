@@ -132,15 +132,30 @@ function telveflavor(text) {
 	  return '__BLOCK__';
 	});
 
+	// Autolink
+	text = text.replace(/((https?:)\/\/[a-z0-9&#=.\/\-?_]+)/gi, '<a href="$1">$1</a>');
+
 	// Do your actual emoji replacement here
 	Object.keys(emoji_dict).forEach(function(key) {
-			var re = RegExp(escapeRegExp(key),'g');
-			text = text.replace(re, '<img class="emoji" src="' + base_url + 'assets/img/emojis/' + emoji_dict[key] + '" height="20" width="20" title="' + key + '" alt="' + key + '" align="absmiddle">');
+		text = text.replace(RegExp(escapeRegExp(key),'g'), '<img class="emoji" src="' + base_url + 'assets/img/emojis/' + emoji_dict[key] + '" height="20" width="20" title="' + key + '" alt="' + key + '" align="absmiddle">');
 	});
 
 	// Restore the <pre> and <code> tags from the backup by shift one by one
 	text = text.replace(/__BLOCK__/g, function () {
 	  return blocks.shift();
+	});
+
+	$(text).find('a').each(function() {
+		var parser = document.createElement('a');
+		parser.href = this.href;
+		if (parser.pathname.endsWith('.jpg') || parser.pathname.endsWith('.jpeg') || parser.pathname.endsWith('.png') || parser.pathname.endsWith('.gif')) {
+			text = text.replace(RegExp('<a.*href="' + escapeRegExp(parser.href) + '".*<\/a>','g'), '<br><img src="' + parser.href + '" alt="" style="max-width: 500px;">');
+		}
+		if (parser.hostname.endsWith('youtube.com') || parser.hostname.endsWith('youtu.be')) {
+			video_id = parser.href.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/);
+			embed = '<br><iframe width="560" height="315" src="https://www.youtube.com/embed/' + video_id[7] + '" frameborder="0" allowfullscreen></iframe>';
+			text = text.replace(RegExp('<a.*href="' + escapeRegExp(parser.href) + '".*<\/a>','g'), embed);
+		}
 	});
 
 	return text;
