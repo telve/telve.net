@@ -125,10 +125,22 @@ function telveflavor(text) {
 		return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 	}
 
-	var re = RegExp('','g');
+	// Backup the <pre> and <code> tags by pushing to blocks stack
+	var blocks = [];
+	text = text.replace(/(?:<pre>.*?<\/pre>|<code>.*?<\/code>|<code>.*?\n<\/code>)/g, function (match) {
+	  blocks.push(match);
+	  return '__BLOCK__';
+	});
+
+	// Do your actual emoji replacement here
 	Object.keys(emoji_dict).forEach(function(key) {
-			re = RegExp(escapeRegExp(key),'g');
+			var re = RegExp(escapeRegExp(key),'g');
 			text = text.replace(re, '<img class="emoji" src="' + base_url + 'assets/img/emojis/' + emoji_dict[key] + '" height="20" width="20" title="' + key + '" alt="' + key + '" align="absmiddle">');
+	});
+
+	// Restore the <pre> and <code> tags from the backup by shift one by one
+	text = text.replace(/__BLOCK__/g, function () {
+	  return blocks.shift();
 	});
 
 	return text;
