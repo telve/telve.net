@@ -26,6 +26,7 @@
         <link href="<?php echo base_url("assets/alertifyjs/css/themes/default.min.css");?>" rel="stylesheet" type="text/css">
 
         <script src="<?php echo base_url("assets/js/markdown-it.min.js");?>"></script>
+        <script src="<?php echo base_url("assets/js/telveflavor.js");?>"></script>
 
         <script type="text/javascript">
             var base_url = "<?php echo base_url('');?>";

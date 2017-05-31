@@ -285,7 +285,7 @@ $(document).ready(function() {
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\
         \
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + md.render(content) + "</span>\
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + telveflavor(md.render(content)) + "</span>\
                                     <!--<input type='hidden' class='show' value='0'/>-->\
         						</div>\
         \
@@ -325,7 +325,7 @@ function set_reply(obj) {
 		$(document).ready(function() {
 			var md = window.markdownit(); // get a markdown instance
 			$('textarea.reply-textarea').keyup(function() {
-				var html = md.render($(this).val()); // parse the markdown into html
+				var html = telveflavor(md.render($(this).val())); // parse the markdown into html
 				$('.live-preview3').html(html);
 			});
 		});
@@ -378,7 +378,7 @@ function submit_comment_reply(obj) {
         						</div>\
         \
         						<div class='hide_content' style='margin-bottom:6px;'>\
-                                    <span>" + md.render(content) + "</span>\
+                                    <span>" + telveflavor(md.render(content)) + "</span>\
                                     <!--<input type='hidden' class='show' value='0'/>-->\
         						</div>\
         \
@@ -678,7 +678,7 @@ $('form').submit(function() {
 $(document).ready(function() {
 	var md = window.markdownit(); // get a markdown instance
 	$('textarea#text').keyup(function() {
-		var html = md.render($(this).val()); // parse the markdown into html
+		var html = telveflavor(md.render($(this).val())); // parse the markdown into html
 		$('.live-preview').html(html);
 	});
 });
@@ -686,7 +686,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	var md = window.markdownit(); // get a markdown instance
 	$('textarea#content').keyup(function() {
-		var html = md.render($(this).val()); // parse the markdown into html
+		var html = telveflavor(md.render($(this).val())); // parse the markdown into html
 		$('.live-preview2').html(html);
 	});
 });
