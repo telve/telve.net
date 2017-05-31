@@ -4,7 +4,7 @@ function telveflavor($text)
 {
     $emoji_dict = array(
         ":gülümse:" => "simple_smile.png",
-        ":\)" => "simple_smile.png",
+        ":)" => "simple_smile.png",
         ":gülücük:" => "smile.png",
         ":D" => "smile.png",
         ":haha:" => "smile.png",
@@ -17,20 +17,20 @@ function telveflavor($text)
         ":kahkaha:" => "laughing.png",
         "xD" => "laughing.png",
         ":gözkırp:" => "wink.png",
-        ";\)" => "wink.png",
+        ";)" => "wink.png",
         ":utangaçgül:" => "blush.png",
-        "\^_\^" => "blush.png",
+        "^_^" => "blush.png",
         ":utanarakgül:" => "blush.png",
         ":nefis:" => "yum.png",
         ":artiz:" => "sunglasses.png",
         ":artist:" => "sunglasses.png",
         ":güneşgözlüğü:" => "sunglasses.png",
-        "8\|" => "sunglasses.png",
+        "8|" => "sunglasses.png",
         ":aşıkbak:" => "heart_eyes.png",
         ":aşıkaşıkbak:" => "heart_eyes.png",
         ":gözlerkalp:" => "heart_eyes.png",
         ":kalpliöp:" => "kissing_heart.png",
-        ":\*" => "kissing_heart.png",
+        ":*" => "kissing_heart.png",
         ":kalpliöpücük:" => "kissing_heart.png",
         ":öp:" => "kissing_smiling_eyes.png",
         ":öpücük:" => "kiss.png",
@@ -45,16 +45,16 @@ function telveflavor($text)
         ":uyu:" => "sleeping.png",
         ":zzz:" => "zzz.png",
         ":üzül:" => "worried.png",
-        ":\(" => "worried.png",
+        ":(" => "worried.png",
         ":endişelen:" => "worried.png",
         ":ney:" => "anguished.png",
         ":O" => "open_mouth.png",
         ":tüh:" => "confused.png",
-        ":\|" => "neutral_face.png",
+        ":|" => "neutral_face.png",
         "-_-" => "expressionless.png",
         ":hıh:" => "unamused.png",
         ":ağla:" => "cry.png",
-        ":'\(" => "cry.png",
+        ":'(" => "cry.png",
         ":çoküzül:" => "cry.png",
         ":olamaz:" => "scream.png",
         ":sinirli:" => "angry.png",
@@ -84,10 +84,10 @@ function telveflavor($text)
         ":kaka:" => "poop.png",
         ":sıç:" => "poop.png",
         ":bok:" => "shit.png",
-        ":\+1:" => "thumbsup.png",
+        ":+1:" => "thumbsup.png",
         ":beğen:" => "thumbsup.png",
         ":evet:" => "thumbsup.png",
-        ":\-1:" => "thumbsdown.png",
+        ":-1:" => "thumbsdown.png",
         ":beğenme:" => "thumbsdown.png",
         ":hayır:" => "thumbsdown.png",
         ":ok:" => "ok_hand.png",
@@ -125,7 +125,7 @@ function telveflavor($text)
     );
 
     foreach ($emoji_dict as $emoji => $file) {
-        $text = preg_replace('/(?s)<(pre|code)[^<]*>.*?<\/(pre|code)>(*SKIP)(*F)|'.$emoji.'/', '<img class="emoji" src="'.base_url("").'assets/img/emojis/'.$file.'" height="20" width="20" title="'.$emoji.'" alt="'.$emoji.'" align="absmiddle">', $text);
+        $text = preg_replace('/(?s)<(pre|code)[^<]*>.*?<\/(pre|code)>(*SKIP)(*F)|'.preg_quote($emoji).'/', '<img class="emoji" src="'.base_url("").'assets/img/emojis/'.$file.'" height="20" width="20" title="'.$emoji.'" alt="'.$emoji.'" align="absmiddle">', $text);
     }
 
     $CI =& get_instance();
