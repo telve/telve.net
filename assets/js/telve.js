@@ -842,3 +842,15 @@ $('body').on('click', function (e) {
 		$('#notifications ul').css('visibility',"hidden");
 	}
 });
+
+// Highlight the reply
+$(document).ready(function() {
+	var parser = document.createElement('a');
+	parser.href = window.location.href;
+	if (parser.hash.startsWith('#yorum-')) {
+		$(parser.hash + ' > div.span8').css('background-color', '#fafad2');
+		$(parser.hash + ' > div.span8').animate({
+			backgroundColor: "#fff"
+		}, 2000 );
+	}
+});

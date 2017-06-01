@@ -100,6 +100,7 @@
         </div>
 
         <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
+        <script src="<?php echo base_url("assets/js/jquery-color.min.js");?>"></script>
         <script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 
         <ul id="header" class="nav nav-tabs" style="background-image: url('<?php if (!empty($header_image)) echo $header_image; ?>')">
