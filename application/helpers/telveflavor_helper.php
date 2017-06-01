@@ -121,7 +121,16 @@ function telveflavor($text)
         ":tc:" => "turkey.png",
         ":türkbayrağı:" => "turkey.png",
         ":atatürk:" => "ataturk.png",
-        ":atatürk2:" => "ataturk2.png"
+        ":atatürk2:" => "ataturk2.png",
+        ":hediye:" => "gift.png",
+        ":altın:" => "gold_bar.png",
+        ":para:" => "dollar.png",
+        ":dolar:" => "dollar.png",
+        ":euro:" => "euro.png",
+        ":kredikartı:" => "credit_card.png",
+        ":üniversite:" => "mortar_board.png",
+        ":üni:" => "mortar_board.png",
+        ":viki:" => "mortar_board.png"
     );
 
     foreach ($emoji_dict as $emoji => $file) {

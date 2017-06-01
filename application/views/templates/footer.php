@@ -134,9 +134,9 @@
             </div>
             <div class="span2 footer_col" style="width: 15%; height: 142px; padding-left:1.5em; border-left:solid 1px rgba(0, 0, 0, .2);">
                 <ul class="unstyled">
-                    <li style="font-size:16px;"><3<li>
-                    <li><a href="<?php echo base_url('sayfalar/altin');?>" style="color:#9A7D2E;">telvealtın</a></li>
-                    <li><a href="<?php echo base_url('sayfalar/sponsor');?>">telvehediyeler</a></li>
+                    <li style="font-size:16px;"><img class="emoji" src="http://localhost/assets/img/emojis/heart.png" height="20" width="20" title="<3" alt="<3" align="absmiddle"><li>
+                    <li><a href="<?php echo base_url('sayfalar/altin');?>" style="color:#9A7D2E;">telvealtın <img class="emoji" src="http://localhost/assets/img/emojis/gold_bar.png" height="20" width="20" title=":altın:" alt=":altın:" align="absmiddle"></a></li>
+                    <li><a href="<?php echo base_url('sayfalar/sponsor');?>">telvehediyeler <img class="emoji" src="http://localhost/assets/img/emojis/gift.png" height="20" width="20" title=":hediye:" alt=":hediye:" align="absmiddle"></a></li>
                 </ul>
             </div>
         </div>
