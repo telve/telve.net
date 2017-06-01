@@ -38,16 +38,20 @@
             $row = $query->row_array();
             $item_uid = $row['uid'];
 
-            $data = array(
-                'uid' => $user['id'],
-                'item_type' => $item_type,
-                'action_type' => $action_type,
-                'item_id' => $id,
-                'item_uid' => $item_uid,
-                'unread' => 1
-            );
+            if ($item_uid != $user['id']) {
+                $data = array(
+                    'uid' => $user['id'],
+                    'item_type' => $item_type,
+                    'action_type' => $action_type,
+                    'item_id' => $id,
+                    'item_uid' => $item_uid,
+                    'unread' => 1
+                );
 
-            return $this->db->insert('notification', $data);
+                return $this->db->insert('notification', $data);
+            } else {
+                return false;
+            }
         }
 
         public function get_unread_notification_count()
