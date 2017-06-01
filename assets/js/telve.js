@@ -715,7 +715,7 @@ function notification_loader(notifications, data) {
 		switch (data[i]['item_type']) {
 			case "0":
 				objective = "şu gönderinize";
-				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_0'];
+				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_0'] + "/";
 				switch (data[i]['action_type']) {
 					case "0":
 						verb = " evet oyu verdi.";
@@ -734,7 +734,7 @@ function notification_loader(notifications, data) {
 				break;
 			case "1":
 				objective = "şu yorumunuza";
-				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_1'];
+				objective_link = base_url + "t/-/yorumlar/" + data[i]['link_id_1'] + "/?nolimit=1#yorum-" + data[i]['reply_id'];
 				switch (data[i]['action_type']) {
 					case "0":
 						verb = " evet oyu verdi.";

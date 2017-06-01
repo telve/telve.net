@@ -73,7 +73,7 @@
             $user = $query->row_array();
 
             $this->db->where('item_uid', $user['id']);
-            $this->db->select('item_type,action_type,username,link.id as link_id_0,reply.link_id as link_id_1,notification.created');
+            $this->db->select('item_type,action_type,username,link.id as link_id_0,reply.link_id as link_id_1,reply.id as reply_id,notification.created');
             $this->db->from('notification');
             $this->db->join('user', 'notification.uid = user.id');
             $this->db->join('link', 'notification.item_id = link.id', 'left');
@@ -95,6 +95,7 @@
             foreach ($multirow as &$row) {
                 $row['link_id_0'] = $this->hashids->encode($row['link_id_0']);
                 $row['link_id_1'] = $this->hashids->encode($row['link_id_1']);
+                $row['reply_id'] = $this->hashids->encode($row['reply_id']);
                 $row['created'] = human_timing($row['created']);
             }
             unset($row);

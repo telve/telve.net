@@ -28,7 +28,9 @@
 
             $this->data['link_item']['seo_segment'] = str_replace(" ", "-", strtolower(implode(' ', array_slice(preg_split('/\s+/', preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı\s]+/', '', $this->data['link_item']['title'])), 0, 6))));
             if (empty($this->uri->segment(5)) || urldecode($this->uri->segment(5)) != $this->data['link_item']['seo_segment']) {
-                redirect('t/'.$this->data['link_item']['topic'].'/yorumlar/'.$id.'/'.$this->data['link_item']['seo_segment'].'/');
+                $query = parse_url($_SERVER['REQUEST_URI'])['query'];
+                if ($query) $query = '?'.$query;
+                redirect('t/'.$this->data['link_item']['topic'].'/yorumlar/'.$id.'/'.$this->data['link_item']['seo_segment'].'/'.$query);
             }
 
             $this->data['title']=$this->data['link_item']['title'].' | '.$this->data['link_item']['topic'];
