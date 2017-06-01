@@ -58,7 +58,7 @@ function telveflavor(text) {
 			":kızgın:" : "angry.png",
 			":öfkeli:" : "rage.png",
 			":şeytan:" : "imp.png",
-			":şeyanigül:" : "smiling_imp.png",
+			":şeytanigül:" : "smiling_imp.png",
 			":masum:" : "innocent.png",
 			":melek:" : "innocent.png",
 			":uzaylı:" : "alien.png",
@@ -127,7 +127,13 @@ function telveflavor(text) {
 			":kredikartı:" : "credit_card.png",
 			":üniversite:" : "mortar_board.png",
 			":üni:" : "mortar_board.png",
-			":viki:" : "mortar_board.png"
+			":viki:" : "mortar_board.png",
+			":bulut:" : "cloud.png",
+			":güneş:" : "sunny.png",
+			":güneşli:" : "sunny.png",
+			":dünya:" : "earth_africa.png",
+			":yağmur:" : "umbrella.png",
+			":kar:" : "snowflake.png"
 	};
 
 	function escapeRegExp(str) {

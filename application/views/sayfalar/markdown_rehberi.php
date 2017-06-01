@@ -5,7 +5,7 @@
 
     $url = "./wiki/markdown_rehberi.md";
     $read = fopen($url, 'r') or die('Failed to open the file!');
-    $text = fread($read, 13000);
+    $text = fread($read, 20000);
     fclose($read);
 ?>
 

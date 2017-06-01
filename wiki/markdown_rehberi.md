@@ -1,6 +1,6 @@
 <br>
 <br>
-Bu sayfa Markdown formatında ustalaşmak isteyenler için hızlı ve kolay bir rehber olarak tasarlanmıştır. Bu rehberi 3 dakikalık bir okuma ile bitirebilirsiniz. **telve.net**'te yazacağınız her türlü metin **[Markdown](https://en.wikipedia.org/wiki/Markdown)** formatında olacaktır. Ayrıca kısıtlı da olsa **[HTML](https://tr.wikipedia.org/wiki/HTML)** de desteklenmektedir.
+Bu sayfa Markdown formatında ustalaşmak isteyenler için hızlı ve kolay bir rehber olarak tasarlanmıştır. Bu rehberi 3 dakikalık bir okuma ile bitirebilirsiniz. **telve.net**'te yazacağınız her türlü metin **[Markdown](https://en.wikipedia.org/wiki/Markdown)** formatını destekler. Ayrıca kısıtlı da olsa **[HTML](https://tr.wikipedia.org/wiki/HTML)** de desteklenmektedir.
 
 ##### İçindekiler  
 - [Başlıklar](#basliklar)  
@@ -13,7 +13,9 @@ Bu sayfa Markdown formatında ustalaşmak isteyenler için hızlı ve kolay bir 
 - [Alıntılar](#alintilar)  
 - [Satır İçi HTML](#html)  
 - [Yatay Çizgi](#yataycizgi)  
-- [Satır Sonu](#satirsonu)  
+- [Satır Sonu](#satirsonu)
+- [YouTube](#youtube)
+- [Emojiler](#emojiler)
 
 <br>
 <br>
@@ -68,7 +70,7 @@ Güçlü vurgu, diğer adıyla kalın, **çift yıldız işareti** ile ya da __�
 
 Örneğin şu şekilde bir kombine vurgu yapılabilir: **kalın yazı ve _kalın ve italik yazı_**
 
-Çift yaklaşık işareti ile yazının üzerini çizebilirsiniz. ~~Üzerini çiz.~~ (telve.net henüz desteklememektedir.)
+Çift yaklaşık işareti ile yazının üzerini çizebilirsiniz. ~~Üzerini çiz.~~
 ```
 
 Vurgu, diğer adıyla italik, *yıldız işareti* ile ya da _altçizgi_ ile
@@ -77,7 +79,7 @@ Güçlü vurgu, diğer adıyla kalın, **çift yıldız işareti** ile ya da __�
 
 Örneğin şu şekilde bir kombine vurgu yapılabilir: **kalın yazı ve _kalın ve italik yazı_**
 
-Çift yaklaşık işareti ile yazının üzerini çizebilirsiniz. ~~Üzerini çiz.~~ (telve.net henüz desteklememektedir.)
+Çift yaklaşık işareti ile yazının üzerini çizebilirsiniz. ~~Üzerini çiz.~~
 
 <br>
 <br>
@@ -140,6 +142,8 @@ Güçlü vurgu, diğer adıyla kalın, **çift yıldız işareti** ile ya da __�
 
 ya da sol kısmı boş bıkarak direkt referansın kendisi: [Hepsiburada]
 
+Ayrıca **telve.net**, direkt bağlantıları da otomatik olarak algılar: https://telve.net/
+
 [YouTube'a referans]: https://www.youtube.com/
 [1]: https://www.sahibinden.com/
 [Hepsiburada]: http://www.hepsiburada.com/
@@ -156,6 +160,8 @@ ya da sol kısmı boş bıkarak direkt referansın kendisi: [Hepsiburada]
 [Sitenin kök dizinine göre bağlantı](../t/HABER/)
 
 ya da sol kısmı boş bıkarak direkt referansın kendisi: [Hepsiburada]
+
+Ayrıca **telve.net**, direkt bağlantıları da otomatik olarak algılar: https://telve.net/
 
 [YouTube'a referans]: https://www.youtube.com/
 [1]: https://www.sahibinden.com/
@@ -178,6 +184,8 @@ Referans tarzı:
 ![alternatif metin][github-maskot]
 
 [github-maskot]: ../assets/img/guide/GitHubCouple.gif "GitHub Maskot Çift"
+
+Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/türk-kahvesi.jpg
 ```
 
 GitHub maskotlar (resmin üzerine gelerek başlığı görebilirsiniz):
@@ -189,6 +197,8 @@ Referans tarzı:
 ![alternatif metin][github-maskot]
 
 [github-maskot]: ../assets/img/guide/GitHubCouple.gif "GitHub Maskot Çift"
+
+Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/türk-kahvesi.jpg
 
 <br>
 <br>
@@ -412,6 +422,62 @@ Yazmanız yeni satıra geçmenizi.
 Sağlamayacaktır.
 Ancak satır sonunda iki boşluk kullanırsanız.  
 Bir alt satıra geçer.
+
+<br>
+<br>
+
+<a name="youtube"/>
+### YouTube
+</a>
+
+```no-highlight
+Ayrıca **telve.net**, girilen YouTube video bağlantılarını da otomatik olarak algılayıp videoyu gömecektir:
+
+https://www.youtube.com/watch?v=9bZkp7q19f0
+
+https://youtu.be/FrG4TEcSuRg
+```
+
+Ayrıca **telve.net**, girilen YouTube video bağlantılarını da otomatik olarak algılayıp videoyu gömecektir:
+
+https://www.youtube.com/watch?v=9bZkp7q19f0
+
+https://youtu.be/FrG4TEcSuRg
+
+<br>
+<br>
+
+<a name="emojiler"/>
+### Emojiler
+</a>
+
+Son olarak da **telve.net** tarafından desteklenen emojilerin tam listesi:
+
+|                                   |                                           |                                               |                                   |
+| :-------------------------------- | :---------------------------------------- | :-------------------------------------------- | :-------------------------------- |
+| :gülümse: `:gülümse:` `:)`        | :gülücük: `:gülücük:` `:D` `:haha:`       | :sırıt: `:sırıt:`                             | :gülmektenağla: `:gülmektenağla:` |
+| :hehe: `:hehe:`                   | :kahkaha: `:kahkaha:` `xD`                | :gözkırp: `:gözkırp:` `;)`                    | :utangaçgül: `:utangaçgül`        |
+| :nefis: `:nefis:`                 | :artiz: `:artiz:` `:güneşgözlüğü:` `8|`   | :aşıkbak: `:aşıkbak:` `:gözlerkalp:`          | :kalpliöp: `:kalpliöp:` `:*`      |
+| :öp: `:öp:`                       | :öpücük: `:öpücük:`                       | :utangaçöp: `:utangaçöp:`                     | :utan: `:utan:` `o.O` `utandım`   |
+| :oh: `:oh:`                       | :dilçıkar: `:dilçıkar:` `:P`              | :uyu: `:uyu:`                                 | :zzz: `:zzz:`                     |
+| :üzül: `:üzül:` `:(`              | :ney: `:ney:`                             | :O `:O`                                       | :tüh: `:tüh:`                     |
+| :\| `:|`                          | -\_- `-_-`                                | :hıh: `:hıh:`                                 | :ağla: `:ağla` `:'(` `:çoküzül:`  |
+| :olamaz: `:olamaz:`               | :sinirli: `:sinirli:` `:kızgın:`          | :öfkeli: `:öfkeli:`                           | :şeytan: `:şeytan:`               |
+| :şeytanigül: `:şeytanigül:`       | :masum: `:masum:` `:melek:`               | :uzaylı: `:uzaylı:`                           | :sarıkalp: `:sarıkalp:`           |
+| :mavikalp: `:mavikalp:`           | :morkalp: `:morkalp:`                     | :kalp: `:kalp:` `<3` `kırmızıkalp`:           | :yeşilkalp: `:yeşilkalp:`         |
+| :kırıkkalp: `:kırıkkalp:`         | :pırıltılıkalp: `:pırıltılıkalp:`         | :aşktanrısı: `:aşktanrısı:`                   | :pırıltı: `:pırıltı:`             |
+| :yıldız: `:yıldız:`               | :bom: `:bom:`                             | :müzik: `:müzik:`                             | :ateş: `:ateş:`                   |
+| :kaka: `:kaka:` `:sıç:` `:bok:`   | :+1: `:+1:` `:beğen:` `:evet:`            | :-1: `:-1:` `:beğenme:` `:hayır:`             | :ok: `:ok:` `:tamam:`             |
+| :yumruk: `:yumruk:`               | :zafer: `:zafer:`                         | :trol: `:trol:`                               | :github: `:github:`               |
+| :yukarı: `:yukarı:`               | :aşağı: `:aşağı:`                         | :sol: `:sol:`                                 | :sağ: `:sağ:`                     |
+| :dans: `:dans:`                   | :dua: `:dua:`                             | :alkış: `:alkış:`                             | :kas: `:kas:`                     |
+| :metal: `:metal:`                 | :nah: `:nah:` `:ıIıı:` `:ortaparmak:`     | :kafatası: `:kafatası:` `:kurukafa:`          | :damla: `:damla:`                 |
+| :burun: `:burun:`                 | :dil: `:dil:`                             | :göz: `:göz:`                                 | :kulak: `:kulak:`                 |
+| :konuşmabalonu: `:konuşmabalonu:` | :düşünmebalonu: `:düşünmebalonu:`         | :türkiye: `:türkiye:` `:tc:` `:türkbayrağı:`  | :atatürk: `:atatürk:`             |
+| :atatürk2: `:atatürk2:`           | :hediye: `:hediye:`                       | :altın: `:altın:`                             | :para: `:para:` `:dolar:`         |
+| :euro: `:euro:`                   | :kredikartı: `:kredikartı:`               | :üniversite: `:üniversite:` `:üni:` `:viki:`  | :bulut: `:bulut:`                 |
+| :güneş: `:güneş:` `:güneşli`      | :dünya: `:dünya:`                         | :yağmur: `:yağmur:`                           | :kar: `:kar:`                     |
+|                                   |                                           |                                               |                                   |
 
 <br>
 <br>
