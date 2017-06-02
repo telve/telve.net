@@ -127,7 +127,7 @@
                         <div style="width:49%;"><a class="link-to-guide pull-right" href="<?php echo base_url('sayfalar/markdown_rehberi');?>">Markdown rehberi</a></div>
                         <!--<button class="btn btn-primary  pull-left" type="submit" name="submit" >submit</button>-->
                         <!--<div id="error_msg"></div>-->
-                        <button type="submit" id="submit_reply" class="login-required">gönder</button>
+                        <button type="submit" id="submit_comment" class="login-required" onclick="submit_comment(this)">gönder</button>
                         <!-- Horizontal solid line and submit text box -->
 
                         <br/>

@@ -55,9 +55,13 @@
 
         public function reply_ajax()
         {
+            $status = "0";
+            $inserted_reply_id = "";
+            $msg = "";
             if ($this->input->post('content')) {
                 if ($this->data['is_user_logged_in']) {
-                    if ($this->link_model->insert_reply()) {
+                    $inserted_reply_id = $this->link_model->insert_reply();
+                    if ($inserted_reply_id) {
                         if ($this->input->post('is_parent_link') == 1) {
                             $this->link_model->increase_comments();
                             $this->notification_model->insert_notification(0,3);
@@ -65,16 +69,21 @@
                             $this->link_model->increase_rply_comments();
                             $this->notification_model->insert_notification(1,3);
                         }
-                        echo 1;
+                        $status = "1";
                     } else {
-                        echo "Bir hata oluştu. Lütfen tekrar deneyin.";
+                        $msg = "Bir hata oluştu. Lütfen tekrar deneyin.";
                     }
                 } else {
-                    echo "Lütfen öncelikle giriş yapın.";
+                    $msg = "Lütfen öncelikle giriş yapın.";
                 }
             } else {
-                echo "Boş bir yorum/yanıt gönderemezsiniz.";
+                $msg = "Boş bir yorum/yanıt gönderemezsiniz.";
             }
+            echo json_encode(array(
+                                "status" => $status,
+                                "id" => $inserted_reply_id,
+                                "msg" => $msg
+                            ));
         }
 
         public function up()

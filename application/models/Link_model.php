@@ -144,33 +144,6 @@
             return $this->display_children($id, $level, $res);
         }
 
-        /*
-        private function display_children($pid,$level,&$res) //这里的&要好好研究下
-        {
-
-            $this->db->select('id,content,comments');
-            $this->db->where('pid',$pid);
-            $query = $this->db->get('reply');
-
-            if ($query->num_rows() == 0) return;
-
-            $res.='<ul>';
-
-            foreach ($query->result_array() as $row)
-            {
-                $res.='<li>';
-
-                $res.=$row['content'].($row['comments']);
-
-                $this->display_children($row['id'],$level+1,$res);
-
-                $res.='</li>';
-            }
-
-            return $res.='</ul>';
-        }*/
-
-
         private function display_children($pid, $level, &$res)
         {
             $Parsedown = new Parsedown();
@@ -249,42 +222,31 @@
                 $res.='<li>';
 
                 $res.="<!--One reply from the reply tree of this post-->
-				<div id='yorum-".$row['id']."' class='row-fluid'>
+				              <div id='yorum-".$row['id']."' class='row-fluid reply-wrapper'>
+					              <div class='span8'>
 
-					<div class='span8'>
-						<style>
+						              <div class='reply-header'>
+							              <a class='reply-up login-required' title='evet' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
+                            <a class='color-gray' title='küçült' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
+                            <a class='reply-user-link' href='".base_url('kullanici/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='reply-score-".$row['id']."'>".$row['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
+                            &nbsp;<span class='color-gray'>(<a class='color-gray' title='yanıt sayısı'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
+						              </div>
 
-                        </style>
+						              <a class='reply-down login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
+						              <div class='reply-content'>
+                            <span>".telveflavor($Parsedown->text($row['content']))."</span>
+						              </div>
 
-						<div id='switch' style='margin-bottom:4px;color: #888;'>
-							<a class='hide_up login-required' title='evet' href='javascript:void(0)' id='".$row['id']."' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='".$up_style."'></i></a>
+              						<div class='reply-functions hide_function'>
+              								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a class='color-gray' id='".$row['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
+              								&nbsp;&nbsp;&nbsp;&nbsp;<a class='color-gray' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
+              								&nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
+                              &nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='share_reply(this)' id='".$row['id']."'><small>paylaş<span class='glyphicon glyphicon-share'></span></small></a>
+              						</div>
 
-							<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>
-
-                            <a style='color: #369;font-weight: bold;' href='".base_url('kullanici/').$username.'/'."'>".$username."</a>&nbsp;&nbsp;<span id='reply-score-".$row['id']."'>".$row['score']."</span> puan&nbsp;&nbsp;".$ago." gönderildi
-                            &nbsp;<span style='color: gray;'>
-								(<a style='color: gray;' title='yanıt sayısı' class='hide_rply'> ".$row['comments']." <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>
-						</div>
-
-						<a class='login-required' title='hayır' href='javascript:void(0)' id='".$row['id']."' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='".$down_style."'></i></a>
-						<div class='hide_content' style='margin-bottom:6px;'>
-
-                            <span style='display:inline-block;'>".telveflavor($Parsedown->text($row['content']))."</span>
-                            <!--<input type='hidden' class='show' value='".$row['id']."'/>-->
-						</div>
-
-						<div class='hide_function' style='margin-bottom: 15px; margin-top: -15px;'>
-							<div style='color: #888;font-weight: bold;padding: 0 1px;'>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$row['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
-								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='share_reply(this)' id='".$row['id']."'><small>paylaş<span class='glyphicon glyphicon-share'></span></small></a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				<!--One reply from the reply tree of this post-->";
+					              </div>
+				              </div>
+				              <!--One reply from the reply tree of this post-->";
 
                 $this->display_children($row['id'], $level+1, $res);
                 $res.='</li>';
@@ -420,7 +382,8 @@
                 'link_id' => $this->hashids->decode($this->input->post('link_id'))[0]
             );
 
-            return $this->db->insert('reply', $data);
+            $this->db->insert('reply', $data);
+            return $this->hashids->encode($this->db->insert_id());
         }
 
         public function up_score()

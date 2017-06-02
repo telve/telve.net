@@ -243,84 +243,84 @@ $(document).ready(function() {
 		$(".link").fadeOut(800);
 	});
 
-	$("#submit_reply").click(function() {
-		if (is_user_logged_in) {
-			var content = $("#content").val();
-			var pid = $("#pid").val();
+});
 
-			$.ajax({
-				type: "POST",
-				url: base_url + 'comments/reply_ajax',
-				data: {
-					'content': content,
-					'pid': pid,
-					'is_parent_link': 1,
-					'link_id': $('.digg > div > a')[0].id
-				},
-				error: function(xhr, status, error) {
-					console.log(xhr.responseText);
-				},
-				success: function(data) {
+function submit_comment(obj) {
+	if (is_user_logged_in) {
+		var content = $("#content").val();
+		var pid = $("#pid").val();
 
-					if (data == 1) {
+		$.ajax({
+			type: "POST",
+			url: base_url + 'comments/reply_ajax',
+			data: {
+				'content': content,
+				'pid': pid,
+				'is_parent_link': 1,
+				'link_id': $('.digg > div > a')[0].id
+			},
+			error: function(xhr, status, error) {
+				console.log(xhr.responseText);
+			},
+			success: function(data) {
+				if (data) {
+					data = JSON.parse(data);
+					if (data['status'] == '1') {
 						var md = window.markdownit(); // get a markdown instance
 						$("#content").val('');
-						update_reply = "<!--One reply from the reply tree of this post-->\
-                        <div>\
-        				<div class='row-fluid'>\
+						comment = "<li><!--One reply from the reply tree of this post-->\
+        										<div id='yorum-" + data['id'] + "' class='row-fluid reply-wrapper'>\
+        											<div class='8'>\
         \
-        					<div class='span12'>\
-        						<style>\
+        												<div class='reply-header'>\
+        													<a class='reply-up login-required' title='evet' href='javascript:void(0)' id='" + data['id'] + "' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='color:black;'></i></a>\
+        													<a class='color-gray' title='küçült' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+        													<a class='reply-user-link' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-" + data['id'] + "'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
+                                  &nbsp;<span class='color-gray'>(<a class='color-gray' title='yanıt sayısı'> 0 <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>\
+        												</div>\
         \
-                                </style>\
-        \
-        						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
-        \
-        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
-        \
-                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
-                                    &nbsp;<span style='color: gray;'>\
-        								(<a style='color: gray;' class='hide_rply' href=''> senin yorumun </a>)</small></span>\
-        						</div>\
-        \
-        						<div class='hide_content' style='margin-bottom:6px;'>\
-        \
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>" + telveflavor(md.render(content)) + "</span>\
-                                    <!--<input type='hidden' class='show' value='0'/>-->\
-        						</div>\
-        \
-        					</div>\
-        \
-        				</div>\
-        \
-        				</div>\
-        				<!--One reply from the reply tree of this post-->";
-						$("#update_reply").html(update_reply);
+        												<a class='reply-down login-required' title='hayır' href='javascript:void(0)' id='" + data['id'] + "' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='color:black;'></i></a>\
+        												<div class='reply-content'>\
+                                	<span>" + telveflavor(md.render(content)) + "</span>\
+        												</div>\
+				\
+																<div class='reply-functions hide_function'>\
+		              								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a class='color-gray' id='" + data['id'] + "' href='javascript:void(0)' onclick='favourite_reply(this)' class='login-required'>favori<span class='glyphicon glyphicon-star-empty'></span></a>\
+		              								&nbsp;&nbsp;&nbsp;&nbsp;<a class='color-gray' href='javascript:void(0)' onclick='report_reply(\"" + data['id'] + "\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>\
+		              								&nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='set_reply(this)' id='" + data['id'] + "'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>\
+		                              &nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='share_reply(this)' id='" + data['id'] + "'><small>paylaş<span class='glyphicon glyphicon-share'></span></small></a>\
+			              						</div>\
+				\
+						        					</div>\
+						        				</div>\
+						        				<!--One reply from the reply tree of this post--></li>";
+						$(obj).nextAll('ul').prepend(comment);
+						$('.live-preview2').empty();
 						alertify.success('Yorumunuz başarıyla gönderildi.');
-						setTimeout(function() {
-							location.reload();
-						}, 2000);
 					} else {
-						alertify.error(data);
+						alertify.error(data['msg']);
 					}
+				} else {
+					alertify.error("Dinamik bağlantı hatası.");
 				}
-			});
-		}
-
-	});
-});
+			}
+		});
+	}
+};
 
 
 function set_reply(obj) {
-	if ($(obj).nextAll().is("div")) {
-		$(obj).nextAll("div").children("#content").focus();
+	if ($(obj).nextAll().is("ul")) {
+		$(obj).nextAll("ul").children("div").children("#content").focus();
 	} else { //This can not be used directly reply_item['id']
-		replyForm = "<div><div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6 reply-textarea' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;' placeholder='yanıtınız... Markdown formatında' /></textarea><div class='live-preview3'></div><br />" +
-			"<input type='hidden' name='pid' id='pid' value='" + obj.id + "' />" +
-			'<div style="width:51%;"><a class="link-to-guide pull-right" style="font-weight:normal;" href="' + base_url + 'sayfalar/markdown_rehberi' + '">Markdown rehberi</a></div>' +
-			"&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>gönder</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>iptal</button></div>";
-		$(obj).after(replyForm);
-		$(obj).nextAll("div").children("#content").focus();
+		replyForm = "<ul style='list-style-type:none; margin-left:14px; padding-left:.8em; border-left:solid 1px rgba(0, 0, 0, .2);'>\
+									<div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'></div>&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows='4' class='span6 reply-textarea' name='content' id='content' onfocus='first_of_all_login()' style='font-weight:normal;color:black;' placeholder='yanıtınız... Markdown formatında' /></textarea><div class='live-preview3'></div><br />\
+									<input type='hidden' name='pid' id='pid' value='" + obj.id + "' />\
+									<div style='width:51%;'><a class='link-to-guide pull-right' style='font-weight:normal;' href='" + base_url + "sayfalar/markdown_rehberi'>Markdown rehberi</a></div>\
+									&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' onclick='submit_comment_reply(this)' style='margin-top:10px;'>gönder</button>&nbsp;&nbsp;<button type='button' onclick='cancel_reply(this)' style='margin-top:10px;'>iptal</button>\
+								</ul>";
+		$(obj).nextAll().after(replyForm);
+		$(obj).nextAll("ul").children("div").children("#content").focus();
 
 		$(document).ready(function() {
 			var md = window.markdownit(); // get a markdown instance
@@ -335,7 +335,7 @@ function set_reply(obj) {
 function cancel_reply(obj) {
 	//alert($(obj).parent());
 	$(obj).parent().remove(); //Deletes the selected element and its child elements
-	$(obj).parent().siblings(".").remove();
+	//$(obj).parent().siblings(".").remove();
 }
 
 function submit_comment_reply(obj) {
@@ -355,47 +355,47 @@ function submit_comment_reply(obj) {
 				console.log(xhr.responseText);
 			},
 			success: function(data) {
-
-				if (data == 1) {
-					var md = window.markdownit(); // get a markdown instance
-					update_reply = "<!--One reply from the reply tree of this post-->\
-                        <ul style='list-style-type:none'><li><!--Draw a dividing line-->\
-				            <div style='border-top:solid 8px rgba(255, 255, 255, .3); width:100%;'> </div>\
-        				<div class='row-fluid'>\
-        \
-        					<div class='span12'>\
-        						<style>\
-        \
-                                </style>\
-        \
-        						<div id='switch' style='margin-bottom:4px;color: #888; margin-top:8px;'>\
-        \
-        							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: gray;' title='küçült' id='minus' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
-        \
-                                    <a style='color: #369;font-weight: bold;' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-0'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
-                                    &nbsp;<span style='color: gray;'>\
-        								(<a style='color: gray;' class='hide_rply' href=''> senin yanıtın </a>)</small></span>\
-        						</div>\
-        \
-        						<div class='hide_content' style='margin-bottom:6px;'>\
-                                    <span>" + telveflavor(md.render(content)) + "</span>\
-                                    <!--<input type='hidden' class='show' value='0'/>-->\
-        						</div>\
-        \
-        					</div>\
-        \
-        				</div>\
-        \
-        				</div></li></ul>\
-        				<!--One reply from the reply tree of this post-->";
-					$(obj).parent().parent().after(update_reply);
-					$(obj).parent().hide();
-					alertify.success('Yanıtınız başarıyla gönderildi.');
-					setTimeout(function() {
-						location.reload();
-					}, 2000);
+				if (data) {
+					data = JSON.parse(data);
+					if (data['status'] == '1') {
+						var md = window.markdownit(); // get a markdown instance
+						update_reply = "<li><!--One reply from the reply tree of this post-->\
+														<div id='yorum-" + data['id'] + "' class='row-fluid reply-wrapper'>\
+															<div class='8'>\
+				\
+																<div class='reply-header'>\
+																	<a class='reply-up login-required' title='evet' href='javascript:void(0)' id='" + data['id'] + "' onclick='rply_up(this)'><i class='glyphicon glyphicon-arrow-up' style='color:black;'></i></a>\
+																	<a class='color-gray' title='küçült' href='javascript:void(0)' onclick='switch_state(this)'>[–]</a>&nbsp;<small>\
+																	<a class='reply-user-link' href='" + base_url + "kullanici/" + username + "/" + "'>" + username + "</a>&nbsp;&nbsp;<span id='reply-score-" + data['id'] + "'>0</span> puan&nbsp;&nbsp;az önce gönderildi\
+																	&nbsp;<span class='color-gray'>(<a class='color-gray' title='yanıt sayısı'> 0 <span class='glyphicon glyphicon-comment' style='font-size:10px;'></span> </a>)</small></span>\
+																</div>\
+				\
+																<a class='reply-down login-required' title='hayır' href='javascript:void(0)' id='" + data['id'] + "' onclick='rply_down(this)'><i class='glyphicon glyphicon-arrow-down' style='color:black;'></i></a>\
+																<div class='reply-content'>\
+																	<span>" + telveflavor(md.render(content)) + "</span>\
+																</div>\
+				\
+																<div class='reply-functions hide_function'>\
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a class='color-gray' id='" + data['id'] + "' href='javascript:void(0)' onclick='favourite_reply(this)' class='login-required'>favori<span class='glyphicon glyphicon-star-empty'></span></a>\
+																	&nbsp;&nbsp;&nbsp;&nbsp;<a class='color-gray' href='javascript:void(0)' onclick='report_reply(\"" + data['id'] + "\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>\
+																	&nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='set_reply(this)' id='" + data['id'] + "'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>\
+																	&nbsp;&nbsp;&nbsp;&nbsp;</small><a class='color-gray' href='javascript:void(0)' onclick='share_reply(this)' id='" + data['id'] + "'><small>paylaş<span class='glyphicon glyphicon-share'></span></small></a>\
+																</div>\
+				\
+															</div>\
+														</div>\
+														<!--One reply from the reply tree of this post--></li>";
+						if (!$(obj).parent().parent().parent().parent().next().is('ul')) {
+							$(obj).parent().parent().parent().parent().after("<ul style='list-style-type:none; margin-left:14px; padding-left:.8em; border-left:solid 1px rgba(0, 0, 0, .2);'></ul>")
+						}
+						$(obj).parent().parent().parent().parent().nextAll('ul').prepend(update_reply);
+						$(obj).parent().remove();
+						alertify.success('Yanıtınız başarıyla gönderildi.');
+					} else {
+						alertify.error(data['msg']);
+					}
 				} else {
-					alertify.error(data);
+					alertify.error("Dinamik bağlantı hatası.");
 				}
 			}
 		});
@@ -436,15 +436,18 @@ function share_reply(obj) {
 function switch_state(obj) {
 	if ($(obj).text() == "[–]") {
 		$(obj).text("[+]");
-		$(obj).parent().siblings(".hide_content").hide().siblings(".hide_function").hide();
-		$(obj).siblings(".hide_up").html("&nbsp;&nbsp;&nbsp;&nbsp;");
-		$(obj).siblings(".hide_rply").hide();
-		$(obj).parent().parent().parent().parent().nextAll("ul").hide('fast');
+		$(obj).parent().parent().find('.reply-up').hide('slow');
+		$(obj).parent().parent().find('.reply-down').hide('slow');
+		$(obj).parent().parent().find('.reply-content').hide('slow');
+		$(obj).parent().parent().find('.reply-functions').hide('slow');
+		$(obj).parent().parent().parent().nextAll('ul').hide('slow');
 	} else {
 		$(obj).text("[–]");
-		$(obj).parent().siblings(".hide_content").show().siblings(".hide_function").show();
-		$(obj).siblings(".hide_up").html("<i class='glyphicon glyphicon-arrow-up' style='color:black;'></i>");
-		$(obj).parent().parent().parent().parent().nextAll("ul").show('fast');
+		$(obj).parent().parent().find('.reply-up').show('slow');
+		$(obj).parent().parent().find('.reply-down').show('slow');
+		$(obj).parent().parent().find('.reply-content').show('slow');
+		$(obj).parent().parent().find('.reply-functions').show('slow');
+		$(obj).parent().parent().parent().nextAll('ul').show('slow');
 	}
 }
 

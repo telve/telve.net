@@ -152,13 +152,13 @@ function telveflavor($text)
         $parsed = parse_url($link->href);
         if (isset($parsed['path'])) {
             if (endsWith($parsed['path'], '.jpg') || endsWith($parsed['path'], '.jpeg') || endsWith($parsed['path'], '.png') || endsWith($parsed['path'], '.gif')) {
-                $text = preg_replace('`<a.*href="'.preg_quote($link->href).'".*<\/a>`', '<br><img src="'.$link->href.'" alt="" style="max-width: 500px;">', $text);
+                $text = preg_replace('`<a.*href="'.preg_quote($link->href).'".*<\/a>`', '<img src="'.$link->href.'" alt="" style="max-width: 500px;">', $text);
             }
             if (isset($parsed['host'])) {
                 if (endsWith($parsed['host'], 'youtube.com') || ($parsed['host'] == 'youtu.be')) {
                     preg_match("/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/", $link->href, $id);
                     if (isset($id[7])) {
-                        $embed = '<br><iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
+                        $embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$id[7].'" frameborder="0" allowfullscreen></iframe>';
                         $text = preg_replace('`<a.*href="'.preg_quote($link->href).'".*<\/a>`', $embed, $text);
                     }
                 }

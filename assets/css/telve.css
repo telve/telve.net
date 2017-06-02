@@ -276,7 +276,7 @@ small#sorting-text {
 	color: #888;
 }
 
-button#submit_reply {
+button#submit_comment {
 	margin-top: 10px;
 	font-weight: bold;
 	color: #888;
@@ -334,6 +334,56 @@ div.live-preview3 {
 
 textarea {
 	resize: vertical;
+}
+
+div.reply-wrapper {
+	margin-top: 15px;
+}
+
+div.reply-wrapper > .span8 {
+	border-radius: 25px;
+}
+
+div.reply-wrapper ul, div.reply-wrapper ol {
+	margin-bottom: 10px;
+}
+
+div.reply-wrapper pre {
+	margin-bottom: 15px;
+}
+
+div.reply-header {
+	color: #888;
+}
+
+.color-gray {
+	color: gray;
+}
+
+a.reply-user-link {
+	color: #369;
+	font-weight: bold;
+}
+
+a.reply-down {
+	position: absolute;
+}
+
+div.reply-content {
+	display: inline-flex;
+	margin-top: 4px;
+	margin-left: 19px;
+}
+
+div.reply-content > span {
+	display: inline-block;
+}
+
+div.reply-functions {
+	color: #888;
+	font-weight: bold;
+	padding: 0 1px;
+	margin-top: -10px;
 }
 
 div.hide_content {

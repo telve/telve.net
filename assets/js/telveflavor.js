@@ -164,11 +164,11 @@ function telveflavor(text) {
 		var parser = document.createElement('a');
 		parser.href = this.href;
 		if (parser.pathname.endsWith('.jpg') || parser.pathname.endsWith('.jpeg') || parser.pathname.endsWith('.png') || parser.pathname.endsWith('.gif')) {
-			text = text.replace(RegExp('<a.*href="' + escapeRegExp(parser.href) + '".*<\/a>','g'), '<br><img src="' + parser.href + '" alt="" style="max-width: 500px;">');
+			text = text.replace(RegExp('<a.*href="' + escapeRegExp(parser.href) + '".*<\/a>','g'), '<img src="' + parser.href + '" alt="" style="max-width: 500px;">');
 		}
 		if (parser.hostname.endsWith('youtube.com') || parser.hostname.endsWith('youtu.be')) {
 			video_id = parser.href.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/);
-			embed = '<br><iframe width="560" height="315" src="https://www.youtube.com/embed/' + video_id[7] + '" frameborder="0" allowfullscreen></iframe>';
+			embed = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + video_id[7] + '" frameborder="0" allowfullscreen></iframe>';
 			text = text.replace(RegExp('<a.*href="' + escapeRegExp(parser.href) + '".*<\/a>','g'), embed);
 		}
 	});
