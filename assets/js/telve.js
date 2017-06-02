@@ -405,6 +405,34 @@ function submit_comment_reply(obj) {
 	}
 }
 
+function share_reply(obj) {
+	var parser = document.createElement('a');
+	parser.href = window.location.href;
+	var reply_url = parser.protocol + '//' + parser.hostname + parser.pathname + '?nolimit=1#yorum-' + obj.id;
+	//window.prompt("Aşağıdaki bağlantıyı kopyalayıp istediğiniz yerde paylaşabilirsiniz:", reply_url);
+	//window.location.href = reply_url;
+	alertify.prompt("Yorumu paylaş", "Aşağıdaki bağlantı otomatik olarak panoya kopyalanacaktır:", reply_url,
+	  function(evt, value ){
+	    alertify.success('Yorumun bağlantısı panoya başarıyla kopyalandı');
+	  },
+	  function(){
+	    alertify.warning('Yorumun bağlantısı panoya kopyalanamamış olabilir');
+	  }
+	);
+	setTimeout(function(){
+		document.execCommand('copy');
+	}, 500);
+	setTimeout(function(){
+		document.execCommand('copy');
+	}, 1000);
+	setTimeout(function(){
+		document.execCommand('copy');
+	}, 1500);
+	setTimeout(function(){
+		document.execCommand('copy');
+	}, 2000);
+}
+
 function switch_state(obj) {
 	if ($(obj).text() == "[–]") {
 		$(obj).text("[+]");

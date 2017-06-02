@@ -21,7 +21,7 @@
         <link href="<?php echo base_url("assets/css/telve.css");?>" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url("assets/css/style.css");?>" rel="stylesheet" type="text/css">
 
-        <script src="<?php echo base_url("assets/alertifyjs/alertify.min.js");?>"></script>
+        <script src="<?php echo base_url("assets/alertifyjs/alertify.js");?>"></script>
         <link href="<?php echo base_url("assets/alertifyjs/css/alertify.min.css");?>" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url("assets/alertifyjs/css/themes/default.min.css");?>" rel="stylesheet" type="text/css">
 

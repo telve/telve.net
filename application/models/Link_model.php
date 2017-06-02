@@ -278,6 +278,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a style='color: #888;' id='".$row['id']."' href='javascript:void(0)' onclick='".$favourite_onclick."' class='login-required'>".$favourite_html."</a>
 								&nbsp;&nbsp;&nbsp;&nbsp;<a style='color: #888;' href='javascript:void(0)' onclick='report_reply(\"".$row['id']."\")' class='login-required'>şikayet<span class='glyphicon glyphicon-flag'></span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='set_reply(this)' id='".$row['id']."'><small>yanıt<span class='glyphicon glyphicon-share-alt special-reply-icon'></span></small></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;</small><a style='color: #888;' href='javascript:void(0)' onclick='share_reply(this)' id='".$row['id']."'><small>paylaş<span class='glyphicon glyphicon-share'></span></small></a>
 							</div>
 						</div>
 					</div>
