@@ -126,6 +126,12 @@
             return count($query->result_array());
         }
 
+        public function get_total_topic_count()
+        {
+            $query = $this->db->get('topic');
+            return count($query->result_array());
+        }
+
         public function retrieve_reply_by_id($id)
         {
             //SELECT score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id

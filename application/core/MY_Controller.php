@@ -137,8 +137,9 @@
             $this->data['header_image'] = '';
 
             $this->data['all_topics'] = $this->link_model->retrieve_all_topics();
-            $this->data['total_topic_count'] = $this->link_model->get_link_count();
+            $this->data['total_link_count'] = $this->link_model->get_link_count();
             $this->data['total_reply_count'] = $this->link_model->get_total_reply_count();
+            $this->data['total_topic_count'] = $this->link_model->get_total_topic_count();
 
             if ($this->data['all_topics']) {
                 if ($this->uri->segment(1) == 't') {
