@@ -452,3 +452,20 @@ div.hide_content {
 #total-link-count > h5 {
 	margin-top: -10px;
 }
+
+#recent-links {
+	background-color: lightyellow;
+	margin-bottom: 5px;
+}
+
+#recent-links > div {
+	overflow: hidden;
+	white-space: nowrap;
+	font-style: oblique;
+	font-size: 12px;
+}
+
+#recent-links > div > a > span {
+	font-style: normal;
+	font-size: 12px;
+}

@@ -30,6 +30,8 @@
         <h4>Toplam <?php echo number_format($total_topic_count, null, null, '.');?> gönderi</h4>
         <h5><?php echo number_format($total_reply_count, null, null, '.');?> yorum</h5>
     </div>
+
+    <div id="recent-links"></div>
 </div>
 </div>
 </div>
