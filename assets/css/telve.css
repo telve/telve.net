@@ -448,3 +448,7 @@ div.hide_content {
   0% { background-position: 0 0; }
   100% { background-position: -70px 0px; }
 }
+
+#total-link-count > h5 {
+	margin-top: -10px;
+}

@@ -26,7 +26,10 @@
 
     <a class="btn btn-block btn-info login-required btn-blue" href="<?php echo base_url("gonder")."?metin=true";?>" style="margin-bottom:5px;">Yeni bir metin gönder</a>
 
-    <div id="total-link-count"><h4>Toplam <?php echo number_format($total_topic_count, null, null, '.');?> gönderi</h4></div>
+    <div id="total-link-count">
+        <h4>Toplam <?php echo number_format($total_topic_count, null, null, '.');?> gönderi</h4>
+        <h5><?php echo number_format($total_reply_count, null, null, '.');?> yorum</h5>
+    </div>
 </div>
 </div>
 </div>

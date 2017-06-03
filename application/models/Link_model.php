@@ -120,6 +120,12 @@
             return $this->hash_row($query->row_array());
         }
 
+        public function get_total_reply_count()
+        {
+            $query = $this->db->get('reply');
+            return count($query->result_array());
+        }
+
         public function retrieve_reply_by_id($id)
         {
             //SELECT score,reply.id,content,reply.created,username FROM reply, user WHERE reply.uid = user.id
