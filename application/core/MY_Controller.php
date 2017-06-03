@@ -137,6 +137,7 @@
             $this->data['header_image'] = '';
 
             $this->data['all_topics'] = $this->link_model->retrieve_all_topics();
+            $this->data['total_topic_count'] = $this->link_model->get_link_count();
 
             if ($this->data['all_topics']) {
                 if ($this->uri->segment(1) == 't') {
