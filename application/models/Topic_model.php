@@ -11,6 +11,7 @@
         {
             $topic = str_replace(' ', '', $this->input->post('topic'));
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+            $topic = str_replace('â', 'a', $topic);
             $topic = tr_strtoupper($topic);
 
             $this->db->where('username', $this->session->userdata('username'));
@@ -33,6 +34,7 @@
         {
             $topic = str_replace(' ', '', $topic);
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+            $topic = str_replace('â', 'a', $topic);
             $topic = tr_strtoupper($topic);
 
             $this->db->where('username', 'moderator');

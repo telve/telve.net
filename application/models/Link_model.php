@@ -279,6 +279,7 @@
 
             $topic = str_replace(' ', '', $this->input->post('topic'));
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+            $topic = str_replace('â', 'a', $topic);
 
             list($picurl, $text, $embed) = analyze_url($url);
             if (!empty($this->input->post('text'))) {
@@ -330,6 +331,7 @@
 
             $topic = str_replace(' ', '', $topic);
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
+            $topic = str_replace('â', 'a', $topic);
 
             list($picurl, $text, $embed) = analyze_url($url);
 
