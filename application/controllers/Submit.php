@@ -35,8 +35,8 @@
                     $insert_id = $this->link_model->insert_link();
                     $this->topic_model->insert_topic();
                     $topic = str_replace(' ', '', $this->input->post('topic'));
+                    $topic = str_replace(['Â','â'], ['A','a'], $topic);
                     $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
-                    //$topic = str_replace('â', 'a', $topic);
                     redirect('t/'.tr_strtoupper($topic).'/yorumlar/'.$insert_id.'/');
                 }
             } else {
