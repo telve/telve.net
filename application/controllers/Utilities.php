@@ -246,7 +246,7 @@
                         // echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
 
-                    sleep(rand(300, 600)); // Wait 5-10 minutes
+                    sleep(300); // Wait 5 minutes
                 }
             }
         }

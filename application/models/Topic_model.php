@@ -10,7 +10,6 @@
         public function insert_topic()
         {
             $topic = str_replace(' ', '', $this->input->post('topic'));
-            $topic = str_replace(['Â','â'], ['A','a'], $topic);
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
             $topic = tr_strtoupper($topic);
 
@@ -33,7 +32,6 @@
         public function insert_topic_cli($topic)
         {
             $topic = str_replace(' ', '', $topic);
-            $topic = str_replace(['Â','â'], ['A','a'], $topic);
             $topic = preg_replace('/[^a-zA-Z0-9ÇŞĞÜÖİçşğüöı]+/', '', $topic);
             $topic = tr_strtoupper($topic);
 

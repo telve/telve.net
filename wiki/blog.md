@@ -1,11 +1,5 @@
 <br>
 
-### 10000. paylaşım!
-
-25 Haziran 2017 itibariyle sitemizdeki toplam paylaşım sayısı 10000 gönderiyi aşmıştır. Tüm kullanıcılarımıza teşekkür ederiz.
-
----
-
 ### 4000. paylaşım!
 
 1 Haziran 2017 itibariyle sitemizdeki toplam paylaşım sayısı 4000 gönderiyi aşmıştır. Tüm kullanıcılarımıza teşekkür ederiz.
