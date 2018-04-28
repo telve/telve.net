@@ -17,18 +17,18 @@
         public function download_all_topic_images()
         {
             if ($this->input->is_cli_request()) {
-                try {
-                    $topics_array = $this->link_model->retrieve_all_topics();
-                    foreach ($topics_array as &$topic) {
+                $topics_array = $this->link_model->retrieve_all_topics();
+                foreach ($topics_array as &$topic) {
+                    try {
                         echo $topic['topic'];
-                        echo "<br>\n";
+                        echo "\n";
                         echo $topic['header_image'];
-                        echo "<br>\n\n";
+                        echo "\n\n";
                         $ext = pathinfo(parse_url($topic['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
                         copy($topic['header_image'], 'assets/img/topics/'.$topic['topic'].'.'.$ext);
+                    } catch (Exception $e) {
+                        // echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
-                } catch (Exception $e) {
-                    // echo 'Caught exception: ',  $e->getMessage(), "\n";
                 }
             }
         }
@@ -36,13 +36,13 @@
         public function download_all_link_images()
         {
             if ($this->input->is_cli_request()) {
-                try {
-                    $links_array = $this->link_model->retrieve_all_links();
-                    foreach ($links_array as &$link) {
+                $links_array = $this->link_model->retrieve_all_links();
+                foreach ($links_array as &$link) {
+                    try {
                         echo $link['title'];
-                        echo "<br>\n";
+                        echo "\n";
                         echo $link['picurl'];
-                        echo "<br>\n\n";
+                        echo "\n\n";
                         $ext = pathinfo(parse_url($link['picurl'], PHP_URL_PATH), PATHINFO_EXTENSION);
                         $target_path = 'assets/img/link_thumbnails/'.$this->hashids->encode($link['id']).'.'.$ext;
                         copy($link['picurl'], $target_path);
@@ -56,9 +56,9 @@
                         $this->image_lib->initialize($config);
                         $this->image_lib->resize();
                         $this->image_lib->clear();
+                    } catch (Exception $e) {
+                        // echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
-                } catch (Exception $e) {
-                    // echo 'Caught exception: ',  $e->getMessage(), "\n";
                 }
             }
         }
