@@ -1,36 +1,32 @@
-# Welcome to telve.net!
+# İnternetin Ön Sayfasına Hoş Geldiniz!
 
-Here you can browse and submit links to content on the Internet or post your own originals. Other people can vote on the links or text you post, highlighting the links will be placed on the home page. You can also comment on the links or text you post and reply to other reviewers.
+[telve.net](https://telve.net/) internette bulduğunuz bağlantıları veya kendi özgün içeriklerinizi paylaşabileceğiniz kapsamlı bir sosyal yorumlama ağıdır. **telve.net** kısaca anlatmak gerekirse [reddit.com](https://www.reddit.com/)'un başarılı bir şekilde CodeIgniter framework'ü ile yeniden yazılmış halidir.
 
-Each individual topics (URLs starts with `/t` like `/t/NEWS`) has its own concepts, formats, restrictions etc. and when you do not comply with these rules while posting your content to the topic, your content can be deleted or be hidden if somebody report it.
+<p align="center">
+  <img src="https://i.imgur.com/izW0W16.png" alt="telve.net ekran görüntüsü"/>
+</p>
 
-Popular topics are always listed at the top of the site. By clicking **MORE>** you get the page where you can edit your subscriptions. Subscriptions will affect the rankings under **hot** tab. Sidebar at your left will provide you a quick access to your subscriptions.
 
-**new** tab will give you the latest posts.
+**Yazılım Bağımlılıkları:**
 
-**controversial** tab will give you the posts which gets most comments.
+ - LAMP(Linux, Apache, MySQL, PHP) kurulu bir sunucu
+ - PHP versiyon 7.0.8 (Ubuntu 16.04)
+ - CodeIgniter versiyon 3.1.2
+ - PHP BC Math kütüphanesi
+ - phpMyAdmin (veritabanını içe aktarmak için, pratik)
 
-**top** tab will give you the posts which gets most upvotes.
 
-**rising** tab is some sort of combination of these three.
+### Kurulum
 
-**hot** tab is the combination of these four plus your subscriptions.
-
-When you submit a new link [telve.net](http://telve.net) automatically detects the best image from the given URL. It means you do not interfere with this job.
-
-So what do you waiting for? **[Share a link now](http://telve.net/submit)** with thousands of community members.
-
-### Notes for Developers
-
-Requires a LAMP stack with PHP version 7.0.8 (Ubuntu 16.04) and it's using CodeIgniter version 3.1.2 web framework.
-
-Don't forget to replace database credentials under `application/config/database.php` and import the SQL dump located under `db/` directory.
-
-This project was developed fully in English language until commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` (129. commit). Later on it translated to Turkish language (language of target client) rather than being multilingual because the complexity of handling the support for multiple languages was huge. If you are a global visitor/cloner, I suggest you to revert back to commit number `300d6848610a7cf42eea5c81838a16d291d1eaea` or contact me mert.yildiran@bil.omu.edu.tr for my help to translate it back to English language.
-
-*Select Tab Length as 4 in your editor.*
-
-### Requirements
-
-* [Vesta CP](https://vestacp.com/#install)
-* Install PHP BC Math library: `sudo apt-get install php-bcmath`
+ - Öncelikle [VestaCP'yi sunucunuza kurunuz](https://vestacp.com/install/)
+ - `sudo apt-get install php-bcmath` komutu ile PHP BC Math kütüphanesini kurun
+ - Daha sonra VestaCP'nin arayüzünden gerekli kullanıcı ve alan adı ekleme işlemlerini gerçekleştirin
+ - Alan adı oluştururken **Lets Encrypt** ile SSL desteğini de eklemeyi unutmayın
+ - Alan adı sağlayıcınızın DNS ayarlarında A host kaydının sizin sunucunuza yönlendirilmiş olduğundan emin olun
+ - Bu depoyu alan adının bağlı olduğu dizine klonlayın: `git clone https://github.com/mertyildiran/telve.net.git .`
+ - `application/config/database.php` içerisindeki [şu satırları](https://github.com/mertyildiran/telve.net/blob/master/application/config/database.php#L52-L54) kendi veritabanı kullanıcı bilgileriniz ile değiştirin
+ - Eğer SSL desteği istiyorsanız `application/config/config.php` içerisindeki [şu satırları](https://github.com/mertyildiran/telve.net/blob/master/application/config/config.php#L17-L19) `$config['base_url']	= 'https://alanadiniz.com/';` ve `$config['https_enabled'] = TRUE;` olarak değiştirmeyi unutmayın
+ - Eğer e-posta servisini kullanacaksınız (kullanıcıların şifrelerini sıfırlamaları için gerekli) [şu satırları](https://github.com/mertyildiran/telve.net/blob/master/application/config/config.php#L361-L365) kendi e-posta servisinizin verdiği bilgiler ile değiştirmeyi unutmayın
+ - Şimdi [admin_telve.sql](https://raw.githubusercontent.com/mertyildiran/telve.net/master/db/admin_telve.sql) (temiz veritabanı) dosyasını indirip phpMyAdmin arayüzünden içeri aktarın
+ - Bu noktada [https://alanadiniz.com/](https://alanadiniz.com/) sayfasını açtığınızda "**Hiç bir gönderi bulunamadı**" şeklinde bir uyarı görüyor olmalısınız
+ - Eğer kurulumu bir de örnek verilerle test etmek istiyorsanız; [admin_telve_data.sql](https://github.com/mertyildiran/telve.net/blob/master/db/admin_telve_data.sql) (örnek veriler) dosyasını indirip phpMyAdmin arayüzünden içeri aktarın
