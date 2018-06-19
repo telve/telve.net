@@ -69,6 +69,7 @@
             <link rel="preload" as="image" href="<?php echo base_url('assets/img/topics/'.urldecode($chosen_topic['topic']).'.'.$ext); ?>">
         <?php } ?>
 
+        <meta name="theme-color" content="#CEE3F8">
     </head>
 
     <body>
