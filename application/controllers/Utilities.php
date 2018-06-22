@@ -148,7 +148,7 @@
                                 $xml = simplexml_load_string($html);
                                 $selected_item = rand(0, count($xml->channel->item)-1);
                                 $submit_url = $xml->channel->item[$selected_item]->link;
-                                $submit_topic = $xml->channel->item[$selected_item]->category[1];
+                                $submit_topic = "HABER";
                                 break;
                             case "haber7.com":
                                 $xml = simplexml_load_string($html);
