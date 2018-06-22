@@ -185,7 +185,7 @@ Referans tarzı:
 
 [github-maskot]: ../assets/img/guide/GitHubCouple.gif "GitHub Maskot Çift"
 
-Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/türk-kahvesi.jpg
+Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/turk-kahvesi.jpg
 ```
 
 GitHub maskotlar (resmin üzerine gelerek başlığı görebilirsiniz):
@@ -198,7 +198,7 @@ Referans tarzı:
 
 [github-maskot]: ../assets/img/guide/GitHubCouple.gif "GitHub Maskot Çift"
 
-Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/türk-kahvesi.jpg
+Ayrıca **telve.net**, direkt resim bağlantılarını da otomatik olarak algılar: https://telve.net/assets/img/misc/turk-kahvesi.jpg
 
 <br>
 <br>
