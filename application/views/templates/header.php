@@ -118,7 +118,9 @@
                 <li<?php if ($this->uri->segment(3) == 'yorumlari') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'yorumlari') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/yorumlari/"; ?>">yorumları</a></li>
                 <li<?php if ($this->uri->segment(3) == 'evetoylari') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'evetoylari') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/evetoylari/"; ?>">evetoyları</a></li>
                 <li<?php if ($this->uri->segment(3) == 'hayiroylari') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'hayiroylari') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/hayiroylari/"; ?>">hayıroyları</a></li>
-                <li<?php if ($this->uri->segment(3) == 'favorileri') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'favorileri') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/favorileri/"; ?>">favorileri</a></li>
+                <?php if ($this->session->userdata('username') == urldecode($this->uri->segment(2))) { ?>
+                    <li<?php if ($this->uri->segment(3) == 'favorileri') echo ' class="active"'; ?>><a <?php if ($this->uri->segment(3) == 'favorileri') echo 'style="color:red;"'; ?> href="<?php echo base_url("kullanici")."/".$this->uri->segment(2)."/favorileri/"; ?>">favorilerim</a></li>
+                <?php } ?>
             <?php } else { ?>
 
                 <li<?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo ' class="active"' ?>><a <?php if ( ($this->uri->segment($sn) == 'hot') || ($this->uri->segment($sn) == '') || is_numeric($this->uri->segment($sn)) ) echo 'style="color:red;"' ?> href="<?php echo $base_url;?>">sıcak<span class="glyphicon glyphicon-fire"></span></a></li>

@@ -71,7 +71,7 @@
             } elseif ($this->uri->segment(3) == 'hayiroylari') {
                 $this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)), $config['per_page'], $this->data['offset'], 'downvoted');
                 $this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının hayır oyları';
-            } elseif ($this->uri->segment(3) == 'favorileri') {
+            } elseif ($this->uri->segment(3) == 'favorileri' && $this->session->userdata('username') == urldecode($this->uri->segment(2))) {
                 $this->data['link'] = $this->user_model->user_overview(urldecode($this->uri->segment(2)), $config['per_page'], $this->data['offset'], 'favourites');
                 $this->data['title'] = urldecode($this->uri->segment(2)).' kullanıcısının favorileri';
             } else {
