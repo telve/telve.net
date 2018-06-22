@@ -109,7 +109,7 @@
                 <ul class="unstyled">
                     <li style="font-size:16px;">hakkında<li>
                     <li><a href="<?php echo base_url('sayfalar/blog');?>">blog</a></li>
-                    <li><a href="https://github.com/DragonComputer/telve.net">kaynak kod</a></li>
+                    <li><a href="https://github.com/telve/telve.net">kaynak kod</a></li>
                     <li><a href="<?php echo base_url('sayfalar/reklam_ver');?>">reklam ver</a></li>
                     <li><a href="<?php echo base_url('sayfalar/kariyer');?>">kariyer</a></li>
                 </ul>
@@ -148,7 +148,7 @@
                 <a href="<?php echo base_url('sayfalar/kullanici_sozlesmesi');?>">Kullanıcı Sözleşmesi</a> ve <a href="<?php echo base_url('sayfalar/gizlilik_politikasi');?>" style="color:green;">Gizlilik Politikası (güncellendi)</a>
             </div>
             <div class="span6">
-                <p class="muted pull-right">Telif hakkı &copy; 2017&nbsp;&nbsp;<a href="http://dragon.computer/">dragon.computer</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
+                <p class="muted pull-right">Telif hakkı &copy; 2018&nbsp;&nbsp;<a href="http://dragon.computer/">DRAGON.COMPUTER</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
             </div>
         </div>
     </div>
