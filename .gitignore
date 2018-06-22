@@ -8,3 +8,6 @@
 /assets/img/link_thumbnails/*
 !/assets/img/link_thumbnails/.gitkeep
 nohup.out
+
+# Configuration file of Atom's remote-sync package
+.remote-sync.json
