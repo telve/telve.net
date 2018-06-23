@@ -21,6 +21,9 @@
             $this->data['link_item'] = $this->link_model->retrieve_link($id);
             $this->data['reply'] = $this->link_model->retrieve_reply_by_id($id);
             $this->data['tree'] = $this->link_model->retrieve_reply_tree_by_id($id); //$pid
+            if (empty($this->data['tree'])) {
+                $this->data['tree'] = '<ul style="list-style-type:none;"></ul>';
+            }
 
             if (empty($this->data['link_item'])) {
                 show_404(); //The page does not exist
