@@ -245,10 +245,13 @@
                         echo "URL:\t".$submit_url."\n";
                         echo "Topic:\t".$submit_topic."\n";
 
-                        $insert_id = $this->link_model->insert_link_cli($submit_title, $submit_url, $submit_topic);
-                        $this->topic_model->insert_topic_cli($submit_topic);
-
-                        echo "Record inserted with ID: ".$insert_id."\n\n";
+                        if ((!isset($submit_title) || trim($submit_title) === '') || (!isset($submit_url) || trim($submit_url) === '') || (!isset($submit_topic) || trim($submit_topic) === '')) {
+                            echo "Insertion is failed because one of the parameters are empty.\n\n";
+                        } else {
+                            $insert_id = $this->link_model->insert_link_cli($submit_title, $submit_url, $submit_topic);
+                            $this->topic_model->insert_topic_cli($submit_topic);
+                            echo "Record inserted with ID: ".$insert_id."\n\n";
+                        }
 
                     } catch (Exception $e) {
                         // echo 'Caught exception: ',  $e->getMessage(), "\n";
