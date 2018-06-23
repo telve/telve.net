@@ -147,15 +147,21 @@ function telveflavor(text) {
 	  return '__BLOCK__';
 	});
 
+	// Backup images and links
+	text = text.replace(/(?:<a.*?<\/a>|<img.*?>)/g, function (match) {
+	  blocks.push(match);
+	  return '__BLOCK__';
+	});
+
 	// Autolink
-	text = text.replace(/((https?:)\/\/[a-z0-9&#=.\/\-?_]+)/gi, '<a href="$1">$1</a>');
+	text = text.replace(/\b((https?:)\/\/[a-z0-9&#=.\/\-?_]+)\b/gi, '<a href="$1">$1</a>');
 
 	// Do your actual emoji replacement here
 	Object.keys(emoji_dict).forEach(function(key) {
 		text = text.replace(RegExp(escapeRegExp(key),'g'), '<img class="emoji" src="' + base_url + 'assets/img/emojis/' + emoji_dict[key] + '" height="20" width="20" title="' + key + '" alt="' + key + '" align="absmiddle">');
 	});
 
-	// Restore the <pre> and <code> tags from the backup by shift one by one
+	// Restore the <pre> and <code> tags, images and links from the backup by shift one by one
 	text = text.replace(/__BLOCK__/g, function () {
 	  return blocks.shift();
 	});
