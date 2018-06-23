@@ -261,4 +261,11 @@
                 }
             }
         }
+
+        public function fix_domain_with_empty_topics($domain, $topic)
+        {
+            if ($this->input->is_cli_request()) {
+                $this->link_model->fix_domain_with_empty_topics($domain, $topic);
+            }
+        }
     }

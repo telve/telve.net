@@ -544,4 +544,12 @@
             $row['id'] = $this->hashids->encode($row['id']);
             return $row;
         }
+
+        public function fix_domain_with_empty_topics($domain, $topic)
+        {
+            $this->db->where('domain', $domain);
+            $this->db->where('topic', '');
+            $this->db->set('topic', $topic);
+            $this->db->update('link');
+        }
     }
