@@ -17,18 +17,19 @@ class Api extends REST_Controller {
 
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
-        $this->methods['hot_get']['limit'] = 500; // 500 requests per hour per user/key
+        $this->methods['link_get']['limit'] = 500; // 500 requests per hour per user/key
         $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
     }
 
-    public function hot_get()
+    public function link_get()
     {
         $offset = $this->get('offset');
         $offset = (int) $offset;
+        $sort = $this->get('sort');
 
         $config['per_page'] = 10;
-        $this->data['link'] = $this->link_model->retrieve_link($id = false, $config['per_page'], $offset, 'hot');
+        $this->data['link'] = $this->link_model->retrieve_link($id = false, $config['per_page'], $offset, $sort);
         $this->set_response($this->data['link'], REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
 
     }
