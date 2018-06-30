@@ -14,6 +14,7 @@ class Api extends REST_Controller {
         // Construct the parent class
         parent::__construct();
         $this->load->model('link_model');
+        $this->load->helper('human_timing');
 
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
@@ -30,6 +31,9 @@ class Api extends REST_Controller {
 
         $config['per_page'] = 10;
         $this->data['link'] = $this->link_model->retrieve_link($id = false, $config['per_page'], $offset, $sort);
+        foreach ($this->data['link'] as &$link_item) {
+            $link_item['ago'] = human_timing($link_item['created']);
+        }
         $this->set_response($this->data['link'], REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
 
     }
