@@ -556,8 +556,6 @@ tr:nth-child(even) {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
-    max-height: 0;
     display: block;
     overflow: hidden;
     opacity: 0;
