@@ -48,7 +48,7 @@
                               <?php if (!empty($link_item['embed'])) { ?>
                                   <a href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715-rect.png'); else echo base_url('assets/img/link_thumbnails/'.$link_item['id'].'_thumb.'.$ext);?>');"></div></a>
                               <?php } else { ?>
-                                  <a href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715-rect.png'); else echo base_url('assets/img/link_thumbnails/'.$link_item['id'].'_thumb.'.$ext);?>');"></div></a>
+                                  <a rel="nofollow" href="<?php echo $link_item['url'];?>"><div class="link-thumbnail" style="background-image: url('<?php if (empty($link_item['picurl'])) echo base_url('assets/img/icons/1715-rect.png'); else echo base_url('assets/img/link_thumbnails/'.$link_item['id'].'_thumb.'.$ext);?>');"></div></a>
                               <?php }?>
                           <?php }?>
                         </div>
@@ -61,7 +61,7 @@
                                 <?php if (!empty($link_item['embed'])) { ?>
                                     <div class="link-title"><strong><a class="link-title" href="<?php echo base_url("")."t/".$link_item['topic']."/yorumlar/".$link_item['id']."/".$link_item['seo_segment']."/";?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                                 <?php } else { ?>
-                                    <div class="link-title"><strong><a class="link-title" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
+                                    <div class="link-title"><strong><a class="link-title" rel="nofollow" href="<?php echo $link_item['url'];?>"><?php echo $link_item['title']?></a></strong>&nbsp;&nbsp;&nbsp;<span class="link-domain">(<a href="<?php echo base_url().'alan-adi/'.$link_item['domain'].'/';?>"><?php echo $link_item['domain'];?></a>)</span></div>
                                 <?php }?>
                             <?php }?>
 
