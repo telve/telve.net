@@ -22,6 +22,9 @@
                     try {
                         echo $topic['topic'];
                         echo "\n";
+                        if (empty($topic['header_image'])) {
+                            continue;
+                        }
                         echo $topic['header_image'];
                         echo "\n\n";
                         $ext = pathinfo(parse_url($topic['header_image'], PHP_URL_PATH), PATHINFO_EXTENSION);
@@ -70,6 +73,8 @@
 
                 while (true) {
                     try {
+                        $this->db->initialize();
+
                         $submit_title = null;
                         $submit_url = null;
                         $submit_topic = null;
@@ -252,6 +257,8 @@
                             $this->topic_model->insert_topic_cli($submit_topic);
                             echo "Record inserted with ID: ".$insert_id."\n\n";
                         }
+
+                        $this->db->close();
 
                     } catch (Exception $e) {
                         // echo 'Caught exception: ',  $e->getMessage(), "\n";
