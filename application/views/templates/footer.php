@@ -148,7 +148,7 @@
                 <a href="<?php echo base_url('sayfalar/kullanici_sozlesmesi');?>">Kullanıcı Sözleşmesi</a> ve <a href="<?php echo base_url('sayfalar/gizlilik_politikasi');?>" style="color:green;">Gizlilik Politikası (güncellendi)</a>
             </div>
             <div class="span6">
-                <p class="muted pull-right">Telif hakkı &copy; 2018&nbsp;&nbsp;<a href="http://dragon.computer/">DRAGON.COMPUTER</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
+                <p class="muted pull-right">Telif hakkı &copy; 2019&nbsp;&nbsp;<a href="http://dragon.computer/">DRAGON.COMPUTER</a>&nbsp;&nbsp;Tüm Hakları Saklıdır.</p>
             </div>
         </div>
     </div>
