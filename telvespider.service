@@ -1,0 +1,14 @@
+[Unit]
+Description=telve.net Spider Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=telve
+ExecStart=/usr/bin/php /home/telve/web/telve.net/public_html/index.php utilities spider
+
+[Install]
+WantedBy=multi-user.target
